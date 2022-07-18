@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Text">
+
+  <select id="regiBookListByCategory" parameterType="String" resultType="bossbabies.com.a.dto.RegistedBookDto">
+    select registered_book_id, book_id, seller_id, order_count, book_count, register_date, sell_status
+    from registered_book rb, book b
+    where rb.book_id = b.book_id
+    and b.category = #{category}
+  </select>
+
+  <select id="regiBookListBySellCount" parameterType="String" resultType="bossbabies.com.a.dto.RegistedBookDto">
+    select registered_book_id, rb.book_id, seller_id, order_count, book_count, register_date, sell_status
+    from registered_book rb, book b
+    where rb.book_id = b.book_id
+    and b.category = #{category}
+    order by order_count desc;
+  </select>
+
+  <select id="regiBookListByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="bossbabies.com.a.dto.RegistedBookDto">
+    select registered_book_id, rb.book_id, seller_id, order_count, book_count, register_date, sell_status
+    from registered_book rb, book b
+    where rb.book_id = b.book_id
+    and b.category = #{category}
+    and b.title like concat('%', #{keyword}, '%')
+  </select>
+
+  <update id="updateBookCount" parameterType="bossbabies.com.a.parameterVO.IdAndCountVO">
+    update registered_book
+    set book_count = #{newCount}
+    where regitered_book_id = #{registeredBookId}
+  </update>
+
+  <update id="updateSellStatus" parameterType="bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO">
+    update registered_book
+    set sell_status = #{status}
+    where registered_book_id = #{registeredBookId}
+  </update>
+
+  <update id="updateDeliveryStatus" parameterType="bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO">
+    update orders
+    set delivery_status = #{status}
+    where registered_book_id = #{registeredBookId}
+  </update>
+
+
+
+</mapper>
+
+
