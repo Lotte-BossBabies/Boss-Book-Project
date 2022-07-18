@@ -1,4 +1,5 @@
-<%--
+<%@ page import="bossbabies.com.a.dto.TestDto" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 2022-07-16
@@ -12,5 +13,10 @@
 </head>
 <body>
 
+<%
+    List<TestDto> dto = (List<TestDto>) request.getAttribute("member");
+%>
+<h1><%= dto.get(0).getId()%></h1>
+<h1><%= dto.get(0).getAddress()%></h1>
 </body>
 </html>
