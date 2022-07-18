@@ -1,6 +1,6 @@
 package bossbabies.com.a.controller;
 
-import bossbabies.com.a.service.BookApiService;
+import bossbabies.com.a.service.BookApiServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,17 +21,17 @@ import java.text.ParseException;
 @Controller
 public class BookApiController {
     @Autowired
-    BookApiService service;
+    BookApiServiceImpl service;
 
     @RequestMapping("/main.do")
     public String insertData() throws IOException, ParseException {
 
-        boolean api = service.api();
+        boolean api = service.insertData();
 
         if (!api) {
-            return "main";
+            return "book/main";
         }
 
-        return "main";
+        return "book/main";
     }
 }
