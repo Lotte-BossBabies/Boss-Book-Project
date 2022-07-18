@@ -2,9 +2,9 @@ package bossbabies.com.a.dto;
 
 import java.time.LocalDateTime;
 
-public class RegistedBookDto {
+public class RegisteredBookDto {
 
-    private int registedBookId;
+    private int registeredBookId;
     private int bookId;
     private int sellerId;
     private int orderCount;
@@ -12,14 +12,14 @@ public class RegistedBookDto {
     private LocalDateTime registerDate;
     private boolean sellStatus;
 
-    public RegistedBookDto() {
+    public RegisteredBookDto() {
 
     }
 
-    public RegistedBookDto(int registedBookId, int bookId, int sellerId, int orderCount,
+    public RegisteredBookDto(int registeredBookId, int bookId, int sellerId, int orderCount,
         int bookCount,
         LocalDateTime registerDate, boolean sellStatus) {
-        this.registedBookId = registedBookId;
+        this.registeredBookId = registeredBookId;
         this.bookId = bookId;
         this.sellerId = sellerId;
         this.orderCount = orderCount;
@@ -28,12 +28,12 @@ public class RegistedBookDto {
         this.sellStatus = sellStatus;
     }
 
-    public int getRegistedBookId() {
-        return registedBookId;
+    public int getRegisteredBookId() {
+        return registeredBookId;
     }
 
-    public void setRegistedBookId(int registedBookId) {
-        this.registedBookId = registedBookId;
+    public void setRegisteredBookId(int registeredBookId) {
+        this.registeredBookId = registeredBookId;
     }
 
     public int getBookId() {
