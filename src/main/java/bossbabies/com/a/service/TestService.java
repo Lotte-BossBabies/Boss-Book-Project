@@ -1,6 +1,6 @@
 package bossbabies.com.a.service;
 
-import bossbabies.com.a.dao.TestDaoImpl;
+import bossbabies.com.a.dao.test.TestDaoImpl;
 import bossbabies.com.a.dto.TestDto;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -42,7 +42,7 @@
 
   <update id="updateDeliveryStatus" parameterType="bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO">
     update orders
-    set delivery_status = #{status}
+    set delivery_status = #{status}d
     where registered_book_id = #{registeredBookId}
   </update>
 
