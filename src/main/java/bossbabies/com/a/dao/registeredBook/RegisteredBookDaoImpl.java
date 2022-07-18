@@ -1,6 +1,6 @@
 package bossbabies.com.a.dao.registeredBook;
 
-import bossbabies.com.a.dto.RegistedBookDto;
+import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
@@ -16,7 +16,7 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      * @return
      */
     @Override
-    public List<RegistedBookDto> getRegisteredBookList(String category) {
+    public List<RegisteredBookDto> getRegisteredBookList(String category) {
         return null;
     }
 
@@ -26,7 +26,7 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      * @return
      */
     @Override
-    public List<RegistedBookDto> getRegisteredBookListBySellCount(String category) {
+    public List<RegisteredBookDto> getRegisteredBookListBySellCount(String category) {
         return null;
     }
 
@@ -36,7 +36,7 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      * @return
      */
     @Override
-    public List<RegistedBookDto> getRegisteredBookListByKeyword(CategoryAndKeywordVO vo) {
+    public List<RegisteredBookDto> getRegisteredBookListByKeyword(CategoryAndKeywordVO vo) {
         return null;
     }
 
