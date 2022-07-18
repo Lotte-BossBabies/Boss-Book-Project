@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.example</groupId>
+  <groupId>a.com.bossbabies</groupId>
   <artifactId>Boss-Book-Project</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>Boss-Book-Project</name>
@@ -276,63 +276,51 @@
 
     <!-- tiles -->
     <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-api</artifactId>
-      <version>3.0.7</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-core</artifactId>
-      <version>3.0.7</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-jsp</artifactId>
-      <version>3.0.7</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-servlet</artifactId>
-      <version>3.0.7</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-template</artifactId>
-      <version>3.0.7</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-autotag-core-runtime</artifactId>
-      <version>1.1.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-request-api</artifactId>
-      <version>1.0.6</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-request-jsp</artifactId>
-      <version>1.0.6</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-request-servlet</artifactId>
-      <version>1.0.6</version>
-    </dependency>
-
-    <dependency>
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
       <version>1.3.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
     </dependency>
 
 
