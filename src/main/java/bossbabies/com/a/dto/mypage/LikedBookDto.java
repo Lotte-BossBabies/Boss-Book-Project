@@ -1,27 +1,24 @@
-package bossbabies.com.a.dto;
+package bossbabies.com.a.dto.mypage;
 
 import java.io.Serializable;
-import java.time.Instant;
 
-public class OrderedBookDto implements Serializable {
+public class LikedBookDto implements Serializable {
     private int book_id;
-
-    private int order_id;
+    private int like_id;
     private String title;
     private int price;
     private String image_url;
-    private Instant order_date;
 
-    public OrderedBookDto() {
+
+    public LikedBookDto() {
     }
 
-    public OrderedBookDto(int book_id, int order_id, String title, int price, String image_url, Instant order_date) {
+    public LikedBookDto(int book_id, int like_id, String title, int price, String image_url) {
         this.book_id = book_id;
-        this.order_id = order_id;
+        this.like_id = like_id;
         this.title = title;
         this.price = price;
         this.image_url = image_url;
-        this.order_date = order_date;
     }
 
     public int getBookId() {
@@ -30,6 +27,14 @@ public class OrderedBookDto implements Serializable {
 
     public void setBookId(int book_id) {
         this.book_id = book_id;
+    }
+
+    public int getLikeId() {
+        return like_id;
+    }
+
+    public void setLikeId(int like_id) {
+        this.like_id = like_id;
     }
 
     public String getTitle() {
@@ -56,19 +61,5 @@ public class OrderedBookDto implements Serializable {
         this.image_url = imageUrl;
     }
 
-    public int getOrderId() {
-        return order_id;
-    }
 
-    public void setOrderId(int order_id) {
-        this.order_id = order_id;
-    }
-
-    public Instant getOrder_date() {
-        return order_date;
-    }
-
-    public void setOrder_date(Instant order_date) {
-        this.order_date = order_date;
-    }
 }

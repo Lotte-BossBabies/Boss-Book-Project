@@ -2,7 +2,6 @@ package db;
 
 import bossbabies.com.a.dao.registeredBook.RegisteredBookDao;
 import bossbabies.com.a.dao.registeredBook.RegisteredBookDaoImpl;
-import bossbabies.com.a.dto.TestDto;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;

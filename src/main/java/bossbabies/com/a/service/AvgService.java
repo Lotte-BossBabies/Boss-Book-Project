@@ -1,7 +1,12 @@
 package bossbabies.com.a.service;
 
+<<<<<<< Updated upstream
 import bossbabies.com.a.dao.AvgDao;
+import bossbabies.com.a.dto.avg.CategorySaleRateDto;
+=======
+import bossbabies.com.a.dao.avg.AvgDao;
 import bossbabies.com.a.dto.CategorySaleRateDto;
+>>>>>>> Stashed changes
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

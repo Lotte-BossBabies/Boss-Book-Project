@@ -1,8 +1,8 @@
 package bossbabies.com.a.service;
 
-import bossbabies.com.a.dao.BookDao;
-import bossbabies.com.a.dao.LikesDao;
-import bossbabies.com.a.dao.RegisteredBookDao;
+import bossbabies.com.a.dao.book.BookDao;
+import bossbabies.com.a.dao.likes.LikesDao;
+import bossbabies.com.a.dao.registeredBook.RegisteredBookDao;
 import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.LikesDto;
 import bossbabies.com.a.dto.RegisteredBookDto;

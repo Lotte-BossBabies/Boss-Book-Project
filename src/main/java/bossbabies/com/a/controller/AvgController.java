@@ -1,6 +1,6 @@
 package bossbabies.com.a.controller;
 
-import bossbabies.com.a.dto.CategorySaleRateDto;
+import bossbabies.com.a.dto.avg.CategorySaleRateDto;
 import bossbabies.com.a.service.AvgService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
