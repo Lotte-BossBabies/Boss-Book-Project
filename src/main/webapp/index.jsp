@@ -9,9 +9,9 @@
 </h1>
 <br/>
 
-
 <%
     response.sendRedirect("main.do");
 %>
+
 </body>
 </html>
