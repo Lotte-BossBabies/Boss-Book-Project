@@ -4,6 +4,7 @@ import bossbabies.com.a.dao.registeredBook.RegisteredBookDao;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
+import bossbabies.com.a.parameterVO.SellerAndCategoryVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +27,25 @@ public class AdminServiceImpl implements AdminService{
     RegisteredBookDao dao;
 
     @Override
-    public List<RegisteredBookDto> getRegisteredBookList(String category) {
-        return dao.getRegisteredBookList(category);
+    public List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category) {
+
+        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category);
+
+        return dao.getRegisteredBookList(vo);
     }
 
     @Override
-    public List<RegisteredBookDto> getRegisteredBookListBySellCount(String category) {
-        return dao.getRegisteredBookListBySellCount(category);
+    public List<RegisteredBookDto> getRegisteredBookListBySellCount(int sellerId, String category) {
+
+        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category);
+
+        return dao.getRegisteredBookListBySellCount(vo);
     }
 
     @Override
-    public List<RegisteredBookDto> getRegisteredBookListByKeyword(String category, String keyword) {
+    public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword) {
 
-        CategoryAndKeywordVO vo = new CategoryAndKeywordVO(category, keyword);
+        CategoryAndKeywordVO vo = new CategoryAndKeywordVO(category, keyword, sellerId);
 
         return dao.getRegisteredBookListByKeyword(vo);
     }
