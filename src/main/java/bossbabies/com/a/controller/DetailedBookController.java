@@ -27,7 +27,11 @@ public class DetailedBookController {
         BookDto book = detailedBookService.getBook(registeredBook.getBook_id());
         Boolean likeStatus = detailedBookService.getLikeStatus(1, registered_book_id);
         List<ReviewDto> reviewList = detailedBookService.getReviewByRBookId(registered_book_id);
-        double starAvg = detailedBookService.calculateStarAvg(reviewList);
+
+        double starAvg = 0.0;
+        if(reviewList.size() > 0){
+            starAvg = detailedBookService.calculateStarAvg(reviewList);
+        }
 
         model.addAttribute("registered_book", registeredBook);
         model.addAttribute("book", book);
