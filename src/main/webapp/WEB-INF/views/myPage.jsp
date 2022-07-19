@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bossbabies.com.a.dto.mypage.OrderedBookDto" %>
 <%@ page import="bossbabies.com.a.dto.mypage.LikedBookDto" %>
+<%@ page import="bossbabies.com.a.dto.mypage.ReviewDto" %>
 <%--
   Created by IntelliJ IDEA.
   User: BTC-N01
@@ -15,6 +16,7 @@
     MyPageDto member = (MyPageDto)request.getAttribute("member");
     List<OrderedBookDto> ol = (List<OrderedBookDto>)request.getAttribute("orderList");
     List<LikedBookDto> ll = (List<LikedBookDto>)request.getAttribute("likeList");
+    List<ReviewDto> rl = (List<ReviewDto>)request.getAttribute("reviewList");
 %>
 <html>
 <head>
@@ -30,7 +32,7 @@
         <td colspan="5"><%=member.getName()%></td>
     </tr>
     <tr>
-        <td colspan="5">구매한 상품</td>
+        <th colspan="5">구매한 상품</th>
     </tr>
     <%
         for(int i = 0; i < ol.size(); i++){
@@ -45,7 +47,7 @@
                 <%
                     if (orderBook.isDeliveryStatus()) {
                 %>
-                <td><button onclick="location.href='writeReview.do'">리뷰달기</button></td>
+                <td><button onclick="location.href='writeReview.do?bookId=<%=orderBook.getBookId()%>&memberId=<%=member.getMemberId()%>'">리뷰달기</button></td>
                 <%} else {%>
                 <td><button onclick="location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>&memberId=<%=member.getMemberId()%>'">취소</button></td>
                 <%}%>
@@ -54,7 +56,7 @@
         }
     %>
     <tr>
-        <td colspan="5">좋아요한 상품</td>
+        <th colspan="5">좋아요한 상품</th>
     </tr>
     <%
         for (int i = 0; i < ll.size(); i++) {
@@ -70,8 +72,22 @@
         }
     %>
     <tr>
-        <td colspan="5">내가 작성한 리뷰</td>
+        <th colspan="5">내가 작성한 리뷰</th>
     </tr>
+    <%
+        for (int i = 0; i < rl.size(); i++) {
+            ReviewDto review = rl.get(i);
+    %>
+    <tr>
+        <td><img src="<%=review.getImageUrl()%>" alt="책책책"></td>
+        <td><%=review.getTitle()%></td>
+        <td><%=review.getContent()%></td>
+        <td><%=review.getStar()%></td>
+        <td><%=review.getReviewDate()%></td>
+    </tr>
+    <%
+        }
+    %>
 </table>
 </body>
 </html>
