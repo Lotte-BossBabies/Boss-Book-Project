@@ -3,6 +3,8 @@ package bossbabies.com.a.dao.mypage;
 import bossbabies.com.a.dto.mypage.OrderedBookDto;
 import bossbabies.com.a.dto.mypage.MyPageDto;
 import bossbabies.com.a.dto.mypage.LikedBookDto;
+import bossbabies.com.a.dto.mypage.ReviewDto;
+import bossbabies.com.a.parameterVO.ReviewVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -38,8 +40,15 @@ public class MyPageDao {
         return session.selectList(ns + "memberLikeItems", mem);
     }
 
+    public List<ReviewDto> getReviewList(MyPageDto mem) {
+        return session.selectList(ns+"memberReviews", mem);
+    }
+
     public void cancelOrder(int orderId){
         session.update(ns+"cancelOrder", orderId);
     }
 
+    public void writeReview(ReviewVO reviewVO) {
+        session.insert(ns+"writeReview", reviewVO);
+    }
 }
