@@ -3,14 +3,15 @@ package bossbabies.com.a.dao.registeredBook;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
+import bossbabies.com.a.parameterVO.SellerAndCategoryVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
 import java.util.List;
 
 public interface RegisteredBookDao {
 
-    public List<RegisteredBookDto> getRegisteredBookList(String category);
+    public List<RegisteredBookDto> getRegisteredBookList(SellerAndCategoryVO vo);
 
-    public List<RegisteredBookDto> getRegisteredBookListBySellCount(String category);
+    public List<RegisteredBookDto> getRegisteredBookListBySellCount(SellerAndCategoryVO vo);
 
     public List<RegisteredBookDto> getRegisteredBookListByKeyword(CategoryAndKeywordVO vo);
 

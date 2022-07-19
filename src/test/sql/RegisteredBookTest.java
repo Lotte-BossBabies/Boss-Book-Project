@@ -2,14 +2,12 @@ package sql;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import bossbabies.com.a.dao.registeredBook.RegisteredBookDao;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +15,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Transactional
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/applicationContext.xml",
     "file:src/main/webapp/WEB-INF/spring/servlet-context.xml"})
-public class registeredBookTest {
+public class RegisteredBookTest {
 
     @Autowired
     SqlSession session;
@@ -36,7 +36,10 @@ public class registeredBookTest {
         List<RegisteredBookDto> list =  session.selectList(ns + "regiBookListByCategory", category);
 
         System.out.println(list.toString());
-        assertEquals(list.size(), 1);
+
+        assertThat(list.size()).isGreaterThan(0);
+
+
     }
 
     @Test
@@ -47,7 +50,7 @@ public class registeredBookTest {
         List<RegisteredBookDto> list = session.selectList(ns + "regiBookListBySellCount", category);
 
         System.out.println(list.toString());
-        assertEquals(list.size(), 1);
+        assertThat(list.size()).isGreaterThan(0);
     }
 
     @Test
@@ -58,7 +61,7 @@ public class registeredBookTest {
         List<RegisteredBookDto> list = session.selectList(ns + "regiBookListByKeyword", vo);
 
         System.out.println(list.toString());
-        assertEquals(list.size(),1);
+        assertThat(list.size()).isGreaterThan(0);
     }
 
     @Test
