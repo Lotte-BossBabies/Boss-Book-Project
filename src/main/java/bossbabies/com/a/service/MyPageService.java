@@ -1,12 +1,11 @@
 package bossbabies.com.a.service;
 
 import bossbabies.com.a.dao.likes.LikesDao;
+import bossbabies.com.a.dto.mypage.MyPageReviewDto;
 import bossbabies.com.a.dto.mypage.OrderedBookDto;
 import bossbabies.com.a.dto.mypage.MyPageDto;
 import bossbabies.com.a.dto.mypage.LikedBookDto;
 import bossbabies.com.a.dao.mypage.MyPageDao;
-
-import bossbabies.com.a.dto.mypage.ReviewDto;
 import bossbabies.com.a.parameterVO.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +43,7 @@ public class MyPageService {
         return myPageDao.getLikeList(mem);
     }
 
-    public List<ReviewDto> getReviewList(MyPageDto mem) { return myPageDao.getReviewList(mem); }
+    public List<MyPageReviewDto> getReviewList(MyPageDto mem) { return myPageDao.getReviewList(mem); }
 
     public void cancelOrder(int orderId) {
         myPageDao.cancelOrder(orderId);

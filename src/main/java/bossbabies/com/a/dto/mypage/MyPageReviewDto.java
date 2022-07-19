@@ -2,17 +2,17 @@ package bossbabies.com.a.dto.mypage;
 
 import java.time.Instant;
 
-public class ReviewDto {
+public class MyPageReviewDto {
     private String content;
     private Integer star;
     private Instant reviewDate;
     private String title;
     private String imageUrl;
 
-    public ReviewDto() {
+    public MyPageReviewDto() {
     }
 
-    public ReviewDto(String content, Integer star, Instant reviewDate, String title, String imageUrl) {
+    public MyPageReviewDto(String content, Integer star, Instant reviewDate, String title, String imageUrl) {
         this.content = content;
         this.star = star;
         this.reviewDate = reviewDate;

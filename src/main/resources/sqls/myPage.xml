@@ -26,15 +26,6 @@
         from likes l, book b, registered_book r
         where r.registered_book_id = l.registered_book_id and b.book_id = r.book_id and l.member_id = #{memberId}
     </select>
-    
-    <select id="memberReviews" parameterType="bossbabies.com.a.dto.mypage.MyPageDto"
-            resultType="bossbabies.com.a.dto.mypage.ReviewDto">
-        select content, star, review_date as reviewDate, b.title, b.image_url as imageUrl
-        from review r, member m, registered_book rb, book b
-        where r.member_id = m.member_id and rb.registered_book_id = r.registered_book_id and
-              rb.book_id = b.book_id and r.member_id = #{memberId}
-    </select>
-
 
     <update id="cancelOrder" parameterType="int">
         update orders

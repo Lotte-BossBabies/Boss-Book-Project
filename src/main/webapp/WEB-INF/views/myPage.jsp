@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bossbabies.com.a.dto.mypage.OrderedBookDto" %>
 <%@ page import="bossbabies.com.a.dto.mypage.LikedBookDto" %>
-<%@ page import="bossbabies.com.a.dto.mypage.ReviewDto" %>
+<%@ page import="bossbabies.com.a.dto.mypage.MyPageReviewDto" %>
 <%--
   Created by IntelliJ IDEA.
   User: BTC-N01
@@ -16,7 +16,7 @@
     MyPageDto member = (MyPageDto)request.getAttribute("member");
     List<OrderedBookDto> ol = (List<OrderedBookDto>)request.getAttribute("orderList");
     List<LikedBookDto> ll = (List<LikedBookDto>)request.getAttribute("likeList");
-    List<ReviewDto> rl = (List<ReviewDto>)request.getAttribute("reviewList");
+    List<MyPageReviewDto> rl = (List<MyPageReviewDto>)request.getAttribute("reviewList");
 %>
 <html>
 <head>
@@ -76,7 +76,7 @@
     </tr>
     <%
         for (int i = 0; i < rl.size(); i++) {
-            ReviewDto review = rl.get(i);
+            MyPageReviewDto review = rl.get(i);
     %>
     <tr>
         <td><img src="<%=review.getImageUrl()%>" alt="책책책"></td>
