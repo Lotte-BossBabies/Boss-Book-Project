@@ -14,7 +14,8 @@
 
     <select id="memberOrderItems" parameterType="bossbabies.com.a.dto.mypage.MyPageDto"
             resultType="bossbabies.com.a.dto.mypage.OrderedBookDto">
-        select o.order_id as orderId, b.book_id as bookId, b.title, b.price, b.image_url as imageUrl, o.order_date as orderDate
+        select o.order_id as orderId, b.book_id as bookId, b.title, b.price, b.image_url as imageUrl, o.order_date as orderDate,
+               o.cancel_status as cancelStatus, o.delivery_status as deliveryStatus
         from orders o, book b
         where b.book_id = o.registered_book_id and o.member_id = #{memberId}
     </select>
@@ -30,7 +31,7 @@
     <update id="cancelOrder" parameterType="int">
         update orders
         set cancel_status = 1
-        where order_id = #{order_id}
+        where order_id = #{orderId}
     </update>
 
 </mapper>

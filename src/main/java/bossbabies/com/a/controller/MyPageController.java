@@ -32,10 +32,17 @@ public class MyPageController {
     }
 
     @GetMapping("cancelOrder.do")
-    public String cancelOrder(int orderId, int memberId, Model model) {
+    public String cancelOrder(int orderId, int memberId) {
         service.cancelOrder(orderId);
 
-        return "redirect:/mypage.do?memberId="+memberId;
+        return "redirect:/mypage.do?memberId=" + memberId;
+    }
+
+    @GetMapping("deleteLike.do")
+    public String deleteLike(int likeId, int memberId){
+        service.deleteLike(likeId);
+
+        return "redirect:/mypage.do?memberId=" + memberId;
     }
 
 }

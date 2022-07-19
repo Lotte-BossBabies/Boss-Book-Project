@@ -57,14 +57,14 @@
         <td colspan="5">좋아요한 상품</td>
     </tr>
     <%
-        for(int i = 0; i < ll.size(); i++){
+        for (int i = 0; i < ll.size(); i++) {
             LikedBookDto likeBook = ll.get(i);
     %>
     <tr>
         <td><img src="<%=likeBook.getImageUrl()%>" alt="책책책"></td>
         <td><a href="bookDetail.do?bookId=<%=likeBook.getBookId()%>"><%=likeBook.getTitle()%></a></td>
         <td><%=likeBook.getPrice()%></td>
-        <td colspan="2"><button onclick="location.href='order.do?likeId=<%=likeBook.getLikeId()%>'">취소</button></td>
+        <td colspan="2"><button onclick="location.href='deleteLike.do?likeId=<%=likeBook.getLikeId()%>&memberId=<%=member.getMemberId()%>'">취소</button></td>
     </tr>
     <%
         }

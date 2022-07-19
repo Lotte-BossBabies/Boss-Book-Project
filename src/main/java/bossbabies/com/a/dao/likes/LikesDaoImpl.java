@@ -32,4 +32,9 @@ public class LikesDaoImpl implements LikesDao{
 
         return session.selectOne(namespace+"selectLikes", map);
     }
+
+    @Override
+    public void deleteLieks(int like_id) {
+        session.delete(namespace + "deleteLikes", like_id);
+    }
 }
