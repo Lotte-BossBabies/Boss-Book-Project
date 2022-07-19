@@ -3,6 +3,7 @@ package bossbabies.com.a.dao.registeredBook;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
+import bossbabies.com.a.parameterVO.SellerAndCategoryVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
@@ -19,22 +20,22 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
 
     /***
      * 카테고리별 상품 책 조회 메소드
-     * @param category
+     * @param vo
      * @return
      */
     @Override
-    public List<RegisteredBookDto> getRegisteredBookList(String category) {
-        return session.selectList(namespace + "regiBookListByCategory", category);
+    public List<RegisteredBookDto> getRegisteredBookList(SellerAndCategoryVO vo) {
+        return session.selectList(namespace + "regiBookListByCategory", vo);
     }
 
     /***
      * 카테고리별 상품 책 판매량 순 조회 메소드
-     * @param category
+     * @param vo
      * @return
      */
     @Override
-    public List<RegisteredBookDto> getRegisteredBookListBySellCount(String category) {
-        return session.selectList(namespace + "regiBookListBySellCount", category);
+    public List<RegisteredBookDto> getRegisteredBookListBySellCount(SellerAndCategoryVO vo) {
+        return session.selectList(namespace + "regiBookListBySellCount", vo);
     }
 
     /***
