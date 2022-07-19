@@ -11,7 +11,7 @@
 
 
 <%
-    response.sendRedirect("test.do");
+    response.sendRedirect("main.do");
 %>
 </body>
 </html>
