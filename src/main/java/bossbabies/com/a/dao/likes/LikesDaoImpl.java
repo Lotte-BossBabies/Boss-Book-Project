@@ -35,15 +35,16 @@ public class LikesDaoImpl implements LikesDao{
 
     @Override
     public boolean cancelLikes(int member_id, int registered_book_id) {
-        Map<String , Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
         map.put("member_id", member_id);
         map.put("registered_book_id", registered_book_id);
 
-        int cancelLikesResult = session.delete(namespace+"cancelLikes", map);
-        if(cancelLikesResult==0) {
+        int cancelLikesResult = session.delete(namespace + "cancelLikes", map);
+        if (cancelLikesResult == 0) {
             return false;
         }
         return true;
+    }
 
     public void deleteLieks(int like_id) {
         session.delete(namespace + "deleteLikes", like_id);
