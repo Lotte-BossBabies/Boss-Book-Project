@@ -9,4 +9,6 @@ public interface LikesDao {
     LikesDto getLikeByMIdAndRId(int member_id, int registered_book_id);
 
     boolean cancelLikes(int member_id, int registered_book_id);
+
+    void deleteLieks(int like_id);
 }

@@ -44,5 +44,8 @@ public class LikesDaoImpl implements LikesDao{
             return false;
         }
         return true;
+
+    public void deleteLieks(int like_id) {
+        session.delete(namespace + "deleteLikes", like_id);
     }
 }

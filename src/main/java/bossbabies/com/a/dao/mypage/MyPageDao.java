@@ -9,6 +9,15 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * [프로젝트]롯데e커머스_자바전문가과정
+ * [시스템명]마이페이지
+ * [팀   명]BossBabies
+ * -----------------------------------------------------------
+ * 수정일자           수정자         수정내용
+ * 2022.07.19       이성은         신규생성
+ * -----------------------------------------------------------
+ */
 @Repository
 public class MyPageDao {
 
@@ -27,6 +36,10 @@ public class MyPageDao {
 
     public List<LikedBookDto> getLikeList(MyPageDto mem) {
         return session.selectList(ns + "memberLikeItems", mem);
+    }
+
+    public void cancelOrder(int orderId){
+        session.update(ns+"cancelOrder", orderId);
     }
 
 }
