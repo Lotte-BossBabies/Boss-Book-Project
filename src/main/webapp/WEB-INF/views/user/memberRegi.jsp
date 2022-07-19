@@ -159,7 +159,7 @@
         }
     }
     function gotoLogin() {
-        location.href = "login.jsp";
+        location.href = "./login.jsp";
     }
 </script>
 
