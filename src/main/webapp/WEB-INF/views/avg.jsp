@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="bossbabies.com.a.dto.CategorySaleRateDto" %>
+<%@ page import="bossbabies.com.a.dto.avg.CategorySaleRateDto" %>
 <%@ page import="com.mysql.cj.xdevapi.JsonArray" %><%--
   Created by IntelliJ IDEA.
   User: omyeongju

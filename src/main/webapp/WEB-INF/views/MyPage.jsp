@@ -1,7 +1,7 @@
-<%@ page import="bossbabies.com.a.dto.MyPageDto" %>
+<%@ page import="bossbabies.com.a.dto.mypage.MyPageDto" %>
 <%@ page import="java.util.List" %>
-<%@ page import="bossbabies.com.a.dto.OrderedBookDto" %>
-<%@ page import="bossbabies.com.a.dto.LikedBookDto" %>
+<%@ page import="bossbabies.com.a.dto.mypage.OrderedBookDto" %>
+<%@ page import="bossbabies.com.a.dto.mypage.LikedBookDto" %>
 <%--
   Created by IntelliJ IDEA.
   User: BTC-N01

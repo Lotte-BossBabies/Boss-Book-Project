@@ -5,7 +5,7 @@
 
 <mapper namespace="Admin">
 
-    <select id="getSaleRateByCategory" resultType="bossbabies.com.a.dto.CategorySaleRateDto" parameterType="bossbabies.com.a.dto.CategorySaleRateDto">
+    <select id="getSaleRateByCategory" resultType="bossbabies.com.a.dto.avg.CategorySaleRateDto" parameterType="bossbabies.com.a.dto.avg.CategorySaleRateDto">
         select SUM(order_count) as orderCount, a.category as category
         from (select b.book_id, r.order_count, b.category
               from book b , registered_book r

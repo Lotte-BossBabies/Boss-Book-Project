@@ -1,4 +1,4 @@
-package bossbabies.com.a.dto;
+package bossbabies.com.a.dto.avg;
 
 public class CategorySaleRateDto {
 
