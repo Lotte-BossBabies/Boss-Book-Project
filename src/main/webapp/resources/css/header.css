@@ -1,0 +1,113 @@
+header {
+    background-color: #3CAE76;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, textarea, p, blockquote, th, td, input, select, textarea, button {
+    margin: 0;
+    padding: 0;
+}
+
+dl, ul, ol, li {
+    list-style: none;
+}
+
+/*header*/
+#header_warp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 102;
+}
+
+#header {
+    position: static;
+    background: #fff;
+    border-bottom: 1px solid #cccccc;
+    z-index: 1000;
+    width: 100%;
+    clear: both;
+    min-width: 1260px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+#header .header_top {
+    height: 35px;
+    border-bottom: 1px solid #ececec;
+}
+
+.gnb, .header_top_cont, .header_search_cont, .main_goods_cont, .sub_content, .content_info, .foot_list ul, .foot_cont, .foot_certify {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.top_member_box {
+    float: right;
+    position: relative;
+    margin: 10px 20px 0 0px;
+    line-height: 1;
+    z-index: 150;
+}
+
+.top_member_box .txt_bar {
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    margin: 0 0 0 10px;
+    background: #dedede;
+    vertical-align: -1px;
+}
+
+.top_member_box > li {
+    float: left;
+    position: relative;
+}
+
+.top_member_box > li a {
+    display: inline-block;
+    padding: 4px 0 4px 10px;
+    color: #888888;
+    font-size: 11px;
+}
+
+.top_member_box .txt_bar {
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    margin: 0 0 0 10px;
+    background: #dedede;
+    vertical-align: -1px;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+/*header logo*/
+#header .header_search {
+    border-bottom: 1px solid #ececec;
+}
+
+#header .h1_logo {
+    /* padding-top: 25px; */
+    line-height: 25px;
+    padding: 15px 0 15px 0;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    align-items: center;
+}
