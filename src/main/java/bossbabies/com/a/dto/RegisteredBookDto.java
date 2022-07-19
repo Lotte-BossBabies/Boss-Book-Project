@@ -107,6 +107,7 @@ public class RegisteredBookDto {
                 ", book_count=" + book_count +
                 ", register_date=" + register_date +
                 ", sell_status=" + sell_status +
+                ", discount_rate=" + discount_rateg +
                 '}';
     }
 }
