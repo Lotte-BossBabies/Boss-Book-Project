@@ -17,6 +17,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Transactional
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/applicationContext.xml",
@@ -36,7 +38,10 @@ public class registeredBookTest {
         List<RegisteredBookDto> list =  session.selectList(ns + "regiBookListByCategory", category);
 
         System.out.println(list.toString());
-        assertEquals(list.size(), 1);
+
+        assertThat(list.size()).isGreaterThan(0);
+
+
     }
 
     @Test
@@ -47,7 +52,7 @@ public class registeredBookTest {
         List<RegisteredBookDto> list = session.selectList(ns + "regiBookListBySellCount", category);
 
         System.out.println(list.toString());
-        assertEquals(list.size(), 1);
+        assertThat(list.size()).isGreaterThan(0);
     }
 
     @Test
@@ -58,7 +63,7 @@ public class registeredBookTest {
         List<RegisteredBookDto> list = session.selectList(ns + "regiBookListByKeyword", vo);
 
         System.out.println(list.toString());
-        assertEquals(list.size(),1);
+        assertThat(list.size()).isGreaterThan(0);
     }
 
     @Test
