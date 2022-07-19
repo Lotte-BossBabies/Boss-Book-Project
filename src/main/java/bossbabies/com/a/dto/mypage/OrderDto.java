@@ -1,45 +1,54 @@
 package bossbabies.com.a.dto.mypage;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 
 public class OrderDto implements Serializable {
 
-    private int orderId;
-    private int memberId;
+    private int order_id;
+    private int member_id;
 
     private int registered_book_id;
     private boolean cancel_status;
-    private Date order_date;
+    private Instant order_date;
     private boolean delivery_status;
 
     public OrderDto(){
 
     }
 
-    public OrderDto(int orderId, int memberId, int registered_book_id, boolean cancel_status, Date order_date, boolean delivery_status) {
-        this.orderId = orderId;
-        this.memberId = memberId;
+    public OrderDto(int order_id, int member_id, int registered_book_id, boolean cancel_status, Instant order_date, boolean delivery_status) {
+        this.order_id = order_id;
+        this.member_id = member_id;
         this.registered_book_id = registered_book_id;
         this.cancel_status = cancel_status;
         this.order_date = order_date;
         this.delivery_status = delivery_status;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public OrderDto(int member_id, int registered_book_id, boolean cancel_status, Instant order_date, boolean delivery_status) {
+        this.member_id = member_id;
+        this.registered_book_id = registered_book_id;
+        this.cancel_status = cancel_status;
+        this.order_date = order_date;
+        this.delivery_status = delivery_status;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public int getOrder_id() {
+        return order_id;
     }
 
-    public int getMemberId() {
-        return memberId;
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
     }
 
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
+    public int getMember_id() {
+        return member_id;
+    }
+
+    public void setMember_id(int member_id) {
+        this.member_id = member_id;
     }
 
     public int getRegistered_book_id() {
@@ -58,11 +67,11 @@ public class OrderDto implements Serializable {
         this.cancel_status = cancel_status;
     }
 
-    public Date getOrder_date() {
+    public Instant getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(Date order_date) {
+    public void setOrder_date(Instant order_date) {
         this.order_date = order_date;
     }
 
@@ -72,17 +81,5 @@ public class OrderDto implements Serializable {
 
     public void setDelivery_status(boolean delivery_status) {
         this.delivery_status = delivery_status;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDto{" +
-                "orderId=" + orderId +
-                ", memberId=" + memberId +
-                ", registered_book_id=" + registered_book_id +
-                ", cancel_status=" + cancel_status +
-                ", order_date=" + order_date +
-                ", delivery_status=" + delivery_status +
-                '}';
     }
 }
