@@ -9,6 +9,7 @@
         select review_id, member_id, registered_book_id, content, star, review_date
         from review
         where registered_book_id=#{registered_book_id}
+        order by review_date desc
     </select>
 
     <insert id="addReview" parameterType="bossbabies.com.a.dto.ReviewDto">
