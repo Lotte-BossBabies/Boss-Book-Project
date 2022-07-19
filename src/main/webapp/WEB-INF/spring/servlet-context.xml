@@ -9,7 +9,8 @@
    
    <!-- spring MVC annotation(주석문, 지시문)을 사용하기 위한 설정 -->   
    <context:annotation-config />
-   
+   <mvc:default-servlet-handler/>
+   <mvc:resources mapping="/resources/**" location="/resources/"/>
    <!-- 사용자의 view의 위치, 확장자명 설정 
    		InternalResourceViewResolver viewResplver = new InternalResourceViewResolver();
    		viewResplver.prefix = "/WEB-INF/views/"; 	
