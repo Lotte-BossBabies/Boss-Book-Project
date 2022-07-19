@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="RegisteredBook">
+
+    <select id="getRegisteredBook" parameterType="java.lang.String" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+        select registered_book_id, book_id, seller_id, order_count, book_count, register_date, sell_status
+        from registered_book
+        where registered_book_id=#{registered_book_id}
+    </select>
+
+
+
+</mapper>

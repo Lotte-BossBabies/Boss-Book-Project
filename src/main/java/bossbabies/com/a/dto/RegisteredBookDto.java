@@ -1,86 +1,112 @@
 package bossbabies.com.a.dto;
 
+import java.time.Instant;
+
 import java.time.LocalDateTime;
 
 public class RegisteredBookDto {
 
-    private int registeredBookId;
-    private int bookId;
-    private int sellerId;
-    private int orderCount;
-    private int bookCount;
-    private LocalDateTime registerDate;
-    private boolean sellStatus;
+    private int registered_book_id;
 
-    public RegisteredBookDto() {
+    private int book_id;
 
+    private int seller_id;
+
+    private int order_count;
+
+    private int book_count;
+
+    private Instant register_date;
+
+    private boolean sell_status;
+
+    private int discount_rate;
+
+    public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count, int book_count, Instant register_date, boolean sell_status, int discount_rate) {
+        this.registered_book_id = registered_book_id;
+        this.book_id = book_id;
+        this.seller_id = seller_id;
+        this.order_count = order_count;
+        this.book_count = book_count;
+        this.register_date = register_date;
+        this.sell_status = sell_status;
+        this.discount_rate = discount_rate;
     }
 
-    public RegisteredBookDto(int registeredBookId, int bookId, int sellerId, int orderCount,
-        int bookCount,
-        LocalDateTime registerDate, boolean sellStatus) {
-        this.registeredBookId = registeredBookId;
-        this.bookId = bookId;
-        this.sellerId = sellerId;
-        this.orderCount = orderCount;
-        this.bookCount = bookCount;
-        this.registerDate = registerDate;
-        this.sellStatus = sellStatus;
+    public int getRegistered_book_id() {
+        return registered_book_id;
     }
 
-    public int getRegisteredBookId() {
-        return registeredBookId;
+    public void setRegistered_book_id(int registered_book_id) {
+        this.registered_book_id = registered_book_id;
     }
 
-    public void setRegisteredBookId(int registeredBookId) {
-        this.registeredBookId = registeredBookId;
+    public int getBook_id() {
+        return book_id;
     }
 
-    public int getBookId() {
-        return bookId;
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public int getSeller_id() {
+        return seller_id;
     }
 
-    public int getSellerId() {
-        return sellerId;
+    public void setSeller_id(int seller_id) {
+        this.seller_id = seller_id;
     }
 
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
+    public int getOrder_count() {
+        return order_count;
     }
 
-    public int getOrderCount() {
-        return orderCount;
+    public void setOrder_count(int order_count) {
+        this.order_count = order_count;
     }
 
-    public void setOrderCount(int orderCount) {
-        this.orderCount = orderCount;
+    public int getBook_count() {
+        return book_count;
     }
 
-    public int getBookCount() {
-        return bookCount;
+    public void setBook_count(int book_count) {
+        this.book_count = book_count;
     }
 
-    public void setBookCount(int bookCount) {
-        this.bookCount = bookCount;
+    public Instant getRegister_date() {
+        return register_date;
     }
 
-    public LocalDateTime getRegisterDate() {
-        return registerDate;
+    public void setRegister_date(Instant register_date) {
+        this.register_date = register_date;
     }
 
-    public void setRegisterDate(LocalDateTime registerDate) {
-        this.registerDate = registerDate;
+    public boolean isSell_status() {
+        return sell_status;
     }
 
-    public boolean isSellStatus() {
-        return sellStatus;
+    public void setSell_status(boolean sell_status) {
+        this.sell_status = sell_status;
     }
 
-    public void setSellStatus(boolean sellStatus) {
-        this.sellStatus = sellStatus;
+    public int getDiscount_rate() {
+        return discount_rate;
+    }
+
+    public void setDiscount_rate(int discount_rate) {
+        this.discount_rate = discount_rate;
+    }
+
+    @Override
+    public String toString() {
+        return "RegisteredBookDto{" +
+                "registered_book_id=" + registered_book_id +
+                ", book_id=" + book_id +
+                ", seller_id=" + seller_id +
+                ", order_count=" + order_count +
+                ", book_count=" + book_count +
+                ", register_date=" + register_date +
+                ", sell_status=" + sell_status +
+                '}';
     }
 }
