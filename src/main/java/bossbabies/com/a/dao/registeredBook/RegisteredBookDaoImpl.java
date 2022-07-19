@@ -5,10 +5,17 @@ import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
 import java.util.List;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class RegisteredBookDaoImpl implements RegisteredBookDao{
+
+    @Autowired
+    SqlSession session;
+
+    String namespace = "registeredBook.";
 
     /***
      * 카테고리별 상품 책 조회 메소드
@@ -70,6 +77,10 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
     @Override
     public int updateDeliveryCompleted(StatusAndRegisteredBookIdVO vo) {
         return 0;
+    }
+
+    public RegisteredBookDto getRegisteredBookById(String registered_book_id){
+        return session.selectOne(namespace+"getRegisteredBook", registered_book_id);
     }
 
 

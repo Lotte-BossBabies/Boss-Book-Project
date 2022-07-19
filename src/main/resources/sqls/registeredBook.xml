@@ -47,6 +47,11 @@
   </update>
 
 
+  <select id="getRegisteredBook" parameterType="java.lang.String" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+    select registered_book_id, book_id, seller_id, order_count, book_count, register_date, sell_status
+    from registered_book
+    where registered_book_id=#{registered_book_id}
+  </select>
 
 </mapper>
 

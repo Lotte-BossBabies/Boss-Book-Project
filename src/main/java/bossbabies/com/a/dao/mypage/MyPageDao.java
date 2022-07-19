@@ -1,4 +1,4 @@
-package bossbabies.com.a.dao;
+package bossbabies.com.a.dao.mypage;
 
 import bossbabies.com.a.dto.mypage.OrderedBookDto;
 import bossbabies.com.a.dto.mypage.MyPageDto;

@@ -1,4 +1,4 @@
-package bossbabies.com.a.dao;
+package bossbabies.com.a.dao.book;
 
 import bossbabies.com.a.dto.BookDto;
 import org.apache.ibatis.session.SqlSession;
