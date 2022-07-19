@@ -10,30 +10,15 @@
    <!-- spring MVC annotation(주석문, 지시문)을 사용하기 위한 설정 -->   
    <context:annotation-config />
    
-   <!-- 사용자의 view의 위치, 확장자명 설정 
+   <!-- 사용자의 view의 위치, 확장자명 설정
    		InternalResourceViewResolver viewResplver = new InternalResourceViewResolver();
-   		viewResplver.prefix = "/WEB-INF/views/"; 	
+   		viewResplver.prefix = "/WEB-INF/views/";
    -->
 
    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
      <property name="prefix" value="/WEB-INF/views/" />
      <property name="suffix" value=".jsp"/>
    </bean>
-
-   <!-- tiles 설정--> 
-   <!--<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-   		<property name="definitions">
-   			<list>
-   				<value>/WEB-INF/views/layouts.xml</value>	&lt;!&ndash; jsp의 결합설정 &ndash;&gt;
-   			</list>
-   		</property>   
-   </bean>
-   
-   <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-   		<property name="requestContextAttribute" value="requestContext"/>
- 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>	
-   </bean> -->
-    
     
    <!-- 공통 패키지 xxx.xxx.xxx -->
    <context:component-scan base-package="bossbabies.com.a" />

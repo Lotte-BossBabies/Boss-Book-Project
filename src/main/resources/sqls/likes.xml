@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Likes">
+
+    <insert id="addLikes" parameterType="bossbabies.com.a.dto.LikesDto">
+        insert into likes(member_id, registered_book_id, like_date)
+        values(#{member_id}, #{registered_book_id}, #{like_date})
+    </insert>
+    
+    <select id="selectLikes" parameterType="java.util.Map" resultType="bossbabies.com.a.dto.LikesDto">
+        select like_id, member_id, registered_book_id, like_date
+        from likes
+        where member_id = #{member_id} and registered_book_id = #{registered_book_id}
+    </select>
+
+
+
+</mapper>
