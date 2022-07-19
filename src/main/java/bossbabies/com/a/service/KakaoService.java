@@ -3,6 +3,8 @@ package bossbabies.com.a.service;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -10,7 +12,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 @Service
+@PropertySource("classpath:/properties/api.properties")
 public class KakaoService {
+
+    @Value("${client_id}")
+    String client_id;
+
+    @Value("${redirect_uri}")
+    String redirect_uri;
 
     public String getAccessToken (String authorize_code) {
         String access_Token = "";
@@ -29,12 +38,13 @@ public class KakaoService {
 
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 
-            String sb = "grant_type=authorization_code" +
-                    "&client_id=f23244b653a023f7122be1dccbdbb6e4" + //본인이 발급받은 key
-                    "&redirect_uri=http://localhost:8090/kakaoLogin.do" + // 본인이 설정한 주소
-
-                    "&code=" + authorize_code;
-            bw.write(sb);
+            StringBuilder sb = new StringBuilder();
+            sb.append("grant_type=authorization_code");
+            sb.append("&client_id=").append(client_id); //본인이 발급받은 key
+            sb.append("&redirect_uri=").append(redirect_uri); // 본인이 설정한 주소
+            sb.append("&code=").append(authorize_code);
+            System.out.println("sb = " + sb);
+            bw.write(String.valueOf(sb));
             bw.flush();
 
             // 결과 코드가 200이라면 성공

@@ -26,19 +26,19 @@ public class UserController {
     public String userSelect() {
         logger.info("UserController userSelect() " + new Date());
 
-        return "/WEB-INF/views/user/userSelect.jsp";
+        return "/user/userSelect.jsp";
     }
     @RequestMapping(value = "memberRegi.do", method = RequestMethod.GET)
     public String commonRegi() {
         logger.info("UserController memberRegi() " + new Date());
 
-        return "/WEB-INF/views/user/memberRegi.jsp";
+        return "/user/memberRegi.jsp";
     }
     @RequestMapping(value = "sellerRegi.do", method = RequestMethod.GET)
     public String sellerRegi() {
         logger.info("UserController sellerRegi() " + new Date());
 
-        return "/WEB-INF/views/user/sellerRegi.jsp";
+        return "/user/sellerRegi.jsp";
     }
 
 }
