@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Admin">
+
+    <select id="getSaleRateByCategory" resultType="bossbabies.com.a.dto.avg.CategorySaleRateDto" parameterType="bossbabies.com.a.dto.avg.CategorySaleRateDto">
+        select SUM(order_count) as orderCount, a.category as category
+        from (select b.book_id, r.order_count, b.category
+              from book b , registered_book r
+              where b.book_id = r.book_id and r.seller_id = #{sellerId}) a
+        group by a.category
+        having COUNT(a.category) >= 1;
+    </select>
+
+
+</mapper>
+

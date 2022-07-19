@@ -23,15 +23,15 @@ public class BookApiController {
     @Autowired
     BookApiServiceImpl service;
 
-//    @RequestMapping("/main.do")
-//    public String insertData() throws IOException, ParseException {
-//
-//        boolean api = service.insertData();
-//
-//        if (!api) {
-//            return "book/main";
-//        }
-//
-//        return "book/main";
-//    }
+    @RequestMapping("/main.do")
+    public String insertData() throws IOException, ParseException {
+
+        boolean api = service.insertData();
+
+        if (!api) {
+            return "book/main";
+        }
+
+        return "book/main";
+    }
 }

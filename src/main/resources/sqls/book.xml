@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Book">
+
+    <select id="getBook" parameterType="java.lang.String" resultType="bossbabies.com.a.dto.BookDto">
+        select book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher
+        from book
+        where book_id=#{book_id}
+    </select>
+
+
+
+</mapper>

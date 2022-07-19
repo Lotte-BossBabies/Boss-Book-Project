@@ -13,10 +13,10 @@ public class MainController {
 
     Logger logger = LoggerFactory.getLogger(MainController.class);
 
-    @RequestMapping(value = "main.do", method = RequestMethod.GET)
+    @RequestMapping(value = "login.do", method = RequestMethod.GET)
     public String mainFunc(HttpServletRequest req) {
         logger.info("MainController mainFunc() " + new Date());
         req.getSession().setAttribute("loginId", "cde");
-        return "/WEB-INF/views/user/login.jsp";
+        return "/user/login.jsp";
     }
 }
