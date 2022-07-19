@@ -27,9 +27,37 @@ public class AdminServiceTest {
     @Test
     public void 상품_책_조회_카테고리() {
 
+        int sellerId = 1;
         String category = "소설";
 
-        List<RegisteredBookDto> list = service.getRegisteredBookList(category);
+        List<RegisteredBookDto> list = service.getRegisteredBookList(sellerId, category);
+
+        list.forEach(System.out::println);
+
+        assertThat(list.size()).isGreaterThan(0);
+    }
+
+    @Test
+    public void 상품_책_조회_판매수() {
+
+        int sellerId = 1;
+        String category = "소설";
+
+        List<RegisteredBookDto> list = service.getRegisteredBookListBySellCount(sellerId, category);
+
+        list.forEach(System.out::println);
+
+        assertThat(list.size()).isGreaterThan(0);
+    }
+
+    @Test
+    public void 상품_책_조회_키워드() {
+
+        int sellerId = 1;
+        String category = "소설";
+        String keyword = "꿈";
+
+        List<RegisteredBookDto> list = service.getRegisteredBookListByKeyword(sellerId, category, keyword);
 
         list.forEach(System.out::println);
 
