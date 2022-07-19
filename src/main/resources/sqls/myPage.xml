@@ -16,15 +16,15 @@
             resultType="bossbabies.com.a.dto.mypage.OrderedBookDto">
         select o.order_id as orderId, b.book_id as bookId, b.title, b.price, b.image_url as imageUrl, o.order_date as orderDate,
                o.cancel_status as cancelStatus, o.delivery_status as deliveryStatus
-        from orders o, book b
-        where b.book_id = o.registered_book_id and o.member_id = #{memberId}
+        from orders o, book b, registered_book r
+        where r.registered_book_id = o.registered_book_id and b.book_id = r.book_id and o.member_id = #{memberId}
     </select>
 
     <select id="memberLikeItems" parameterType="bossbabies.com.a.dto.mypage.MyPageDto"
             resultType="bossbabies.com.a.dto.mypage.LikedBookDto">
         select l.like_id as likeId, b.book_id as bookId, b.title, b.price, b.image_url as imageUrl
-        from likes l, book b
-        where b.book_id = l.registered_book_id and l.member_id = #{memberId}
+        from likes l, book b, registered_book r
+        where b.book_id = l.registered_book_id and b.book_id = r.book_id and l.member_id = #{memberId}
     </select>
 
 
@@ -33,5 +33,10 @@
         set cancel_status = 1
         where order_id = #{orderId}
     </update>
+
+    <insert id="writeReview" >
+        insert into review (member_id, content, star, review_date, registered_book_id)
+
+    </insert>
 
 </mapper>
