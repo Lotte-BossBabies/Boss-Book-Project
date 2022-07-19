@@ -1,4 +1,4 @@
-package bossbabies.com.a.dao;
+package bossbabies.com.a.dao.likes;
 
 import bossbabies.com.a.dto.LikesDto;
 

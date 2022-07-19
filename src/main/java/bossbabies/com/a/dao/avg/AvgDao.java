@@ -1,4 +1,4 @@
-package bossbabies.com.a.dao;
+package bossbabies.com.a.dao.avg;
 
 import bossbabies.com.a.dto.avg.CategorySaleRateDto;
 import org.apache.ibatis.session.SqlSession;
