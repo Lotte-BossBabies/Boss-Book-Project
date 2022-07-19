@@ -5,7 +5,6 @@ import java.time.Instant;
 
 public class OrderedBookDto implements Serializable {
     private int book_id;
-
     private int order_id;
     private String title;
     private int price;

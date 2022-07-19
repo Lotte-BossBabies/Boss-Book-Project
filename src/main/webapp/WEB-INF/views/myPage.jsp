@@ -15,6 +15,8 @@
     MyPageDto member = (MyPageDto)request.getAttribute("member");
     List<OrderedBookDto> ol = (List<OrderedBookDto>)request.getAttribute("orderList");
     List<LikedBookDto> ll = (List<LikedBookDto>)request.getAttribute("likeList");
+    System.out.println("MemberName: "+ member.getName());
+    System.out.println("Memberid: "+member.getMemberId());
 %>
 <html>
 <head>
@@ -40,7 +42,7 @@
                 <td><img src="<%=orderBook.getImageUrl()%>" alt="책책책"></td>
                 <td><a href="bookDetail.do?bookId=<%=orderBook.getBookId()%>"><%=orderBook.getTitle()%></a></td><td><%=orderBook.getPrice()%></td>
                 <td><%=orderBook.getOrder_date()%></td>
-                <td><button onclick="location.href='order.do?orderId=<%=orderBook.getOrderId()%>'">취소</button></td>
+                <td><button onclick="location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>&memberId=<%=member.getMemberId()%>'">취소</button></td>
             </tr>
             <%
         }

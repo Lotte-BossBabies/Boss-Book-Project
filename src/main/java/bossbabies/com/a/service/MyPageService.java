@@ -28,4 +28,8 @@ public class MyPageService {
     public List<LikedBookDto> getLikeList(MyPageDto mem) {
         return dao.getLikeList(mem);
     }
+
+    public void cancelOrder(int orderId) {
+        dao.cancelOrder(orderId);
+    }
 }

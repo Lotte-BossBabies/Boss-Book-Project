@@ -7,7 +7,7 @@
 
     <select id="getMember" parameterType="bossbabies.com.a.dto.mypage.MyPageDto"
             resultType="bossbabies.com.a.dto.mypage.MyPageDto">
-        select member_id, name
+        select member_id as memberId, name
         from member
         where member_id = #{memberId}
     </select>
@@ -26,7 +26,11 @@
         where b.book_id = l.registered_book_id and l.member_id = #{memberId}
     </select>
 
-<!--    주문취소-->
-<!--    <update id=""-->
+
+    <update id="cancelOrder" parameterType="int">
+        update orders
+        set cancel_status = 1
+        where order_id = #{order_id}
+    </update>
 
 </mapper>

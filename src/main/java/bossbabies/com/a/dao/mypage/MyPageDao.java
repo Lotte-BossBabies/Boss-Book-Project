@@ -29,4 +29,8 @@ public class MyPageDao {
         return session.selectList(ns + "memberLikeItems", mem);
     }
 
+    public void cancelOrder(int orderId){
+        session.update(ns+"cancelOrder", orderId);
+    }
+
 }
