@@ -1,6 +1,7 @@
 package bossbabies.com.a.service;
 
 import bossbabies.com.a.dao.book.BookApiDaoImpl;
+
 import bossbabies.com.a.dto.BookDto;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,6 +17,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -108,6 +112,7 @@ public class BookApiServiceImpl implements BookApiService{
                     String strPubDate = book.getString("pubDate");
                     Date date = new SimpleDateFormat("yyyyMMdd").parse(strPubDate);
                     Instant pubDate = date.toInstant();
+
                     //publisher
                     String publisher = book.getString("publisher");
 
