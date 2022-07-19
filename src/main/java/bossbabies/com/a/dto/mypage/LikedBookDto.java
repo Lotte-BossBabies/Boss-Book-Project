@@ -3,38 +3,38 @@ package bossbabies.com.a.dto.mypage;
 import java.io.Serializable;
 
 public class LikedBookDto implements Serializable {
-    private int book_id;
-    private int like_id;
+    private int bookId;
+    private int likeId;
     private String title;
     private int price;
-    private String image_url;
+    private String imageUrl;
 
 
     public LikedBookDto() {
     }
 
-    public LikedBookDto(int book_id, int like_id, String title, int price, String image_url) {
-        this.book_id = book_id;
-        this.like_id = like_id;
+    public LikedBookDto(int bookId, int likeId, String title, int price, String imageUrl) {
+        this.bookId = bookId;
+        this.likeId = likeId;
         this.title = title;
         this.price = price;
-        this.image_url = image_url;
+        this.imageUrl = imageUrl;
     }
 
     public int getBookId() {
-        return book_id;
+        return bookId;
     }
 
     public void setBookId(int book_id) {
-        this.book_id = book_id;
+        this.bookId = book_id;
     }
 
     public int getLikeId() {
-        return like_id;
+        return likeId;
     }
 
     public void setLikeId(int like_id) {
-        this.like_id = like_id;
+        this.likeId = like_id;
     }
 
     public String getTitle() {
@@ -54,11 +54,11 @@ public class LikedBookDto implements Serializable {
     }
 
     public String getImageUrl() {
-        return image_url;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        this.image_url = imageUrl;
+        this.imageUrl = imageUrl;
     }
 
 

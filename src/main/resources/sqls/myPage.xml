@@ -14,14 +14,14 @@
 
     <select id="memberOrderItems" parameterType="bossbabies.com.a.dto.mypage.MyPageDto"
             resultType="bossbabies.com.a.dto.mypage.OrderedBookDto">
-        select o.order_id, b.book_id, b.title, b.price, b.image_url, o.order_date
+        select o.order_id as orderId, b.book_id as bookId, b.title, b.price, b.image_url as imageUrl, o.order_date as orderDate
         from orders o, book b
         where b.book_id = o.registered_book_id and o.member_id = #{memberId}
     </select>
 
     <select id="memberLikeItems" parameterType="bossbabies.com.a.dto.mypage.MyPageDto"
             resultType="bossbabies.com.a.dto.mypage.LikedBookDto">
-        select l.like_id, b.book_id, b.title, b.price, b.image_url
+        select l.like_id as likeId, b.book_id as bookId, b.title, b.price, b.image_url as imageUrl
         from likes l, book b
         where b.book_id = l.registered_book_id and l.member_id = #{memberId}
     </select>

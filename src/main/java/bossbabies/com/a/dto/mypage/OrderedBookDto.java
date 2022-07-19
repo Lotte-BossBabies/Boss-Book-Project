@@ -4,31 +4,31 @@ import java.io.Serializable;
 import java.time.Instant;
 
 public class OrderedBookDto implements Serializable {
-    private int book_id;
-    private int order_id;
+    private int bookId;
+    private int orderId;
     private String title;
     private int price;
-    private String image_url;
-    private Instant order_date;
+    private String imageUrl;
+    private Instant orderDate;
 
     public OrderedBookDto() {
     }
 
-    public OrderedBookDto(int book_id, int order_id, String title, int price, String image_url, Instant order_date) {
-        this.book_id = book_id;
-        this.order_id = order_id;
+    public OrderedBookDto(int bookId, int orderId, String title, int price, String imageUrl, Instant orderDate) {
+        this.bookId = bookId;
+        this.orderId = orderId;
         this.title = title;
         this.price = price;
-        this.image_url = image_url;
-        this.order_date = order_date;
+        this.imageUrl = imageUrl;
+        this.orderDate = orderDate;
     }
 
     public int getBookId() {
-        return book_id;
+        return bookId;
     }
 
     public void setBookId(int book_id) {
-        this.book_id = book_id;
+        this.bookId = book_id;
     }
 
     public String getTitle() {
@@ -48,26 +48,26 @@ public class OrderedBookDto implements Serializable {
     }
 
     public String getImageUrl() {
-        return image_url;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        this.image_url = imageUrl;
+        this.imageUrl = imageUrl;
     }
 
     public int getOrderId() {
-        return order_id;
+        return orderId;
     }
 
     public void setOrderId(int order_id) {
-        this.order_id = order_id;
+        this.orderId = order_id;
     }
 
-    public Instant getOrder_date() {
-        return order_date;
+    public Instant getOrderDate() {
+        return orderDate;
     }
 
-    public void setOrder_date(Instant order_date) {
-        this.order_date = order_date;
+    public void setOrderDate(Instant orderDate) {
+        this.orderDate = orderDate;
     }
 }
