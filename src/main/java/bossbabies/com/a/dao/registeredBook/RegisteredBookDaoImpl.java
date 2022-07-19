@@ -24,7 +24,7 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      */
     @Override
     public List<RegisteredBookDto> getRegisteredBookList(String category) {
-        return null;
+        return session.selectList(namespace + "regiBookListByCategory", category);
     }
 
     /***
@@ -34,7 +34,7 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      */
     @Override
     public List<RegisteredBookDto> getRegisteredBookListBySellCount(String category) {
-        return null;
+        return session.selectList(namespace + "regiBookListBySellCount", category);
     }
 
     /***
@@ -44,7 +44,7 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      */
     @Override
     public List<RegisteredBookDto> getRegisteredBookListByKeyword(CategoryAndKeywordVO vo) {
-        return null;
+        return session.selectList(namespace + "regiBookListByKeyword", vo);
     }
 
     /***
@@ -54,7 +54,7 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      */
     @Override
     public int updateStock(IdAndCountVO vo) {
-        return 0;
+        return session.update(namespace + "updateBookCount", vo);
     }
 
     /***
@@ -66,7 +66,7 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      */
     @Override
     public int updateRegisteredBook(StatusAndRegisteredBookIdVO vo) {
-        return 0;
+        return session.update(namespace + "updateSellStatus", vo);
     }
 
     /***
@@ -76,7 +76,7 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      */
     @Override
     public int updateDeliveryCompleted(StatusAndRegisteredBookIdVO vo) {
-        return 0;
+        return session.update(namespace + "updateDeliveryStatus", vo);
     }
 
     public RegisteredBookDto getRegisteredBookById(String registered_book_id){
