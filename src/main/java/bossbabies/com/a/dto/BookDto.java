@@ -1,9 +1,19 @@
 package bossbabies.com.a.dto;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
+
+/**
+ * [프로젝트]롯데e커머스_자바전문가과정
+ * [시스템명]도서 테이블 도메인
+ * [팀   명]BossBabies
+ * -----------------------------------------------------------
+ * 수정일자           수정자         수정내용
+ * 2022.07.18       김혜연         신규생성
+ * -----------------------------------------------------------
+ */
 
 public class BookDto {
+
 
     private int book_id;
 
@@ -104,9 +114,11 @@ public class BookDto {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
-
-    public BookDto(int book_id, String isbn, String title, String author, int price, String description, String image_url, String category, Instant pubdate, String publisher) {
-        this.book_id = book_id;
+    
+    public BookDto() {
+    }
+    
+    public BookDto(String isbn, String title, String author, int price, String description, String image_url, String category, Instant datetime, String publisher) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -114,7 +126,7 @@ public class BookDto {
         this.description = description;
         this.image_url = image_url;
         this.category = category;
-        this.pubdate = pubdate;
+        this.pubdate = datetime;
         this.publisher = publisher;
     }
 
