@@ -4,7 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Seller">
     <insert id="regiSeller" parameterType="bossbabies.com.a.dto.user.SellerDto">
-        insert into member(id, password, name, email, address, phone)
-        values(#{id}, #{password}, #{name}, #{email}, #{address}, #{phone})
+        insert into seller(id, password, name, email, phone, store_name)
+        values(#{id}, #{password}, #{name}, #{email}, #{phone}, #{store_name})
     </insert>
+
+    <select id="loginSeller" parameterType="bossbabies.com.a.parameterVO.LoginVO" resultType="bossbabies.com.a.dto.user.SellerDto">
+        select id, password, name, email, phone, store_name
+        from seller
+        where id=#{id} and password=#{password}
+    </select>
+
+    <select id="getSeller" parameterType="java.lang.String" resultType="bossbabies.com.a.dto.user.SellerDto">
+        select id, password, name, email, phone, store_name
+        from seller
+        where id=#{id}
+    </select>
+
 </mapper>

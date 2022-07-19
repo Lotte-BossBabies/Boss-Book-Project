@@ -7,4 +7,16 @@
         insert into member(id, password, name, email, address, phone)
         values(#{id}, #{password}, #{name}, #{email}, #{address}, #{phone})
     </insert>
+
+    <select id="loginMember" parameterType="bossbabies.com.a.parameterVO.LoginVO" resultType="bossbabies.com.a.dto.user.MemberDto">
+        select id, password, name, email, address, phone
+        from member
+        where id=#{id} and password=#{password}
+    </select>
+
+    <select id="getMember" parameterType="java.lang.String" resultType="bossbabies.com.a.dto.user.MemberDto">
+        select id, password, name, email, address, phone
+        from member
+        where id=#{id}
+    </select>
 </mapper>
