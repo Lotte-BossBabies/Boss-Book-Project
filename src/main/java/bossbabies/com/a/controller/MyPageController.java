@@ -17,7 +17,7 @@ public class MyPageController {
     @Autowired
     MyPageService service;
 
-    @GetMapping("member-detail.do")
+    @GetMapping("mypage.do")
     public String orderList(MyPageDto md, Model model) {
         MyPageDto member = service.getMember(md);
         List<OrderedBookDto> orderItemList = service.getOrderList(md);
@@ -27,6 +27,6 @@ public class MyPageController {
         model.addAttribute("orderList", orderItemList);
         model.addAttribute("likeList", likeItemList);
 
-        return "MyPage";
+        return "myPage";
     }
 }
