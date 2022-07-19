@@ -13,7 +13,7 @@ public class BookDaoImpl implements BookDao{
 
     String namespace = "Book.";
 
-    public BookDto getBookById(String book_id){
+    public BookDto getBookById(int book_id){
         return session.selectOne(namespace+"getBook", book_id);
     }
 }

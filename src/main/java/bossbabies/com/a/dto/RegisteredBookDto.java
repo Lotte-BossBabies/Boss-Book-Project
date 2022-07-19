@@ -20,13 +20,13 @@ public class RegisteredBookDto {
 
     private boolean sell_status;
 
-    private int discount_rate;
+    private Integer discount_rate;
 
     private String image_url;
 
     private String title;
 
-    public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count, int book_count, Instant register_date, boolean sell_status, int discount_rate) {
+    public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count, int book_count, Instant register_date, boolean sell_status, Integer discount_rate) {
         this.registered_book_id = registered_book_id;
         this.book_id = book_id;
         this.seller_id = seller_id;
@@ -109,11 +109,11 @@ public class RegisteredBookDto {
         this.sell_status = sell_status;
     }
 
-    public int getDiscount_rate() {
+    public Integer getDiscount_rate() {
         return discount_rate;
     }
 
-    public void setDiscount_rate(int discount_rate) {
+    public void setDiscount_rate(Integer discount_rate) {
         this.discount_rate = discount_rate;
     }
 
