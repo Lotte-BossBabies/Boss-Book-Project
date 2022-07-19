@@ -77,7 +77,7 @@
                 <div class="header_search_cont">
                     <div class="h1_logo">
                         <%--image 넣을 예정--%>
-                        <img src="image/logo.png" title="로고 이미지">
+                        <img src="resources/images/logo.png" title="로고 이미지">
                     </div>
                 </div>
             </div>
@@ -216,7 +216,7 @@
         <hr>
         <div class="companyInfo innerContent">
             <h2 class="logoArea el">
-                <img src="image/logo.png">
+                <img src="resources/images/logo.png">
             </h2>
             <div class="infoWrapper">
                 <div class="company">
