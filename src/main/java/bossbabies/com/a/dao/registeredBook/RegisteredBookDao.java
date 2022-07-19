@@ -22,6 +22,6 @@ public interface RegisteredBookDao {
 
     // public List<BookDto> getBookList(String name);
 
-    RegisteredBookDto getRegisteredBookById(String registered_book_id);
+    RegisteredBookDto getRegisteredBookById(int registered_book_id);
 
 }

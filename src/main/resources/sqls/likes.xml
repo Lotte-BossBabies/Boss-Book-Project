@@ -16,6 +16,11 @@
         where member_id = #{member_id} and registered_book_id = #{registered_book_id}
     </select>
 
+    <delete id="cancelLikes" parameterType="java.util.Map">
+        delete from likes
+        where member_id = #{member_id} and registered_book_id = #{registered_book_id}
+    </delete>
+
     <delete id="deleteLikes" parameterType="int">
         delete from likes
         where like_id = #{like_id}

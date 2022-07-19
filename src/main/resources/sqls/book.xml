@@ -5,7 +5,7 @@
 
 <mapper namespace="Book">
 
-    <select id="getBook" parameterType="java.lang.String" resultType="bossbabies.com.a.dto.BookDto">
+    <select id="getBook" parameterType="java.lang.Integer" resultType="bossbabies.com.a.dto.BookDto">
         select book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher
         from book
         where book_id=#{book_id}
