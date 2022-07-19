@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class DetailedBookController {
 
-    Logger logger = LoggerFactory.getLogger(TestController.class);
-
     @Autowired
     DetailedBookService detailedBookService;
 
