@@ -5,23 +5,23 @@
 
 <mapper namespace="registeredBook">
 
-  <select id="regiBookListByCategory" parameterType="String" resultType="java.util.HashMap">
-    select registered_book_id, rb.book_id, seller_id, order_count, book_count, register_date, sell_status
+  <select id="regiBookListByCategory" parameterType="String" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+    select registered_book_id, rb.book_id, seller_id, order_count, book_count, register_date, sell_status, 0
     from registered_book rb, book b
     where rb.book_id = b.book_id
     and b.category = #{category}
   </select>
 
-  <select id="regiBookListBySellCount" parameterType="String" resultType="java.util.HashMap">
-    select registered_book_id, rb.book_id, seller_id, order_count, book_count, register_date, sell_status
+  <select id="regiBookListBySellCount" parameterType="String" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+    select registered_book_id, rb.book_id, seller_id, order_count, book_count, register_date, sell_status, 0
     from registered_book rb, book b
     where rb.book_id = b.book_id
     and b.category = #{category}
     order by order_count desc;
   </select>
 
-  <select id="regiBookListByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="java.util.HashMap">
-    select registered_book_id, rb.book_id, seller_id, order_count, book_count, register_date, sell_status
+  <select id="regiBookListByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+    select registered_book_id, rb.book_id, seller_id, order_count, book_count, register_date, sell_status, 0
     from registered_book rb, book b
     where rb.book_id = b.book_id
     and b.category = #{category}
@@ -42,7 +42,7 @@
 
   <update id="updateDeliveryStatus" parameterType="bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO">
     update orders
-    set delivery_status = #{status}d
+    set delivery_status = #{status}
     where registered_book_id = #{registeredBookId}
   </update>
 
