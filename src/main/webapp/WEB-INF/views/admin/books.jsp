@@ -11,7 +11,7 @@
 <head>
     <title>관리자 페이지</title>
 
-    <link rel="stylesheet" type="text/css" href="css/adminMain.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/adminMain.css">
 </head>
 
 <%
@@ -25,8 +25,8 @@
 
 <div>
     <ul>
-        <li><a href="/updateBook.do">상품등록</a></li>
-        <li><a href="/updateDelivery.do">배송관리</a></li>
+        <li><a href="/updateBook.do" onclick="register()">상품등록</a></li>
+        <li><a href="/updateDelivery.do" onclick="delivery()">배송관리</a></li>
     </ul>
 </div>
 
