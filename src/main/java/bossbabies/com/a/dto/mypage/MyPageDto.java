@@ -1,4 +1,4 @@
-package bossbabies.com.a.dto;
+package bossbabies.com.a.dto.mypage;
 
 import java.io.Serializable;
 

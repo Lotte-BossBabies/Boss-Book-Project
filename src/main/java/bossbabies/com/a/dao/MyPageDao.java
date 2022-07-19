@@ -1,8 +1,8 @@
 package bossbabies.com.a.dao;
 
-import bossbabies.com.a.dto.OrderedBookDto;
-import bossbabies.com.a.dto.MyPageDto;
-import bossbabies.com.a.dto.LikedBookDto;
+import bossbabies.com.a.dto.mypage.OrderedBookDto;
+import bossbabies.com.a.dto.mypage.MyPageDto;
+import bossbabies.com.a.dto.mypage.LikedBookDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

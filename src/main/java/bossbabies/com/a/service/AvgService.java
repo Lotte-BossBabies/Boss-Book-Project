@@ -1,7 +1,7 @@
 package bossbabies.com.a.service;
 
 import bossbabies.com.a.dao.AvgDao;
-import bossbabies.com.a.dto.CategorySaleRateDto;
+import bossbabies.com.a.dto.avg.CategorySaleRateDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
