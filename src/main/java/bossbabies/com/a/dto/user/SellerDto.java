@@ -8,6 +8,18 @@ public class SellerDto {
     private String email;
     private String phone;
     private String store_name;
+    public SellerDto(){
+
+    }
+
+    public SellerDto(String id, String password, String name, String email, String phone, String store_name) {
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.store_name = store_name;
+    }
 
     public int getSeller_id() {
         return seller_id;

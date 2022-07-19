@@ -9,11 +9,8 @@
 <spring:eval expression="@apiProperties['client_id']" var="redirect_uri"/>
 
 <% String api_key = "https://kauth.kakao.com/oauth/authorize?client_id=";%>
-
-
-
 + client_id + "&redirect_uri=" + @Value("${redirect_uri}") +"&response_type=code";
-%>
+<%--%>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,12 +40,12 @@
                     <h1>로그인</h1>
                 </div>
 
-                <form action="<%=request.getContextPath() %>/user?param=loginAf" method="post">
+                <form action="loginAf.do" method="get">
                     <div class="login_area">
                         <div class="login_input">
                             <input type="text" id="id" name="id" maxlength="50" placeholder="아이디를 입력해 주세요"><br>
 
-                            <input type="password" name="pwd" maxlength="15" placeholder="비밀번호를 입력해 주세요">
+                            <input type="password" name="password" maxlength="15" placeholder="비밀번호를 입력해 주세요">
                         </div>
                         <input type="hidden" name="hidLoginType" id="hidLoginType" value="">
                         <%--      <input type="submit" value="로그인">--%>
@@ -71,7 +68,7 @@
 </div>
 <div style="text-align: center">
     <a class="p-2" href="<%=api_key%>">
-        <img src="/resources/images/kakao_login_medium_wide.png" >
+        <img src="${pageContext.request.contextPath}/resources/images/kakao_login_medium_wide.png" >
         <!-- 이미지는 카카오 개발자센터에서 제공하는 login 이미지를 사용했습니다. -->
     </a>
 </div>
