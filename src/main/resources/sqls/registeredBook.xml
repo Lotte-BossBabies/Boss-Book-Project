@@ -59,6 +59,12 @@
     where registered_book_id=#{registered_book_id}
   </select>
 
+  <update id="updateOrderCount" parameterType="java.lang.Integer">
+    update registered_book
+    set order_count = order_count+1
+    where registered_book_id = #{registered_book_id}
+  </update>
+
 </mapper>
 
 

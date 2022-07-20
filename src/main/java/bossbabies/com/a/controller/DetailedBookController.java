@@ -13,6 +13,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+/**
+ * [프로젝트]롯데e커머스_자바전문가과정
+ * [시스템명]온라인도서쇼핑몰 구현 프로젝트
+ * [팀   명]BossBabies
+ * -----------------------------------------------------------
+ * 수정일자           수정자         수정내용
+ * 2022.07.18       천예원         신규생성
+ * -----------------------------------------------------------
+ */
+
 @Controller
 public class DetailedBookController {
 
@@ -60,5 +70,16 @@ public class DetailedBookController {
         model.addAttribute("makeOrderResult", makeOrderResult);
 
         return "orderResult";
+    }
+
+    @ResponseBody
+    @RequestMapping(value="checkAvailableOrder.do", method = RequestMethod.GET)
+    public boolean checkAvailableOrder(int registered_book_id, Model model){
+        RegisteredBookDto registeredBook = detailedBookService.getRegisteredBook(registered_book_id);
+
+        if(registeredBook.getBook_count() <= registeredBook.getOrder_count()) {
+            return false;
+        }
+        return true;
     }
 }
