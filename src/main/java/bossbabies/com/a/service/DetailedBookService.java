@@ -4,6 +4,7 @@ import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.LikesDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.dto.ReviewDto;
+import bossbabies.com.a.dto.user.SellerDto;
 
 import java.util.List;
 
@@ -36,5 +37,7 @@ public interface DetailedBookService {
 
     boolean makeOrder(int member_id, int registered_book_id);
 
+    int getLoginMember(String id);
 
+    SellerDto getSeller(String id);
 }
