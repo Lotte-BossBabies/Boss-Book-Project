@@ -26,7 +26,7 @@ public class MyPageDao {
     @Autowired
     SqlSession session;
 
-    String mdns = "MemberDetail.";
+    String mdns = "Mypage.";
     String rns = "Review.";
 
     public MyPageDto getMember(MyPageDto mem){
@@ -50,6 +50,6 @@ public class MyPageDao {
     }
 
     public void writeReview(ReviewVO reviewVO) {
-        session.insert(mdns +"addReview", reviewVO);
+        session.insert(mdns +"writeReview", reviewVO);
     }
 }

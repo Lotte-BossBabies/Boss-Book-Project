@@ -15,7 +15,7 @@
 <%!
     public String dateFormat(String str) { // 글이 길 때 ...으로 줄임
         String res = "";
-        res = str.substring(0, 10) + " " + str.substring(12, 19);
+        res = str.substring(0, 10) + " " + str.substring(11, 19);
         return res;
     }
 %>
@@ -57,8 +57,7 @@
 <table class="table table-hover align-middle"
        style="text-align: center; width: 70%; margin-left:15%; margin-right:15%;">
     <tr>
-        <th colspan="5"
-        ">구매한 상품</th>
+        <th colspan="5">구매한 상품</th>
     </tr>
     <%
         for (int i = 0; i < ol.size(); i++) {
@@ -66,7 +65,7 @@
             if (orderBook.isCancelStatus()) continue;
     %>
     <tr>
-        <td><img src="<%=orderBook.getImageUrl()%>" alt="책책책"></td>
+        <td><img class="shadow-lg" src="<%=orderBook.getImageUrl()%>" alt="책책책"></td>
         <td class="align-middle"><a
                 href="getDetailedBook.do?registered_book_id=<%=orderBook.getBookId()%>"><%=orderBook.getTitle()%>
         </a></td>
@@ -103,7 +102,7 @@
             LikedBookDto likeBook = ll.get(i);
     %>
     <tr>
-        <td><img src="<%=likeBook.getImageUrl()%>" alt="책책책"></td>
+        <td><img class="shadow-lg" src="<%=likeBook.getImageUrl()%>" alt="책책책"></td>
         <td colspan="2" class="align-middle"><a
                 href="getDetailedBook.do?registered_book_id=<%=likeBook.getBookId()%>"><%=likeBook.getTitle()%>
         </a></td>
@@ -127,14 +126,18 @@
             MyPageReviewDto review = rl.get(i);
     %>
     <tr>
-        <td><img src="<%=review.getImageUrl()%>" alt="책책책"></td>
-        <%--        <td class="align-middle"><%=review.getTitle()%></td>--%>
-        <td colspan="2" class="align-middle"><%=review.getContent()%>
+        <td rowspan="3"><img class="shadow-lg" src="<%=review.getImageUrl()%>" alt="책책책"></td>
+        <td colspan="3" class="align-middle"><%=review.getTitle()%></td>
+        <td rowspan="3" class="align-middle"><%=dateFormat(review.getReviewDate().toString())%></td>
+    </tr>
+    <tr>
+
+        <td colspan="3" class="align-middle" style="color: #147B48;"><%=review.getContent()%>
         </td>
-        <td class="align-middle"><img src="/resources/images/star.png" alt="별"
-                                      style="text-align: left; width: 20px;"> <%=review.getStar()%>.0
-        </td>
-        <td class="align-middle"><%=dateFormat(review.getReviewDate().toString())%>
+    </tr>
+    <tr>
+        <td colspan="3" class="align-middle"><img src="/resources/images/star.png" alt="별"
+                                                  style="text-align: left; width: 20px;"> <%=review.getStar()%>.0
         </td>
     </tr>
     <%
