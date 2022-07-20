@@ -3,9 +3,11 @@ package bossbabies.com.a.service;
 
 import bossbabies.com.a.dto.avg.CategorySaleRateDto;
 import bossbabies.com.a.dao.avg.AvgDao;
+import bossbabies.com.a.dto.avg.SalesByPeriodDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,5 +35,9 @@ public class AvgService {
         }
 
         return result;
+    }
+
+    public List<SalesByPeriodDto> getSalesByPeriod() {
+        return dao.getSalesByPeriod();
     }
 }

@@ -1,6 +1,7 @@
 package bossbabies.com.a.controller;
 
 import bossbabies.com.a.dto.avg.CategorySaleRateDto;
+import bossbabies.com.a.dto.avg.SalesByPeriodDto;
 import bossbabies.com.a.service.AvgService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,10 +21,13 @@ public class AvgController {
     @Autowired
     AvgService service;
 
-    @RequestMapping(value = "pie.do", method = RequestMethod.GET)
-    public String getSaleRateByCategory(Model model, CategorySaleRateDto categorySaleRateDto) {
-        List<CategorySaleRateDto> list = service.getSaleRateByCategory(categorySaleRateDto);
-        model.addAttribute("saleRateByCategory", list);
+    @RequestMapping(value = "chart.do", method = RequestMethod.GET)
+    public String getSaleRateByCategory(Model model, CategorySaleRateDto categorySaleRateDto, SalesByPeriodDto salesByPeriodDto) {
+        List<CategorySaleRateDto> list1 = service.getSaleRateByCategory(categorySaleRateDto);
+        model.addAttribute("saleRateByCategory", list1);
+
+        List<SalesByPeriodDto> list2 = service.getSalesByPeriod();
+        model.addAttribute("salesByPeriod", list2);
         return "avg";
     }
 }

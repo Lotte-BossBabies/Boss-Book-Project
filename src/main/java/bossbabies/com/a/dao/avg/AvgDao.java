@@ -1,6 +1,7 @@
 package bossbabies.com.a.dao.avg;
 
 import bossbabies.com.a.dto.avg.CategorySaleRateDto;
+import bossbabies.com.a.dto.avg.SalesByPeriodDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,5 +18,9 @@ public class AvgDao {
 
     public List<CategorySaleRateDto> getSaleRateByCategory(CategorySaleRateDto categorySaleRateDto) {
         return session.selectList(nameSpace + "getSaleRateByCategory", categorySaleRateDto);
+    }
+
+    public List<SalesByPeriodDto> getSalesByPeriod(){
+        return session.selectList(nameSpace + "getSalesByPeriod");
     }
 }
