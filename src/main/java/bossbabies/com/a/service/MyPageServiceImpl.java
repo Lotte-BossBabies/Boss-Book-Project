@@ -43,13 +43,24 @@ public class MyPageServiceImpl implements MyPageService {
         return myPageDao.getLikeList(mem);
     }
 
-    public List<MyPageReviewDto> getReviewList(MyPageDto mem) { return myPageDao.getReviewList(mem); }
+    public List<MyPageReviewDto> getReviewList(MyPageDto mem) {
+        return myPageDao.getReviewList(mem);
+    }
 
     public void cancelOrder(int orderId) {
         myPageDao.cancelOrder(orderId);
     }
 
-    public void deleteLike(int likeId) { likesDao.deleteLieks(likeId); }
+    public void deleteLike(int likeId) {
+        likesDao.deleteLieks(likeId);
+    }
 
-    public void writeReview(ReviewVO reviewVO) { myPageDao.writeReview(reviewVO);}
+    public void writeReview(ReviewVO reviewVO) {
+        myPageDao.writeReview(reviewVO);
+    }
+
+    @Override
+    public MyPageReviewDto getReview(ReviewVO reviewVO) {
+        return myPageDao.getReview(reviewVO);
+    }
 }

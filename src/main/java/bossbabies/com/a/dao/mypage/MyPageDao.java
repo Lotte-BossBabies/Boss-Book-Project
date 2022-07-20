@@ -15,4 +15,5 @@ public interface MyPageDao {
     List<MyPageReviewDto> getReviewList(MyPageDto mem);
     void cancelOrder(int orderId);
     void writeReview(ReviewVO reviewVO);
+    MyPageReviewDto getReview(ReviewVO reviewVO);
 }

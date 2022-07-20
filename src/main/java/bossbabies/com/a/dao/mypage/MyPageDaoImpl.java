@@ -52,4 +52,9 @@ public class MyPageDaoImpl implements MyPageDao {
     public void writeReview(ReviewVO reviewVO) {
         session.insert(mdns +"writeReview", reviewVO);
     }
+
+    @Override
+    public MyPageReviewDto getReview(ReviewVO reviewVO) {
+        return session.selectOne(rns+"getReviewByBidAndMid", reviewVO);
+    }
 }

@@ -67,7 +67,7 @@
         <h4 class="card-title" style="margin: 10px;"><img src="/resources/images/happiness.png" alt="별"
                                                           style="text-align: left; width: 30px;">&nbsp;<%=member.getName()%> 님</h4>
         <p>
-            <button type="button" class="btn btn-outline-secondary">개인정보 수정</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="location.href=''">개인정보 수정</button>
         </p>
     </div>
 </div>
@@ -105,14 +105,14 @@
                         onclick="location.href='writeReview.do?bookId=<%=orderBook.getBookId()%>&memberId=<%=member.getMemberId()%>'">
                     <img src="/resources/images/document.png" alt="별"
                          style="text-align: left; width: 20px;">
-                    리뷰달기
+                    리뷰 작성
                 </button>
             </td>
             <%} else {%>
             <td class="align-middle">
                 <button type="button" class="btn btn-outline-success"
                         onclick="cancelBtn(); location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>&memberId=<%=member.getMemberId()%>';">
-                    취소
+                    주문 취소
                 </button>
             </td>
             <%}%>
@@ -176,8 +176,7 @@
         <tr>
             <td class="align-middle">
                 <div class="flex-container">
-                    <div style="margin-left: 40px; margin-right: 40px;"><img class="shadow-lg"
-                                                                             src="<%=review.getImageUrl()%>" alt="책책책">
+                    <div style="margin-left: 40px; margin-right: 40px;"><img class="shadow-lg" src="<%=review.getImageUrl()%>" alt="책책책">
                     </div>
                     <div style="margin-top: 25px; margin-left: 150px;">
                         <div class="review-content" style="font-weight: bold"><%=review.getTitle()%>
@@ -186,7 +185,7 @@
                             <%=dateFormat(review.getReviewDate().toString())%>
                         </div>
                         <div class="review-content"><img src="/resources/images/star.png" alt="별"
-                                                         style="text-align: left; width: 20px;"> <%=review.getStar()%>.0
+                                                         style="text-align: left; width: 20px;"> <%=review.getStar()%>
                         </div class="review-content">
                         <div class="card border-success mb-3" style="width: 700px;">
                             <div class="card-body">
@@ -201,8 +200,9 @@
             }
         %>
     </table>
-    <%@include file = "layout/footer.jsp" %>
 </div>
+
+<%@include file = "layout/footer.jsp" %>
 
 <script>
     function cancelBtn(){

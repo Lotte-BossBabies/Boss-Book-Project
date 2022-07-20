@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -65,9 +67,23 @@ public class MyPageController {
     }
 
     @GetMapping("writeReview.do")
-    public String writeReview(int bookId, Model model) {
+    public String writeReview(int bookId, int memberId, ReviewVO rvo, Model model, HttpServletResponse response) throws Exception {
         BookDto book = bookService.getBookByRId(bookId);
+        MyPageReviewDto review = myPageService.getReview(rvo);
+
+        if (review != null) {
+            response.setContentType("text/html;charset=UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('이미 리뷰를 등록한 책입니다!');");
+            out.println("location.href='mypage.do?memberId="+memberId+"';");
+            out.println("</script>");
+            out.flush();
+            return "";
+        }
+
         model.addAttribute("book", book);
+
         return "writeReview";
     }
 
@@ -77,6 +93,5 @@ public class MyPageController {
 
         return "redirect:/mypage.do?memberId=" + reviewVO.getMemberId();
     }
-
 
 }
