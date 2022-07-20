@@ -99,11 +99,9 @@
             text-align: right;
             padding: 10px;
         }
-        .likeBtnBox{
+        .btnBox{
             margin: 10px 10px;
             text-align: right;
-            width: 400px;
-            height: 65px;
         }
         .orderBtn{
             display: inline-block;
@@ -115,15 +113,14 @@
             font-size: 20px;
         }
         .orderBtn:hover{
-            border: none;
-            background-color: cornflowerblue;
-            color: white;
+            border: 2px solid cornflowerblue;
+            color: cornflowerblue;
         }
         .likeBtn{
             all: unset;
-            width: 50px;
-            height: 45px;
-            margin: 10px 10px;
+            width: 55px;
+            height: 55px;
+            margin: 0px 10px;
             cursor: pointer;
         }
 
@@ -136,10 +133,7 @@
             display: inline-block;
             width: 100px;
             height: 30px;
-            /*border: 1px solid black;*/
             padding: 20px 20px 10px 20px;
-            /*border-top-left-radius: 12px;*/
-            /*border-top-right-radius: 12px;*/
             font-size: 20px;
             cursor: pointer;
         }
@@ -265,9 +259,9 @@
             </div>
         </div>
 
-        <div class="likeBtnBox">
-            <button class="likeBtn" id="like" type="button" onclick="setLike()"><img src="/resources/images/empty_heart.png" width="45px"></button>
-            <button class="likeBtn" id="unlike" type="button" onclick="cancelLikes()"><img src="/resources/images/heart.png" width="45px"></button>
+        <div class="btnBox">
+            <button class="likeBtn" id="like" type="button" onclick="setLike()"><img src="/resources/images/empty_heart.png" width="55px"></button>
+            <button class="likeBtn" id="unlike" type="button" onclick="cancelLikes()"><img src="/resources/images/heart.png" width="55px"></button>
             <button class="orderBtn" type="button" onclick="makeOrder()">구매하기</button>
         </div>
 
@@ -400,20 +394,86 @@
         });
     }
     function makeOrder(){
-        var newForm = document.createElement('form');
+        let loginStatus = checkLogin();
+        if(loginStatus) {
+            let adminStatus = checkAdmin();
+            if(!adminStatus) {
+                let availableStatus = checkAvailable();
+                if(availableStatus){
+                    console.log('if');
+                    var newForm = document.createElement('form');
 
-        newForm.method = 'Get';
-        newForm.action = 'makeOrder.do';
+                    newForm.method = 'get';
+                    newForm.action = 'makeOrder.do';
 
-        var registered_book_id = document.createElement('input');
-        registered_book_id.setAttribute("type", "hidden");
-        registered_book_id.setAttribute("name", "registered_book_id");
-        registered_book_id.setAttribute("value", <%=registeredBook.getRegistered_book_id() %>);
+                    var registered_book_id = document.createElement('input');
+                    registered_book_id.setAttribute("type", "hidden");
+                    registered_book_id.setAttribute("name", "registered_book_id");
+                    registered_book_id.setAttribute("value", <%=registeredBook.getRegistered_book_id() %>);
 
-        newForm.appendChild(registered_book_id);
-        document.body.appendChild(newForm);
+                    newForm.appendChild(registered_book_id);
+                    document.body.appendChild(newForm);
 
-        newForm.submit();
+                    newForm.submit();
+                }
+                else{
+                    alert('재고가 부족합니다.');
+                }
+            }
+            else{
+                alert('관리자 계정은 책을 구매할 수 없습니다.');
+            }
+        }
+        else{
+            alert('로그인이 필요한 서비스입니다.');
+            location.href = "login.do";
+        }
+    }
+    function checkLogin(){
+        let loginStatus = false;
+        $.ajax ({
+            url: "checkLogin.do",
+            type: "GET",
+            success: function(data) {
+                likeStatus = data;
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+
+        return loginStatus;
+    }
+    function checkAdmin(){
+        let adminStatus = true;
+        $.ajax ({
+            url: "checkAdmin.do",
+            type: "GET",
+            success: function(data) {
+                adminStatus = data;
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+        return adminStatus;
+    }
+    function checkAvailable(){
+        let availableStatus = false;
+        $.ajax({
+            url: "checkAvailableOrder.do",
+            type: "GET",
+            data: {
+                registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
+            },
+            success: function (data) {
+                availableStatus = data;
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+        return availableStatus;
     }
 
 </script>

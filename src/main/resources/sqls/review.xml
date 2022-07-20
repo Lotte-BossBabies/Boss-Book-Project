@@ -12,6 +12,14 @@
         order by review_date desc
     </select>
 
+    <select id="getReviewByMemberId" parameterType="bossbabies.com.a.dto.mypage.MyPageDto"
+            resultType="bossbabies.com.a.dto.mypage.MyPageReviewDto">
+        select review_id as reviewId, content, star, review_date as reviewDate, b.title, b.image_url as imageUrl
+        from review r, member m, registered_book rb, book b
+        where r.member_id = m.member_id and rb.registered_book_id = r.registered_book_id and
+            rb.book_id = b.book_id and r.member_id = #{memberId}
+    </select>
+
     <insert id="addReview" parameterType="bossbabies.com.a.dto.ReviewDto">
         insert into review(member_id, content, star, review_date, registered_book_id)
         values(#{member_id}, #{content}, #{star}, #{review_date}, #{registered_book_id})

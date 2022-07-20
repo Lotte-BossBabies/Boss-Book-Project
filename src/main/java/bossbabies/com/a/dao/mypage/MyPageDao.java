@@ -1,9 +1,9 @@
 package bossbabies.com.a.dao.mypage;
 
+import bossbabies.com.a.dto.mypage.MyPageReviewDto;
 import bossbabies.com.a.dto.mypage.OrderedBookDto;
 import bossbabies.com.a.dto.mypage.MyPageDto;
 import bossbabies.com.a.dto.mypage.LikedBookDto;
-import bossbabies.com.a.dto.mypage.ReviewDto;
 import bossbabies.com.a.parameterVO.ReviewVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,29 +26,30 @@ public class MyPageDao {
     @Autowired
     SqlSession session;
 
-    String ns = "MemberDetail.";
+    String mdns = "Mypage.";
+    String rns = "Review.";
 
     public MyPageDto getMember(MyPageDto mem){
-        return session.selectOne(ns + "getMember", mem);
+        return session.selectOne(mdns + "getMember", mem);
     }
 
     public List<OrderedBookDto> getOrderList(MyPageDto mem) {
-        return session.selectList(ns + "memberOrderItems", mem);
+        return session.selectList(mdns + "memberOrderItems", mem);
     }
 
     public List<LikedBookDto> getLikeList(MyPageDto mem) {
-        return session.selectList(ns + "memberLikeItems", mem);
+        return session.selectList(mdns + "memberLikeItems", mem);
     }
 
-    public List<ReviewDto> getReviewList(MyPageDto mem) {
-        return session.selectList(ns+"memberReviews", mem);
+    public List<MyPageReviewDto> getReviewList(MyPageDto mem) {
+        return session.selectList(rns +"getReviewByMemberId", mem);
     }
 
     public void cancelOrder(int orderId){
-        session.update(ns+"cancelOrder", orderId);
+        session.update(mdns +"cancelOrder", orderId);
     }
 
     public void writeReview(ReviewVO reviewVO) {
-        session.insert(ns+"writeReview", reviewVO);
+        session.insert(mdns +"writeReview", reviewVO);
     }
 }

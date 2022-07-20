@@ -2,17 +2,26 @@ package bossbabies.com.a.dto.mypage;
 
 import java.time.Instant;
 
-public class ReviewDto {
+/**
+ * [프로젝트]롯데e커머스_자바전문가과정
+ * [시스템명]마이페이지
+ * [팀   명]BossBabies
+ * -----------------------------------------------------------
+ * 수정일자           수정자         수정내용
+ * 2022.07.19       이성은         신규생성
+ * -----------------------------------------------------------
+ */
+public class MyPageReviewDto {
     private String content;
     private Integer star;
     private Instant reviewDate;
     private String title;
     private String imageUrl;
 
-    public ReviewDto() {
+    public MyPageReviewDto() {
     }
 
-    public ReviewDto(String content, Integer star, Instant reviewDate, String title, String imageUrl) {
+    public MyPageReviewDto(String content, Integer star, Instant reviewDate, String title, String imageUrl) {
         this.content = content;
         this.star = star;
         this.reviewDate = reviewDate;

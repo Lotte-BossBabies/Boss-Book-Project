@@ -9,5 +9,33 @@
         insert into orders(member_id, registered_book_id, cancel_status, order_date, delivery_status)
         values(#{member_id}, #{registered_book_id}, #{cancel_status}, #{order_date}, #{delivery_status})
     </insert>
+    
+    <select id="getPreDeliveryBooks" parameterType="java.lang.Integer" resultType="bossbabies.com.a.dto.admin.DeliveryDto">
+        select o.order_id, o.member_id, o.registered_book_id, o.cancel_status, o.order_date, o.delivery_status, b.title, b.image_url, m.name, m.address, m.phone
+        from orders o, registered_book rb, book b, member m
+        where m.member_id=o.member_id and o.registered_book_id=rb.registered_book_id and rb.book_id=b.book_id and rb.seller_id = #{seller_id} and o.cancel_status=false and o.delivery_status=false
+        order by o.order_date
+    </select>
+
+<!--    <select id="getCompletedDeliveryBooks" parameterType="java.lang.Integer" resultType="bossbabies.com.a.dto.admin.DeliveryDto">-->
+<!--        select o.order_id, o.member_id, o.registered_book_id, o.cancel_status, o.order_date, o.delivery_status, b.title, b.image_url, m.name, m.address, m.phone-->
+<!--        from orders o, registered_book rb, book b, member m-->
+<!--        where m.member_id=o.member_id and o.registered_book_id=rb.registered_book_id and rb.book_id=b.book_id and rb.seller_id = #{seller_id} and o.cancel_status=false and o.delivery_status=true-->
+<!--        order by o.order_date-->
+<!--    </select>-->
+
+    <select id="getCompletedDeliveryBooksWithPeriod" parameterType="java.util.Map" resultType="bossbabies.com.a.dto.admin.DeliveryDto">
+        select o.order_id, o.member_id, o.registered_book_id, o.cancel_status, o.order_date, o.delivery_status, b.title, b.image_url, m.name, m.address, m.phone
+        from orders o, registered_book rb, book b, member m
+        where m.member_id=o.member_id and o.registered_book_id=rb.registered_book_id and rb.book_id=b.book_id and rb.seller_id=#{seller_id} and o.cancel_status=false and o.delivery_status=true
+          and o.order_date between #{start_date} and #{end_date}+1
+        order by o.order_date
+    </select>
+
+    <update id="updateDeliveryStatus" parameterType="java.lang.Integer">
+        update orders
+        set delivery_status = true
+        where order_id = #{order_id}
+    </update>
 
 </mapper>

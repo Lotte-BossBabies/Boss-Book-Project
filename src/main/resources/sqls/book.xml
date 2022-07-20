@@ -16,6 +16,12 @@
         where (rb.registered_book_id = r.registered_book_id) and (rb.book_id = b.book_id)
         group by registered_book_id limit 8;
     </select>
+    
+    <select id="getBookByRid" parameterType="java.lang.Integer" resultType="bossbabies.com.a.dto.BookDto">
+        select b.book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher
+        from book b, registered_book r
+        where b.book_id = r.book_id and r.registered_book_id=#{book_id}
+    </select>
 
     <select id="topOfFindByOrderCount" resultType="bossbabies.com.a.dto.main.RegisteredBookInfoDto">
         select registered_book_id, b.book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher from book b, registered_book r where b.book_id = r.book_id order by r.order_count desc limit 8;

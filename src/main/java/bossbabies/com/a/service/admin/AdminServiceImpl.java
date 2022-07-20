@@ -1,12 +1,19 @@
 package bossbabies.com.a.service.admin;
 
+import bossbabies.com.a.dao.orders.OrdersDao;
 import bossbabies.com.a.dao.registeredBook.RegisteredBookDao;
 import bossbabies.com.a.dto.RegisteredBookDto;
+import bossbabies.com.a.dto.admin.DeliveryDto;
+import bossbabies.com.a.dto.mypage.OrderDto;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
 import bossbabies.com.a.parameterVO.SellerAndCategoryVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +32,9 @@ public class AdminServiceImpl implements AdminService{
 
     @Autowired
     RegisteredBookDao dao;
+
+    @Autowired
+    OrdersDao ordersDao;
 
     @Override
     public List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category) {
@@ -73,4 +83,29 @@ public class AdminServiceImpl implements AdminService{
 
         return dao.updateDeliveryCompleted(vo);
     }
+
+    @Override
+    public List<DeliveryDto> getPreDeliveryBooks(int seller_id) {
+        return ordersDao.getPreDeliveryBooks(seller_id);
+    }
+
+    @Override
+    public boolean updateDeliveryStatus(int order_id) {
+        return ordersDao.updateDeliveryStatus(order_id);
+    }
+
+    @Override
+    public List<DeliveryDto> getCompletedDeliveryBooks(int seller_id, String startDate, String endDate) {
+        Map<String, String> deliveryMap = new HashMap<>();
+        deliveryMap.put("seller_id", Integer.toString(seller_id));
+        deliveryMap.put("start_date", startDate);
+        deliveryMap.put("end_date", endDate);
+
+        return ordersDao.getCompletedDeliveryBooksWithPeriod(deliveryMap);
+    }
+
+//    @Override
+//    public List<DeliveryDto> getCompletedDeliveryBooks(int seller_id) {
+//        return ordersDao.getCompletedDeliveryBooks(seller_id);
+//    }
 }
