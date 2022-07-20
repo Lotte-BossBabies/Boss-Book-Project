@@ -12,11 +12,19 @@
     --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%!
+    public String dateFormat(String str) { // 글이 길 때 ...으로 줄임
+        String res = "";
+        res = str.substring(0, 10) + " " + str.substring(12, 19);
+        return res;
+    }
+%>
+
 <%
-    MyPageDto member = (MyPageDto)request.getAttribute("member");
-    List<OrderedBookDto> ol = (List<OrderedBookDto>)request.getAttribute("orderList");
-    List<LikedBookDto> ll = (List<LikedBookDto>)request.getAttribute("likeList");
-    List<MyPageReviewDto> rl = (List<MyPageReviewDto>)request.getAttribute("reviewList");
+    MyPageDto member = (MyPageDto) request.getAttribute("member");
+    List<OrderedBookDto> ol = (List<OrderedBookDto>) request.getAttribute("orderList");
+    List<LikedBookDto> ll = (List<LikedBookDto>) request.getAttribute("likeList");
+    List<MyPageReviewDto> rl = (List<MyPageReviewDto>) request.getAttribute("reviewList");
 %>
 <html>
 <head>
@@ -27,12 +35,9 @@
           rel='stylesheet' type='text/css'>
 
     <style>
-        img, td {
-            vertical-align: center;
-        }
-
-        .table, .table-hover{
-            vertical-align: center;
+        th {
+            background-color: #3CAE76;
+            color: #f8f8f8;
         }
     </style>
 </head>
@@ -43,33 +48,51 @@
     <div class="card-header">쇼핑하기 좋은 날이에요!</div>
     <div class="card-body">
         <h4 class="card-title" style="text-align: center"><%=member.getName()%> 님</h4>
-        <p><button type="button" class="btn btn-outline-secondary">개인정보수정</button></p>
+        <p>
+            <button type="button" class="btn btn-outline-secondary">개인정보수정</button>
+        </p>
     </div>
 </div>
 
-<table class="table table-hover align-middle" style="text-align: center; width: 70%; margin-left:15%; margin-right:15%;">
+<table class="table table-hover align-middle"
+       style="text-align: center; width: 70%; margin-left:15%; margin-right:15%;">
     <tr>
-        <th colspan="5">구매한 상품</th>
+        <th colspan="5"
+        ">구매한 상품</th>
     </tr>
     <%
-        for(int i = 0; i < ol.size(); i++){
+        for (int i = 0; i < ol.size(); i++) {
             OrderedBookDto orderBook = ol.get(i);
-            if(orderBook.isCancelStatus()) continue;
-            %>
-            <tr>
-                <td><img src="<%=orderBook.getImageUrl()%>" alt="책디스 아웃 나는 정상수 백발백중하는 명사수!"></td>
-                <td style=" vertical-align: center;"><a href="getDetailedBook.do?registered_book_id=<%=orderBook.getBookId()%>"><%=orderBook.getTitle()%></a></td>
-                <td><%=orderBook.getPrice()%></td>
-                <td><%=orderBook.getOrderDate()%></td>
-                <%
-                    if (orderBook.isDeliveryStatus()) {
-                %>
-                <td><button class="btn btn-success" onclick="location.href='writeReview.do?bookId=<%=orderBook.getBookId()%>&memberId=<%=member.getMemberId()%>'">리뷰달기</button></td>
-                <%} else {%>
-                <td><button type="button" class="btn btn-success" onclick="location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>&memberId=<%=member.getMemberId()%>'">취소</button></td>
-                <%}%>
-            </tr>
-            <%
+            if (orderBook.isCancelStatus()) continue;
+    %>
+    <tr>
+        <td><img src="<%=orderBook.getImageUrl()%>" alt="책책책"></td>
+        <td class="align-middle"><a
+                href="getDetailedBook.do?registered_book_id=<%=orderBook.getBookId()%>"><%=orderBook.getTitle()%>
+        </a></td>
+        <td class="align-middle"><%=orderBook.getPrice()%>원
+        </td>
+        <td class="align-middle"><%=dateFormat(orderBook.getOrderDate().toString())%>
+        </td>
+        <%
+            if (orderBook.isDeliveryStatus()) {
+        %>
+        <td class="align-middle">
+            <button class="btn btn-success"
+                    onclick="location.href='writeReview.do?bookId=<%=orderBook.getBookId()%>&memberId=<%=member.getMemberId()%>'">
+                리뷰달기
+            </button>
+        </td>
+        <%} else {%>
+        <td class="align-middle">
+            <button type="button" class="btn btn-success"
+                    onclick="location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>&memberId=<%=member.getMemberId()%>'">
+                취소
+            </button>
+        </td>
+        <%}%>
+    </tr>
+    <%
         }
     %>
     <tr>
@@ -81,9 +104,17 @@
     %>
     <tr>
         <td><img src="<%=likeBook.getImageUrl()%>" alt="책책책"></td>
-        <td><a href="getDetailedBook.do?registered_book_id=<%=likeBook.getBookId()%>"><%=likeBook.getTitle()%></a></td>
-        <td><%=likeBook.getPrice()%></td>
-        <td colspan="2"><button class="btn btn-success" onclick="location.href='deleteLike.do?likeId=<%=likeBook.getLikeId()%>&memberId=<%=member.getMemberId()%>'">취소</button></td>
+        <td colspan="2" class="align-middle"><a
+                href="getDetailedBook.do?registered_book_id=<%=likeBook.getBookId()%>"><%=likeBook.getTitle()%>
+        </a></td>
+        <td class="align-middle"><%=likeBook.getPrice()%>원
+        </td>
+        <td class="align-middle">
+            <button class="btn btn-success"
+                    onclick="location.href='deleteLike.do?likeId=<%=likeBook.getLikeId()%>&memberId=<%=member.getMemberId()%>'">
+                취소
+            </button>
+        </td>
     </tr>
     <%
         }
@@ -97,10 +128,14 @@
     %>
     <tr>
         <td><img src="<%=review.getImageUrl()%>" alt="책책책"></td>
-        <td><%=review.getTitle()%></td>
-        <td><%=review.getContent()%></td>
-        <td><%=review.getStar()%></td>
-        <td><%=review.getReviewDate()%></td>
+        <%--        <td class="align-middle"><%=review.getTitle()%></td>--%>
+        <td colspan="2" class="align-middle"><%=review.getContent()%>
+        </td>
+        <td class="align-middle"><img src="/resources/images/star.png" alt="별"
+                                      style="text-align: left; width: 20px;"> <%=review.getStar()%>.0
+        </td>
+        <td class="align-middle"><%=dateFormat(review.getReviewDate().toString())%>
+        </td>
     </tr>
     <%
         }
