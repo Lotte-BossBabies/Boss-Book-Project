@@ -23,7 +23,7 @@ public interface AdminService {
 
     public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword);
 
-    public int updateStock(int registeredBookId, int newCount);
+    public int updateStock(int registeredBookId, int newCount, int discount);
 
     public int updateRegisteredBook(int status, int registeredBookId);
 

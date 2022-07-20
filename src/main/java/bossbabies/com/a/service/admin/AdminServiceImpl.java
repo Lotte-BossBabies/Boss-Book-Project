@@ -51,9 +51,9 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public int updateStock(int registeredBookId, int newCount) {
+    public int updateStock(int registeredBookId, int newCount, int discount) {
 
-        IdAndCountVO vo = new IdAndCountVO(registeredBookId, newCount);
+        IdAndCountVO vo = new IdAndCountVO(registeredBookId, newCount, discount);
 
         return dao.updateStock(vo);
     }
