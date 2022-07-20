@@ -53,8 +53,8 @@
   </update>
 
 
-  <select id="getRegisteredBook" parameterType="java.lang.String" resultType="bossbabies.com.a.dto.RegisteredBookDto">
-    select registered_book_id, book_id, seller_id, order_count, book_count, register_date, sell_status
+  <select id="getRegisteredBook" parameterType="java.lang.Integer" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+    select registered_book_id, book_id, seller_id, order_count, book_count, register_date, sell_status, discount_rate
     from registered_book
     where registered_book_id=#{registered_book_id}
   </select>

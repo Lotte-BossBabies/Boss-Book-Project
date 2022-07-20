@@ -80,7 +80,7 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
         return session.update(namespace + "updateDeliveryStatus", vo);
     }
 
-    public RegisteredBookDto getRegisteredBookById(String registered_book_id){
+    public RegisteredBookDto getRegisteredBookById(int registered_book_id){
         return session.selectOne(namespace+"getRegisteredBook", registered_book_id);
     }
 

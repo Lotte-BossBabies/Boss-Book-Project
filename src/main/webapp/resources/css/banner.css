@@ -1,0 +1,38 @@
+#container {
+    margin-top: 128px;
+    border-top: 1px solid #cccccc;
+    width: 100%;
+
+}
+
+/*#contents {*/
+/*    !*background-color: #1a1a1a;*!*/
+/*    !*min-height: 400px;*!*/
+/*    !*padding: 0 0 120px 0;*!*/
+/*}*/
+
+#contents .sub_content {
+    /*background-color: #FFFFFF;*/
+    width: 100%;
+    min-width: 1000px;
+    margin: 0;
+    padding: 0;
+}
+
+.main_visual {
+    overflow: hidden;
+    width: 100%;
+    margin: 0 0 0px 0;
+}
+
+.slider-wrap {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
