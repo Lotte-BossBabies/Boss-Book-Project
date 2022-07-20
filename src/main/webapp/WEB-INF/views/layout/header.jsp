@@ -11,7 +11,8 @@
                 <li>
                     <a href="join.do">JOIN</a>
                     <span class="txt_bar"></span>
-                </li><li>
+                </li>
+                <li>
                     <a href="mypage.do">MYPAGE</a>
                 </li>
             </ul>
@@ -21,8 +22,10 @@
     <div class="header_bottom header_search">
         <div class="header_search_cont">
             <div class="h1_logo">
-                <%--image 넣을 예정--%>
-                <img src="resources/images/logo.png" title="로고 이미지">
+                <a href="main.do">
+                    <%--image 넣을 예정--%>
+                    <img src="resources/images/logo.png" title="로고 이미지">
+                </a>
             </div>
         </div>
     </div>
@@ -38,7 +41,7 @@
                         <a href="">가이드</a>
                     </li>
                     <li>
-                        <a href="bookstore.do">서점</a>
+                        <a href="bookstore.do?cateName=all">서점</a>
                     </li>
                     <li>
                         <a href="">작가마켓</a>

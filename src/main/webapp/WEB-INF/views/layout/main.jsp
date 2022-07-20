@@ -7,16 +7,18 @@
                 <div class="goods_list_tit">
                     <div class="goods_list_title">
                         <p class="bp-list-title">
-                            <span>추천 도서</span>
+                            <span>인기 도서</span>
                         </p>
                         <p class="bp-list-description">내 책을 처음으로 마주하는 공간</p>
                         <p class="themeText_20" style="margin:5px 0 20px 0"></p>
                     </div>
                 </div>
                 <div class="slider">
-                    <c:forEach var="book" items="${bookDtos}">
+                    <c:forEach var="book" items="${popularBookInfoDtos}">
                         <div align="center" class="book-cover">
-                            <img src="${book.image_url}" style="border: 2px solid #3CAE76; padding: 5px;">
+                            <a href="getDetailedBook.do?registered_book_id=${book.registered_book_id}">
+                                <img src="${book.image_url}" style="border: 2px solid #3CAE76; padding: 5px;">
+                            </a>
                         </div>
                     </c:forEach>
                 </div>
@@ -35,7 +37,8 @@
                 <div class="slider">
                     <c:forEach var="bookInfo" items="${bookInfoDtos}">
                         <div align="center" class="book-cover">
-                            <a><img src="${bookInfo.image_url}" style="border: 2px solid #3CAE76; padding: 5px;"></a>
+                            <a href="getDetailedBook.do?registered_book_id=${bookInfo.registered_book_id}"><img
+                                    src="${bookInfo.image_url}" style="border: 2px solid #3CAE76; padding: 5px;"></a>
                         </div>
                     </c:forEach>
                 </div>

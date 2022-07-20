@@ -1,3 +1,8 @@
+#contents {
+    min-height: 400px;
+    padding: 0 0 120px 0;
+}
+
 #footer{
     background-color: #f8f8f8;
     text-align: center;
@@ -22,7 +27,7 @@
     color: #000;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+#footer article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
@@ -59,7 +64,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     color: #333;
 }
 
-.withSeller#footer .companyInfo {
+#footer .withSeller#footer .companyInfo {
     padding-bottom: 40px;
 }
 
