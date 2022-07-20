@@ -24,4 +24,14 @@
         set password=#{password}, address=#{address}, phone=#{phone}
         WHERE id=#{id}
     </update>
+    <select id="findMemberId" parameterType="bossbabies.com.a.parameterVO.FindIdVO" resultType="java.lang.String">
+        select id
+        from member
+        where name=#{name} and email=#{email}
+    </select>
+    <select id="findMemberPassword" parameterType="bossbabies.com.a.parameterVO.FindPasswordVO" resultType="java.lang.String">
+        select password
+        from member
+        where id=#{id} and name=#{name} and email=#{email}
+    </select>
 </mapper>

@@ -2,6 +2,8 @@ package bossbabies.com.a.dao.user;
 
 import bossbabies.com.a.dto.user.MemberDto;
 import bossbabies.com.a.dto.user.SellerDto;
+import bossbabies.com.a.parameterVO.FindIdVO;
+import bossbabies.com.a.parameterVO.FindPasswordVO;
 import bossbabies.com.a.parameterVO.LoginVO;
 import bossbabies.com.a.parameterVO.UpdateSellerVO;
 import org.apache.ibatis.session.SqlSession;
@@ -32,5 +34,15 @@ public class SellerDaoImpl implements SellerDao{
     @Override
     public int updateSeller(UpdateSellerVO vo) {
         return session.update(ns + "updateSeller", vo);
+    }
+
+    @Override
+    public String findSellerId(FindIdVO vo) {
+        return session.selectOne(ns + "findSellerId", vo);
+    }
+
+    @Override
+    public String findSellerPassword(FindPasswordVO vo) {
+        return session.selectOne(ns + "findSellerPassword", vo);
     }
 }
