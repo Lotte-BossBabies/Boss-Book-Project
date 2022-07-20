@@ -28,7 +28,7 @@
 
 <div>
     <ul>
-        <li><a href="/updateBook.do" onclick="register()">상품등록</a></li>
+        <li><a href="/updateBook.do?sellerId=1&sellStatus=0" onclick="register()">상품등록</a></li>
         <li><a href="/updateDelivery.do" onclick="delivery()">배송관리</a></li>
     </ul>
 </div>
@@ -50,8 +50,10 @@
             <option value="청소년">청소년</option>
         </select>
 
-        <input type="text" name="keyword" id="keyword" onchange="inputTextCheck()">
+        <input type="text" name="keyword" id="keyword" onchange="inputTextCheck()" placeholder="키워드를 입력하세요.">
         <button type="button" onclick="searchButton()">search</button>
+
+        <button type="button" onclick="salesButton()">판매량순</button>
 
     </div>
 
@@ -64,7 +66,10 @@
                     <td><img src="<%= dto.getImage_url()%>"></td>
                     <td><%= dto.getTitle()%></td>
                     <td>
-                        <button type="button" name="editBtn" id="editBtn" value="<%= dto.getRegistered_book_id()%>" onclick="editButton()">edit</button>
+                        <button type="button" name="editBtn" id="editBtn" value="<%= dto.getRegistered_book_id()%>" onclick="editButton(<%= dto.getRegistered_book_id()%>)">edit</button>
+                    </td>
+                    <td>
+                        <button type="button" name="cancelBtn" id="cancelBtn" value="<%= dto.getRegistered_book_id()%>" onclick="cancelBookButton(<%= dto.getRegistered_book_id()%>)">cancel</button>
                     </td>
                 </tr>
             <%
@@ -87,7 +92,7 @@
       var sel = document.getElementById('categorySelect');
       var val = sel.options[sel.selectedIndex].value;
 
-      var jsonData = {"sellerId":"1", "category":val};
+      var jsonData = {"sellerId":"1", "category":val, "sellStatus":1};
 
       getBooks("category.do", jsonData);
     }
