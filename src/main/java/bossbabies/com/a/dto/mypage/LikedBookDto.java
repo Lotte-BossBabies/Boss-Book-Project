@@ -12,17 +12,17 @@ import java.io.Serializable;
  * -----------------------------------------------------------
  */
 public class LikedBookDto implements Serializable {
-    private int bookId;
-    private int likeId;
+    private Integer bookId;
+    private Integer likeId;
     private String title;
-    private int price;
+    private Integer price;
     private String imageUrl;
 
 
     public LikedBookDto() {
     }
 
-    public LikedBookDto(int bookId, int likeId, String title, int price, String imageUrl) {
+    public LikedBookDto(Integer bookId, Integer likeId, String title, Integer price, String imageUrl) {
         this.bookId = bookId;
         this.likeId = likeId;
         this.title = title;
@@ -34,7 +34,7 @@ public class LikedBookDto implements Serializable {
         return bookId;
     }
 
-    public void setBookId(int book_id) {
+    public void setBookId(Integer book_id) {
         this.bookId = book_id;
     }
 
@@ -42,7 +42,7 @@ public class LikedBookDto implements Serializable {
         return likeId;
     }
 
-    public void setLikeId(int like_id) {
+    public void setLikeId(Integer like_id) {
         this.likeId = like_id;
     }
 
@@ -58,7 +58,7 @@ public class LikedBookDto implements Serializable {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
