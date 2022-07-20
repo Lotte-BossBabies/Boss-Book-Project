@@ -1,6 +1,7 @@
 package bossbabies.com.a.controller;
 
 import bossbabies.com.a.dto.RegisteredBookDto;
+import bossbabies.com.a.service.DetailedBookServiceImpl;
 import bossbabies.com.a.service.admin.AdminServiceImpl;
 import java.util.Date;
 import java.util.List;
@@ -32,16 +33,20 @@ public class AdminController {
     @Autowired
     AdminServiceImpl adminService;
 
+    @Autowired
+    DetailedBookServiceImpl detailedBookService;
+
+
     Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @RequestMapping(value = "adminMain.do", method = RequestMethod.GET)
-    public String main(int sellerId, String category, Model model) {
+    public String main(int sellerId, String category, int sellStatus, Model model) {
 
         logger.info(new Date() + " AdminController main");
 
         category = "소설";
 
-        List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category);
+        List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
         model.addAttribute("resultList", resultList);
 
         return "/admin/books";
@@ -53,8 +58,11 @@ public class AdminController {
 
         logger.info(new Date() + " AdminController getBooksBycategory()");
 
-        List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(
-            Integer.parseInt(map.get("sellerId")), map.get("category"));
+        int sellerId = Integer.parseInt(map.get("sellerId"));
+        String category = map.get("category");
+        int sellStatus = Integer.parseInt(map.get("sellStatus"));
+
+        List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
 
         return resultList;
 
@@ -66,15 +74,117 @@ public class AdminController {
         logger.info(new Date() + " AdminController getBooksByKeyword()");
 
         int sellerId = Integer.parseInt(map.get("sellerId"));
-        System.out.println("$$$$$$$$$$$$$" + sellerId);
         String category = map.get("category");
         String keyword = map.get("keyword");
+        int sellStatus = Integer.parseInt(map.get("sellStatus"));
 
-        List<RegisteredBookDto> resultList = adminService.getRegisteredBookListByKeyword(sellerId, category, keyword);
+        List<RegisteredBookDto> resultList = adminService.getRegisteredBookListByKeyword(sellerId, category, keyword, sellStatus);
 
         return resultList;
 
     }
 
+    @RequestMapping(value = "sales.do", method = RequestMethod.POST)
+    @ResponseBody
+    public List<RegisteredBookDto> getBooksBySales(@RequestBody Map<String, String> map) {
+
+        logger.info(new Date() + " AdminController getBooksBySales()");
+
+        int sellerId = Integer.parseInt(map.get("sellerId"));
+        String category = map.get("category");
+        int sellStatus = Integer.parseInt(map.get("sellStatus"));
+
+        List<RegisteredBookDto> resultList = adminService.getRegisteredBookListBySellCount(sellerId, category, sellStatus);
+
+        return resultList;
+    }
+
+    @RequestMapping(value = "bookEdit.do", method = RequestMethod.GET)
+    public String getBook(String registeredBookId, Model model) {
+
+        logger.info(new Date() + " AdminController getBook()");
+
+        int bookId = Integer.parseInt(registeredBookId);
+
+        RegisteredBookDto resultDto = detailedBookService.getRegisteredBook(bookId);
+
+        System.out.println(resultDto.toString());
+        model.addAttribute("registeredBook", resultDto);
+
+        return "/admin/bookEdit";
+    }
+
+
+    @RequestMapping(value = "updateSellStatus.do", method = RequestMethod.POST)
+    @ResponseBody
+    public int cancelBook(@RequestBody Map<String, String> map) {
+
+        logger.info(new Date() + " AdminController cancelBook()");
+
+        int status = Integer.parseInt(map.get("sellStatus"));
+        int id = Integer.parseInt(map.get("registeredBookId"));
+
+        System.out.println("!!!!!!!!!!!!!" + status + " " + id);
+
+        int result = adminService.updateRegisteredBook(status, id);
+
+        return result;
+    }
+
+    @RequestMapping(value = "update.do", method = RequestMethod.POST)
+    @ResponseBody
+    public int updateStockAndDiscount(@RequestBody Map<String, String> map) {
+
+        logger.info(new Date() + " AdminController updateStockAndDiscount()");
+
+        int registeredBookId = Integer.parseInt(map.get("id"));
+        int stock = Integer.parseInt(map.get("stock"));
+        int discount = Integer.parseInt(map.get("discount"));
+
+        int result = adminService.updateStock(registeredBookId, stock, discount);
+
+        return result;
+    }
+
+    @RequestMapping(value = "updateBook.do", method = RequestMethod.GET)
+    public String updateBook(int sellerId, int sellStatus, Model model) {
+
+        logger.info(new Date() + " AdminController updateBook()");
+
+        String category = "소설";
+
+        List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
+        model.addAttribute("resultList", resultList);
+
+        return "/admin/bookRegister";
+    }
+
+    @RequestMapping(value = "notRegisteredBooks.do", method = RequestMethod.POST)
+    @ResponseBody
+    public List<RegisteredBookDto> notRegisters(@RequestBody Map<String, String> map) {
+
+        logger.info(new Date() + " AdminController notRegisters()");
+
+        int sellerId = Integer.parseInt(map.get("sellerId"));
+        String category = map.get("category");
+        int sellStatus = Integer.parseInt(map.get("sellStatus"));
+
+        return adminService.getRegisteredBookList(sellerId, category, sellStatus);
+    }
+
+    @RequestMapping(value = "notRegisteredBooksByKeyword.do", method = RequestMethod.POST)
+    @ResponseBody
+    public List<RegisteredBookDto> notRegistersByKeyword(@RequestBody Map<String, String> map) {
+
+        logger.info(new Date() + " AdminController notRegistersByKeyword()");
+
+        int sellerId = Integer.parseInt(map.get("sellerId"));
+        String category = map.get("category");
+        String keyword = map.get("keyword");
+        int sellStatus = Integer.parseInt(map.get("sellStatus"));
+
+        return adminService.getRegisteredBookListByKeyword(sellerId, category, keyword, sellStatus);
+
+    }
 
 }

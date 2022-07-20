@@ -1,6 +1,7 @@
 package bossbabies.com.a.service.admin;
 
 import bossbabies.com.a.dao.registeredBook.RegisteredBookDao;
+import bossbabies.com.a.dao.registeredBook.RegisteredBookDaoImpl;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
@@ -24,28 +25,28 @@ import org.springframework.stereotype.Service;
 public class AdminServiceImpl implements AdminService{
 
     @Autowired
-    RegisteredBookDao dao;
+    RegisteredBookDaoImpl dao;
 
     @Override
-    public List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category) {
+    public List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category, int sellStatus) {
 
-        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category);
+        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category, sellStatus);
 
         return dao.getRegisteredBookList(vo);
     }
 
     @Override
-    public List<RegisteredBookDto> getRegisteredBookListBySellCount(int sellerId, String category) {
+    public List<RegisteredBookDto> getRegisteredBookListBySellCount(int sellerId, String category, int sellStatus) {
 
-        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category);
+        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category, sellStatus);
 
         return dao.getRegisteredBookListBySellCount(vo);
     }
 
     @Override
-    public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword) {
+    public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword, int sellStatus) {
 
-        CategoryAndKeywordVO vo = new CategoryAndKeywordVO(category, keyword, sellerId);
+        CategoryAndKeywordVO vo = new CategoryAndKeywordVO(category, keyword, sellerId, sellStatus);
 
         return dao.getRegisteredBookListByKeyword(vo);
     }
@@ -56,6 +57,11 @@ public class AdminServiceImpl implements AdminService{
         IdAndCountVO vo = new IdAndCountVO(registeredBookId, newCount, discount);
 
         return dao.updateStock(vo);
+    }
+
+    @Override
+    public List<RegisteredBookDto> getBooksNotRegistered(int sellerId) {
+        return dao.getBookListNotRegistered(sellerId);
     }
 
     @Override

@@ -17,13 +17,15 @@ import java.util.List;
  */
 public interface AdminService {
 
-    public List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category);
+    public List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category, int sellStatus);
 
-    public List<RegisteredBookDto> getRegisteredBookListBySellCount(int sellerId, String category);
+    public List<RegisteredBookDto> getRegisteredBookListBySellCount(int sellerId, String category, int sellStatus);
 
-    public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword);
+    public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword, int sellStatus);
 
     public int updateStock(int registeredBookId, int newCount, int discount);
+
+    public List<RegisteredBookDto> getBooksNotRegistered(int sellerId);
 
     public int updateRegisteredBook(int status, int registeredBookId);
 
