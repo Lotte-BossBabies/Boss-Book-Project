@@ -164,7 +164,7 @@
                         <div class="review-content"><img src="/resources/images/star.png" alt="별"
                                                          style="text-align: left; width: 20px;"> <%=review.getStar()%>.0
                         </div class="review-content">
-                        <div class="card border-dark mb-3" style="width: 700px;">
+                        <div class="card border-success mb-3" style="width: 700px;">
                             <div class="card-body">
                                 <p class="card-text"><%=review.getContent()%></p>
                             </div>
