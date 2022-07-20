@@ -22,6 +22,11 @@ public class BookDaoImpl implements BookDao{
     }
 
     @Override
+    public BookDto getBookByRId(int r_book_id) {
+        return session.selectOne(namespace+"getBookByRid", r_book_id);
+    }
+
+    @Override
     public List<PopularBookInfoDto> topOfFindByStar() {
         return session.selectList(namespace+"topOfFindByStar");
     }
