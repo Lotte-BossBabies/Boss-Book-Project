@@ -67,7 +67,8 @@ public class MyPageController {
     }
 
     @GetMapping("writeReview.do")
-    public String writeReview(int bookId, int memberId, ReviewVO rvo, Model model, HttpServletResponse response) throws Exception {
+    public String writeReview(int bookId, int memberId, ReviewVO rvo, Model model,
+                              HttpServletResponse response) throws Exception {
         BookDto book = bookService.getBookByRId(bookId);
         MyPageReviewDto review = myPageService.getReview(rvo);
 
@@ -75,9 +76,9 @@ public class MyPageController {
             response.setContentType("text/html;charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>alert('이미 리뷰를 등록한 책입니다!');");
-            out.println("location.href='mypage.do?memberId="+memberId+"';");
-            out.println("</script>");
+            out.println("<script>alert('이미 리뷰를 등록한 책입니다!');" +
+                    "location.href='mypage.do?memberId=" + memberId + "';" +
+                    "</script>");
             out.flush();
             return "";
         }
