@@ -3,6 +3,8 @@ package bossbabies.com.a.controller;
 import bossbabies.com.a.dto.user.MemberDto;
 import bossbabies.com.a.dto.user.SellerDto;
 import bossbabies.com.a.parameterVO.LoginVO;
+import bossbabies.com.a.parameterVO.UpdateMemberVO;
+import bossbabies.com.a.parameterVO.UpdateSellerVO;
 import bossbabies.com.a.service.MemberService;
 import bossbabies.com.a.service.SellerService;
 import org.slf4j.Logger;
@@ -57,7 +59,7 @@ public class UserController {
         String email = memberDto.getEmail();
         String phone = memberDto.getPhone();
         String address = memberDto.getAddress();
-        MemberDto insertDto = new MemberDto(id, password, name, email, phone, address);
+        MemberDto insertDto = new MemberDto(id, password, name, email, address, phone);
         System.out.println("Dto = " + insertDto);
         int count = memberService.regiMember(insertDto);
         String msg = "NO";
@@ -132,6 +134,40 @@ public class UserController {
             model.addAttribute("seller", seller);
             return "/user/updateSeller";
         }
+    }
+    @RequestMapping(value = "updateMember.do", method = RequestMethod.GET)
+    public String updateMember(HttpServletRequest req){
+        String password = req.getParameter("password");
+        String phone = req.getParameter("phone");
+        String address = req.getParameter("address");
+        String id = req.getParameter("id");
+        UpdateMemberVO vo = new UpdateMemberVO(password, address, phone, id);
+        System.out.println(vo);
+        int updateMember = memberService.updateMember(vo);
+        System.out.println(updateMember);
+        String msg = "updateFail";
+        if(updateMember > 0){
+            msg = "updateSuccess";
+        }
+        System.out.println(msg);
+        return "user/login";
+    }
+    @RequestMapping(value = "updateSeller.do", method = RequestMethod.GET)
+    public String updateSeller(HttpServletRequest req){
+        String password = req.getParameter("password");
+        String phone = req.getParameter("phone");
+        String store_name = req.getParameter("store_name");
+        String id = req.getParameter("id");
+        UpdateSellerVO vo = new UpdateSellerVO(password, store_name, phone, id);
+        System.out.println(vo);
+        int updateSeller = sellerService.updateSeller(vo);
+        System.out.println(updateSeller);
+        String msg = "updateFail";
+        if(updateSeller > 0){
+            msg = "updateSuccess";
+        }
+        System.out.println(msg);
+        return "user/login";
     }
 
 

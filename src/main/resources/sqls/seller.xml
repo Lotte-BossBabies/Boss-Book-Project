@@ -20,4 +20,10 @@
         where id=#{id}
     </select>
 
+    <update id="updateSeller" parameterType="bossbabies.com.a.parameterVO.UpdateSellerVO">
+        update seller
+        set password=#{password}, store_name=#{store_name}, phone=#{phone}
+        WHERE id=#{id}
+    </update>
+
 </mapper>

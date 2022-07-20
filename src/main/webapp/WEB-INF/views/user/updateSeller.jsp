@@ -9,6 +9,7 @@
 <%
     SellerDto seller = (SellerDto) request.getAttribute("seller");
     String id = seller.getId();
+    String name = seller.getName();
     String email = seller.getEmail();
     String phone = seller.getPhone();
     String store_name = seller.getStore_name();
@@ -103,21 +104,25 @@
     <div class="redbox">회원정보 수정</div>
     <div class="userinfo">
 
-        <form action="updateUserController" method="post" id="platform">
-            <input type="hidden" id="flag" value="updateUser" name="param">
+        <form action="updateSeller.do" method="get" id="platform">
             <div class="user">
                 <div class="text">아이디</div>
                 <input name="id" type="text" class="infoinput" id="id" value="<%= id%>" readonly>
                 <span class="blank"></span>
             </div>
             <div class="user">
+                <div class="text">이름</div>
+                <input name="name" type="text" class="infoinput" id="name" value="<%= name%>" readonly>
+                <span class="blank"></span>
+            </div>
+            <div class="user">
                 <div class="text">이메일</div>
-                <input name="email" type="text" class="infoinput" id="email" value="<%= email%>">
+                <input name="email" type="text" class="infoinput" id="email" value="<%= email%>" readonly>
                 <span class="blank"></span>
             </div>
             <div class="user">
                 <div class="text">비밀번호</div>
-                <input name="pwd" type="password" class="infoinput" id="pwd" required="required" onkeyup="return passwordChanged()">
+                <input name="password" type="password" class="infoinput" id="password" required="required" onkeyup="return passwordChanged()">
                 <span id="strength" class="blank">Type Password</span>
             </div>
             <div class="user">
