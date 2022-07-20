@@ -24,7 +24,7 @@
             resultType="bossbabies.com.a.dto.mypage.MyPageReviewDto">
         select content
         from review
-        where member_id = #{memberId} and registered_book_id = #{bookId};
+        where member_id = #{memberId} and registered_book_id = #{bookId}
     </select>
 
     <insert id="addReview" parameterType="bossbabies.com.a.dto.ReviewDto">
