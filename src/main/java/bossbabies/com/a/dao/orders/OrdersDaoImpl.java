@@ -1,9 +1,13 @@
 package bossbabies.com.a.dao.orders;
 
+import bossbabies.com.a.dto.admin.DeliveryDto;
 import bossbabies.com.a.dto.mypage.OrderDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * [프로젝트]롯데e커머스_자바전문가과정
@@ -30,5 +34,29 @@ public class OrdersDaoImpl implements OrdersDao{
             return false;
         }
         return true;
+    }
+
+    @Override
+    public List<DeliveryDto> getPreDeliveryBooks(int seller_id){
+        return session.selectList(namespace+"getPreDeliveryBooks", seller_id);
+    }
+
+    @Override
+    public boolean updateDeliveryStatus(int order_id) {
+        int count = session.update(namespace+"updateDeliveryStatus", order_id);
+        if(count == 0){
+            return false;
+        }
+        return true;
+    }
+
+//    @Override
+//    public List<DeliveryDto> getCompletedDeliveryBooks(int seller_id) {
+//        return session.selectList(namespace+"getCompletedDeliveryBooks", seller_id);
+//    }
+
+    @Override
+    public List<DeliveryDto> getCompletedDeliveryBooksWithPeriod(Map<String, String> deliveryMap) {
+        return session.selectList(namespace+"getCompletedDeliveryBooksWithPeriod", deliveryMap);
     }
 }
