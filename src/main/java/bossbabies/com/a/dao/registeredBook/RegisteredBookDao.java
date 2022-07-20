@@ -17,6 +17,8 @@ public interface RegisteredBookDao {
 
     public int updateStock(IdAndCountVO vo);
 
+    public List<RegisteredBookDto> getBookListNotRegistered(int sellerId);
+
     public int updateRegisteredBook(StatusAndRegisteredBookIdVO vo);
 
     public int updateDeliveryCompleted(StatusAndRegisteredBookIdVO vo);

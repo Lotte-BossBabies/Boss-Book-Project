@@ -58,6 +58,11 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
         return session.update(namespace + "updateBookCountAndDiscount", vo);
     }
 
+    @Override
+    public List<RegisteredBookDto> getBookListNotRegistered(int sellerId) {
+        return session.selectList(namespace + "getBooksNotRegistered", sellerId);
+    }
+
     /***
      * 상품 책 등록 상태 수정 메소드 - 등록 목록에서 삭제
      * 1 -> 0 : 판매 등록 해지
@@ -67,6 +72,9 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      */
     @Override
     public int updateRegisteredBook(StatusAndRegisteredBookIdVO vo) {
+
+        System.out.println("##########" + vo.getRegisteredBookId());
+        System.out.println("@@@@@@@@@" + vo.getStatus());
         return session.update(namespace + "updateSellStatus", vo);
     }
 
