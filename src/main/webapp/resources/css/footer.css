@@ -1,0 +1,178 @@
+#footer{
+    background-color: #f8f8f8;
+    text-align: center;
+    font-size: 0;
+    width: 1920px;
+}
+
+#footer img{
+    width: 200px;
+}
+
+#footer .footerTopMenu ul{
+    margin-top: 10px;
+}
+
+#footer .wideArea{
+    position: relative;
+}
+
+#footer, .tabWrap.subsidiaryTab.basic.xScroll.ellotte .tabArea .scrollArea ul li.active .tab {
+    color: #000;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+#mainLayout .wideArea .innerContent {
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#footer .footerTopMenu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    position: relative;
+    font-size: 0;
+    text-align: left;
+}
+
+#footer .footerTopMenu>ul li:first-child {
+    padding-left: 0;
+}
+
+#footer .footerTopMenu>ul li {
+    position: relative;
+    float: left;
+    padding-left: 19px;
+    font-size: 13px;
+    line-height: 1.64;
+    letter-spacing: -.3px;
+    color: #333;
+}
+
+.withSeller#footer .companyInfo {
+    padding-bottom: 40px;
+}
+
+#mainLayout .wideArea .innerContent {
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#footer .companyInfo {
+    display: inline-block;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 0;
+    color: #757575;
+    text-align: left;
+}
+
+#footer .companyInfo .infoWrapper .company {
+    float: left;
+    width: 384px;
+}
+
+#footer .companyInfo .logoArea {
+    float: left;
+    width: 234px;
+    padding-top: 4px;
+}
+
+#footer h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+#footer .companyInfo .infoWrapper {
+    float: left;
+    width: calc(100% - 234px);
+}
+
+#footer .companyInfo .infoWrapper .company {
+    float: left;
+    width: 384px;
+}
+
+#footer .companyInfo .infoWrapper .company h3 {
+    padding-bottom: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.64;
+    letter-spacing: -.3px;
+    color: #333;
+}
+
+#footer .companyInfo .infoWrapper .company ul{
+    padding: 0;
+}
+
+#footer .companyInfo .infoWrapper .company li {
+    font-size: 12px;
+    line-height: 1.58;
+    letter-spacing: -.2px;
+    color: #757575;
+}
+
+#footer .companyInfo .infoWrapper .company h4 {
+    padding-top: 16px;
+    padding-bottom: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.58;
+    letter-spacing: -.2px;
+    color: #757575;
+}
+
+#footer .companyInfo .infoWrapper .company .footerCopyright, #footer .companyInfo .infoWrapper .company p {
+    font-size: 12px;
+    line-height: 1.58;
+    letter-spacing: normal;
+    color: #757575;
+}
+
+#footer .companyInfo .infoWrapper .customer {
+    float: left;
+    width: calc(100% - 384px);
+}
+
+#footer .companyInfo .infoWrapper .customer h3:first-child {
+    padding-top: 0;
+}
+
+#footer .companyInfo .infoWrapper .customer h3 {
+    padding-top: 16px;
+    padding-bottom: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.58;
+    letter-spacing: -.2px;
+    color: #757575;
+}
+
+#footer .footerInfo {
+    padding: 20px 0;
+    font-size: 12px;
+    line-height: 1.58;
+    letter-spacing: -.2px;
+    color: #757575;
+}
+
+#footer .footerInfo p {
+    /*max-width: 1140px;*/
+    /*text-align: center;*/
+}

@@ -20,9 +20,13 @@ public class RegisteredBookDto {
 
     private boolean sell_status;
 
-    private int discount_rate;
+    private Integer discount_rate;
 
-    public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count, int book_count, Instant register_date, boolean sell_status, int discount_rate) {
+    private String image_url;
+
+    private String title;
+
+    public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count, int book_count, Instant register_date, boolean sell_status, Integer discount_rate) {
         this.registered_book_id = registered_book_id;
         this.book_id = book_id;
         this.seller_id = seller_id;
@@ -31,6 +35,22 @@ public class RegisteredBookDto {
         this.register_date = register_date;
         this.sell_status = sell_status;
         this.discount_rate = discount_rate;
+    }
+
+    public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count,
+        int book_count, Instant register_date, boolean sell_status, int discount_rate,
+        String image_url,
+        String title) {
+        this.registered_book_id = registered_book_id;
+        this.book_id = book_id;
+        this.seller_id = seller_id;
+        this.order_count = order_count;
+        this.book_count = book_count;
+        this.register_date = register_date;
+        this.sell_status = sell_status;
+        this.discount_rate = discount_rate;
+        this.image_url = image_url;
+        this.title = title;
     }
 
     public int getRegistered_book_id() {
@@ -89,12 +109,28 @@ public class RegisteredBookDto {
         this.sell_status = sell_status;
     }
 
-    public int getDiscount_rate() {
+    public Integer getDiscount_rate() {
         return discount_rate;
     }
 
-    public void setDiscount_rate(int discount_rate) {
+    public void setDiscount_rate(Integer discount_rate) {
         this.discount_rate = discount_rate;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override
@@ -107,6 +143,9 @@ public class RegisteredBookDto {
                 ", book_count=" + book_count +
                 ", register_date=" + register_date +
                 ", sell_status=" + sell_status +
+                ", discount_rate=" + discount_rate +
+                ", image_url=" + image_url +
+                ", title=" + title +
                 '}';
     }
 }

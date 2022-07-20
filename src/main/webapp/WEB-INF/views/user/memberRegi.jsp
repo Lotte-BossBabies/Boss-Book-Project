@@ -20,8 +20,7 @@
     </div>
     <div class="outerInputBox">
         <!-- onsubmit="return checkForm()" 삭제 -->
-        <form action="<%=request.getContextPath() %>/user" method="post" id="form">
-            <input type="hidden" id="flag" value="regiAf" name="param">
+        <form action="regiMember.do" method="get" id="form">
             <div class="innerInputBox">
                 <label for="id">아이디 : </label>
                 <input type="text" class="inputs" id="id" placeholder="아이디" name="id" required="required">
@@ -30,8 +29,8 @@
             </div>
             <%--                <button type="button" class="btn btn-primary" onclick="checkId()">중복확인</button><br><br>--%>
             <div class="innerInputBox">
-                <label for="pwd">비밀번호 : </label>
-                <input type="password" class="inputs" id="pwd" placeholder="비밀번호" name="pwd"
+                <label for="password">비밀번호 : </label>
+                <input type="password" class="inputs" id="password" placeholder="비밀번호" name="password"
                        size="15" maxlength="100" onkeyup="return passwordChanged()" required="required">
                 <span id="strength">Type Password</span>
             </div>
@@ -57,16 +56,16 @@
                 <input type="text" class="inputs" name="phone" required="required">
             </div>
             <div class="innerInputBox">
-                <%--@declare id="store"--%><label for="store">이메일 : </label>
-                <input type="text" class="inputs" placeholder="주소" name="store" required="required">
+                <%--@declare id="address"--%><label for="address">주소 : </label>
+                <input type="text" class="inputs" placeholder="주소" name="address" required="required">
+            </div>
+            <div class="buttonBox">
+                <button type="submit" class="btn submitBtn" onclick="formSubmit()">가입하기</button>
+                <button type="button" class="btn cancelBtn" onclick="gotoLogin()">취소</button>
             </div>
         </form>
     </div><!— card body —>
     <%--        <%— footer div - form 밖으로 분리, js통해 submit —%>--%>
-    <div class="buttonBox">
-        <button type="submit" class="btn submitBtn" onclick="formSubmit()">가입하기</button>
-        <button type="button" class="btn cancelBtn" onclick="gotoLogin()">취소</button>
-    </div>
 </div>
 
 <script type="text/javascript">

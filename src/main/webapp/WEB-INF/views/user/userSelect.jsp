@@ -47,7 +47,7 @@
 
 <script>
     function clickCommon() {
-        location.href = "commonRegi.do";
+        location.href = "memberRegi.do";
     }
     function clickSeller() {
         location.href = "sellerRegi.do";

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Review">
+
+    <select id="getReviewByRBookId" parameterType="java.lang.Integer" resultType="bossbabies.com.a.dto.ReviewDto">
+        select review_id, member_id, registered_book_id, content, star, review_date
+        from review
+        where registered_book_id=#{registered_book_id}
+        order by review_date desc
+    </select>
+
+    <insert id="addReview" parameterType="bossbabies.com.a.dto.ReviewDto">
+        insert into review(member_id, content, star, review_date, registered_book_id)
+        values(#{member_id}, #{content}, #{star}, #{review_date}, #{registered_book_id})
+    </insert>
+
+</mapper>

@@ -3,33 +3,54 @@ package bossbabies.com.a.dto.mypage;
 import java.io.Serializable;
 import java.time.Instant;
 
-public class OrderedBookDto implements Serializable {
-    private int book_id;
+/**
+ * [프로젝트]롯데e커머스_자바전문가과정
+ * [시스템명]마이페이지
+ * [팀   명]BossBabies
+ * -----------------------------------------------------------
+ * 수정일자           수정자         수정내용
+ * 2022.07.19       이성은         신규생성
+ * -----------------------------------------------------------
+ */
 
-    private int order_id;
+public class OrderedBookDto implements Serializable {
+    private int bookId;
+    private int orderId;
     private String title;
-    private int price;
-    private String image_url;
-    private Instant order_date;
+    private Integer price;
+    private String imageUrl;
+    private Instant orderDate;
+    private boolean cancelStatus;
+    private boolean deliveryStatus;
 
     public OrderedBookDto() {
     }
 
-    public OrderedBookDto(int book_id, int order_id, String title, int price, String image_url, Instant order_date) {
-        this.book_id = book_id;
-        this.order_id = order_id;
+    public OrderedBookDto(int bookId, int orderId, String title, Integer price, String imageUrl, Instant orderDate, boolean cancelStatus, boolean deliveryStatus) {
+        this.bookId = bookId;
+        this.orderId = orderId;
         this.title = title;
         this.price = price;
-        this.image_url = image_url;
-        this.order_date = order_date;
+        this.imageUrl = imageUrl;
+        this.orderDate = orderDate;
+        this.cancelStatus = cancelStatus;
+        this.deliveryStatus = deliveryStatus;
     }
 
     public int getBookId() {
-        return book_id;
+        return bookId;
     }
 
-    public void setBookId(int book_id) {
-        this.book_id = book_id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getTitle() {
@@ -40,35 +61,43 @@ public class OrderedBookDto implements Serializable {
         this.title = title;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
     public String getImageUrl() {
-        return image_url;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        this.image_url = imageUrl;
+        this.imageUrl = imageUrl;
     }
 
-    public int getOrderId() {
-        return order_id;
+    public Instant getOrderDate() {
+        return orderDate;
     }
 
-    public void setOrderId(int order_id) {
-        this.order_id = order_id;
+    public void setOrderDate(Instant orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public Instant getOrder_date() {
-        return order_date;
+    public boolean isCancelStatus() {
+        return cancelStatus;
     }
 
-    public void setOrder_date(Instant order_date) {
-        this.order_date = order_date;
+    public void setCancelStatus(boolean cancelStatus) {
+        this.cancelStatus = cancelStatus;
+    }
+
+    public boolean isDeliveryStatus() {
+        return deliveryStatus;
+    }
+
+    public void setDeliveryStatus(boolean deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
     }
 }
