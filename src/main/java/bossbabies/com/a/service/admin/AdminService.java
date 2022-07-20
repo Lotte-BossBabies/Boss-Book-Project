@@ -1,10 +1,13 @@
 package bossbabies.com.a.service.admin;
 
 import bossbabies.com.a.dto.RegisteredBookDto;
+import bossbabies.com.a.dto.admin.DeliveryDto;
+import bossbabies.com.a.dto.mypage.OrderDto;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
 import java.util.List;
+import java.util.Map;
 
 /**
  * [프로젝트]롯데e커머스_자바전문가과정
@@ -29,4 +32,11 @@ public interface AdminService {
 
     public int updateDeliveryCompleted(int status, int registeredBookId);
 
+    List<DeliveryDto> getPreDeliveryBooks(int seller_id);
+
+    boolean updateDeliveryStatus(int order_id);
+
+    List<DeliveryDto> getCompletedDeliveryBooks(int seller_id, String startDate, String endDate);
+
+//    List<DeliveryDto> getCompletedDeliveryBooks(int seller_id);
 }

@@ -1,6 +1,10 @@
 package bossbabies.com.a.dao.orders;
 
+import bossbabies.com.a.dto.admin.DeliveryDto;
 import bossbabies.com.a.dto.mypage.OrderDto;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * [프로젝트]롯데e커머스_자바전문가과정
@@ -14,4 +18,12 @@ import bossbabies.com.a.dto.mypage.OrderDto;
 public interface OrdersDao {
 
     boolean makeOrder(OrderDto orderDto);
+
+    List<DeliveryDto> getPreDeliveryBooks(int seller_id);
+
+    boolean updateDeliveryStatus(int order_id);
+
+//    List<DeliveryDto> getCompletedDeliveryBooks(int seller_id);
+
+    List<DeliveryDto>  getCompletedDeliveryBooksWithPeriod(Map<String , String> deliveryMap);
 }
