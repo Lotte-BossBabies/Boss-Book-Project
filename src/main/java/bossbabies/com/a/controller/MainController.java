@@ -1,6 +1,7 @@
 package bossbabies.com.a.controller;
 
 import bossbabies.com.a.dto.BookDto;
+import bossbabies.com.a.dto.main.RegisteredBookInfoDto;
 import bossbabies.com.a.service.BookApiServiceImpl;
 import bossbabies.com.a.service.BookInfoServiceImpl;
 import org.slf4j.Logger;
@@ -41,9 +42,11 @@ public class MainController {
 
         boolean api = service.insertData();
         List<BookDto> bookDtos = infoService.topOfFindByPubdate();
+        List<RegisteredBookInfoDto> bookInfoDtos = infoService.topOfFindByOrderCount();
 
         //추천도서
         model.addAttribute("bookDtos", bookDtos);
+        model.addAttribute("bookInfoDtos",bookInfoDtos);
 
         if (!api) {
             return "book/main";

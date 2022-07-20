@@ -1,6 +1,8 @@
 package bossbabies.com.a.dao.book;
 
 import bossbabies.com.a.dto.BookDto;
+import bossbabies.com.a.dto.RegisteredBookDto;
+import bossbabies.com.a.dto.main.RegisteredBookInfoDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,5 +24,10 @@ public class BookDaoImpl implements BookDao{
     @Override
     public List<BookDto> topOfFindByPubdate() {
         return session.selectList(namespace+"topOfFindByPubdate");
+    }
+
+    @Override
+    public List<RegisteredBookInfoDto> topOfFindByOrderCount() {
+        return session.selectList(namespace+"topOfFindByOrderCount");
     }
 }

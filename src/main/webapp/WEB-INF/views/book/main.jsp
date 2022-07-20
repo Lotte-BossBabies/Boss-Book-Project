@@ -1,12 +1,6 @@
-<%@ page import="java.util.List" %>
-<%@ page import="bossbabies.com.a.dto.BookDto" %>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%
-    List<BookDto> bookdtos = (List<BookDto>) request.getAttribute("bookDtos");
-%>
 <html>
 <head>
     <title>Title</title>
@@ -175,18 +169,11 @@
                         </div>
                     </div>
                     <div class="slider">
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/4/4/4/7/354514447s.jpg" alt="">
-                        </div>
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/7/5/5/2/354337552s.jpg" alt="">
-                        </div>
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/7/5/4/2/354337542s.jpg" alt="">
-                        </div>
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/2/2/1/4/354852214s.jpg" alt="">
-                        </div>
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/0/1/3/6/354460136s.jpg" alt="">
-                        </div>
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/2/2/5/6/354552256s.jpg" alt="">
-                        </div>
+                        <c:forEach var="bookInfo" items="${bookInfoDtos}">
+                            <div align="center" class="book-cover">
+                                <a><img src="${bookInfo.image_url}" style="border: 2px solid #3CAE76; padding: 5px;"></a>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
