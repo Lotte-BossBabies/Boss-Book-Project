@@ -9,6 +9,8 @@ import java.util.List;
 public interface BookDao {
 
     BookDto getBookById(int book_id);
+
+    BookDto getBookByRId(int r_book_id);
     
     List<PopularBookInfoDto> topOfFindByStar();
     
