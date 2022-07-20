@@ -14,8 +14,8 @@ import java.time.Instant;
  */
 
 public class OrderedBookDto implements Serializable {
-    private int bookId;
-    private int orderId;
+    private Integer bookId;
+    private Integer orderId;
     private String title;
     private Integer price;
     private String imageUrl;
@@ -26,7 +26,7 @@ public class OrderedBookDto implements Serializable {
     public OrderedBookDto() {
     }
 
-    public OrderedBookDto(int bookId, int orderId, String title, Integer price, String imageUrl, Instant orderDate, boolean cancelStatus, boolean deliveryStatus) {
+    public OrderedBookDto(Integer bookId, Integer orderId, String title, Integer price, String imageUrl, Instant orderDate, boolean cancelStatus, boolean deliveryStatus) {
         this.bookId = bookId;
         this.orderId = orderId;
         this.title = title;
@@ -41,7 +41,7 @@ public class OrderedBookDto implements Serializable {
         return bookId;
     }
 
-    public void setBookId(int bookId) {
+    public void setBookId(Integer bookId) {
         this.bookId = bookId;
     }
 
@@ -49,7 +49,7 @@ public class OrderedBookDto implements Serializable {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
 

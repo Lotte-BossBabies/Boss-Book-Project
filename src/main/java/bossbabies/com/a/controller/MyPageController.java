@@ -1,9 +1,9 @@
 package bossbabies.com.a.controller;
 
+import bossbabies.com.a.dto.mypage.MyPageReviewDto;
 import bossbabies.com.a.dto.mypage.OrderedBookDto;
 import bossbabies.com.a.dto.mypage.MyPageDto;
 import bossbabies.com.a.dto.mypage.LikedBookDto;
-import bossbabies.com.a.dto.mypage.ReviewDto;
 import bossbabies.com.a.parameterVO.ReviewVO;
 import bossbabies.com.a.service.MyPageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class MyPageController {
         MyPageDto member = service.getMember(md);
         List<OrderedBookDto> orderItemList = service.getOrderList(md);
         List<LikedBookDto> likeItemList = service.getLikeList(md);
-        List<ReviewDto> reviewList = service.getReviewList(md);
+        List<MyPageReviewDto> reviewList = service.getReviewList(md);
 
         model.addAttribute("member", member);
         model.addAttribute("orderList", orderItemList);
