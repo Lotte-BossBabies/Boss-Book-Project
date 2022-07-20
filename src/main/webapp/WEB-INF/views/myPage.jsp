@@ -33,6 +33,8 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans'
           rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
 
     <style>
         h2 {
@@ -56,9 +58,10 @@
     </style>
 </head>
 <body>
-<h1>마이페이지</h1>
 
-<div class="card border-success mb-3" style="text-align: center; width: 20%; margin-left:40%; margin-right:40%;">
+<%@include file = "layout/header.jsp" %>
+
+<div class="card border-success mb-3" style="text-align: center; width: 70%; margin-left:15%; margin-top: 100px;">
     <div class="card-header">♥쇼핑하기 좋은 날이에요!♥</div>
     <div class="card-body">
         <h4 class="card-title" style="margin: 10px;"><img src="/resources/images/happiness.png" alt="별"
@@ -72,8 +75,15 @@
 <div>
     <h2 style="margin-top: 100px;">구매한 상품</h2>
     <table class="table table-hover align-middle"
-           style="text-align: center; width: 70%; margin-left:15%; margin-right:15%;">
+           style="text-align: center; width: 70%; margin-left:15%;">
         <%
+            if(ol.isEmpty()) {
+        %>
+            <tr>
+                <td>구매한 상품이 없습니다!</td>
+            </tr>
+        <%
+            }
             for (int i = 0; i < ol.size(); i++) {
                 OrderedBookDto orderBook = ol.get(i);
                 if (orderBook.isCancelStatus()) continue;
@@ -116,8 +126,15 @@
 <div>
     <h2 style="margin-top: 100px;">좋아요한 상품</h2>
     <table class="table table-hover align-middle"
-           style="text-align: center; width: 70%; margin-left:15%; margin-right:15%;">
+           style="text-align: center; width: 70%; margin-left:15%;">
         <%
+            if(ll.isEmpty()) {
+        %>
+        <tr>
+            <td>좋아요한 상품이 없습니다!</td>
+        </tr>
+        <%
+            }
             for (int i = 0; i < ll.size(); i++) {
                 LikedBookDto likeBook = ll.get(i);
         %>
@@ -142,10 +159,17 @@
 </div>
 
 <div>
-    <h2 style="margin-top: 100px;">내가 작성한 리뷰</h2>
+    <h2 style="margin-top: 100px;">나의 리뷰</h2>
     <table class="table table-hover align-middle"
-           style="text-align: center; width: 70%; margin-left:15%; margin-right:15%;">
+           style="text-align: center; width: 70%; margin-left:15%; margin-bottom: 70px;">
         <%
+            if(rl.isEmpty()) {
+        %>
+        <tr>
+            <td>작성한 리뷰가 없습니다!</td>
+        </tr>
+        <%
+            }
             for (int i = 0; i < rl.size(); i++) {
                 MyPageReviewDto review = rl.get(i);
         %>
@@ -177,6 +201,7 @@
             }
         %>
     </table>
+    <%@include file = "layout/footer.jsp" %>
 </div>
 
 <script>
