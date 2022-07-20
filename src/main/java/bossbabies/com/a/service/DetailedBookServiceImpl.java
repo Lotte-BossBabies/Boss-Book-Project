@@ -5,11 +5,15 @@ import bossbabies.com.a.dao.likes.LikesDao;
 import bossbabies.com.a.dao.orders.OrdersDao;
 import bossbabies.com.a.dao.registeredBook.RegisteredBookDao;
 import bossbabies.com.a.dao.review.ReviewDao;
+import bossbabies.com.a.dao.user.MemberDao;
+import bossbabies.com.a.dao.user.SellerDao;
 import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.LikesDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.dto.ReviewDto;
 import bossbabies.com.a.dto.mypage.OrderDto;
+import bossbabies.com.a.dto.user.MemberDto;
+import bossbabies.com.a.dto.user.SellerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +46,12 @@ public class DetailedBookServiceImpl implements DetailedBookService{
 
     @Autowired
     OrdersDao ordersDao;
+
+    @Autowired
+    MemberDao memberDao;
+
+    @Autowired
+    SellerDao sellerDao;
 
 
     @Override
@@ -121,6 +131,19 @@ public class DetailedBookServiceImpl implements DetailedBookService{
         }
 
         return makeOrderResult;
+    }
+
+    @Override
+    public int getLoginMember(String id) {
+        MemberDto loginMember = memberDao.getMember(id);
+
+        return loginMember.getMember_id();
+    }
+
+    @Override
+    public SellerDto getSeller(String id) {
+        SellerDto seller = sellerDao.getSeller(id);
+        return seller;
     }
 
 }

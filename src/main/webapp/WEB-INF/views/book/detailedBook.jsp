@@ -394,15 +394,12 @@
         });
     }
     function makeOrder(){
-        $.ajax ({
-            url: "checkAvailableOrder.do",
-            type: "GET",
-            data: {
-                registered_book_id : "<%=registeredBook.getRegistered_book_id() %>"
-            },
-            success: function(data) {
-                console.log('checkOrder:',data);
-                if(data == true){
+        let loginStatus = checkLogin();
+        if(loginStatus) {
+            let adminStatus = checkAdmin();
+            if(!adminStatus) {
+                let availableStatus = checkAvailable();
+                if(availableStatus){
                     console.log('if');
                     var newForm = document.createElement('form');
 
@@ -420,13 +417,63 @@
                     newForm.submit();
                 }
                 else{
-                    console.log('error',data);
+                    alert('재고가 부족합니다.');
                 }
+            }
+            else{
+                alert('관리자 계정은 책을 구매할 수 없습니다.');
+            }
+        }
+        else{
+            alert('로그인이 필요한 서비스입니다.');
+            location.href = "login.do";
+        }
+    }
+    function checkLogin(){
+        let loginStatus = false;
+        $.ajax ({
+            url: "checkLogin.do",
+            type: "GET",
+            success: function(data) {
+                likeStatus = data;
             },
             error: function(data) {
                 console.log(data);
             }
         });
+
+        return loginStatus;
+    }
+    function checkAdmin(){
+        let adminStatus = true;
+        $.ajax ({
+            url: "checkAdmin.do",
+            type: "GET",
+            success: function(data) {
+                adminStatus = data;
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+        return adminStatus;
+    }
+    function checkAvailable(){
+        let availableStatus = false;
+        $.ajax({
+            url: "checkAvailableOrder.do",
+            type: "GET",
+            data: {
+                registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
+            },
+            success: function (data) {
+                availableStatus = data;
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+        return availableStatus;
     }
 
 </script>
