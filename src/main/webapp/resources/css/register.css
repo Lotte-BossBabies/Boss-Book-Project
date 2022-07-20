@@ -1,0 +1,58 @@
+.registerBox{
+    width: calc(100%/3);
+    background-size: 36% !important;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin-left: -1px;
+    height: 400px;
+    text-align: center;
+    position: relative;
+    top: 33%;
+}
+.left{
+    background: url(/resources/images/left.png) no-repeat 50% 120px;
+}
+.right{
+    background: url(/resources/images/right.png) no-repeat 50% 140px;
+}
+.btn-white-gray{
+    color: #000;
+    background: #fff;
+    border: 1px solid #ddd;
+    min-width: 183px;
+    text-align: center;
+    display: inline-block;
+    height: 43px;
+    line-height: 43px;
+    font-size: 18px;
+}
+.registerContainer{
+    color: #000;
+    width: 80%;
+    height: 80%;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    font-weight: 300;
+    font-size: 0;
+    padding: 0;
+    vertical-align: center;
+    border: none;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+.tit{
+    display: block;
+    font-size: 26px;
+    line-height: 30px;
+    color: #000;
+    padding-top: 38px;
+    font-weight: 400;
+}
+.tit-desc{
+    font-size: 16px;
+    color: #666;
+    display: block;
+    margin: 16px 0 180px;
+}

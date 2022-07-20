@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%
+    String email = (String)request.getAttribute("email");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +52,7 @@
             </div>
             <div class="innerInputBox">
                 <%--@declare id="email"--%><label for="email">이메일 : </label>
-                <input type="text" class="inputs" placeholder="이메일주소" name="email" required="required">
+                <input type="text" class="inputs" placeholder="이메일주소" name="email" required="required" value="<%=email%>">
             </div>
             <div class="innerInputBox">
                 <%--@declare id="phone"--%><label for="phone">휴대폰 : </label>

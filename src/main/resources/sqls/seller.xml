@@ -26,4 +26,16 @@
         WHERE id=#{id}
     </update>
 
+    <select id="findSellerId" parameterType="bossbabies.com.a.parameterVO.FindIdVO" resultType="java.lang.String">
+        select id
+        from seller
+        where name=#{name} and email=#{email}
+    </select>
+
+    <select id="findSellerPassword" parameterType="bossbabies.com.a.parameterVO.FindPasswordVO" resultType="java.lang.String">
+        select password
+        from seller
+        where id=#{id} and name=#{name} and email=#{email}
+    </select>
+
 </mapper>

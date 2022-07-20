@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kjchoi
@@ -6,51 +7,36 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String email = (String)request.getAttribute("email");
+    System.out.println("받은 변수 : " + email);
+%>
 <html>
 <head>
     <title>Title</title>
-    <style>
-        div{
-            width: 80%;
-            height: 500px;
-            text-align: center;
-            border: 1px solid #000;
-        }
-        div.left{
-            width:50%;
-            float: left;
-            box-sizing: border-box;
-            background: #ff0;
-        }
-        div.right{
-            width:50%;
-            float: right;
-            box-sizing: border-box;
-            background: #0ff;
-        }
-        button{
-            margin:auto;
-        }
-
-    </style>
+    <link href="<c:url value="/resources/css/register.css" />" rel="stylesheet">
 </head>
 <body>
 
-<div>
-    <div class="left">
-        <button onclick="clickCommon()">일반 14세 이상</button>
+<div class="registerContainer">
+    <div class="registerBox left">
+        <span class="tit">일반<br></span>
+        <span class="tit-desc">만 14세 이상</span>
+        <button class="btn-join btn-white-gray" onclick="clickCommon()">일반 14세 이상</button>
     </div>
-    <div class="right">
-        <button onclick="clickSeller()">판매자</button>
+    <div class="registerBox right">
+        <span class="tit">판매자<br></span>
+        <span class="tit-desc">만 14세 이상</span>
+        <button class="btn-join btn-white-gray" onclick="clickSeller()">판매자</button>
     </div>
 </div>
 
 <script>
     function clickCommon() {
-        location.href = "memberRegi.do";
+        location.href = "memberRegi.do?email=<%=email%>";
     }
     function clickSeller() {
-        location.href = "sellerRegi.do";
+        location.href = "sellerRegi.do?email=<%=email%>";
     }
 
 </script>
