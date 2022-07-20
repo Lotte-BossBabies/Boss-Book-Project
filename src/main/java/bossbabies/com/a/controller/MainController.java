@@ -1,10 +1,14 @@
 package bossbabies.com.a.controller;
 
+import bossbabies.com.a.dto.BookDto;
+import bossbabies.com.a.dto.main.RegisteredBookInfoDto;
 import bossbabies.com.a.service.BookApiServiceImpl;
+import bossbabies.com.a.service.BookInfoServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -12,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * [프로젝트]롯데e커머스_자바전문가과정
@@ -25,15 +30,23 @@ import java.util.Date;
  */
 @Controller
 public class MainController {
-
     @Autowired
     BookApiServiceImpl service;
+
+    @Autowired
+    BookInfoServiceImpl infoService;
     Logger logger = LoggerFactory.getLogger(MainController.class);
 
     @RequestMapping("/main.do")
-    public String insertData() throws IOException, ParseException {
+    public String main(Model model) throws IOException, ParseException {
 
         boolean api = service.insertData();
+        List<BookDto> bookDtos = infoService.topOfFindByPubdate();
+        List<RegisteredBookInfoDto> bookInfoDtos = infoService.topOfFindByOrderCount();
+
+        //추천도서
+        model.addAttribute("bookDtos", bookDtos);
+        model.addAttribute("bookInfoDtos",bookInfoDtos);
 
         if (!api) {
             return "book/main";
@@ -48,4 +61,5 @@ public class MainController {
         req.getSession().setAttribute("loginId", "cde");
         return "/user/login";
     }
+
 }

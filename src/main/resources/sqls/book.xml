@@ -11,6 +11,14 @@
         where book_id=#{book_id}
     </select>
 
+    <select id="topOfFindByPubdate" resultType="bossbabies.com.a.dto.BookDto">
+        select book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher
+        from book
+        order by pubdate desc limit 8;
+    </select>
 
+    <select id="topOfFindByOrderCount" resultType="bossbabies.com.a.dto.main.RegisteredBookInfoDto">
+        select registered_book_id, b.book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher from book b, registered_book r where b.book_id = r.book_id order by r.order_count desc limit 8;
+    </select>
 
 </mapper>
