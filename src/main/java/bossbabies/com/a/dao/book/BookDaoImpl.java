@@ -12,7 +12,6 @@ import java.util.List;
 
 @Repository
 public class BookDaoImpl implements BookDao{
-
     @Autowired
     SqlSession session;
 

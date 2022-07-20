@@ -20,6 +20,8 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans'
           rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
 
     <style>
         .reviewInputContainer {
@@ -76,13 +78,13 @@
 </head>
 <body>
 
-<h1>리뷰 작성</h1>
+<%@include file = "layout/header.jsp" %>
 
 <form action="writeReviewAf.do" method="post">
     <input type="hidden" name="bookId" value="<%=bookId%>">
     <input type="hidden" name="memberId" value="<%=memberId%>">
 
-    <div style="text-align: center">
+    <div style="text-align: center; margin-top: 100px;">
         <div style="margin-bottom: 30px;">
             <img class="shadow-lg" src="<%=book.getImage_url()%>" alt="책책책">
         </div>
@@ -113,8 +115,10 @@
 
             </form>
         </div>
-        <button type="submit" class="btn btn-success" style="margin-top: 10px;">작성하기</button>
+        <button type="submit" class="btn btn-success" style="margin-top: 10px; margin-bottom: 50px;">작성하기</button>
     </div>
 </form>
+
+<%@include file = "layout/footer.jsp" %>
 </body>
 </html>
