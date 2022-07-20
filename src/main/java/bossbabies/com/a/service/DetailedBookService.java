@@ -20,6 +20,8 @@ public interface DetailedBookService {
 
     BookDto getBook(int book_id);
 
+    BookDto getBookByRId(int r_book_id);
+
     RegisteredBookDto getRegisteredBook(int registered_book_id);
 
     boolean getLikeStatus(int member_id, int registered_book_id);
