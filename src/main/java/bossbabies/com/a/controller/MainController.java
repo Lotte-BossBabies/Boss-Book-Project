@@ -1,6 +1,7 @@
 package bossbabies.com.a.controller;
 
 import bossbabies.com.a.dto.BookDto;
+import bossbabies.com.a.dto.main.PopularBookInfoDto;
 import bossbabies.com.a.dto.main.RegisteredBookInfoDto;
 import bossbabies.com.a.service.BookApiServiceImpl;
 import bossbabies.com.a.service.BookInfoServiceImpl;
@@ -41,11 +42,11 @@ public class MainController {
     public String main(Model model) throws IOException, ParseException {
 
         boolean api = service.insertData();
-        List<BookDto> bookDtos = infoService.topOfFindByPubdate();
+        List<PopularBookInfoDto> popularBookInfoDtos = infoService.topOfFindByStar();
         List<RegisteredBookInfoDto> bookInfoDtos = infoService.topOfFindByOrderCount();
 
         //추천도서
-        model.addAttribute("bookDtos", bookDtos);
+        model.addAttribute("popularBookInfoDtos", popularBookInfoDtos);
         model.addAttribute("bookInfoDtos",bookInfoDtos);
 
         if (!api) {
@@ -59,13 +60,7 @@ public class MainController {
     public String mainFunc(HttpServletRequest req) {
         logger.info("MainController mainFunc() " + new Date());
         req.getSession().setAttribute("loginId", "cde");
-        return "/user/login";
-    }
-
-    //서점
-    @RequestMapping("bookstore.do")
-    public String bookstore(){
-        return "book/bookstore";
+        return "login";
     }
 
 }

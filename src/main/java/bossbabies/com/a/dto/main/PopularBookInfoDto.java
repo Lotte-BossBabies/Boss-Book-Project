@@ -2,7 +2,8 @@ package bossbabies.com.a.dto.main;
 
 import java.time.Instant;
 
-public class RegisteredBookInfoDto {
+public class PopularBookInfoDto {
+
     private int registered_book_id;
 
     private int book_id;
@@ -25,10 +26,9 @@ public class RegisteredBookInfoDto {
 
     private String publisher;
 
-    public RegisteredBookInfoDto() {
-    }
+    private double avgStar;
 
-    public RegisteredBookInfoDto(int registered_book_id, int book_id, String isbn, String title, String author, int price, String description, String image_url, String category, Instant pubdate, String publisher) {
+    public PopularBookInfoDto(int registered_book_id, int book_id, String isbn, String title, String author, int price, String description, String image_url, String category, Instant pubdate, String publisher, double avgStar) {
         this.registered_book_id = registered_book_id;
         this.book_id = book_id;
         this.isbn = isbn;
@@ -40,6 +40,7 @@ public class RegisteredBookInfoDto {
         this.category = category;
         this.pubdate = pubdate;
         this.publisher = publisher;
+        this.avgStar = avgStar;
     }
 
     public int getRegistered_book_id() {
@@ -130,9 +131,17 @@ public class RegisteredBookInfoDto {
         this.publisher = publisher;
     }
 
+    public double getAvgStar() {
+        return avgStar;
+    }
+
+    public void setAvgStar(double avgStar) {
+        this.avgStar = avgStar;
+    }
+
     @Override
     public String toString() {
-        return "RegisteredBookInfoDto{" +
+        return "PopularBookInfoDto{" +
             "registered_book_id=" + registered_book_id +
             ", book_id=" + book_id +
             ", isbn='" + isbn + '\'' +
@@ -144,6 +153,7 @@ public class RegisteredBookInfoDto {
             ", category='" + category + '\'' +
             ", pubdate=" + pubdate +
             ", publisher='" + publisher + '\'' +
+            ", avgStar=" + avgStar +
             '}';
     }
 }
