@@ -16,6 +16,15 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.List;
 
+/**
+ * [프로젝트]롯데e커머스_자바전문가과정
+ * [시스템명]온라인도서쇼핑몰 구현 프로젝트
+ * [팀   명]BossBabies
+ * -----------------------------------------------------------
+ * 수정일자           수정자         수정내용
+ * 2022.07.18       천예원         신규생성
+ * -----------------------------------------------------------
+ */
 @Service
 public class DetailedBookServiceImpl implements DetailedBookService{
 
@@ -95,10 +104,18 @@ public class DetailedBookServiceImpl implements DetailedBookService{
         return (double)sum/reviewList.size();
     }
 
+    //트랜잭션 처리해야할까....ㅜㅜㅜㅜㅜㅜㅜ
     @Override
     public boolean makeOrder(int member_id, int registered_book_id) {
+        boolean makeOrderResult = true;
+
         OrderDto orderDto = new OrderDto(member_id, registered_book_id, false, Instant.now(), false);
-        return ordersDao.makeOrder(orderDto);
+        boolean orderCountResult = registeredBookDao.updateOrderCount(registered_book_id);
+        if(orderCountResult) {
+            makeOrderResult = ordersDao.makeOrder(orderDto);
+        }
+
+        return makeOrderResult;
     }
 
 }

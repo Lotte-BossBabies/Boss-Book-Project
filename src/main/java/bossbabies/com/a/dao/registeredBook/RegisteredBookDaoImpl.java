@@ -5,7 +5,11 @@ import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
 import bossbabies.com.a.parameterVO.SellerAndCategoryVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -80,8 +84,18 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
         return session.update(namespace + "updateDeliveryStatus", vo);
     }
 
+    @Override
     public RegisteredBookDto getRegisteredBookById(int registered_book_id){
         return session.selectOne(namespace+"getRegisteredBook", registered_book_id);
+    }
+
+    @Override
+    public boolean updateOrderCount(int registered_book_id){
+        int result = session.update(namespace+"updateOrderCount", registered_book_id);
+        if(result == 0){
+            return false;
+        }
+        return true;
     }
 
 
