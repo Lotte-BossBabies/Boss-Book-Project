@@ -10,7 +10,8 @@
 }
 
 #footer .footerTopMenu ul{
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-left: 15px;
 }
 
 #footer .wideArea{
@@ -29,6 +30,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     max-width: 1140px;
     margin-right: auto;
     margin-left: auto;
+
 }
 
 #footer .footerTopMenu {
@@ -75,6 +77,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     font-size: 0;
     color: #757575;
     text-align: left;
+    margin-left: 50px   ;
 }
 
 #footer .companyInfo .infoWrapper .company {
@@ -165,7 +168,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 #footer .footerInfo {
-    padding: 20px 0;
+    padding-bottom: 20px;
     font-size: 12px;
     line-height: 1.58;
     letter-spacing: -.2px;
