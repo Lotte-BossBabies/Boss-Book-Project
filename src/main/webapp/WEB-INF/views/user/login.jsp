@@ -6,11 +6,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <spring:eval expression="@apiProperties['client_id']" var="client_id"/>
-<spring:eval expression="@apiProperties['client_id']" var="redirect_uri"/>
+<spring:eval expression="@apiProperties['redirect_uri']" var="redirect_uri"/>
 
-<% String api_key = "https://kauth.kakao.com/oauth/authorize?client_id=";%>
-+ client_id + "&redirect_uri=" + @Value("${redirect_uri}") +"&response_type=code";
-<%--%>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +64,7 @@
     </div>
 </div>
 <div style="text-align: center">
-    <a class="p-2" href="<%=api_key%>">
+    <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code">
         <img src="${pageContext.request.contextPath}/resources/images/kakao_login_medium_wide.png" >
         <!-- 이미지는 카카오 개발자센터에서 제공하는 login 이미지를 사용했습니다. -->
     </a>
