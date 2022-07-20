@@ -49,10 +49,10 @@ public class MainController {
         model.addAttribute("bookInfoDtos",bookInfoDtos);
 
         if (!api) {
-            return "book/main";
+            return "book/mainpage";
         }
 
-        return "book/main";
+        return "book/mainpage";
     }
 
     @RequestMapping(value = "login.do", method = RequestMethod.GET)
@@ -60,6 +60,12 @@ public class MainController {
         logger.info("MainController mainFunc() " + new Date());
         req.getSession().setAttribute("loginId", "cde");
         return "/user/login";
+    }
+
+    //서점
+    @RequestMapping("bookstore.do")
+    public String bookstore(){
+        return "book/bookstore";
     }
 
 }
