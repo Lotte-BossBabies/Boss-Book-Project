@@ -50,6 +50,11 @@ public class DetailedBookServiceImpl implements DetailedBookService{
     }
 
     @Override
+    public BookDto getBookByRId(int r_book_id) {
+        return bookDao.getBookByRId(r_book_id);
+    }
+
+    @Override
     public RegisteredBookDto getRegisteredBook(int registered_book_id) {
         return registeredBookDao.getRegisteredBookById(registered_book_id);
     }

@@ -11,6 +11,12 @@
         where book_id=#{book_id}
     </select>
 
+    <select id="getBookByRid" parameterType="java.lang.Integer" resultType="bossbabies.com.a.dto.BookDto">
+        select b.book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher
+        from book b, registered_book r
+        where b.book_id = r.book_id and r.registered_book_id=#{book_id}
+    </select>
+
     <select id="topOfFindByPubdate" resultType="bossbabies.com.a.dto.BookDto">
         select book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher
         from book
