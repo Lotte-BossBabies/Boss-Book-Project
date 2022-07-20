@@ -5,6 +5,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class BookDaoImpl implements BookDao{
 
@@ -15,5 +17,10 @@ public class BookDaoImpl implements BookDao{
 
     public BookDto getBookById(int book_id){
         return session.selectOne(namespace+"getBook", book_id);
+    }
+
+    @Override
+    public List<BookDto> topOfFindByPubdate() {
+        return session.selectList(namespace+"topOfFindByPubdate");
     }
 }

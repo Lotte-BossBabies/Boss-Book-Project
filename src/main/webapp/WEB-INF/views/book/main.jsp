@@ -1,12 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: BTC-N20
-  Date: 2022-07-19
-  Time: 오전 10:09
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
+<%@ page import="bossbabies.com.a.dto.BookDto" %>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    List<BookDto> bookdtos = (List<BookDto>) request.getAttribute("bookDtos");
+%>
 <html>
 <head>
     <title>Title</title>
@@ -18,8 +18,8 @@
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
     <link rel="stylesheet" href="<c:url value="/resources/css/header.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/banner.css"/>">
@@ -27,8 +27,8 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/footer.css"/>">
 
     <script>
-        $( document ).ready( function() {
-            $( '.slider' ).slick( {
+        $(document).ready(function () {
+            $('.slider').slick({
                 autoplay: true,
                 autoplaySpeed: 3000,
                 slidesToShow: 5,
@@ -49,8 +49,8 @@
                         }
                     }
                 ]
-            } );
-        } );
+            });
+        });
     </script>
 
 </head>
@@ -84,7 +84,8 @@
             <div class="header_gnb">
                 <div class="gnb">
                     <div class="gnb_menu_box">
-                        <ul class="depth0 gnb_menu0" style="color: rgb(51, 51, 51);" <%--style="overflow: visible; height: 100%;"--%>>
+                        <ul class="depth0 gnb_menu0"
+                            style="color: rgb(51, 51, 51);" <%--style="overflow: visible; height: 100%;"--%>>
                             <li>
                                 <a href="">ABOUT</a>
                             </li>
@@ -155,12 +156,11 @@
                         </div>
                     </div>
                     <div class="slider">
-                        <div align="center" class="book-cover"><img src="https://bimage.interpark.com/partner/goods_image/1/5/0/5/348921505s.jpg" alt=""></div>
-                        <div align="center" class="book-cover"><img src="https://bimage.interpark.com/partner/goods_image/1/3/3/2/354851332s.jpg" alt=""></div>
-                        <div align="center" class="book-cover"><img src="https://bimage.interpark.com/partner/goods_image/8/9/8/5/269978985s.jpg" alt=""></div>
-                        <div align="center" class="book-cover"><img src="https://bimage.interpark.com/partner/goods_image/2/2/1/4/354852214s.jpg" alt=""></div>
-                        <div align="center" class="book-cover"><img src="https://bimage.interpark.com/partner/goods_image/0/1/3/6/354460136s.jpg" alt=""></div>
-                        <div align="center" class="book-cover"><img src="https://bimage.interpark.com/partner/goods_image/2/2/5/6/354552256s.jpg" alt=""></div>
+                        <c:forEach var="book" items="${bookDtos}">
+                            <div align="center" class="book-cover">
+                                <img src="${book.image_url}" style="border: 2px solid #3CAE76; padding: 5px;">
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
                 <hr>
@@ -175,12 +175,18 @@
                         </div>
                     </div>
                     <div class="slider">
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/4/4/4/7/354514447s.jpg" alt=""></div>
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/7/5/5/2/354337552s.jpg" alt=""></div>
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/7/5/4/2/354337542s.jpg" alt=""></div>
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/2/2/1/4/354852214s.jpg" alt=""></div>
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/0/1/3/6/354460136s.jpg" alt=""></div>
-                        <div><img src="https://bimage.interpark.com/partner/goods_image/2/2/5/6/354552256s.jpg" alt=""></div>
+                        <div><img src="https://bimage.interpark.com/partner/goods_image/4/4/4/7/354514447s.jpg" alt="">
+                        </div>
+                        <div><img src="https://bimage.interpark.com/partner/goods_image/7/5/5/2/354337552s.jpg" alt="">
+                        </div>
+                        <div><img src="https://bimage.interpark.com/partner/goods_image/7/5/4/2/354337542s.jpg" alt="">
+                        </div>
+                        <div><img src="https://bimage.interpark.com/partner/goods_image/2/2/1/4/354852214s.jpg" alt="">
+                        </div>
+                        <div><img src="https://bimage.interpark.com/partner/goods_image/0/1/3/6/354460136s.jpg" alt="">
+                        </div>
+                        <div><img src="https://bimage.interpark.com/partner/goods_image/2/2/5/6/354552256s.jpg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
