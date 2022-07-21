@@ -14,8 +14,11 @@
     <meta charset="UTF-8">
     <title>아이디 찾기</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/findResultPage.css">
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
 </head>
 <body>
+<%@include file = "../layout/header.jsp" %>
 <% String id = (String) request.getAttribute("id"); %>
 <div class="containerBox">
     <div class="resultBox">
@@ -26,5 +29,6 @@
         <a class="btn cancelBtn" href="login.do">돌아가기</a>
     </div>
 </div>
+<%@include file = "../layout/footer.jsp" %>
 </body>
 </html>

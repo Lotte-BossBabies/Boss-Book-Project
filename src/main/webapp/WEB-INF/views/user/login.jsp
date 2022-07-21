@@ -1,5 +1,5 @@
 <%@ page import="org.springframework.beans.factory.annotation.Value" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -18,6 +18,8 @@
     <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript"></script>
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <script src="<c:url value="/resources/js/login.js" />"></script>
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
 
 
     <style type="text/css">
@@ -27,9 +29,9 @@
             padding: 10px;
         }
     </style>
-
 </head>
 <body>
+<%@include file = "../layout/header.jsp" %>
 <div class="everything">
     <div class="member_login_wrap">
         <div class="contents_inner">
@@ -73,6 +75,7 @@
     </a>
 </div>
 <button onclick="kakaoLogout()">카카오 로그아웃</button>
+<%@include file = "../layout/footer.jsp" %>
 </body>
 <script>
     function kakaoLogout(){
