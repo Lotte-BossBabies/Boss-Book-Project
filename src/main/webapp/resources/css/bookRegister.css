@@ -1,0 +1,59 @@
+.bookRegisterBox{
+    width: 70%;
+    margin: 50px auto 150px;
+}
+
+.titleBox{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.lineBox{
+    width: 80%;
+    margin: 10px auto;
+    border-bottom: 1px solid #dddddd;
+}
+
+
+.bookInfoBox{
+    width: 400px;
+    margin: 30px auto;
+    text-align: center;
+}
+.bookInfoBox img{
+    width: 250px;
+}
+.bookInfoBox p{
+    font-size: 28px;
+}
+
+.inputBox{
+    width: 400px;
+    margin: auto;
+    font-size: 16px;
+    text-align: center;
+}
+.inputs{
+    width: 100%;
+    margin: 10px;
+}
+.inputBox input{
+    width: 150px;
+    height: 25px;
+}
+.inputBox button{
+    width: 100px;
+    height: 40px;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0px 10px;
+}
+.inputBox button:hover{
+    border: 2px solid #3CAE76;
+    color: #3CAE76;
+}
