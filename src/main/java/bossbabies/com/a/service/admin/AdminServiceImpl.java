@@ -40,6 +40,9 @@ public class AdminServiceImpl implements AdminService{
     public List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category, int sellStatus) {
 
         SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category, sellStatus);
+        if(category.equals("전체")){
+            return dao.getRegisteredAllBookList(vo);
+        }
         return dao.getRegisteredBookList(vo);
     }
 
@@ -47,6 +50,10 @@ public class AdminServiceImpl implements AdminService{
     public List<RegisteredBookDto> getRegisteredBookListBySellCount(int sellerId, String category, int sellStatus) {
 
         SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category, sellStatus);
+
+        if(category.equals("전체")){
+            return dao.getRegisteredAllBookListBySellCount(vo);
+        }
 
         return dao.getRegisteredBookListBySellCount(vo);
     }
@@ -56,6 +63,10 @@ public class AdminServiceImpl implements AdminService{
     public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword, int sellStatus) {
 
         CategoryAndKeywordVO vo = new CategoryAndKeywordVO(category, keyword, sellerId, sellStatus);
+
+        if(category.equals("전체")){
+            return dao.getRegisteredAllBookListByKeyword(vo);
+        }
 
         return dao.getRegisteredBookListByKeyword(vo);
     }
