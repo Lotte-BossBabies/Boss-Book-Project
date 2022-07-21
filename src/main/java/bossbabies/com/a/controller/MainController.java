@@ -60,7 +60,7 @@ public class MainController {
     public String mainFunc(HttpServletRequest req) {
         logger.info("MainController mainFunc() " + new Date());
         req.getSession().setAttribute("loginId", "cde");
-        return "login";
+        return "user/login";
     }
 
 }
