@@ -15,6 +15,15 @@
     and rb.sell_status = #{sellStatus}
   </select>
 
+  <select id="regiBookListByAllCategory" parameterType="bossbabies.com.a.parameterVO.SellerAndCategoryVO" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+    select rb.registered_book_id, rb.book_id, rb.seller_id, rb.order_count, rb.book_count, rb.register_date, rb.sell_status, 0,
+           b.image_url, b.title
+    from registered_book rb, book b
+    where rb.book_id = b.book_id
+      and rb.seller_id = #{sellerId}
+      and rb.sell_status = #{sellStatus}
+  </select>
+
   <select id="regiBookListBySellCount" parameterType="bossbabies.com.a.parameterVO.SellerAndCategoryVO" resultType="bossbabies.com.a.dto.RegisteredBookDto">
     select rb.registered_book_id, rb.book_id, rb.seller_id, rb.order_count, rb.book_count, rb.register_date, rb.sell_status, 0,
            b.image_url, b.title
@@ -26,6 +35,16 @@
     order by order_count desc;
   </select>
 
+  <select id="regiAllBookListBySellCount" parameterType="bossbabies.com.a.parameterVO.SellerAndCategoryVO" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+    select rb.registered_book_id, rb.book_id, rb.seller_id, rb.order_count, rb.book_count, rb.register_date, rb.sell_status, 0,
+           b.image_url, b.title
+    from registered_book rb, book b
+    where rb.book_id = b.book_id
+      and rb.seller_id = #{sellerId}
+      and rb.sell_status = #{sellStatus}
+    order by order_count desc;
+  </select>
+
   <select id="regiBookListByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="bossbabies.com.a.dto.RegisteredBookDto">
     select rb.registered_book_id, rb.book_id, rb.seller_id, rb.order_count, rb.book_count, rb.register_date, rb.sell_status, 0,
            b.image_url, b.title
@@ -33,6 +52,16 @@
     where rb.book_id = b.book_id
       and rb.seller_id = #{sellerId}
       and b.category = #{category}
+      and rb.sell_status = #{sellStatus}
+      and b.title like concat('%', #{keyword}, '%')
+  </select>
+
+  <select id="regiAllBookListByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+    select rb.registered_book_id, rb.book_id, rb.seller_id, rb.order_count, rb.book_count, rb.register_date, rb.sell_status, 0,
+           b.image_url, b.title
+    from registered_book rb, book b
+    where rb.book_id = b.book_id
+      and rb.seller_id = #{sellerId}
       and rb.sell_status = #{sellStatus}
       and b.title like concat('%', #{keyword}, '%')
   </select>
