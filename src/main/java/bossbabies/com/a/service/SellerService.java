@@ -16,4 +16,6 @@ public interface SellerService {
     int updateSeller(UpdateSellerVO vo);
     String findSellerId(FindIdVO vo);
     String findSellerPassword(FindPasswordVO vo);
+
+    String sellerDuplicateId(String id);
 }

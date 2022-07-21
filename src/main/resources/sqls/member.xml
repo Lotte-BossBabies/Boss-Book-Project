@@ -34,4 +34,15 @@
         from member
         where id=#{id} and name=#{name} and email=#{email}
     </select>
+
+    <select id="memberDuplicateId" parameterType="java.lang.String" resultType="java.lang.String">
+        select id
+        from	(select id
+                 from member
+                 union
+                 select id
+                 from seller) uni
+        where id=#{id};
+    </select>
+
 </mapper>
