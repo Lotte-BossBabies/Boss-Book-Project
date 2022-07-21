@@ -2,16 +2,16 @@ package bossbabies.com.a.controller;
 
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.dto.admin.DeliveryDto;
+import bossbabies.com.a.dto.user.SellerDto;
+import bossbabies.com.a.service.DetailedBookService;
+import bossbabies.com.a.service.SellerService;
 import bossbabies.com.a.service.admin.AdminServiceImpl;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-import bossbabies.com.a.service.DetailedBookServiceImpl;
-import bossbabies.com.a.service.admin.AdminServiceImpl;
-import java.util.Date;
-import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -40,16 +39,24 @@ public class AdminController {
     AdminServiceImpl adminService;
 
     @Autowired
-    DetailedBookServiceImpl detailedBookService;
+    DetailedBookService detailedBookService;
+
+    @Autowired
+    SellerService sellerService;
 
     Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @RequestMapping(value = "adminMain.do", method = RequestMethod.GET)
-    public String main(int sellerId, String category, int sellStatus, Model model) {
+    public String main(HttpSession session, int sellStatus, Model model) {
 
         logger.info(new Date() + " AdminController main");
 
-        category = "소설";
+        String id = (String) session.getAttribute("login");
+        SellerDto sellerDto = sellerService.getSeller(id);
+
+        int sellerId = sellerDto.getSeller_id();
+        
+        String category = "소설";
 
         List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
         model.addAttribute("resultList", resultList);
@@ -113,7 +120,6 @@ public class AdminController {
 
         RegisteredBookDto resultDto = detailedBookService.getRegisteredBook(bookId);
 
-        System.out.println(resultDto.toString());
         model.addAttribute("registeredBook", resultDto);
 
         return "/admin/bookEdit";
@@ -128,8 +134,6 @@ public class AdminController {
 
         int status = Integer.parseInt(map.get("sellStatus"));
         int id = Integer.parseInt(map.get("registeredBookId"));
-
-        System.out.println("!!!!!!!!!!!!!" + status + " " + id);
 
         int result = adminService.updateRegisteredBook(status, id);
 
