@@ -35,7 +35,7 @@
 
     <div id="menu">
         <ul>
-            <li><a href="/updateBook.do?sellerId=1&sellStatus=0" onclick="register()">상품등록</a></li>
+            <li><a href="/updateBook.do?sellerId=1" onclick="register()">상품등록</a></li>
             <li><a href="/manageDelivery.do?seller_id=1">배송관리</a></li>
             <li><a href="/chart.do?seller_id=1">실적통계</a></li>
         </ul>

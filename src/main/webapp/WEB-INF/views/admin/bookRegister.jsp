@@ -1,5 +1,6 @@
 <%@ page import="bossbabies.com.a.dto.RegisteredBookDto" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="bossbabies.com.a.dto.BookDto" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 2022-07-20
@@ -25,7 +26,7 @@
 </head>
 
 <%
-    List<RegisteredBookDto> list = (List<RegisteredBookDto>) request.getAttribute("resultList");
+    List<BookDto> list = (List<BookDto>) request.getAttribute("resultList");
 %>
 <body>
 <div class="wrap">
@@ -60,14 +61,14 @@
 
         <table id="subtable">
             <%
-                for(RegisteredBookDto dto : list) {
-                    System.out.println(dto.getRegistered_book_id());
+                for(BookDto dto : list) {
+                    System.out.println(dto.getBook_id());
             %>
             <tr>
                 <td><img id="bookImg" src="<%= dto.getImage_url()%>"></td>
                 <td><%= dto.getTitle()%></td>
                 <td>
-                    <button type="button" name="registerBtn" id="registerBtn" value="<%= dto.getRegistered_book_id()%>" onclick="registerBookButton(<%= dto.getRegistered_book_id()%>)">register</button>
+                    <button type="button" name="registerBtn" id="registerBtn" value="<%= dto.getBook_id()%>" onclick="registerBookButton(<%= dto.getBook_id()%>)">register</button>
                 </td>
             </tr>
             <%
@@ -93,7 +94,7 @@
 
       var jsonData = {"sellerId":"1", "category":val, "sellStatus":0};
 
-      getNotRegisteredBooks("category.do", jsonData);
+      getNotRegisteredBooks("notRegisteredBooks.do", jsonData);
     }
   });
 
