@@ -2,10 +2,66 @@
     width: 800px;
     margin: auto;
 }
+
+.titleBox{
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    padding-top: 20px;
+}
+.titleBox a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    float: right;
+    cursor: pointer;
+}
+.titleBox a:hover{
+    text-decoration: underline;
+}
+
+.adminInfoBox{
+    text-align: center;
+    width: 500px;
+    height: 160px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #3CAE76;
+    border-radius: 5px;
+}
+.adminInfoBox span{
+    font-size: 24px;
+    font-weight: bold;
+}
+.adminInfoBox button{
+    width: 130px;
+    height: 50px;
+    margin-top: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+.adminInfoBox button:hover{
+    color: #3CAE76;
+    border: 2px solid #3CAE76;
+}
+
+.title {
+    font-size: 20px;
+}
+.lineBox{
+    margin-top: 10px;
+    width: 800px;
+    border-bottom: 2px solid black;
+}
+
 .aBox{
     width: 800px;
     height: 50px;
-    margin-top: 50px;
+    margin-top: 20px;
     padding-right: 30px;
 }
 .aBox li{
@@ -40,6 +96,11 @@
     height: 35px;
     margin: 5px 0px 0px 20px;
 }
+#subKeyword{
+    width: 250px;
+    height: 35px;
+    margin: 5px 0px 0px 20px;
+}
 #searchBtn{
     width: 100px;
     height: 40px;
@@ -52,6 +113,21 @@
     float: right;
 }
 #searchBtn:hover{
+    border: 2px solid #3CAE76;
+    color: #3CAE76;
+}
+#subSearchBtn{
+    width: 100px;
+    height: 40px;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 20px;
+    cursor: pointer;
+    float: right;
+}
+#subSearchBtn:hover{
     border: 2px solid #3CAE76;
     color: #3CAE76;
 }
@@ -71,7 +147,11 @@
     text-decoration: underline;
 }
 
-
+.noBook{
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0px 100px;
+}
 .tableBox{
     width: 100%;
 }
@@ -110,6 +190,20 @@
     cursor: pointer;
 }
 #cancelBtn:hover{
+    border: 2px solid #3CAE76;
+    color: #3CAE76;
+}
+#registerBtn{
+    width: 80px;
+    height: 30px;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+#registerBtn:hover{
     border: 2px solid #3CAE76;
     color: #3CAE76;
 }

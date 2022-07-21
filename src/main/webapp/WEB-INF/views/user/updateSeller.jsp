@@ -26,21 +26,27 @@
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
     <style>
-        .redbox {
-            margin: auto;
-            background-color: #e60012;
-            color: white;
+        .updateContainer{
+            margin-bottom: 100px;
+        }
+
+        .titleBox {
+            margin: 50px auto 30px;
             width: 70%;
-            height: 30px;
-            padding: 10px;
+            height: 50px;
             text-align: center;
+            font-size: 24px;
+        }
+
+        .lineBox{
+            width: 60%;
+            margin: auto;
+            border-bottom: 1px solid #bbbbbb;
         }
 
         .userinfo {
-            width: 35%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 50px;
+            width: 40%;
+            margin: 10px auto;
         }
 
         .user {
@@ -55,7 +61,7 @@
         }
 
         .infoinput {
-            width: 300px;
+            width: 320px;
             height: 40px;
             margin: 10px;
         }
@@ -63,6 +69,7 @@
         .text {
             margin-top: 25px;
             padding: 0;
+            width: 158px;
         }
 
         .updateBtn {
@@ -70,42 +77,46 @@
         }
 
         .cancelBtn {
-            background-color: #595959;
-            color: white;
-            border: none;
+            width: 100px;
+            height: 40px;
+            margin: 5px 20px;
+            border: 1px solid black;
             border-radius: 5px;
+            background-color: white;
+            font-size: 20px;
             cursor: pointer;
         }
 
         .cancelBtn:hover {
-            background-color: #ffffff;
-            color: #595959;
-            border: 1px solid #595959;
-            border-radius: 5px;
+            border: 2px solid #3CAE76;
+            color: #3CAE76;
         }
 
         .confirmBtn:hover {
-            background-color: #ffffff;
-            color: #e60012;
-            border: 1px solid #e60012;
-            border-radius: 5px;
+            border: 2px solid #3CAE76;
+            color: #3CAE76;
         }
 
         .confirmBtn {
-            background-color: #e60012;
-            color: white;
-            border: none;
+            width: 100px;
+            height: 40px;
+            margin-top: 5px;
+            border: 1px solid black;
             border-radius: 5px;
+            background-color: white;
+            font-size: 20px;
             cursor: pointer;
         }
     </style>
 </head>
 <body>
 <%@include file = "../layout/header.jsp" %>
-<div class="container">
-    <div class="redbox">회원정보 수정</div>
-    <div class="userinfo">
+<div class="updateContainer">
+    <div class="titleBox">회원정보 수정</div>
 
+    <div class="lineBox"></div>
+
+    <div class="userinfo">
         <form action="updateSeller.do" method="get" id="platform">
             <div class="user">
                 <div class="text">아이디</div>
@@ -143,8 +154,8 @@
                 <span class="blank"></span>
             </div>
             <div class="updateBtn" align="center">
-                <input type="button" class="cancelBtn" value="취소">
-                <input type="submit" class="confirmBtn" value="확인" onclick="formSubmit()">
+                <button type="button" class="cancelBtn" onclick="location.href='adminMain.do?sellStatus=1'">취소하기</button>
+                <button type="submit" class="confirmBtn" onclick="formSubmit()">수정하기</button>
             </div>
         </form>
     </div>

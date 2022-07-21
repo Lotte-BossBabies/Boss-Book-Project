@@ -1,12 +1,6 @@
 <%@ page import="bossbabies.com.a.dto.RegisteredBookDto" %>
 <%@ page import="java.util.List" %>
-<%@ page import="bossbabies.com.a.dto.BookDto" %><%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 2022-07-20
-  Time: 오후 3:58
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bossbabies.com.a.dto.BookDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -32,52 +26,57 @@
 <div class="wrap">
     <%@include file="../layout/header.jsp" %>
 
-    <h2>판매 해지 상품 목록</h2>
-
-    <a href="adminMain.do?sellerId=1&sellStatus=1">뒤로가기</a>
-
-    <div id="mainContents" align="center">
-
-        <div id="selectCategory">
-            <select id="subCategorySelect" onchange="subChangeBooks()">
-                <option value="소설">소설</option>
-                <option value="시/에세이">시/에세이</option>
-                <option value="예술/대중문화">예술/대중문화</option>
-                <option value="사회과학">사회과학</option>
-                <option value="역사와 문화">역사와 문화</option>
-                <option value="잡지">잡지</option>
-                <option value="만화/라이트노벨">만화/라이트노벨</option>
-                <option value="유아">유아</option>
-                <option value="아동">아동</option>
-                <option value="가정과 생활">가정과 생활</option>
-                <option value="청소년">청소년</option>
-            </select>
-
-            <input type="text" name="subKeyword" id="subKeyword" onchange="subInputTextCheck()" placeholder="키워드를 입력하세요.">
-            <button type="button" onclick="subSearchButton()">search</button>
-
+    <div class="bookWrapper">
+        <div class="titleBox">
+            <a href="adminMain.do?sellStatus=1">돌아가기</a>
         </div>
 
+        <span class="title">판매 가능한 책</span><br>
+        <div class="lineBox"></div>
 
-        <table id="subtable">
-            <%
-                for(BookDto dto : list) {
-                    System.out.println(dto.getBook_id());
-            %>
-            <tr>
-                <td><img id="bookImg" src="<%= dto.getImage_url()%>"></td>
-                <td><%= dto.getTitle()%></td>
-                <td>
-                    <button type="button" name="registerBtn" id="registerBtn" value="<%= dto.getBook_id()%>" onclick="registerBookButton(<%= dto.getBook_id()%>)">register</button>
-                </td>
-            </tr>
-            <%
-                }
-            %>
-        </table>
+        <div class="contentBox">
+            <div class="selectCategory">
+                <select id="subCategorySelect" onchange="subChangeBooks()">
+                    <option value="소설">소설</option>
+                    <option value="시/에세이">시/에세이</option>
+                    <option value="예술/대중문화">예술/대중문화</option>
+                    <option value="사회과학">사회과학</option>
+                    <option value="역사와 문화">역사와 문화</option>
+                    <option value="잡지">잡지</option>
+                    <option value="만화/라이트노벨">만화/라이트노벨</option>
+                    <option value="유아">유아</option>
+                    <option value="아동">아동</option>
+                    <option value="가정과 생활">가정과 생활</option>
+                    <option value="청소년">청소년</option>
+                </select>
+
+                <input type="text" name="subKeyword" id="subKeyword" onchange="subInputTextCheck()" placeholder="키워드를 입력하세요.">
+                <button type="button" id="subSearchBtn" onclick="subSearchButton()">search</button>
+
+            </div>
+
+            <div class="tableBox">
+                <table id="subtable">
+                    <%
+                        for(BookDto dto : list) {
+                            System.out.println(dto.getBook_id());
+                    %>
+                    <tr>
+                        <td><img id="bookImg" src="<%= dto.getImage_url()%>"></td>
+                        <td><%= dto.getTitle()%></td>
+                        <td>
+                            <button type="button" name="registerBtn" id="registerBtn" value="<%= dto.getBook_id()%>" onclick="registerBookButton(<%= dto.getBook_id()%>)">register</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <%
+                        }
+                    %>
+                </table>
+            </div>
+        </div>
 
     </div>
-
     <%@include file="../layout/footer.jsp" %>
 
 </div>

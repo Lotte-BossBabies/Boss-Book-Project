@@ -1,4 +1,23 @@
 /* 공통 부분 */
+.titleBox{
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    padding-top: 20px;
+}
+.titleBox a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    float: right;
+    cursor: pointer;
+}
+.titleBox a:hover{
+    text-decoration: underline;
+}
+
+
 .title{
     font-size: 24px;
 }
@@ -35,7 +54,7 @@
     padding-top: 5px;
 }
 .title{
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 5px;
 }
 
@@ -43,7 +62,7 @@
 /* 배송 전 상품 */
 .preDeliveryWrapper{
     width: 800px;
-    margin: 50px auto;
+    margin: 20px auto;
 }
 .buttonBox{
     grid-column: 3/4;

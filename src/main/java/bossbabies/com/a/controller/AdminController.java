@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,11 +49,11 @@ public class AdminController {
     Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @RequestMapping(value = "adminMain.do", method = RequestMethod.GET)
-    public String main(HttpSession session, int sellStatus, Model model) {
+    public String main(HttpServletRequest request, int sellStatus, Model model) {
 
         logger.info(new Date() + " AdminController main");
 
-        SellerDto seller = (SellerDto) session.getAttribute("login");
+        SellerDto seller = (SellerDto) request.getSession().getAttribute("login");
 
         int sellerId = seller.getSeller_id();
 
@@ -60,6 +61,7 @@ public class AdminController {
 
         List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
         model.addAttribute("resultList", resultList);
+        model.addAttribute("seller", seller);
 
         return "/admin/books";
     }
