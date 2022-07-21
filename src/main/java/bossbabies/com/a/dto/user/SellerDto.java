@@ -21,6 +21,16 @@ public class SellerDto {
         this.store_name = store_name;
     }
 
+    public SellerDto(int seller_id, String id, String password, String name, String email, String phone, String store_name) {
+        this.seller_id = seller_id;
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.store_name = store_name;
+    }
+
     public int getSeller_id() {
         return seller_id;
     }
