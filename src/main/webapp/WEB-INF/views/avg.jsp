@@ -165,58 +165,48 @@
         }]
     });
 
-    let line_chart = Highcharts.chart('line-chart', {
-
-        title: {
-            text: 'dkfjsldkjf'
-        },
-
-        subtitle: {
-            text: 'dddd'
-        },
-
-        yAxis: {
-            title: {
-                text: 'Number of Employees'
-            }
-        },
-
-        xAxis: {
-            accessibility: {
-                rangeDescription: 'Range: ㅇㅇㅇㅇ'
-            },
-            categories: []
-        },
-
-        series:[
-            {
-                name:'',
-                data:[]
-            }
-        ],
-
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-        },
-
-
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
-                }
-            }]
-        }
-    });
+    // let line_chart = Highcharts.chart('line-chart', {
+    //
+    //     title: {
+    //         text: '기간 별 매출현황'
+    //     },
+    //
+    //     subtitle: {
+    //         text: '언제 무슨 카테고리가 많이 팔렸는가?'
+    //     },
+    //
+    //     yAxis: {
+    //         title: {
+    //             text: 'Number of books'
+    //         }
+    //     },
+    //
+    //     xAxis: {
+    //         categories: []
+    //     },
+    //
+    //     legend: {
+    //         layout: 'vertical',
+    //         align: 'right',
+    //         verticalAlign: 'middle'
+    //     },
+    //
+    //
+    //     responsive: {
+    //         rules: [{
+    //             condition: {
+    //                 maxWidth: 500
+    //             },
+    //             chartOptions: {
+    //                 legend: {
+    //                     layout: 'horizontal',
+    //                     align: 'center',
+    //                     verticalAlign: 'bottom'
+    //                 }
+    //             }
+    //         }]
+    //     }
+    // });
 
 
 </script>
@@ -267,6 +257,10 @@
         }
         let categories = Array.from(set);
 
+        if (set.size == 0) {
+            alert("선택된 날짜에 판매한 책이 없습니다. 다른 날짜를 선택해주세요!");
+        }
+
         let category_arr = new Array(categories.length);
         for (let i = 0; i < category_arr.length; i++) {
             category_arr[i] = new Array(date.length);
@@ -303,7 +297,6 @@
 
         /************************************************************/
 
-        // line_chart.xAxis.categories=date;
 
         // dateJson
         let dateJson = "["
@@ -326,53 +319,59 @@
         }
         dataJson = dataJson.substring(0, dataJson.lastIndexOf(","));
         dataJson += "]"
-        line_chart.series = JSON.parse(dataJson);
+        console.log(dataJson);
+
+        let line_chart = new Highcharts.chart('line-chart', {
+
+            title: {
+                text: '기간 별 매출현황'
+            },
+
+            subtitle: {
+                text: '언제 무슨 카테고리가 많이 팔렸는가?'
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Number of books'
+                }
+            },
+
+            xAxis: {
+                categories: date
+            },
+
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+        });
+
         for (let i = 0; i < category_arr.length; i++) {
             line_chart.addSeries({
-
-            })
+                name: categories[i],
+                data: category_arr[i]
+            });
         }
-
-
-        console.log(JSON.parse(dataJson));
-
-        // line_chart.xAxis = date;
-        // for (let i=0;i<category_arr.length;i++){
-        //     line_chart.series[i].name = categories[i];
-        //     line_chart.series[i].data = category_arr[i];
-        //     console.log("들어가라 = " + line_chart.series[i].name + line_chart.series[i].data);
-        // }
-
-        // for (let i=0;i<category_arr.length;i++){
-        //     for(let j=0;j<category_arr[i].length;j++){
-        //         line_chart.series[i].name = categories[i];
-        //         line_chart.series[i].data = category_arr[i];
-        //         console.log(category_arr[i]);
-        //     }
-        // }
-
-        // line_chart.series = dataJson;
-
-
     }
 
 
 </script>
-<%--<%--%>
-<%--    List<SalesByPeriodDto> periodList = (List<SalesByPeriodDto>) request.getAttribute("periodList");--%>
-<%--    System.out.println(periodList);--%>
-<%--    int start = Integer.parseInt(periodList.get(0).getOrderDate());                 // 입력 받은 날짜의 시작 2207016--%>
-<%--    int end = Integer.parseInt(periodList.get(periodList.size()).getOrderDate());   // 입력 받은 날짜의 끝--%>
-<%--    System.out.println("start: " + start + " 입력받은 날짜 끝: " + end);--%>
-<%--    HashMap<String, List<Integer>> hashMap = new HashMap<String, List<Integer>>();--%>
-<%--    HashSet<String> categories = new HashSet<String>();--%>
-<%--    for (SalesByPeriodDto dto : periodList) {--%>
-<%--        categories.add(dto.getCategory());--%>
-<%--    }--%>
-<%--    List<Integer> date = new ArrayList<Integer>();--%>
-<%--    for (int i = start; i <= end; i++) {--%>
-<%--        date.add(i);--%>
-<%--    }--%>
-<%--%>--%>
 </body>
 </html>
