@@ -26,8 +26,7 @@
 
 </head>
 <body>
-<div class="wrap">
-    <%--    <%@ include file="../layout/header.jsp" %>--%>
+    <%@ include file="../layout/header.jsp" %>
     <div id="bookstore">
         <div class="content">
             <div class="bookstore_category_top">
@@ -123,7 +122,6 @@
 
     <br>
     <%--        <%@ include file="../layout/footer.jsp" %>--%>
-</div>
 <script>
     $(document).ready(function () {
         $('#search-btn').click(function () {
@@ -143,30 +141,30 @@
                     str += '<ul class="search-ul">'
 
                     $.each(data, function (i) {
-                        str += '<li style="width: 25%">'+
-                                    '<div class="item_cont">'+
-                                        '<div class="item_photo_box">'+
-                                            '<a href="getDetailedBook.do?registered_book_id='+data[i].registered_book_id+'">'+
-                                                        '<img width="166"'+
-                                                             ' style="border: 2px solid #3CAE76; padding: 5px;"'+
-                                                             ' src='+data[i].image_url+'>'+
-                                                    '</a>'+
-                                                '</div>'+
-                                                '<div class="item_info_cont">'+
-                                                    '<div class="item_tit_box">'+
-                                                        '<a href="getDetailedBook.do?registered_book_id='+data[i].registered_book_id+'">'+
-                                                            '<strong class="item_name">'+data[i].title+'</strong>'+
-                                                        '</a>'+
-                                                    '</div>'+
-                                                    '<div class="bp-writer">'+
-                                                        '<span><'+data[i].author+'></span>'+
-                                                    '</div>'+
-                                                    '<div class="item_money_box">'+
-                                                        '<strong class="item_price"><span>'+data[i].price+'원</span></strong>'+
-                                                    '</div>'+
-                                                '</div>'+
-                                            '</div>'+
-                                    '</li>'
+                        str += '<li style="width: 25%">' +
+                            '<div class="item_cont">' +
+                            '<div class="item_photo_box">' +
+                            '<a href="getDetailedBook.do?registered_book_id=' + data[i].registered_book_id + '">' +
+                            '<img width="166"' +
+                            ' style="border: 2px solid #3CAE76; padding: 5px;"' +
+                            ' src=' + data[i].image_url + '>' +
+                            '</a>' +
+                            '</div>' +
+                            '<div class="item_info_cont">' +
+                            '<div class="item_tit_box">' +
+                            '<a href="getDetailedBook.do?registered_book_id=' + data[i].registered_book_id + '">' +
+                            '<strong class="item_name">' + data[i].title + '</strong>' +
+                            '</a>' +
+                            '</div>' +
+                            '<div class="bp-writer">' +
+                            '<span><' + data[i].author + '></span>' +
+                            '</div>' +
+                            '<div class="item_money_box">' +
+                            '<strong class="item_price"><span>' + data[i].price + '원</span></strong>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</li>'
 
                         /*str += "<li style=" + '"width: 25%">'
                         str += "<div class=" + '"item_cont">'
