@@ -1,5 +1,6 @@
 package bossbabies.com.a.dao.registeredBook;
 
+import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
@@ -17,7 +18,9 @@ public interface RegisteredBookDao {
 
     public int updateStock(IdAndCountVO vo);
 
-    public List<RegisteredBookDto> getBookListNotRegistered(int sellerId);
+    public List<BookDto> getBookListNotRegistered(SellerAndCategoryVO vo);
+
+    public List<BookDto> getBookListNotRegisteredByKeyword(CategoryAndKeywordVO vo);
 
     public int updateRegisteredBook(StatusAndRegisteredBookIdVO vo);
 
@@ -28,5 +31,6 @@ public interface RegisteredBookDao {
     RegisteredBookDto getRegisteredBookById(int registered_book_id);
 
     boolean updateOrderCount(int registered_book_id);
+
 
 }

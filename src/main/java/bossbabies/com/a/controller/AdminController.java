@@ -1,5 +1,6 @@
 package bossbabies.com.a.controller;
 
+import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.dto.admin.DeliveryDto;
 import bossbabies.com.a.dto.user.SellerDto;
@@ -51,11 +52,10 @@ public class AdminController {
 
         logger.info(new Date() + " AdminController main");
 
-        String id = (String) session.getAttribute("login");
-        SellerDto sellerDto = sellerService.getSeller(id);
+        SellerDto seller = (SellerDto) session.getAttribute("login");
 
-        int sellerId = sellerDto.getSeller_id();
-        
+        int sellerId = seller.getSeller_id();
+
         String category = "소설";
 
         List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
@@ -156,13 +156,15 @@ public class AdminController {
     }
 
     @RequestMapping(value = "updateBook.do", method = RequestMethod.GET)
-    public String updateBook(int sellerId, int sellStatus, Model model) {
+    public String updateBook(int sellerId, Model model) {
 
         logger.info(new Date() + " AdminController updateBook()");
 
         String category = "소설";
 
-        List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
+        List<BookDto> resultList = adminService.getBooksNotRegistered(sellerId, category);
+        // List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
+
         model.addAttribute("resultList", resultList);
 
         return "/admin/bookRegister";
@@ -170,29 +172,30 @@ public class AdminController {
 
     @RequestMapping(value = "notRegisteredBooks.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<RegisteredBookDto> notRegisters(@RequestBody Map<String, String> map) {
+    public List<BookDto> notRegisters(@RequestBody Map<String, String> map) {
 
         logger.info(new Date() + " AdminController notRegisters()");
 
         int sellerId = Integer.parseInt(map.get("sellerId"));
         String category = map.get("category");
-        int sellStatus = Integer.parseInt(map.get("sellStatus"));
+        //int sellStatus = Integer.parseInt(map.get("sellStatus"));
 
-        return adminService.getRegisteredBookList(sellerId, category, sellStatus);
+        return adminService.getBooksNotRegistered(sellerId, category);
     }
 
     @RequestMapping(value = "notRegisteredBooksByKeyword.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<RegisteredBookDto> notRegistersByKeyword(@RequestBody Map<String, String> map) {
+    public List<BookDto> notRegistersByKeyword(@RequestBody Map<String, String> map) {
 
         logger.info(new Date() + " AdminController notRegistersByKeyword()");
 
         int sellerId = Integer.parseInt(map.get("sellerId"));
         String category = map.get("category");
         String keyword = map.get("keyword");
-        int sellStatus = Integer.parseInt(map.get("sellStatus"));
+        //int sellStatus = Integer.parseInt(map.get("sellStatus"));
 
-        return adminService.getRegisteredBookListByKeyword(sellerId, category, keyword, sellStatus);
+        return adminService.getBooksNotRegisteredByKeyword(sellerId, category, keyword);
+        // return adminService.getRegisteredBookListByKeyword(sellerId, category, keyword, sellStatus);
     }
 
     @RequestMapping(value="manageDelivery.do", method = RequestMethod.GET)
@@ -232,5 +235,7 @@ public class AdminController {
 
         return completedDeliveryList;
     }
+
+
 
 }
