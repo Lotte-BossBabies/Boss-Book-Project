@@ -193,6 +193,11 @@
                             </div>
                         </div>
                     </div>
+                    <div style="margin-left: 100px; margin-top: 100px;">
+                        <button class="btn btn-outline-success"
+                                onclick="deleteBtn(); location.href='';">
+                            삭제</button>
+                    </div>
                 </div>
             </td>
         </tr>
@@ -207,6 +212,9 @@
 <script>
     function cancelBtn(){
         alert("주문이 취소되었습니다.");
+    }
+    function deleteBtn(){
+        alert("리뷰가 삭제되었습니다.");
     }
 </script>
 </body>
