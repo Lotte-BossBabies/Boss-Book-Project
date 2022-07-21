@@ -95,4 +95,11 @@ public class MyPageController {
         return "redirect:/mypage.do?memberId=" + reviewVO.getMemberId();
     }
 
+    @GetMapping("deleteReview.do")
+    public String deleteReview(int reviewId, int memberId) {
+        myPageService.deleteReview(reviewId);
+
+        return "redirect:/mypage.do?memberId=" + memberId;
+    }
+
 }

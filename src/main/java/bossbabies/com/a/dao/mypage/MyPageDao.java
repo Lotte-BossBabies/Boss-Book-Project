@@ -16,4 +16,5 @@ public interface MyPageDao {
     void cancelOrder(int orderId);
     void writeReview(ReviewVO reviewVO);
     MyPageReviewDto getReview(ReviewVO reviewVO);
+    void deleteReview(int reviewId);
 }

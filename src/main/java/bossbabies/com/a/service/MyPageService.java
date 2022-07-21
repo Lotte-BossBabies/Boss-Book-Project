@@ -17,4 +17,5 @@ public interface MyPageService {
     void deleteLike(int likeId);
     void writeReview(ReviewVO reviewVO);
     MyPageReviewDto getReview(ReviewVO reviewVO);
+    void deleteReview(int reviewId);
 }

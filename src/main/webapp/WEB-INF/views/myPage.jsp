@@ -195,7 +195,7 @@
                     </div>
                     <div style="margin-left: 100px; margin-top: 100px;">
                         <button class="btn btn-outline-success"
-                                onclick="deleteBtn(); location.href='';">
+                                onclick="deleteBtn(); location.href='deleteReview.do?reviewId=<%=review.getReviewId()%>&memberId=<%=member.getMemberId()%>';">
                             삭제</button>
                     </div>
                 </div>
