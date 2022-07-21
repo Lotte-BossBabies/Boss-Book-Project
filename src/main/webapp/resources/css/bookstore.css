@@ -48,6 +48,33 @@
     width: 100%;
 }
 
+#bookstore .search-bookname{
+    text-align: right;
+}
+
+#bookstore .search-bookname input{
+    width: 300px;
+    padding: 3px 5px;
+}
+
+#bookstore .search-bookname input:focus{
+    outline: 3px solid #3CAE76;
+    box-shadow: 2px 2px #00ff2a;
+    border: 0;
+}
+
+#bookstore .search-bookname button{
+    border: 1px solid;
+    padding: 4px 15px;
+    background-color: #ffffff;
+}
+
+#bookstore .search-bookname button:hover{
+    background-color: #3CAE76;
+    border: 1px solid #3CAE76;
+    color: white;
+}
+
 #bookstore .list_item_category {
     border: none;
     border-top: none;
