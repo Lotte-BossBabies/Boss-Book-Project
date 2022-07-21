@@ -2,8 +2,15 @@ package bossbabies.com.a.dto;
 
 import java.time.Instant;
 
-import java.time.LocalDateTime;
-
+/**
+ * [프로젝트]롯데e커머스_자바전문가과정
+ * [시스템명]온라인도서쇼핑몰 구현 프로젝트
+ * [팀   명]BossBabies
+ * -----------------------------------------------------------
+ * 수정일자           수정자         수정내용
+ * 2022.07.19       천예원         신규생성
+ * -----------------------------------------------------------
+ */
 public class RegisteredBookDto {
 
     private int registered_book_id;
@@ -39,6 +46,22 @@ public class RegisteredBookDto {
 
     public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count,
         int book_count, String register_date, boolean sell_status, int discount_rate,
+        String image_url,
+        String title) {
+        this.registered_book_id = registered_book_id;
+        this.book_id = book_id;
+        this.seller_id = seller_id;
+        this.order_count = order_count;
+        this.book_count = book_count;
+        this.register_date = register_date;
+        this.sell_status = sell_status;
+        this.discount_rate = discount_rate;
+        this.image_url = image_url;
+        this.title = title;
+    }
+
+    public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count,
+        int book_count, Instant register_date, boolean sell_status, int discount_rate,
         String image_url,
         String title) {
         this.registered_book_id = registered_book_id;
@@ -132,11 +155,6 @@ public class RegisteredBookDto {
     public void setTitle(String title) {
         this.title = title;
     }
-
-    public String getRegister_date_string() {
-        return register_date.toString();
-    }
-
 
     @Override
     public String toString() {

@@ -4,7 +4,6 @@ public class SellerAndCategoryVO {
 
     private int sellerId;
     private String category;
-
     private int sellStatus;
 
     public SellerAndCategoryVO(int sellerId, String category, int sellStatus) {
@@ -24,4 +23,5 @@ public class SellerAndCategoryVO {
     public int getSellStatus() {
         return sellStatus;
     }
+    
 }

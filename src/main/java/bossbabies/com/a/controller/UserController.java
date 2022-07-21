@@ -2,7 +2,7 @@ package bossbabies.com.a.controller;
 
 import bossbabies.com.a.dto.user.MemberDto;
 import bossbabies.com.a.dto.user.SellerDto;
-import bossbabies.com.a.parameterVO.LoginVO;
+import bossbabies.com.a.parameterVO.*;
 import bossbabies.com.a.service.MemberService;
 import bossbabies.com.a.service.SellerService;
 import org.slf4j.Logger;
@@ -36,14 +36,15 @@ public class UserController {
         return "/user/userSelect";
     }
     @RequestMapping(value = "memberRegi.do", method = RequestMethod.GET)
-    public String commonRegi() {
+    public String commonRegi(String email, Model model) {
         logger.info("UserController memberRegi() " + new Date());
-
+        model.addAttribute("email", email);
         return "/user/memberRegi";
     }
     @RequestMapping(value = "sellerRegi.do", method = RequestMethod.GET)
-    public String sellerRegi() {
+    public String sellerRegi(String email, Model model) {
         logger.info("UserController sellerRegi() " + new Date());
+        model.addAttribute("email", email);
 
         return "/user/sellerRegi";
     }
@@ -57,7 +58,7 @@ public class UserController {
         String email = memberDto.getEmail();
         String phone = memberDto.getPhone();
         String address = memberDto.getAddress();
-        MemberDto insertDto = new MemberDto(id, password, name, email, phone, address);
+        MemberDto insertDto = new MemberDto(id, password, name, email, address, phone);
         System.out.println("Dto = " + insertDto);
         int count = memberService.regiMember(insertDto);
         String msg = "NO";
@@ -132,6 +133,96 @@ public class UserController {
             model.addAttribute("seller", seller);
             return "/user/updateSeller";
         }
+    }
+    @RequestMapping(value = "updateMember.do", method = RequestMethod.GET)
+    public String updateMember(HttpServletRequest req){
+        String password = req.getParameter("password");
+        String phone = req.getParameter("phone");
+        String address = req.getParameter("address");
+        String id = req.getParameter("id");
+        UpdateMemberVO vo = new UpdateMemberVO(password, address, phone, id);
+        System.out.println(vo);
+        int updateMember = memberService.updateMember(vo);
+        System.out.println(updateMember);
+        String msg = "updateFail";
+        if(updateMember > 0){
+            msg = "updateSuccess";
+        }
+        System.out.println(msg);
+        return "user/login";
+    }
+    @RequestMapping(value = "updateSeller.do", method = RequestMethod.GET)
+    public String updateSeller(HttpServletRequest req){
+        String password = req.getParameter("password");
+        String phone = req.getParameter("phone");
+        String store_name = req.getParameter("store_name");
+        String id = req.getParameter("id");
+        UpdateSellerVO vo = new UpdateSellerVO(password, store_name, phone, id);
+        System.out.println(vo);
+        int updateSeller = sellerService.updateSeller(vo);
+        System.out.println(updateSeller);
+        String msg = "updateFail";
+        if(updateSeller > 0){
+            msg = "updateSuccess";
+        }
+        System.out.println(msg);
+        return "user/login";
+    }
+
+    @RequestMapping(value = "findId.do", method = RequestMethod.GET)
+    public String findId(HttpServletRequest req, Model model){
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        FindIdVO find = new FindIdVO(name, email);
+        System.out.println(find);
+        String msg = "findIdFail";
+
+        String id = memberService.findMemberId(find);
+        if(id != null){
+            model.addAttribute("id", id);
+            msg = "findIdSuccess";
+            System.out.println(msg + id);
+            return "user/findIdOk";
+        }
+        id = sellerService.findSellerId(find);
+        if(id != null){
+            model.addAttribute("id", id);
+            msg = "findIdSuccess";
+            System.out.println(msg + id);
+            return "user/findIdOk";
+        }
+
+        System.out.println(msg + id);
+        return "user/findId";
+
+    }
+    @RequestMapping(value = "findPassword.do", method = RequestMethod.GET)
+    public String findPassword(HttpServletRequest req, Model model){
+        String id = req.getParameter("id");
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        FindPasswordVO find = new FindPasswordVO(id, name, email);
+        System.out.println(find);
+        String msg = "findIdFail";
+
+        String password = memberService.findMemberPassword(find);
+        if(password != null){
+            model.addAttribute("password", password);
+            msg = "findIdSuccess";
+            System.out.println(msg + password);
+            return "user/findPasswordOk";
+        }
+        password = sellerService.findSellerPassword(find);
+        if(password != null){
+            model.addAttribute("password", password);
+            msg = "findIdSuccess";
+            System.out.println(msg + password);
+            return "user/findPasswordOk";
+        }
+
+        System.out.println(msg + password);
+        return "user/findPassword";
+
     }
 
 

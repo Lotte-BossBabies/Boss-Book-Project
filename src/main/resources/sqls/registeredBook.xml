@@ -59,13 +59,6 @@
     where registered_book_id = #{registeredBookId}
   </update>
 
-  <update id="updateDeliveryStatus" parameterType="bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO">
-    update orders
-    set delivery_status = #{status}
-    where registered_book_id = #{registeredBookId}
-  </update>
-
-
   <select id="getRegisteredBook" parameterType="java.lang.Integer" resultType="bossbabies.com.a.dto.RegisteredBookDto">
     select rb.registered_book_id, rb.book_id, rb.seller_id, rb.order_count, rb.book_count, rb.register_date, rb.sell_status, rb.discount_rate,
            b.image_url, b.title
@@ -73,6 +66,12 @@
     where rb.book_id = b.book_id
     and registered_book_id=#{registered_book_id}
   </select>
+
+  <update id="updateOrderCount" parameterType="java.lang.Integer">
+    update registered_book
+    set order_count = order_count+1
+    where registered_book_id = #{registered_book_id}
+  </update>
 
 </mapper>
 

@@ -54,7 +54,6 @@
         <button type="button" onclick="searchButton()">search</button>
 
         <button type="button" onclick="salesButton()">판매량순</button>
-
     </div>
 
 

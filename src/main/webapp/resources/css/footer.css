@@ -1,3 +1,8 @@
+#contents {
+    min-height: 400px;
+    padding: 0 0 120px 0;
+}
+
 #footer{
     background-color: #f8f8f8;
     text-align: center;
@@ -10,7 +15,8 @@
 }
 
 #footer .footerTopMenu ul{
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-left: 15px;
 }
 
 #footer .wideArea{
@@ -21,7 +27,7 @@
     color: #000;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+#footer article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
@@ -29,6 +35,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     max-width: 1140px;
     margin-right: auto;
     margin-left: auto;
+
 }
 
 #footer .footerTopMenu {
@@ -57,7 +64,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     color: #333;
 }
 
-.withSeller#footer .companyInfo {
+#footer .withSeller#footer .companyInfo {
     padding-bottom: 40px;
 }
 
@@ -75,6 +82,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     font-size: 0;
     color: #757575;
     text-align: left;
+    margin-left: 50px   ;
 }
 
 #footer .companyInfo .infoWrapper .company {
@@ -165,7 +173,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 #footer .footerInfo {
-    padding: 20px 0;
+    padding-bottom: 20px;
     font-size: 12px;
     line-height: 1.58;
     letter-spacing: -.2px;

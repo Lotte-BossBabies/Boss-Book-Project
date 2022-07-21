@@ -1,6 +1,12 @@
 package bossbabies.com.a.controller;
 
 import bossbabies.com.a.dto.RegisteredBookDto;
+import bossbabies.com.a.dto.admin.DeliveryDto;
+import bossbabies.com.a.service.admin.AdminServiceImpl;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 import bossbabies.com.a.service.DetailedBookServiceImpl;
 import bossbabies.com.a.service.admin.AdminServiceImpl;
 import java.util.Date;
@@ -185,6 +191,42 @@ public class AdminController {
 
         return adminService.getRegisteredBookListByKeyword(sellerId, category, keyword, sellStatus);
 
+    @RequestMapping(value="manageDelivery.do", method = RequestMethod.GET)
+    public String manageDelivery(int seller_id, Model model){
+        List<DeliveryDto> preDeliveryList = adminService.getPreDeliveryBooks(seller_id);
+
+        model.addAttribute("preDeliveryList", preDeliveryList);
+        model.addAttribute("seller_id", seller_id);
+
+        return "/admin/manageDelivery";
+    }
+
+    @RequestMapping(value="updateDeliveryStatus.do", method = RequestMethod.GET)
+    public String updateDeliveryStatus(int order_id, int seller_id){
+        adminService.updateDeliveryStatus(order_id);
+
+        return "redirect:/manageDelivery.do?seller_id="+seller_id;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="searchDelivery.do", method = RequestMethod.GET)
+    public List<DeliveryDto> searchDelivery(int seller_id, String start_date, String end_date){
+        String startDate = start_date;
+        String endDate = end_date;
+
+        if(start_date.equals("")){
+            startDate = "1900-01-01";
+        }
+        if(end_date.equals("")){
+            endDate = LocalDateTime.now().toString();
+        }
+
+        startDate = startDate.substring(0, 10).replace("-", "");
+        endDate = endDate.substring(0, 10).replace("-", "");
+
+        List<DeliveryDto> completedDeliveryList = adminService.getCompletedDeliveryBooks(seller_id, startDate, endDate);
+
+        return completedDeliveryList;
     }
 
 }

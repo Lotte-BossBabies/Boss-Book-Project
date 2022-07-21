@@ -5,8 +5,8 @@ public class CategoryAndKeywordVO {
     private String category;
     private String keyword;
     private int sellerId;
-
     private int sellStatus;
+
 
     public CategoryAndKeywordVO(String category, String keyword) {
         this.category = category;
@@ -18,7 +18,6 @@ public class CategoryAndKeywordVO {
         this.keyword = keyword;
         this.sellerId = sellerId;
         this.sellStatus = sellStatus;
-    }
 
     public String getCategory() {
         return category;
@@ -36,4 +35,5 @@ public class CategoryAndKeywordVO {
     public int getSellStatus() {
         return sellStatus;
     }
+
 }

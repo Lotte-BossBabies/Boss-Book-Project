@@ -10,6 +10,7 @@
 <%
     MemberDto member = (MemberDto) request.getAttribute("member");
     String id = member.getId();
+    String name = member.getName();
     String email = member.getEmail();
     String address = member.getAddress();
     String phone = member.getPhone();
@@ -104,21 +105,26 @@
     <div class="redbox">회원정보 수정</div>
     <div class="userinfo">
 
-        <form action="updateUserController" method="post" id="platform">
+        <form action="updateMember.do" method="get" id="platform">
             <input type="hidden" id="flag" value="updateUser" name="param">
             <div class="user">
-                <div class="text">아이디aaaaaa</div>
+                <div class="text">아이디</div>
                 <input name="id" type="text" class="infoinput" id="id" value="<%= id%>" readonly>
                 <span class="blank"></span>
             </div>
             <div class="user">
+                <div class="text">이름</div>
+                <input name="name" type="text" class="infoinput" id="name" value="<%= name%>" readonly>
+                <span class="blank"></span>
+            </div>
+            <div class="user">
                 <div class="text">이메일</div>
-                <input name="email" type="text" class="infoinput" id="email" value="<%= email%>">
+                <input name="email" type="text" class="infoinput" id="email" value="<%= email%>" readonly>
                 <span class="blank"></span>
             </div>
             <div class="user">
                 <div class="text">비밀번호</div>
-                <input name="pwd" type="password" class="infoinput" id="pwd" required="required" onkeyup="return passwordChanged()">
+                <input name="password" type="password" class="infoinput" id="password" required="required" onkeyup="return passwordChanged()">
                 <span id="strength" class="blank">Type Password</span>
             </div>
             <div class="user">
@@ -127,13 +133,13 @@
                 <span id="passMatch" class="blank">Type Password</span>
             </div>
             <div class="user">
-                <div class="text">핸드폰번호</div>
-                <input name="phone" type="text" class="infoinput" id="phone" value="<%= phone%>">
+                <div class="text">주소</div>
+                <input name="address" type="text" class="infoinput" id="address" value="<%= address%>">
                 <span class="blank"></span>
             </div>
             <div class="user">
-                <div class="text">이메일</div>
-                <input name="address" type="text" class="infoinput" id="address" value="<%= address%>">
+                <div class="text">핸드폰번호</div>
+                <input name="phone" type="text" class="infoinput" id="phone" value="<%= phone%>">
                 <span class="blank"></span>
             </div>
             <div class="updateBtn" align="center">

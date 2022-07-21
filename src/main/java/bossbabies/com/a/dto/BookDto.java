@@ -131,6 +131,19 @@ public class BookDto {
         this.publisher = publisher;
     }
 
+    public BookDto(int book_id, String isbn, String title, String author, int price, String description, String image_url, String category, Instant pubdate, String publisher) {
+        this.book_id = book_id;
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        this.description = description;
+        this.image_url = image_url;
+        this.category = category;
+        this.pubdate = pubdate;
+        this.publisher = publisher;
+    }
+
     @Override
     public String toString() {
         return "BookDto{" +

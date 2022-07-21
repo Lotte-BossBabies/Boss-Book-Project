@@ -21,7 +21,7 @@ dl, ul, ol, li {
 }
 
 #header {
-    position: static;
+    /*position: fixed;*/
     background: #fff;
     border-bottom: 1px solid #cccccc;
     z-index: 1000;

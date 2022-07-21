@@ -27,4 +27,6 @@ public interface RegisteredBookDao {
 
     RegisteredBookDto getRegisteredBookById(int registered_book_id);
 
+    boolean updateOrderCount(int registered_book_id);
+
 }

@@ -6,21 +6,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <spring:eval expression="@apiProperties['client_id']" var="client_id"/>
-<spring:eval expression="@apiProperties['client_id']" var="redirect_uri"/>
+<spring:eval expression="@apiProperties['redirect_uri']" var="redirect_uri"/>
+<spring:eval expression="@apiProperties['logout_redirect_uri']" var="logout_redirect_uri"/>
 
-<% String api_key = "https://kauth.kakao.com/oauth/authorize?client_id=";%>
-+ client_id + "&redirect_uri=" + @Value("${redirect_uri}") +"&response_type=code";
-<%--%>--%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript"></script>
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <script src="<c:url value="/resources/js/login.js" />"></script>
+
 
     <style type="text/css">
         .center {
@@ -58,8 +56,8 @@
                                                                             name="rememberID" id="rememberID">아이디 저장</label>
                     &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
                     <a href="<%=request.getContextPath() %>/userSelect.do" style="text-decoration-line: none">회원가입</a> &nbsp |  &nbsp
-                    <a href="<%=request.getContextPath() %>/user?param=findId" style="text-decoration-line: none">아이디찾기</a> &nbsp |  &nbsp
-                    <a href="<%=request.getContextPath() %>/user?param=findPwd" style="text-decoration-line: none">비밀번호찾기</a>
+                    <a href="<%=request.getContextPath() %>/findId.do" style="text-decoration-line: none">아이디찾기</a> &nbsp |  &nbsp
+                    <a href="<%=request.getContextPath() %>/findPassword.do" style="text-decoration-line: none">비밀번호찾기</a>
                 </div>
 
             </div>
@@ -67,12 +65,19 @@
     </div>
 </div>
 <div style="text-align: center">
-    <a class="p-2" href="<%=api_key%>">
+    <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code">
         <img src="${pageContext.request.contextPath}/resources/images/kakao_login_medium_wide.png" >
         <!-- 이미지는 카카오 개발자센터에서 제공하는 login 이미지를 사용했습니다. -->
     </a>
 </div>
+<button onclick="kakaoLogout()">카카오 로그아웃</button>
 </body>
+<script>
+    function kakaoLogout(){
+        location.href = "https://kauth.kakao.com/oauth/logout?client_id=${client_id}&logout_redirect_uri=${logout_redirect_uri}";
+    }
+
+</script>
 </html>
 
 
