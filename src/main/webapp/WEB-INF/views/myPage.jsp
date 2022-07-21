@@ -111,7 +111,7 @@
             <%} else {%>
             <td class="align-middle">
                 <button type="button" class="btn btn-outline-success"
-                        onclick="cancelBtn(); location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>&memberId=<%=member.getMemberId()%>';">
+                        onclick="cancelBtn(); location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>';">
                     주문 취소
                 </button>
             </td>
@@ -147,7 +147,7 @@
             </td>
             <td class="align-middle">
                 <button class="btn btn-outline-success"
-                        onclick="location.href='deleteLike.do?likeId=<%=likeBook.getLikeId()%>&memberId=<%=member.getMemberId()%>'">
+                        onclick="location.href='deleteLike.do?likeId=<%=likeBook.getLikeId()%>'">
                     취소
                 </button>
             </td>
@@ -195,7 +195,7 @@
                     </div>
                     <div style="margin-left: 100px; margin-top: 100px;">
                         <button class="btn btn-outline-success"
-                                onclick="deleteBtn(); location.href='deleteReview.do?reviewId=<%=review.getReviewId()%>&memberId=<%=member.getMemberId()%>';">
+                                onclick="deleteBtn(); location.href='deleteReview.do?reviewId=<%=review.getReviewId()%>';">
                             삭제</button>
                     </div>
                 </div>
