@@ -24,189 +24,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
-    <style type="text/css">
-
-        /* 전체 레이아웃 */
-        .detailedBookContainer{
-            width: 900px;
-            margin: 20px auto;
-            display: grid;
-            grid-template-columns: 450px 450px;
-            grid-template-rows: repeat(2, minmax(400px, auto));
-        }
-        .imgBox{
-            grid-column: 1/2;
-            grid-row: 1/2;
-            text-align: center;
-        }
-        .orderBox{
-            grid-column: 2/3;
-            grid-row: 1/2;
-            padding: 10px;
-        }
-        .menuBox{
-            grid-column: 1/3;
-            grid-row: 2/3;
-        }
-
-        /* In ImgBox */
-        #bookImg{
-            width: 300px;
-        }
-
-        /* In orderBox */
-        .star{
-            font-size: 18px;
-        }
-        .basicInfoBox {
-            text-align: right;
-            padding: 10px;
-        }
-        .basicInfoTitle{
-            font-size: 14px;
-            color: #595959;
-        }
-        .basicInfo{
-            font-size: 18px;
-            color: #595959;
-        }
-        .price{
-            font-size: 24px;
-            color : crimson;
-        }
-        .pricePoint{
-            font-weight: bold;
-            font-size: 28px;
-        }
-        .originalPrice{
-            font-size: 20px;
-            text-decoration: line-through;
-        }
-        #line{
-            border-bottom: 2px solid black;
-            margin: 10px 0px;
-        }
-        .imgStrBox{
-            display: flex;
-            align-items: center;
-            justify-content: right;
-            padding: 10px;
-        }
-        .imgStrBox > img{
-            margin-right: 5px;
-        }
-        .priceBox{
-            margin: 10px 0px;
-            text-align: right;
-            padding: 10px;
-        }
-        .btnBox{
-            margin: 10px 10px;
-            text-align: right;
-        }
-        .orderBtn{
-            display: inline-block;
-            width: 280px;
-            height: 60px;
-            border: 1px solid black;
-            border-radius: 5px;
-            background-color: white;
-            font-size: 20px;
-        }
-        .orderBtn:hover{
-            border: 2px solid cornflowerblue;
-            color: cornflowerblue;
-        }
-        .likeBtn{
-            all: unset;
-            width: 55px;
-            height: 55px;
-            margin: 0px 10px;
-            cursor: pointer;
-        }
-
-        /* In menuBox */
-        /* 메뉴 탭 */
-        .menu {
-            list-style-type: none;
-        }
-        .menu > li {
-            display: inline-block;
-            width: 100px;
-            height: 30px;
-            padding: 20px 20px 10px 20px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        .menu > li a{
-            display: block;
-            text-decoration: none;
-            text-align: center;
-            color: black;
-        }
-        .menu > li a:hover{
-            text-decoration: underline;
-            font-weight: 700;
-            color: cornflowerblue;
-        }
-        .menu li.current {
-            border-bottom: 3px solid cornflowerblue;
-        }
-        .tabContent{
-            display: none;
-            padding-top: 20px;
-            padding-left: 20px;
-        }
-        .tabContent.current{
-            display: inherit;
-        }
-
-        /* 상세 정보 */
-        .infoBox{
-            margin: 20px auto;
-            width: 700px;
-            padding: 20px 40px;
-            background-color: #f1f7ff;
-            border-radius: 10px;
-        }
-        .contentsBox{
-            margin: 30px;
-            padding: 30px;
-        }
-        #contentsTitle{
-            font-size: 24px;
-            font-weight: 700;
-        }
-        #contents{
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        /* 리뷰 */
-        .reviewBox{
-            width: 700px;
-            margin: 10px auto;
-        }
-        .reviews{
-            background-color: #f1f7ff;
-            border-radius: 10px;
-            margin: 5px;
-            padding: 15px 20px;
-        }
-        .imgStrBoxInReview{
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .review{
-            font-size: 20px;
-        }
-        .reviewDate{
-            font-size: 14px;
-            color: #595959;
-            margin-top: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="/resources/css/detailedBook.css">
 </head>
 <body>
 <%@include file = "../layout/header.jsp" %>
@@ -346,29 +164,34 @@
         unlike.style.display = 'none';
     }
 
-    function setLike(){
-        $.ajax ({
-            url: "addLikes.do",
-            type: "GET",
-            data: {
-                registered_book_id : "<%=registeredBook.getRegistered_book_id() %>"
-            },
-            success : function(data) {
-                if(data == "true"){
+    function setLike() {
+        let loginStatus = checkLogin();
+        if (loginStatus){
+            $.ajax({
+                url: "addLikes.do",
+                type: "GET",
+                data: {
+                    registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
+                },
+                success: function (data) {
+                    if (data == "true") {
+                        console.log(data);
+                        likeStatus = data;
+                        window.location.reload();
+                    } else {
+                        console.log(data);
+                        likeStatus = data;
+                        window.location.reload();
+                    }
+                },
+                error: function (data) {
                     console.log(data);
-                    likeStatus = data;
-                    window.location.reload();
                 }
-                else{
-                    console.log(data);
-                    likeStatus = data;
-                    window.location.reload();
-                }
-            },
-            error	: function(data) {
-                console.log(data);
-            }
-        });
+            });
+        }
+        else{
+            alert('로그인이 필요한 서비스입니다.');
+        }
     }
     function cancelLikes(){
         $.ajax ({
