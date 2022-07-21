@@ -57,7 +57,7 @@ body, input, button, select, textarea {
     color: #fff;
     font-size: 16px;
     border-radius: 4px;
-    background-color: #E60012;
+    background-color: #3CAE76;
 }
 
 input[type="hidden" i] {
@@ -134,7 +134,7 @@ div {
 }
 a:link { color: black; text-decoration: none;}
 a:visited { color: black; text-decoration: none;}
-a:hover { color: blue; text-decoration: underline;}
+a:hover { color: #3CAE76; text-decoration: underline;}
 
 .titleBox{
     width: 70px;
