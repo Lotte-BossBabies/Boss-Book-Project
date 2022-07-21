@@ -2,8 +2,10 @@ package bossbabies.com.a.dao.registeredBook;
 
 import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
+import bossbabies.com.a.parameterVO.BookAndSellerVO;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
+import bossbabies.com.a.parameterVO.RegisterBookVO;
 import bossbabies.com.a.parameterVO.SellerAndCategoryVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
 
@@ -87,6 +89,11 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
         return session.selectList(namespace + "getBooksByKeyword", vo);
     }
 
+    @Override
+    public RegisteredBookDto checkBookRegistered(BookAndSellerVO vo) {
+        return session.selectOne(namespace + "checkBookRegistered", vo);
+    }
+
     /***
      * 상품 책 등록 상태 수정 메소드 - 등록 목록에서 삭제
      * 1 -> 0 : 판매 등록 해지
@@ -107,6 +114,16 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
     @Override
     public int updateDeliveryCompleted(StatusAndRegisteredBookIdVO vo) {
         return session.update(namespace + "updateDeliveryStatus", vo);
+    }
+
+    @Override
+    public int registerBook(RegisterBookVO vo) {
+        return session.insert(namespace + "registerBook", vo);
+    }
+
+    @Override
+    public BookDto getBookDetail(int bookId) {
+        return session.selectOne(namespace + "getBookDetail", bookId);
     }
 
     @Override

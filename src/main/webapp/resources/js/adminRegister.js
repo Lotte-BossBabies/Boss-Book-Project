@@ -30,24 +30,23 @@ function getNotRegisteredBooks(doUrl, jsonData) {
 
 function registerBookButton(id) {
 
-  var jsonData = {"sellStatus":1, "registeredBookId":id};
-
-
-  var sel = document.getElementById("subCategorySelect");
-  var val = sel.options[sel.selectedIndex].value;
-  var selectData = {"sellerId":1, "category":val, "sellStatus":0};
+  var jsonData = {"bookId": id};
 
   $.ajax({
-    url:"updateSellStatus.do",
+    url:"registerDetail.do",
     type:"POST",
     data: JSON.stringify(jsonData),
-    contentType: "application/json; charset-UTF-8",
+    contentType: "application/json; charset=UTF-8",
+    dataType: "json",
 
-    success: function (result) {
-      alert("success!");
+    success: function(resp) {
+      if(resp.result == null) {
+        var id = resp.bookId;
 
-      getNotRegisteredBooks("category.do", selectData);
-
+        location.href = "registerBookDetail.do?bookId=" + id;
+      }else {
+        location.href = "adminMain.do";
+      }
     },
     error: function () {
       alert("fail");
@@ -60,8 +59,7 @@ function subChangeBooks() {
   var sel = document.getElementById("subCategorySelect");
   var val = sel.options[sel.selectedIndex].value;
 
-  // var jsonData = {"sellerId":"1", "category":val, "sellStatus":0};
-  var jsonData = {"sellerId":"1", "category":val};
+  var jsonData = {"category":val};
 
   getNotRegisteredBooks("notRegisteredBooks.do", jsonData);
 
@@ -73,7 +71,7 @@ function subSearchButton() {
   var val = sel.options[sel.selectedIndex].value;
   var keyword = document.getElementById("subKeyword").value;
 
-  var jsonData = {"sellerId":"1", "category":val, "keyword":keyword, "sellStatus":0};
+  var jsonData = {"category":val, "keyword":keyword, "sellStatus":0};
 
   getNotRegisteredBooks("notRegisteredBooksByKeyword.do", jsonData);
 }
@@ -85,7 +83,7 @@ function subInputTextCheck() {
     var sel = document.getElementById("subCategorySelect");
     var val = sel.options[sel.selectedIndex].value;
 
-    var jsonData = {"sellerId":"1", "category":val, "sellStatus":0};
+    var jsonData = {"category":val, "sellStatus":0};
 
     getNotRegisteredBooks("notRegisteredBooks.do", jsonData);
 

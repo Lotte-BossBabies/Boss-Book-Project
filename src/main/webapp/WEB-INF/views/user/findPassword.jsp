@@ -5,12 +5,12 @@
   Time: 4:51 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>비밀번호 찾기</title>
+    <title>MZ BOOK: 비밀번호 찾기</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/formPage.css">
     <link rel="stylesheet" href="/resources/css/header.css">

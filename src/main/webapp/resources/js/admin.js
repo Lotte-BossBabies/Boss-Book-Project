@@ -53,7 +53,7 @@ function changeBooks() {
 
     console.log(val);
 
-    var jsonData = {"sellerId":"1", "category":val, "sellStatus":1};
+    var jsonData = {"category":val, "sellStatus":1};
 
     getBooks("category.do", jsonData);
 }
@@ -65,7 +65,7 @@ function searchButton() {
   var val = sel.options[sel.selectedIndex].value;
   var keyword = document.getElementById("keyword").value;
 
-  var jsonData = {"sellerId":"1", "category":val, "keyword":keyword, "sellStatus":1};
+  var jsonData = {"category":val, "keyword":keyword, "sellStatus":1};
 
   getBooks("keyword.do", jsonData);
 
@@ -79,7 +79,7 @@ function inputTextCheck() {
     var sel = document.getElementById("categorySelect");
     var val = sel.options[sel.selectedIndex].value;
 
-    var jsonData = {"sellerId":"1", "category":val, "sellStatus":1};
+    var jsonData = {"category":val, "sellStatus":1};
 
     getBooks("category.do", jsonData);
 
@@ -90,7 +90,7 @@ function salesButton() {
   var sel = document.getElementById("categorySelect");
   var val = sel.options[sel.selectedIndex].value;
 
-  var jsonData = { "sellerId":"1", "category":val, "sellStatus":1};
+  var jsonData = {"category":val, "sellStatus":1};
 
   getBooks("sales.do", jsonData);
 }
@@ -106,7 +106,7 @@ function cancelBookButton(id) {
 
   var sel = document.getElementById("categorySelect");
   var value = sel.options[sel.selectedIndex].value;
-  var bookData = {"sellerId":"1", "category":value, "sellStatus":1};
+  var bookData = {"category":value, "sellStatus":1};
 
 
   $.ajax({
@@ -144,7 +144,7 @@ function updateButton() {
     success: function (result) {
       alert("sucess!");
 
-      location.href = "/adminMain.do?sellerId=1&sellStatus=1";
+      location.href = "/adminMain.do";
 
     },
     error: function () {
@@ -155,7 +155,7 @@ function updateButton() {
 }
 
 function cancelButton() {
-  location.href = "/adminMain.do?sellerId=1&sellStatus=1";
+  location.href = "/adminMain.do";
 }
 
 /*--------------------------------------------------------------------------------------*/

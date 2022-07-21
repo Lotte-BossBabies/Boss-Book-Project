@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>관리자 페이지</title>
+    <title>MZ BOOK: 마이페이지</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -36,9 +36,9 @@
 
         <div class="aBox">
             <ul>
-                <li><a href="/updateBook.do?sellerId=1" onclick="register()">상품등록</a></li>
+                <li><a href="/updateBook.do" onclick="register()">상품등록</a></li>
                 <li>|</li>
-                <li><a href="/manageDelivery.do?seller_id=1">배송관리</a></li>
+                <li><a href="/manageDelivery.do">배송관리</a></li>
                 <li>|</li>
                 <li><a href="/chart.do">실적통계</a></li>
             </ul>
@@ -127,7 +127,7 @@
       var sel = document.getElementById('categorySelect');
       var val = sel.options[sel.selectedIndex].value;
 
-      var jsonData = {"sellerId": "1", "category": val, "sellStatus": 1};
+      var jsonData = {"category": val, "sellStatus": 1};
 
       getBooks("category.do", jsonData);
     }

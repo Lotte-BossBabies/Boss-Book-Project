@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="bossbabies.com.a.dto.user.MemberDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
@@ -16,83 +17,10 @@
             document.getElementById("platform").submit();
         }
     </script>
-    <title>updateUser</title>
+    <title>MZ BOOK: 회원정보 수정</title>
+    <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
-    <style>
-        .redbox {
-            margin: auto;
-            background-color: #e60012;
-            color: white;
-            width: 70%;
-            height: 30px;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .userinfo {
-            width: 35%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 50px;
-        }
-
-        .user {
-            display: flex;
-            justify-items: flex-end;
-            justify-content: flex-end;
-        }
-
-        .blank {
-            width: 100px;
-            height: 40px;
-        }
-
-        .infoinput {
-            width: 300px;
-            height: 40px;
-            margin: 10px;
-        }
-
-        .text {
-            margin-top: 25px;
-            padding: 0;
-        }
-
-        .updateBtn {
-            margin-top: 30px;
-        }
-
-        .cancelBtn {
-            background-color: #595959;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .cancelBtn:hover {
-            background-color: #ffffff;
-            color: #595959;
-            border: 1px solid #595959;
-            border-radius: 5px;
-        }
-
-        .confirmBtn:hover {
-            background-color: #ffffff;
-            color: #e60012;
-            border: 1px solid #e60012;
-            border-radius: 5px;
-        }
-
-        .confirmBtn {
-            background-color: #e60012;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 <%@include file = "../layout/header.jsp" %>
@@ -138,7 +66,7 @@
                 <span class="blank"></span>
             </div>
             <div class="updateBtn" align="center">
-                <input type="button" class="cancelBtn" value="취소">
+                <input type="button" class="cancelBtn" value="취소" onclick="location.href='mypage.do'">
                 <input type="submit" class="confirmBtn" value="확인" onclick="formSubmit()">
             </div>
         </form>
