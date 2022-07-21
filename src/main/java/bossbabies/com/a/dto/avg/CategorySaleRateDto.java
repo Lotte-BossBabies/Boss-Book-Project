@@ -2,22 +2,22 @@ package bossbabies.com.a.dto.avg;
 
 public class CategorySaleRateDto {
 
-    private int sellerId;       // 판매자 아이디
+    private Integer sellerId;       // 판매자 아이디
     private String category;    // 카테고리
-    private int orderCount;     // 주문횟수
+    private Integer orderCount;     // 주문횟수
     private double percent;     // 비율
 
     public CategorySaleRateDto() {
     }
 
-    public CategorySaleRateDto(int sellerId, String category, int orderCount, double percent) {
+    public CategorySaleRateDto(Integer sellerId, String category, Integer orderCount, double percent) {
         this.sellerId = sellerId;
         this.category = category;
         this.orderCount = orderCount;
         this.percent = percent;
     }
 
-    public int getSellerId() {
+    public Integer getSellerId() {
         return sellerId;
     }
 
@@ -41,7 +41,7 @@ public class CategorySaleRateDto {
         this.category = category;
     }
 
-    public int getOrderCount() {
+    public Integer getOrderCount() {
         return orderCount;
     }
 
