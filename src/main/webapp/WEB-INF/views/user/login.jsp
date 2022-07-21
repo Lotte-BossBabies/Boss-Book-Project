@@ -52,12 +52,14 @@
                 </form>
 
                 <div class="login_bot_wrap">
-                    <label class="form-check-label" for="rememberID"><input class="check_box" type="checkbox"
-                                                                            name="rememberID" id="rememberID">아이디 저장</label>
-                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <a href="<%=request.getContextPath() %>/userSelect.do" style="text-decoration-line: none">회원가입</a> &nbsp |  &nbsp
-                    <a href="<%=request.getContextPath() %>/findId.do" style="text-decoration-line: none">아이디찾기</a> &nbsp |  &nbsp
-                    <a href="<%=request.getContextPath() %>/findPassword.do" style="text-decoration-line: none">비밀번호찾기</a>
+                    <div class="label">
+                        <%--@declare id="rememberid"--%><label for="rememberID"><input class="check_box" type="checkbox"name="rememberID" id="rememberID">아이디 저장</label>
+                    </div>
+                    <div id = "util" class="util">
+                        <a href="<%=request.getContextPath() %>/userSelect.do" style="text-decoration-line: none">회원가입</a> &nbsp |  &nbsp
+                        <a href="<%=request.getContextPath() %>/findId.do" style="text-decoration-line: none">아이디찾기</a> &nbsp |  &nbsp
+                        <a href="<%=request.getContextPath() %>/findPassword.do" style="text-decoration-line: none">비밀번호찾기</a>
+                    </div>
                 </div>
 
             </div>

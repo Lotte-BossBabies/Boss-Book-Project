@@ -69,7 +69,7 @@
                     <%--@declare id="name"--%><label for="name">이름 : &nbsp;</label>
                 </div>
                 <div class="innerText">
-                    <input type="text" class="inputs" placeholder="이름" name="name" required="required">
+                    <input id="name" type="text" class="inputs" placeholder="이름" name="name" required="required">
                 </div>
             </div>
             <div class="innerInputBox">
@@ -77,7 +77,7 @@
                     <%--@declare id="email"--%><label for="email">이메일 : &nbsp;</label>
                 </div>
                 <div class="innerText">
-                    <input type="text" class="inputs" placeholder="이메일주소" name="email" required="required"
+                    <input id="email"  type="text" class="inputs" placeholder="이메일주소" name="email" required="required"
                            value="<%=email%>">
                 </div>
             </div>
@@ -86,7 +86,7 @@
                     <%--@declare id="phone"--%><label for="phone">휴대폰 : &nbsp;</label>
                 </div>
                 <div class="innerText">
-                    <input type="text" class="inputs" name="phone" required="required">
+                    <input id="phone" type="text" class="inputs" name="phone" required="required">
                 </div>
             </div>
             <div class="innerInputBox">
@@ -94,7 +94,7 @@
                     <%--@declare id="address"--%><label for="address">주소 : &nbsp;</label>
                 </div>
                 <div class="innerText">
-                    <input type="text" class="inputs" placeholder="주소" name="address" required="required">
+                    <input id="address"  type="text" class="inputs" placeholder="주소" name="address" required="required">
                 </div>
             </div>
             <div class="innerInputBox">
@@ -142,6 +142,11 @@
     function checkForm() {
         if (document.getElementById("password").value !== document.getElementById("confirmPwd").value) {
             alert("패스워드가 일치하지 않습니다!");
+            return false;
+        }
+        if(document.getElementById("id").value == "" ||document.getElementById("password").value == "" ||document.getElementById("name").value == ""
+            ||document.getElementById("email").value == "" ||document.getElementById("phone").value == "" ||document.getElementById("address").value == ""){
+            alert("회원정보를 정확히 기입해주세요!");
             return false;
         }
         // if(document.getElementById("flag").value != document.getElementById("id").value) {
