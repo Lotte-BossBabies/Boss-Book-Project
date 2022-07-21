@@ -24,13 +24,11 @@ public class AvgService {
                 .mapToInt(CategorySaleRateDto::getOrderCount)
                 .sum();
 
-        System.out.println(total);
 
         List<CategorySaleRateDto> result = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             CategorySaleRateDto dto = list.get(i);
             dto.setPercent(((float) dto.getOrderCount() / (float) total) * 100);
-            System.out.println(dto.getPercent());
             result.add(dto);
         }
 
