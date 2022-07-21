@@ -20,7 +20,7 @@
 <%@include file = "../layout/header.jsp" %>
 <div class="findBox">
     <div class="titleBox">
-        <h2>아이디 찾기</h2>
+        <h3>아이디 찾기</h3>
     </div>
     <div class="outerInputBox">
         <form action="findId.do" method="get" id="findForm">

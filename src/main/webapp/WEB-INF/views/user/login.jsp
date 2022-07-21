@@ -37,7 +37,7 @@
         <div class="contents_inner">
             <div class="login_box">
                 <div class="titleBox">
-                    <h1>로그인</h1>
+                    <h2>로그인</h2>
                 </div>
 
                 <form action="loginAf.do" method="get">

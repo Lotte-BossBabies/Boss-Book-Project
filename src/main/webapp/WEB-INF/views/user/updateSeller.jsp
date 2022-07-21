@@ -22,7 +22,7 @@
             document.getElementById("platform").submit();
         }
     </script>
-    <title>MZ BOOK: 회원가입</title>
+    <title>MZ BOOK: 회원정보 수정</title>
     <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
