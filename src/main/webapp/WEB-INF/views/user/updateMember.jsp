@@ -23,6 +23,7 @@
             document.getElementById("platform").submit();
         }
     </script>
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>updateUser</title>
     <style>
         .redbox {

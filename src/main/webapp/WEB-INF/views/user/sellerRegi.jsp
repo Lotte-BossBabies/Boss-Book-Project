@@ -10,6 +10,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <title>Insert title here</title>

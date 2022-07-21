@@ -14,6 +14,7 @@
 %>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>리뷰 작성</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"

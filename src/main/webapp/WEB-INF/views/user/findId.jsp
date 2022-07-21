@@ -12,6 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/formPage.css">
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>아이디 찾기</title>
 </head>
 <body>

@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>비밀번호 찾기</title>
     <meta charset="UTF-8">
 

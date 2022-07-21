@@ -1,5 +1,4 @@
 <%@ page import="bossbabies.com.a.dto.user.MemberDto" %>
-<%@ page import="bossbabies.com.a.dto.user.SellerDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%

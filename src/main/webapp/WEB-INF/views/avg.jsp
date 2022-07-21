@@ -18,6 +18,7 @@
 
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>Title</title>
     <style>
         .highcharts-figure,
