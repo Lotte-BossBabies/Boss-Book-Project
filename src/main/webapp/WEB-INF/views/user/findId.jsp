@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/formPage.css">
-    <title>아이디 찾기</title>
+    <title>MZ BOOK: 아이디 찾기</title>
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
 </head>
@@ -20,7 +20,7 @@
 <%@include file = "../layout/header.jsp" %>
 <div class="findBox">
     <div class="titleBox">
-        <h2>아이디 찾기</h2>
+        <h3>아이디 찾기</h3>
     </div>
     <div class="outerInputBox">
         <form action="findId.do" method="get" id="findForm">

@@ -24,7 +24,7 @@
             document.getElementById("platform").submit();
         }
     </script>
-    <title>updateUser</title>
+    <title>MZ BOOK: 회원정보 수정</title>
     <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
@@ -73,7 +73,7 @@
                 <span class="blank"></span>
             </div>
             <div class="updateBtn" align="center">
-                <input type="button" class="cancelBtn" value="취소">
+                <input type="button" class="cancelBtn" value="취소" onclick="location.href='mypage.do'">
                 <input type="submit" class="confirmBtn" value="확인" onclick="formSubmit()">
             </div>
         </form>

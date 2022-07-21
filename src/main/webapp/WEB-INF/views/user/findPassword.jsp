@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>비밀번호 찾기</title>
+    <title>MZ BOOK: 비밀번호 찾기</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/formPage.css">
     <link rel="stylesheet" href="/resources/css/header.css">

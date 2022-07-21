@@ -36,7 +36,7 @@
                 %>
 
                 <li>
-                    <a href="adminMain.do?sellerId=1&sellStatus=1">MYPAGE</a>
+                    <a href="adminMain.do">MYPAGE</a>
                     <span class="txt_bar"></span>
                 </li>
                 <%
