@@ -35,9 +35,9 @@
 
     <div id="menu">
         <ul>
-            <li><a href="/updateBook.do?sellerId=1" onclick="register()">상품등록</a></li>
-            <li><a href="/manageDelivery.do?seller_id=1">배송관리</a></li>
-            <li><a href="/chart.do?seller_id=1">실적통계</a></li>
+            <li><a href="/updateBook.do?" onclick="register()">상품등록</a></li>
+            <li><a href="/manageDelivery.do?">배송관리</a></li>
+            <li><a href="/chart.do?">실적통계</a></li>
         </ul>
     </div>
 
@@ -107,7 +107,7 @@
       var sel = document.getElementById('categorySelect');
       var val = sel.options[sel.selectedIndex].value;
 
-      var jsonData = {"sellerId": "1", "category": val, "sellStatus": 1};
+      var jsonData = {"category": val, "sellStatus": 1};
 
       getBooks("category.do", jsonData);
     }
