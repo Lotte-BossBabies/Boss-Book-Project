@@ -12,6 +12,7 @@ import java.time.Instant;
  * -----------------------------------------------------------
  */
 public class MyPageReviewDto {
+    private Integer reviewId;
     private String content;
     private Integer star;
     private Instant reviewDate;
@@ -21,12 +22,21 @@ public class MyPageReviewDto {
     public MyPageReviewDto() {
     }
 
-    public MyPageReviewDto(String content, Integer star, Instant reviewDate, String title, String imageUrl) {
+    public MyPageReviewDto(Integer reviewId, String content, Integer star, Instant reviewDate, String title, String imageUrl) {
+        this.reviewId = reviewId;
         this.content = content;
         this.star = star;
         this.reviewDate = reviewDate;
         this.title = title;
         this.imageUrl = imageUrl;
+    }
+
+    public Integer getReviewId() {
+        return reviewId;
+    }
+
+    public void setReviewId(Integer reviewId) {
+        this.reviewId = reviewId;
     }
 
     public String getContent() {

@@ -15,4 +15,5 @@ public interface MemberDao {
     int updateMember(UpdateMemberVO vo);
     String findMemberId(FindIdVO vo);
     String findMemberPassword(FindPasswordVO vo);
+    String memberDuplicateId(String id);
 }

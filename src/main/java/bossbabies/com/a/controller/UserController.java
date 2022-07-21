@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -52,13 +53,15 @@ public class UserController {
     @RequestMapping(value = "regiMember.do", method = RequestMethod.GET)
     public String regiMember(MemberDto memberDto){
         logger.info("UserController regiMember() " + new Date());
+        int member_id = memberDto.getMember_id();
+        System.out.println(member_id);
         String id = memberDto.getId();
         String password = memberDto.getPassword();
         String name = memberDto.getName();
         String email = memberDto.getEmail();
         String phone = memberDto.getPhone();
         String address = memberDto.getAddress();
-        MemberDto insertDto = new MemberDto(id, password, name, email, address, phone);
+        MemberDto insertDto = new MemberDto(member_id, id, password, name, email, address, phone);
         System.out.println("Dto = " + insertDto);
         int count = memberService.regiMember(insertDto);
         String msg = "NO";
@@ -71,13 +74,14 @@ public class UserController {
     @RequestMapping(value = "regiSeller.do", method = RequestMethod.GET)
     public String regiSeller(SellerDto sellerDto){
         logger.info("UserController regiSeller() " + new Date());
+        int seller_id = sellerDto.getSeller_id();
         String id = sellerDto.getId();
         String password = sellerDto.getPassword();
         String name = sellerDto.getName();
         String email = sellerDto.getEmail();
         String phone = sellerDto.getPhone();
         String store = sellerDto.getStore_name();
-        SellerDto insertDto = new SellerDto(id, password, name, email, phone, store);
+        SellerDto insertDto = new SellerDto(seller_id, id, password, name, email, phone, store);
         System.out.println("Dto = " + insertDto);
         int count = sellerService.regiSeller(insertDto);
         String msg = "NO";
@@ -93,26 +97,38 @@ public class UserController {
         String msg = "loginFail";
         String id = req.getParameter("id");
         String password = req.getParameter("password");
+        String userType = "";
         LoginVO vo = new LoginVO(id, password);
         MemberDto member = memberService.loginMember(vo);
         System.out.println("member = "  + member);
         System.out.println("vo = " +  vo);
 
         if(member != null && !member.getId().equals("")){
+            userType = "member";
             msg = "loginSuccess";
         }
 
         SellerDto seller = sellerService.loginSeller(vo);
 
         if(seller != null && !seller.getId().equals("")){
+            userType = "seller";
             msg = "loginSuccess";
         }
-
+        System.out.println("seller = "  + seller);
+        System.out.println("vo = " +  vo);
+        System.out.println("userType = " + userType);
         System.out.println(msg);
-
-        req.getSession().setAttribute("login", id);
+        if(userType.equals("member")) {
+            System.out.println("member");
+            req.getSession().setAttribute("login", member);
+        }
+        else if(userType.equals("seller")){
+            System.out.println("seller");
+            req.getSession().setAttribute("login", seller);
+        }
+        req.getSession().setAttribute("userType", userType);
         if (msg.equals("loginSuccess")) {
-            return "/user/temp";
+            return "redirect:/main.do";
         } else {
             return "/user/loginFail";
         }
@@ -120,6 +136,16 @@ public class UserController {
 
     @RequestMapping(value = "updateUser.do", method = RequestMethod.GET)
     public String updateUser(HttpServletRequest req, Model model){
+        Object user = req.getSession().getAttribute("login");
+        if(user.getClass().equals(MemberDto.class)){
+            model.addAttribute("member", user);
+            return "/user/updateMember";
+        }
+        else{
+            model.addAttribute("seller", user);
+            return "/user/updateSeller";
+        }
+        /*
         String id = (String)req.getSession().getAttribute("login");
         System.out.println("updateUser = " + id);
         logger.info("UserController updateUser()" + new Date());
@@ -133,6 +159,7 @@ public class UserController {
             model.addAttribute("seller", seller);
             return "/user/updateSeller";
         }
+         */
     }
     @RequestMapping(value = "updateMember.do", method = RequestMethod.GET)
     public String updateMember(HttpServletRequest req){
@@ -224,7 +251,29 @@ public class UserController {
         return "user/findPassword";
 
     }
-
-
-
+    @RequestMapping(value = "duplicateId.do", method = RequestMethod.GET)
+    @ResponseBody
+    public String duplicateId(@RequestParam Map<String, Object> map){
+        String msg = "";
+        String id = (String)map.get("user_id");
+        String dupId = memberService.memberDuplicateId(id);
+        System.out.println("id = " + id + "dupId = " + dupId);
+        if(id.equals("")){
+            return msg;
+        }
+        if(id.equals(dupId)){
+            msg = "NO";
+            System.out.println(msg);
+            return msg;
+        }
+        dupId = sellerService.sellerDuplicateId(id);
+        if(id.equals(dupId)){
+            msg = "NO";
+            System.out.println(msg);
+            return msg;
+        }
+        msg = "YES";
+        System.out.println(msg);
+        return msg;
+    }
 }

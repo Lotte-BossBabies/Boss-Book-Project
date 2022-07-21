@@ -16,8 +16,8 @@
 
     <select id="getSalesByPeriod" resultType="bossbabies.com.a.dto.avg.SalesByPeriodDto">
         select date_format(convert(order_date, datetime), '%Y-%m-%d') as orderDate, category, count(category) as countBook
-        from registered_book r, book b, orders o
-        where r.registered_book_id = o.registered_book_id and b.book_id = r.book_id
+        from registered_book r, book b, orders o, seller s
+        where r.registered_book_id = o.registered_book_id and b.book_id = r.book_id and s.seller_id = #{sellerId}
         group by orderdate, category
         order by orderdate;
     </select>

@@ -1,11 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bossbabies.com.a.dto.avg.CategorySaleRateDto" %>
-<%@ page import="com.mysql.cj.xdevapi.JsonArray" %>
-<%@ page import="bossbabies.com.a.dto.avg.SalesByPeriodDto" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.HashSet" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     List<CategorySaleRateDto> saleRateList = (List<CategorySaleRateDto>) request.getAttribute("saleRateByCategory");
 
@@ -121,12 +117,24 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="<c:url value="/resources/css/header.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/banner.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/footer.css"/>">
 </head>
 <body>
+<%@ include file="layout/header.jsp" %>
+<br><br>
 <div id="pie-chart"></div>
 <br><br>
-<input type="date" id="beforeDate"> ~ <input type="date" id="afterDate">
-<button id="btn">선택</button>
+<hr>
+<br><br>
+<div id="choiceDate" align="center">
+    <input type="date" id="beforeDate"> ~ <input type="date" id="afterDate">
+    <button id="btn">선택</button>
+</div>
+<br><br>
 <div id="line-chart"></div>
 
 <script>
@@ -168,32 +176,22 @@
     let line_chart = Highcharts.chart('line-chart', {
 
         title: {
-            text: 'dkfjsldkjf'
+            text: '기간 별 매출현황'
         },
 
         subtitle: {
-            text: 'dddd'
+            text: '언제 무슨 카테고리가 많이 팔렸는가?'
         },
 
         yAxis: {
             title: {
-                text: 'Number of Employees'
+                text: 'Number of books'
             }
         },
 
         xAxis: {
-            accessibility: {
-                rangeDescription: 'Range: ㅇㅇㅇㅇ'
-            },
             categories: []
         },
-
-        series:[
-            {
-                name:'',
-                data:[]
-            }
-        ],
 
         legend: {
             layout: 'vertical',
@@ -223,7 +221,6 @@
 
 <script>
 
-
     $(document).ready(function () {
         $("#btn").click(function () {
             let beforeDate = document.getElementById("beforeDate").value;
@@ -252,7 +249,6 @@
         let end = afterStr * 1;
         let date = [];
         let index = 0;
-        // alert(JSON.stringify(data));
 
         // start - end 까지 년도 저장
         for (let i = start; i <= end; i++) {
@@ -266,6 +262,10 @@
             set.add(data[i].category);
         }
         let categories = Array.from(set);
+
+        if (set.size == 0) {
+            alert("선택된 날짜에 판매한 책이 없습니다. 다른 날짜를 선택해주세요!");
+        }
 
         let category_arr = new Array(categories.length);
         for (let i = 0; i < category_arr.length; i++) {
@@ -303,9 +303,8 @@
 
         /************************************************************/
 
-        // line_chart.xAxis.categories=date;
 
-        // dateJson
+        // String to Json -> dateJson
         let dateJson = "["
         for (let i = 0; i < date.length; i++) {
             dateJson += date[i] + ", "
@@ -314,7 +313,7 @@
         dateJson += "]";
         console.log(dateJson);
 
-        // dataJson
+        // String to Json -> dataJson
         let dataJson = "[";
         for (let i = 0; i < category_arr.length; i++) {
             dataJson += "{ name:'" + categories[i] + "', data:["
@@ -326,53 +325,62 @@
         }
         dataJson = dataJson.substring(0, dataJson.lastIndexOf(","));
         dataJson += "]"
-        line_chart.series = JSON.parse(dataJson);
+        console.log(dataJson);
+
+        line_chart = new Highcharts.chart('line-chart', {
+
+            title: {
+                text: '기간 별 매출현황'
+            },
+
+            subtitle: {
+                text: '언제 무슨 카테고리가 많이 팔렸는가?'
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Number of books'
+                }
+            },
+
+            xAxis: {
+                categories: date
+            },
+
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+        });
+
         for (let i = 0; i < category_arr.length; i++) {
             line_chart.addSeries({
-
-            })
+                name: categories[i],
+                data: category_arr[i]
+            });
         }
-
-
-        console.log(JSON.parse(dataJson));
-
-        // line_chart.xAxis = date;
-        // for (let i=0;i<category_arr.length;i++){
-        //     line_chart.series[i].name = categories[i];
-        //     line_chart.series[i].data = category_arr[i];
-        //     console.log("들어가라 = " + line_chart.series[i].name + line_chart.series[i].data);
-        // }
-
-        // for (let i=0;i<category_arr.length;i++){
-        //     for(let j=0;j<category_arr[i].length;j++){
-        //         line_chart.series[i].name = categories[i];
-        //         line_chart.series[i].data = category_arr[i];
-        //         console.log(category_arr[i]);
-        //     }
-        // }
-
-        // line_chart.series = dataJson;
-
-
     }
 
 
 </script>
-<%--<%--%>
-<%--    List<SalesByPeriodDto> periodList = (List<SalesByPeriodDto>) request.getAttribute("periodList");--%>
-<%--    System.out.println(periodList);--%>
-<%--    int start = Integer.parseInt(periodList.get(0).getOrderDate());                 // 입력 받은 날짜의 시작 2207016--%>
-<%--    int end = Integer.parseInt(periodList.get(periodList.size()).getOrderDate());   // 입력 받은 날짜의 끝--%>
-<%--    System.out.println("start: " + start + " 입력받은 날짜 끝: " + end);--%>
-<%--    HashMap<String, List<Integer>> hashMap = new HashMap<String, List<Integer>>();--%>
-<%--    HashSet<String> categories = new HashSet<String>();--%>
-<%--    for (SalesByPeriodDto dto : periodList) {--%>
-<%--        categories.add(dto.getCategory());--%>
-<%--    }--%>
-<%--    List<Integer> date = new ArrayList<Integer>();--%>
-<%--    for (int i = start; i <= end; i++) {--%>
-<%--        date.add(i);--%>
-<%--    }--%>
-<%--%>--%>
+<br><br>
+<%@ include file="layout/footer.jsp" %>
+<br><br>
 </body>
 </html>

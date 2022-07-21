@@ -9,102 +9,13 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-        /* 공통 부분 */
-        .title{
-            font-size: 24px;
-        }
-        .lineBox{
-            border-bottom: 2px solid black;
-            margin: 20px 0px;
-        }
-        .countBox{
-            margin-left: 80px;
-            font-size: 20px;
-        }
-        .deliveryCount{
-            font-weight: bold;
-            font-size: 22px;
-        }
-        .contentBox{
-            width: 600px;
-            margin: 10px auto;
-            padding-left: 20px;
-        }
-        .orderBox{
-            width: 700px;
-            margin: 10px auto;
-            padding-bottom: 5px;
-            display: grid;
-            grid-template-columns: 110px 490px 100px;
-        }
-        .imgBox{
-            grid-column: 1/2;
-        }
-        .deliveryInfoBox{
-            grid-column: 2/3;
-        }
-        .title{
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
+    <link rel="stylesheet" href="/resources/css/manageDelivery.css">
 
-
-        /* 배송 전 상품 */
-        .preDeliveryWrapper{
-            width: 800px;
-            margin: 50px auto;
-        }
-        .buttonBox{
-            grid-column: 3/4;
-        }
-        #deliveryBtn{
-            width: 70px;
-            height: 30px;
-            margin-top: 50px;
-            border: 1px solid black;
-            border-radius: 5px;
-            background-color: white;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        #deliveryBtn:hover{
-            border: 2px solid cornflowerblue;
-            color: cornflowerblue;
-        }
-
-        /* 배송 후 상품 */
-        .completedDeliveryWrapper{
-            width: 800px;
-            margin: 40px auto;
-        }
-        .dateBox{
-            width: 450px;
-            margin: 30px auto;
-        }
-        .dateBox > input{
-            width: 160px;
-            height: 30px;
-        }
-        .dateBox > button{
-            width: 70px;
-            height: 30px;
-            margin-left: 20px;
-            border: 1px solid black;
-            border-radius: 5px;
-            background-color: white;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .dateBox > button:hover{
-            border: 2px solid cornflowerblue;
-            color: cornflowerblue;
-        }
-    </style>
 </head>
 <body>
-
+<%@include file = "../layout/header.jsp" %>
 <div>
     <div class="preDeliveryWrapper">
         <span class="title">배송 전 상품</span><br>
@@ -152,10 +63,9 @@
         </div>
     </div>
 
-
-
 </div>
-
+<%@include file = "../layout/footer.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function delivery(order_id){
         var newForm = document.createElement('form');
@@ -216,16 +126,16 @@
                     title.setAttribute('class', 'title');
                     deliveryInfoBox.append(title);
                     let name = document.createElement('span');
-                    name.innerHTML = item['name']+"<br>";
+                    name.innerHTML = "주문자들 : "+item['name']+"<br>";
                     deliveryInfoBox.append(name);
                     let address = document.createElement('span');
-                    address.innerHTML = item['address']+"<br>";
+                    address.innerHTML = "주소 : "+item['address']+"<br>";
                     deliveryInfoBox.append(address);
                     let phone = document.createElement('span');
-                    phone.innerHTML = item['phone']+"<br>";
+                    phone.innerHTML = "전화번호 : "+item['phone']+"<br>";
                     deliveryInfoBox.append(phone);
                     let order_date = document.createElement('span');
-                    order_date.innerHTML = item['order_date']+"<br>";
+                    order_date.innerHTML = "주문일 : "+item['order_date']+"<br>";
                     deliveryInfoBox.append(order_date);
 
                     let orderBox = document.createElement('div');

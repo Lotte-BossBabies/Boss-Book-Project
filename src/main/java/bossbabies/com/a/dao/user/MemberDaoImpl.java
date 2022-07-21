@@ -46,4 +46,10 @@ public class MemberDaoImpl implements MemberDao{
     public String findMemberPassword(FindPasswordVO vo) {
         return session.selectOne(ns + "findMemberPassword", vo);
     }
+
+    @Override
+    public String memberDuplicateId(String id) {
+        return session.selectOne(ns + "memberDuplicateId", id);
+    }
+
 }

@@ -5,6 +5,7 @@ import bossbabies.com.a.dto.mypage.MyPageReviewDto;
 import bossbabies.com.a.dto.mypage.OrderedBookDto;
 import bossbabies.com.a.dto.mypage.MyPageDto;
 import bossbabies.com.a.dto.mypage.LikedBookDto;
+import bossbabies.com.a.dto.user.MemberDto;
 import bossbabies.com.a.parameterVO.ReviewVO;
 import bossbabies.com.a.service.DetailedBookService;
 import bossbabies.com.a.service.MyPageService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -38,11 +40,12 @@ public class MyPageController {
     DetailedBookService bookService;
 
     @GetMapping("mypage.do")
-    public String orderList(MyPageDto md, Model model) {
-        MyPageDto member = myPageService.getMember(md);
-        List<OrderedBookDto> orderItemList = myPageService.getOrderList(md);
-        List<LikedBookDto> likeItemList = myPageService.getLikeList(md);
-        List<MyPageReviewDto> reviewList = myPageService.getReviewList(md);
+    public String getMyPage(Model model, HttpSession session) {
+        MemberDto md = (MemberDto) session.getAttribute("login");
+        MyPageDto member = new MyPageDto(md.getMember_id(),md.getName());
+        List<OrderedBookDto> orderItemList = myPageService.getOrderList(member);
+        List<LikedBookDto> likeItemList = myPageService.getLikeList(member);
+        List<MyPageReviewDto> reviewList = myPageService.getReviewList(member);
 
         model.addAttribute("member", member);
         model.addAttribute("orderList", orderItemList);
@@ -53,21 +56,21 @@ public class MyPageController {
     }
 
     @GetMapping("cancelOrder.do")
-    public String cancelOrder(int orderId, int memberId) {
+    public String cancelOrder(int orderId) {
         myPageService.cancelOrder(orderId);
 
-        return "redirect:/mypage.do?memberId=" + memberId;
+        return "redirect:/mypage.do";
     }
 
     @GetMapping("deleteLike.do")
-    public String deleteLike(int likeId, int memberId){
+    public String deleteLike(int likeId){
         myPageService.deleteLike(likeId);
 
-        return "redirect:/mypage.do?memberId=" + memberId;
+        return "redirect:/mypage.do";
     }
 
     @GetMapping("writeReview.do")
-    public String writeReview(int bookId, int memberId, ReviewVO rvo, Model model,
+    public String writeReview(int bookId, ReviewVO rvo, Model model,
                               HttpServletResponse response) throws Exception {
         BookDto book = bookService.getBookByRId(bookId);
         MyPageReviewDto review = myPageService.getReview(rvo);
@@ -77,7 +80,7 @@ public class MyPageController {
             response.setCharacterEncoding("UTF-8");
             PrintWriter out = response.getWriter();
             out.println("<script>alert('이미 리뷰를 등록한 책입니다!');" +
-                    "location.href='mypage.do?memberId=" + memberId + "';" +
+                    "location.href='mypage.do';" +
                     "</script>");
             out.flush();
             return "";
@@ -92,7 +95,14 @@ public class MyPageController {
     public String writeReviewAf(ReviewVO reviewVO) {
         myPageService.writeReview(reviewVO);
 
-        return "redirect:/mypage.do?memberId=" + reviewVO.getMemberId();
+        return "redirect:/mypage.do";
+    }
+
+    @GetMapping("deleteReview.do")
+    public String deleteReview(int reviewId) {
+        myPageService.deleteReview(reviewId);
+
+        return "redirect:/mypage.do";
     }
 
 }

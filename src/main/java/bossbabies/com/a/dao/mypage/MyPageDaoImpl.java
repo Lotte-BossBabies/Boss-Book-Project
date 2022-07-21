@@ -57,4 +57,9 @@ public class MyPageDaoImpl implements MyPageDao {
     public MyPageReviewDto getReview(ReviewVO reviewVO) {
         return session.selectOne(rns+"getReviewByBidAndMid", reviewVO);
     }
+
+    @Override
+    public void deleteReview(int reviewId) {
+        session.delete(rns + "deleteReview", reviewId);
+    }
 }

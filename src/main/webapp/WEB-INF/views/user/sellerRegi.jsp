@@ -75,8 +75,8 @@
     $(function () {
         $("#idBtn").click(function () {
             $.ajax({
-                type:"post",
-                url:"./idcheck.jsp",
+                type:"get",
+                url:"duplicateId.do",
                 data:{ "id":$("#id").val() },
                 success:function( data ){
                     if(data.trim() === "YES"){

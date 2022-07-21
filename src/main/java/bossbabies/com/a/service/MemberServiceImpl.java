@@ -44,4 +44,8 @@ public class MemberServiceImpl implements MemberService {
     public String findMemberPassword(FindPasswordVO vo) {
         return dao.findMemberPassword(vo);
     }
+    @Override
+    public String memberDuplicateId(String id) {
+        return dao.memberDuplicateId(id);
+    }
 }

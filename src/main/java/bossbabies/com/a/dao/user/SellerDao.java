@@ -16,4 +16,6 @@ public interface SellerDao {
     int updateSeller(UpdateSellerVO vo);
     String findSellerId(FindIdVO vo);
     String findSellerPassword(FindPasswordVO vo);
+
+    String sellerDuplicateID(String id);
 }

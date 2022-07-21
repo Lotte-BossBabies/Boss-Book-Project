@@ -75,10 +75,11 @@
     $(function () {
         $("#idBtn").click(function () {
             $.ajax({
-                type:"post",
-                url:"./idcheck.jsp",
-                data:{ "id":$("#id").val() },
+                type:"get",
+                url:"duplicateId.do",
+                data:{ user_id:$("#id").val() },
                 success:function( data ){
+                    alert("data = " + data);
                     if(data.trim() === "YES"){
                         $("#idcheck").css("color", "#0000ff");
                         $("#idcheck").html('사용할 수 있는 id입니다');

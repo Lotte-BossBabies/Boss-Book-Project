@@ -7,7 +7,6 @@
     background-color: #f8f8f8;
     text-align: center;
     font-size: 0;
-    width: 1920px;
 }
 
 #footer img{
@@ -32,7 +31,6 @@
 }
 
 #mainLayout .wideArea .innerContent {
-    max-width: 1140px;
     margin-right: auto;
     margin-left: auto;
 

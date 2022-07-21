@@ -45,4 +45,9 @@ public class SellerDaoImpl implements SellerDao{
     public String findSellerPassword(FindPasswordVO vo) {
         return session.selectOne(ns + "findSellerPassword", vo);
     }
+
+    @Override
+    public String sellerDuplicateID(String id) {
+        return session.selectOne(ns + "sellerDuplicateId", id);
+    }
 }

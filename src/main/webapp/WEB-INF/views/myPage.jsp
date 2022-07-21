@@ -67,7 +67,7 @@
         <h4 class="card-title" style="margin: 10px;"><img src="/resources/images/happiness.png" alt="별"
                                                           style="text-align: left; width: 30px;">&nbsp;<%=member.getName()%> 님</h4>
         <p>
-            <button type="button" class="btn btn-outline-secondary" onclick="location.href=''">개인정보 수정</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="location.href='updateUser.do'">개인정보 수정</button>
         </p>
     </div>
 </div>
@@ -111,7 +111,7 @@
             <%} else {%>
             <td class="align-middle">
                 <button type="button" class="btn btn-outline-success"
-                        onclick="cancelBtn(); location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>&memberId=<%=member.getMemberId()%>';">
+                        onclick="cancelBtn(); location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>';">
                     주문 취소
                 </button>
             </td>
@@ -147,7 +147,7 @@
             </td>
             <td class="align-middle">
                 <button class="btn btn-outline-success"
-                        onclick="location.href='deleteLike.do?likeId=<%=likeBook.getLikeId()%>&memberId=<%=member.getMemberId()%>'">
+                        onclick="location.href='deleteLike.do?likeId=<%=likeBook.getLikeId()%>'">
                     취소
                 </button>
             </td>
@@ -193,6 +193,11 @@
                             </div>
                         </div>
                     </div>
+                    <div style="margin-left: 100px; margin-top: 100px;">
+                        <button class="btn btn-outline-success"
+                                onclick="deleteBtn(); location.href='deleteReview.do?reviewId=<%=review.getReviewId()%>';">
+                            삭제</button>
+                    </div>
                 </div>
             </td>
         </tr>
@@ -207,6 +212,9 @@
 <script>
     function cancelBtn(){
         alert("주문이 취소되었습니다.");
+    }
+    function deleteBtn(){
+        alert("리뷰가 삭제되었습니다.");
     }
 </script>
 </body>
