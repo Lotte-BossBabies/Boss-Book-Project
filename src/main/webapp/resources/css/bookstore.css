@@ -23,6 +23,7 @@
 
 #bookstore .bookstore_category_top {
     width: 1200px;
+    margin:auto;
 }
 
 #bookstore .bookstore_category {
