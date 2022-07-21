@@ -75,7 +75,7 @@
                 <ul class="depth0 gnb_menu0"
                     style="color: rgb(51, 51, 51);" <%--style="overflow: visible; height: 100%;"--%>>
                     <li>
-                        <a href="">ABOUT</a>
+                        <a href="bossbabies.do">ABOUT</a>
                     </li>
                     <li>
                         <a href="">가이드</a>
