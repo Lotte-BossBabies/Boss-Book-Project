@@ -24,6 +24,8 @@
         }
     </script>
     <title>updateUser</title>
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
     <style>
         .redbox {
             margin: auto;
@@ -100,7 +102,7 @@
     </style>
 </head>
 <body>
-
+<%@include file = "../layout/header.jsp" %>
 <div class="container">
     <div class="redbox">회원정보 수정</div>
     <div class="userinfo">
@@ -149,6 +151,7 @@
         </form>
     </div>
 </div>
+<%@include file = "../layout/footer.jsp" %>
 <script>
 
     function checkForm() {

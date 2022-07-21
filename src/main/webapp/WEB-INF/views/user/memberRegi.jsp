@@ -14,9 +14,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="<c:url value="/resources/css/formPage.css" />" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
 
 </head>
 <body>
+<%@include file = "../layout/header.jsp" %>
 <div class="regiBox">
     <div class="titleBox">
         <h2>일반 회원가입</h2>
@@ -70,6 +73,8 @@
     </div><!— card body —>
     <%--        <%— footer div - form 밖으로 분리, js통해 submit —%>--%>
 </div>
+
+<%@include file = "../layout/footer.jsp" %>
 
 <script type="text/javascript">
     $(function () {
