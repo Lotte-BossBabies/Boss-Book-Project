@@ -27,7 +27,8 @@ dl, ul, ol, li {
     z-index: 1000;
     width: 100%;
     clear: both;
-    min-width: 1260px;
+    width: 100%;
+    /*min-width: 1260px;*/
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -38,10 +39,16 @@ dl, ul, ol, li {
     border-bottom: 1px solid #ececec;
 }
 
-.gnb, .header_top_cont, .header_search_cont, .main_goods_cont, .sub_content, .content_info, .foot_list ul, .foot_cont, .foot_certify {
+.gnb, .header_search_cont, .main_goods_cont, .sub_content, .content_info, .foot_list ul, .foot_cont, .foot_certify {
     position: relative;
-    width: 1200px;
+    width: 100%;
+    /*width: 1200px;*/
     margin: 0 auto;
+}
+
+.header_top_cont{
+    width: 200px;
+    float: right;
 }
 
 .top_member_box {
@@ -86,7 +93,6 @@ dl, ul, ol, li {
     display: list-item;
     text-align: -webkit-match-parent;
 }
-
 ul {
     display: block;
     list-style-type: disc;
@@ -114,7 +120,8 @@ ul {
 
 /*menu bar*/
 #header .header_gnb {
-    width: 1200px;
+    width: 100%;
+    /*width: 1200px;*/
     margin: 0px auto;
 }
 
@@ -123,10 +130,11 @@ ul {
 }
 
 #header .gnb_menu_box {
-    width: 40%;
+    /*width: 40%;*/
     display: inline-block;
     vertical-align: top;
-    max-width: 900px;
+    /*max-width: 900px;*/
+    width: 500px;
 }
 
 #header .gnb .depth0 {

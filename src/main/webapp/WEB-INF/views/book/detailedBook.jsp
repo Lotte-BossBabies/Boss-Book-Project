@@ -22,7 +22,8 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
     <style type="text/css">
 
         /* 전체 레이아웃 */
@@ -208,7 +209,7 @@
     </style>
 </head>
 <body>
-
+<%@include file = "../layout/header.jsp" %>
 <div class="detailedBookContainer">
     <div class="imgBox">
         <img id="bookImg" src="<%=book.getImage_url()%>" alt="책 이미지">
@@ -319,8 +320,8 @@
         </section>
     </div>
 </div>
-
-
+<%@include file = "../layout/footer.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 
     $('.menu li').click(function(){
