@@ -94,24 +94,36 @@ public class UserController {
         String msg = "loginFail";
         String id = req.getParameter("id");
         String password = req.getParameter("password");
+        String userType = "";
         LoginVO vo = new LoginVO(id, password);
         MemberDto member = memberService.loginMember(vo);
         System.out.println("member = "  + member);
         System.out.println("vo = " +  vo);
 
         if(member != null && !member.getId().equals("")){
+            userType = "member";
             msg = "loginSuccess";
         }
 
         SellerDto seller = sellerService.loginSeller(vo);
 
         if(seller != null && !seller.getId().equals("")){
+            userType = "seller";
             msg = "loginSuccess";
         }
-
+        System.out.println("seller = "  + seller);
+        System.out.println("vo = " +  vo);
+        System.out.println("userType = " + userType);
         System.out.println(msg);
-
-        req.getSession().setAttribute("login", id);
+        if(userType.equals("member")) {
+            System.out.println("member");
+            req.getSession().setAttribute("login", member);
+        }
+        else if(userType.equals("seller")){
+            System.out.println("seller");
+            req.getSession().setAttribute("login", seller);
+        }
+        req.getSession().setAttribute("userType", userType);
         if (msg.equals("loginSuccess")) {
             return "/user/temp";
         } else {
