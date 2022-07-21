@@ -13,7 +13,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>MZ BOOK: 로그인</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript"></script>
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">

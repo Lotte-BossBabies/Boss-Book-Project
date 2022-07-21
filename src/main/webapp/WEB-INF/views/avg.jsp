@@ -18,7 +18,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>MZ BOOK: 통계</title>
     <style>
         .highcharts-figure,
         .highcharts-data-table table {

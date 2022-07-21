@@ -21,7 +21,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>MZ BOOK: 상세보기</title>
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
     <link rel="stylesheet" href="/resources/css/detailedBook.css">

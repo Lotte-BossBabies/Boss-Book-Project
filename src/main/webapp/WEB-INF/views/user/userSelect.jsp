@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-    <title>Title</title>
+    <title>MZ BOOK: 회원가입</title>
     <link href="<c:url value="/resources/css/register.css" />" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
