@@ -1,5 +1,5 @@
 <%@ page import="org.springframework.beans.factory.annotation.Value" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -18,6 +18,8 @@
     <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript"></script>
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <script src="<c:url value="/resources/js/login.js" />"></script>
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
 
 
     <style type="text/css">
@@ -27,9 +29,9 @@
             padding: 10px;
         }
     </style>
-
 </head>
 <body>
+<%@include file = "../layout/header.jsp" %>
 <div class="everything">
     <div class="member_login_wrap">
         <div class="contents_inner">
@@ -52,12 +54,14 @@
                 </form>
 
                 <div class="login_bot_wrap">
-                    <label class="form-check-label" for="rememberID"><input class="check_box" type="checkbox"
-                                                                            name="rememberID" id="rememberID">아이디 저장</label>
-                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <a href="<%=request.getContextPath() %>/userSelect.do" style="text-decoration-line: none">회원가입</a> &nbsp |  &nbsp
-                    <a href="<%=request.getContextPath() %>/findId.do" style="text-decoration-line: none">아이디찾기</a> &nbsp |  &nbsp
-                    <a href="<%=request.getContextPath() %>/findPassword.do" style="text-decoration-line: none">비밀번호찾기</a>
+                    <div class="label">
+                        <%--@declare id="rememberid"--%><label for="rememberID"><input class="check_box" type="checkbox"name="rememberID" id="rememberID">아이디 저장</label>
+                    </div>
+                    <div id = "util" class="util">
+                        <a href="<%=request.getContextPath() %>/userSelect.do" style="text-decoration-line: none">회원가입</a> &nbsp |  &nbsp
+                        <a href="<%=request.getContextPath() %>/findId.do" style="text-decoration-line: none">아이디찾기</a> &nbsp |  &nbsp
+                        <a href="<%=request.getContextPath() %>/findPassword.do" style="text-decoration-line: none">비밀번호찾기</a>
+                    </div>
                 </div>
 
             </div>
@@ -71,6 +75,7 @@
     </a>
 </div>
 <button onclick="kakaoLogout()">카카오 로그아웃</button>
+<%@include file = "../layout/footer.jsp" %>
 </body>
 <script>
     function kakaoLogout(){

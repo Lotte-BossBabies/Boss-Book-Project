@@ -13,8 +13,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/formPage.css">
     <title>아이디 찾기</title>
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
 </head>
 <body>
+<%@include file = "../layout/header.jsp" %>
 <div class="findBox">
     <div class="titleBox">
         <h2>아이디 찾기</h2>
@@ -45,5 +48,6 @@
         location.href = "login.do";
     }
 </script>
+<%@include file = "../layout/footer.jsp" %>
 </body>
 </html>
