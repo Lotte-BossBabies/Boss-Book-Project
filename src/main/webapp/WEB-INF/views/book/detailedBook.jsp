@@ -165,33 +165,42 @@
     }
 
     function setLike() {
-        let loginStatus = checkLogin();
-        if (loginStatus){
-            $.ajax({
-                url: "addLikes.do",
-                type: "GET",
-                data: {
-                    registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
-                },
-                success: function (data) {
-                    if (data == "true") {
-                        console.log(data);
-                        likeStatus = data;
-                        window.location.reload();
-                    } else {
-                        console.log(data);
-                        likeStatus = data;
-                        window.location.reload();
-                    }
-                },
-                error: function (data) {
-                    console.log(data);
+        $.ajax ({
+            url: "checkLogin.do",
+            type: "GET",
+            success: function(loginStatus) {
+                console.log('ajax 성공..');
+                if(loginStatus){
+                    $.ajax({
+                        url: "addLikes.do",
+                        type: "GET",
+                        data: {
+                            registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
+                        },
+                        success: function (data) {
+                            if (data == "true") {
+                                console.log(data);
+                                likeStatus = data;
+                                window.location.reload();
+                            } else {
+                                console.log(data);
+                                likeStatus = data;
+                                window.location.reload();
+                            }
+                        },
+                        error: function (data) {
+                            console.log(data);
+                        }
+                    });
                 }
-            });
-        }
-        else{
-            alert('로그인이 필요한 서비스입니다.');
-        }
+                else{
+                    alert('로그인이 필요한 서비스입니다.');
+                }
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
     }
     function cancelLikes(){
         $.ajax ({
@@ -218,88 +227,68 @@
         });
     }
     function makeOrder(){
-        let loginStatus = checkLogin();
-        if(loginStatus) {
-            let adminStatus = checkAdmin();
-            if(!adminStatus) {
-                let availableStatus = checkAvailable();
-                if(availableStatus){
-                    console.log('if');
-                    var newForm = document.createElement('form');
-
-                    newForm.method = 'get';
-                    newForm.action = 'makeOrder.do';
-
-                    var registered_book_id = document.createElement('input');
-                    registered_book_id.setAttribute("type", "hidden");
-                    registered_book_id.setAttribute("name", "registered_book_id");
-                    registered_book_id.setAttribute("value", <%=registeredBook.getRegistered_book_id() %>);
-
-                    newForm.appendChild(registered_book_id);
-                    document.body.appendChild(newForm);
-
-                    newForm.submit();
-                }
-                else{
-                    alert('재고가 부족합니다.');
-                }
-            }
-            else{
-                alert('관리자 계정은 책을 구매할 수 없습니다.');
-            }
-        }
-        else{
-            alert('로그인이 필요한 서비스입니다.');
-            location.href = "login.do";
-        }
-    }
-    function checkLogin(){
-        let loginStatus = false;
         $.ajax ({
             url: "checkLogin.do",
             type: "GET",
-            success: function(data) {
-                likeStatus = data;
+            success: function(loginStatus) {
+                if(loginStatus){
+                    $.ajax ({
+                        url: "checkAdmin.do",
+                        type: "GET",
+                        success: function(adminStatus) {
+                            if(!adminStatus) {
+                                $.ajax({
+                                    url: "checkAvailableOrder.do",
+                                    type: "GET",
+                                    data: {
+                                        registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
+                                    },
+                                    success: function (availableStatus) {
+                                        if(availableStatus){
+                                            console.log('if');
+                                            var newForm = document.createElement('form');
+
+                                            newForm.method = 'get';
+                                            newForm.action = 'makeOrder.do';
+
+                                            var registered_book_id = document.createElement('input');
+                                            registered_book_id.setAttribute("type", "hidden");
+                                            registered_book_id.setAttribute("name", "registered_book_id");
+                                            registered_book_id.setAttribute("value", <%=registeredBook.getRegistered_book_id() %>);
+
+                                            newForm.appendChild(registered_book_id);
+                                            document.body.appendChild(newForm);
+
+                                            newForm.submit();
+                                        }
+                                        else{
+                                            alert('재고가 부족합니다.');
+                                        }
+                                    },
+                                    error: function (data) {
+                                        console.log(data);
+                                    }
+                                });
+                            }
+                            else{
+                                alert('판매자 계정은 책을 구매할 수 없습니다.');
+                            }
+                        },
+                        error: function(data) {
+                            console.log(data);
+                        }
+                    });
+                }
+                else{
+                    alert('로그인이 필요한 서비스입니다.');
+                    location.href = "login.do";
+                }
             },
             error: function(data) {
                 console.log(data);
             }
         });
-
-        return loginStatus;
     }
-    function checkAdmin(){
-        let adminStatus = true;
-        $.ajax ({
-            url: "checkAdmin.do",
-            type: "GET",
-            success: function(data) {
-                adminStatus = data;
-            },
-            error: function(data) {
-                console.log(data);
-            }
-        });
-        return adminStatus;
-    }
-    function checkAvailable(){
-        let availableStatus = false;
-        $.ajax({
-            url: "checkAvailableOrder.do",
-            type: "GET",
-            data: {
-                registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
-            },
-            success: function (data) {
-                availableStatus = data;
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        });
-        return availableStatus;
-    }
-
 </script>
 </body>
 </html>

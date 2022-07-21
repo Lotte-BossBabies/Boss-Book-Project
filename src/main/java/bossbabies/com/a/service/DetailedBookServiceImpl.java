@@ -119,7 +119,6 @@ public class DetailedBookServiceImpl implements DetailedBookService{
         return (double)sum/reviewList.size();
     }
 
-    //트랜잭션 처리해야할까....ㅜㅜㅜㅜㅜㅜㅜ
     @Override
     public boolean makeOrder(int member_id, int registered_book_id) {
         boolean makeOrderResult = true;

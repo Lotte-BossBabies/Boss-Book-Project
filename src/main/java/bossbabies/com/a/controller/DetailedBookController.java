@@ -3,7 +3,7 @@ package bossbabies.com.a.controller;
 import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.dto.ReviewDto;
-import bossbabies.com.a.dto.user.SellerDto;
+import bossbabies.com.a.dto.user.MemberDto;
 import bossbabies.com.a.service.DetailedBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,12 +35,17 @@ public class DetailedBookController {
     @RequestMapping(value = "getDetailedBook.do", method = RequestMethod.GET)
     public String getBookDetail(int registered_book_id, Model model, HttpServletRequest request) {
 
-//        String id = (String) request.getSession().getAttribute("login");
-//        int member_id = detailedBookService.getLoginMember(id);
+        Boolean likeStatus = false;
+
+        String userType = (String) request.getSession().getAttribute("userType");
+        if(userType!=null && userType.equals("member")){
+            MemberDto memberDto = (MemberDto) request.getSession().getAttribute("login");
+            int member_id = detailedBookService.getLoginMember(memberDto.getId());
+            likeStatus = detailedBookService.getLikeStatus(member_id, registered_book_id);
+        }
 
         RegisteredBookDto registeredBook = detailedBookService.getRegisteredBook(registered_book_id);
         BookDto book = detailedBookService.getBook(registeredBook.getBook_id());
-        Boolean likeStatus = detailedBookService.getLikeStatus(1, registered_book_id);
         List<ReviewDto> reviewList = detailedBookService.getReviewByRBookId(registered_book_id);
 
         double starAvg = 0.0;
@@ -60,27 +65,43 @@ public class DetailedBookController {
     @ResponseBody
     @RequestMapping(value = "addLikes.do", method = RequestMethod.GET)
     public boolean addLikes(int registered_book_id, HttpServletRequest request) {
-//        String id = (String) request.getSession().getAttribute("login");
-//        int member_id = detailedBookService.getLoginMember(id);
 
-        return detailedBookService.addLikes(1, registered_book_id);
+        int member_id = 0;
+
+        String userType = (String) request.getSession().getAttribute("userType");
+        if(userType.equals("member")){
+            MemberDto memberDto = (MemberDto) request.getSession().getAttribute("login");
+            member_id = detailedBookService.getLoginMember(memberDto.getId());
+        }
+
+        return detailedBookService.addLikes(member_id, registered_book_id);
     }
 
     @ResponseBody
     @RequestMapping(value = "cancelLikes.do", method = RequestMethod.GET)
     public boolean cancelLikes(int registered_book_id, HttpServletRequest request) {
-//        String id = (String) request.getSession().getAttribute("login");
-//        int member_id = detailedBookService.getLoginMember(id);
+        int member_id = 0;
 
-        return detailedBookService.cancelLikes(1, registered_book_id);
+        String userType = (String) request.getSession().getAttribute("userType");
+        if(userType.equals("member")){
+            MemberDto memberDto = (MemberDto) request.getSession().getAttribute("login");
+            member_id = detailedBookService.getLoginMember(memberDto.getId());
+        }
+
+        return detailedBookService.cancelLikes(member_id, registered_book_id);
     }
 
     @RequestMapping(value = "makeOrder.do", method = RequestMethod.GET)
     public String makeOrder(int registered_book_id, Model model, HttpServletRequest request){
-//        String id = (String) request.getSession().getAttribute("login");
-//        int member_id = detailedBookService.getLoginMember(id);
+        int member_id = 0;
 
-        boolean makeOrderResult = detailedBookService.makeOrder(1, registered_book_id);
+        String userType = (String) request.getSession().getAttribute("userType");
+        if(userType.equals("member")){
+            MemberDto memberDto = (MemberDto) request.getSession().getAttribute("login");
+            member_id = detailedBookService.getLoginMember(memberDto.getId());
+        }
+
+        boolean makeOrderResult = detailedBookService.makeOrder(member_id, registered_book_id);
         model.addAttribute("makeOrderResult", makeOrderResult);
 
         return "book/orderResult";
@@ -88,7 +109,7 @@ public class DetailedBookController {
 
     @ResponseBody
     @RequestMapping(value="checkAvailableOrder.do", method = RequestMethod.GET)
-    public boolean checkAvailableOrder(int registered_book_id, Model model){
+    public boolean checkAvailableOrder(int registered_book_id){
         RegisteredBookDto registeredBook = detailedBookService.getRegisteredBook(registered_book_id);
 
         if(registeredBook.getBook_count() <= registeredBook.getOrder_count()) {
@@ -101,9 +122,9 @@ public class DetailedBookController {
     @ResponseBody
     @RequestMapping(value="checkLogin.do", method = RequestMethod.GET)
     public boolean checkLogin(HttpServletRequest request){
-        String id = (String) request.getSession().getAttribute("login");
+        Object loginUser = request.getSession().getAttribute("login");
 
-        if(id == null){
+        if(loginUser == null){
             return false;
         }
         return true;
@@ -113,9 +134,9 @@ public class DetailedBookController {
     @ResponseBody
     @RequestMapping(value="checkAdmin.do", method = RequestMethod.GET)
     public boolean checkAdmin(HttpServletRequest request){
-        String id = (String) request.getSession().getAttribute("login");
-        SellerDto seller = detailedBookService.getSeller(id);
-        if(seller != null){
+        String userType = (String) request.getSession().getAttribute("userType");
+
+        if(userType.equals("seller")){
             return true;
         }
         return false;
