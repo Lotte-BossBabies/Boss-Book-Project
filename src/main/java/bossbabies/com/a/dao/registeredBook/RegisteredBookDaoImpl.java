@@ -1,5 +1,6 @@
 package bossbabies.com.a.dao.registeredBook;
 
+import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
@@ -63,8 +64,13 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
     }
 
     @Override
-    public List<RegisteredBookDto> getBookListNotRegistered(int sellerId) {
-        return session.selectList(namespace + "getBooksNotRegistered", sellerId);
+    public List<BookDto> getBookListNotRegistered(SellerAndCategoryVO vo) {
+        return session.selectList(namespace + "getBooks", vo);
+    }
+
+    @Override
+    public List<BookDto> getBookListNotRegisteredByKeyword(CategoryAndKeywordVO vo) {
+        return session.selectList(namespace + "getBooksByKeyword", vo);
     }
 
     /***

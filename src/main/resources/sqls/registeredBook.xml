@@ -43,7 +43,7 @@
     where registered_book_id = #{registeredBookId}
   </update>
 
-  <select id="getBooksNotRegistered" parameterType="Integer" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+  <!--<select id="getBooksNotRegistered" parameterType="Integer" resultType="bossbabies.com.a.dto.RegisteredBookDto">
     select rb.registered_book_id, rb.book_id, rb.seller_id, rb.order_count, rb.book_count, rb.register_date, rb.sell_status, 0,
            b.image_url, b.title
     from registered_book rb, book b
@@ -51,7 +51,7 @@
       and rb.seller_id = #{sellerId}
       and b.category = #{category}
       and rb.sell_status = 0
-  </select>
+  </select>-->
 
   <update id="updateSellStatus" parameterType="bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO">
     update registered_book
@@ -72,6 +72,31 @@
     set order_count = order_count+1
     where registered_book_id = #{registered_book_id}
   </update>
+
+  <select id="getBooks" parameterType="bossbabies.com.a.parameterVO.SellerAndCategoryVO" resultType="bossbabies.com.a.dto.BookDto">
+    select b.book_id, b.title, b.image_url
+    from book b
+    left join (select registered_book_id, book_id, seller_id
+                 from registered_book
+                where sell_status = 0
+                  and seller_id = #{sellerId}) rb
+       on b.book_id = rb.book_id
+    where rb.book_id is null
+      and b.category = #{category}
+  </select>
+
+  <select id="getBooksByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="bossbabies.com.a.dto.BookDto">
+    select b.book_id, b.title, b.image_url
+    from book b
+    left join (select registered_book_id, book_id, seller_id
+                from registered_book
+                where sell_status = 0
+                  and seller_id = #{sellerId}) rb
+       on b.book_id = rb.book_id
+    where rb.book_id is null
+      and b.category = #{category}
+      and b.title like concat('%', #{keyword}, '%')
+  </select>
 
 </mapper>
 

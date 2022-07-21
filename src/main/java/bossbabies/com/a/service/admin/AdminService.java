@@ -1,5 +1,6 @@
 package bossbabies.com.a.service.admin;
 
+import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.dto.admin.DeliveryDto;
 import bossbabies.com.a.dto.mypage.OrderDto;
@@ -29,7 +30,9 @@ public interface AdminService {
 
     public int updateStock(int registeredBookId, int newCount, int discount);
 
-    public List<RegisteredBookDto> getBooksNotRegistered(int sellerId);
+    public List<BookDto> getBooksNotRegistered(int sellerId, String category);
+
+    public List<BookDto> getBooksNotRegisteredByKeyword(int sellerId, String category, String keyword);
 
     public int updateRegisteredBook(int status, int registeredBookId);
 
