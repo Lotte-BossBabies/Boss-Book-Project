@@ -38,7 +38,7 @@ public class MyPageController {
     DetailedBookService bookService;
 
     @GetMapping("mypage.do")
-    public String orderList(MyPageDto md, Model model) {
+    public String getMyPage(MyPageDto md, Model model) {
         MyPageDto member = myPageService.getMember(md);
         List<OrderedBookDto> orderItemList = myPageService.getOrderList(md);
         List<LikedBookDto> likeItemList = myPageService.getLikeList(md);
@@ -93,6 +93,13 @@ public class MyPageController {
         myPageService.writeReview(reviewVO);
 
         return "redirect:/mypage.do?memberId=" + reviewVO.getMemberId();
+    }
+
+    @GetMapping("deleteReview.do")
+    public String deleteReview(int reviewId, int memberId) {
+        myPageService.deleteReview(reviewId);
+
+        return "redirect:/mypage.do?memberId=" + memberId;
     }
 
 }

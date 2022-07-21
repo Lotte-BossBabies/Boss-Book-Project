@@ -32,4 +32,9 @@
         values(#{member_id}, #{content}, #{star}, #{review_date}, #{registered_book_id})
     </insert>
 
+    <delete id="deleteReview" parameterType="int">
+        delete from review
+        where review_id = #{reviewId}
+    </delete>
+
 </mapper>

@@ -63,4 +63,9 @@ public class MyPageServiceImpl implements MyPageService {
     public MyPageReviewDto getReview(ReviewVO reviewVO) {
         return myPageDao.getReview(reviewVO);
     }
+
+    @Override
+    public void deleteReview(int reviewId) {
+        myPageDao.deleteReview(reviewId);
+    }
 }
