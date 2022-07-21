@@ -18,6 +18,7 @@ public class CategoryAndKeywordVO {
         this.keyword = keyword;
         this.sellerId = sellerId;
         this.sellStatus = sellStatus;
+    }
 
     public String getCategory() {
         return category;
