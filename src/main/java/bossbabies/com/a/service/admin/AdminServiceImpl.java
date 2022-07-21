@@ -6,8 +6,10 @@ import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.dto.admin.DeliveryDto;
 import bossbabies.com.a.dto.mypage.OrderDto;
+import bossbabies.com.a.parameterVO.BookAndSellerVO;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
+import bossbabies.com.a.parameterVO.RegisterBookVO;
 import bossbabies.com.a.parameterVO.SellerAndCategoryVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
 import java.util.HashMap;
@@ -87,12 +89,36 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
+    public RegisteredBookDto checkBookRegistered(int bookId, int sellerId) {
+
+        BookAndSellerVO vo = new BookAndSellerVO(bookId, sellerId);
+
+        return dao.checkBookRegistered(vo);
+    }
+
+    @Override
+    public int registerBook(int bookId, int sellerId, int bookCount, int discountRate) {
+
+        RegisterBookVO vo = new RegisterBookVO(bookId, sellerId, bookCount, discountRate);
+
+        return dao.registerBook(vo);
+
+    }
+
+    @Override
+    public BookDto getBookDetail(int bookId) {
+        return dao.getBookDetail(bookId);
+    }
+
+    @Override
     public int updateRegisteredBook(int status, int registeredBookId) {
 
         StatusAndRegisteredBookIdVO vo = new StatusAndRegisteredBookIdVO(status, registeredBookId);
 
         return dao.updateRegisteredBook(vo);
     }
+
+
 
     @Override
     public int updateDeliveryCompleted(int status, int registeredBookId) {

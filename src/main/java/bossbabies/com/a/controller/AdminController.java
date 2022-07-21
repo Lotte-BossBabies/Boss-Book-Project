@@ -6,12 +6,15 @@ import bossbabies.com.a.dto.admin.DeliveryDto;
 import bossbabies.com.a.dto.user.SellerDto;
 import bossbabies.com.a.service.DetailedBookService;
 import bossbabies.com.a.service.SellerService;
+import bossbabies.com.a.service.admin.AdminService;
 import bossbabies.com.a.service.admin.AdminServiceImpl;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +40,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AdminController {
 
     @Autowired
-    AdminServiceImpl adminService;
+    AdminService adminService;
 
     @Autowired
     DetailedBookService detailedBookService;
@@ -48,15 +51,16 @@ public class AdminController {
     Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @RequestMapping(value = "adminMain.do", method = RequestMethod.GET)
-    public String main(HttpSession session, int sellStatus, Model model) {
+    public String main(HttpServletRequest req, Model model) {
 
         logger.info(new Date() + " AdminController main");
 
-        SellerDto seller = (SellerDto) session.getAttribute("login");
-
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
         int sellerId = seller.getSeller_id();
 
         String category = "소설";
+
+        int sellStatus = 1;
 
         List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
         model.addAttribute("resultList", resultList);
@@ -66,11 +70,13 @@ public class AdminController {
 
     @RequestMapping(value = "category.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<RegisteredBookDto> getBooksBycategory(@RequestBody Map<String, String> map) {
+    public List<RegisteredBookDto> getBooksBycategory(@RequestBody Map<String, String> map, HttpServletRequest req) {
 
         logger.info(new Date() + " AdminController getBooksBycategory()");
 
-        int sellerId = Integer.parseInt(map.get("sellerId"));
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
+
         String category = map.get("category");
         int sellStatus = Integer.parseInt(map.get("sellStatus"));
 
@@ -82,10 +88,12 @@ public class AdminController {
 
     @RequestMapping(value = "keyword.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<RegisteredBookDto> getBooksByKeyword(@RequestBody Map<String, String> map) {
+    public List<RegisteredBookDto> getBooksByKeyword(@RequestBody Map<String, String> map, HttpServletRequest req) {
         logger.info(new Date() + " AdminController getBooksByKeyword()");
 
-        int sellerId = Integer.parseInt(map.get("sellerId"));
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
+
         String category = map.get("category");
         String keyword = map.get("keyword");
         int sellStatus = Integer.parseInt(map.get("sellStatus"));
@@ -98,11 +106,13 @@ public class AdminController {
 
     @RequestMapping(value = "sales.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<RegisteredBookDto> getBooksBySales(@RequestBody Map<String, String> map) {
+    public List<RegisteredBookDto> getBooksBySales(@RequestBody Map<String, String> map, HttpServletRequest req) {
 
         logger.info(new Date() + " AdminController getBooksBySales()");
 
-        int sellerId = Integer.parseInt(map.get("sellerId"));
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
+
         String category = map.get("category");
         int sellStatus = Integer.parseInt(map.get("sellStatus"));
 
@@ -156,15 +166,16 @@ public class AdminController {
     }
 
     @RequestMapping(value = "updateBook.do", method = RequestMethod.GET)
-    public String updateBook(int sellerId, Model model) {
+    public String updateBook(HttpServletRequest req, Model model) {
 
         logger.info(new Date() + " AdminController updateBook()");
 
         String category = "소설";
 
-        List<BookDto> resultList = adminService.getBooksNotRegistered(sellerId, category);
-        // List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
 
+        List<BookDto> resultList = adminService.getBooksNotRegistered(sellerId, category);
         model.addAttribute("resultList", resultList);
 
         return "/admin/bookRegister";
@@ -172,52 +183,126 @@ public class AdminController {
 
     @RequestMapping(value = "notRegisteredBooks.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<BookDto> notRegisters(@RequestBody Map<String, String> map) {
+    public List<BookDto> notRegisters(@RequestBody Map<String, String> map, HttpServletRequest req) {
 
         logger.info(new Date() + " AdminController notRegisters()");
 
-        int sellerId = Integer.parseInt(map.get("sellerId"));
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
+
         String category = map.get("category");
-        //int sellStatus = Integer.parseInt(map.get("sellStatus"));
 
         return adminService.getBooksNotRegistered(sellerId, category);
     }
 
     @RequestMapping(value = "notRegisteredBooksByKeyword.do", method = RequestMethod.POST)
     @ResponseBody
-    public List<BookDto> notRegistersByKeyword(@RequestBody Map<String, String> map) {
+    public List<BookDto> notRegistersByKeyword(@RequestBody Map<String, String> map, HttpServletRequest req) {
 
         logger.info(new Date() + " AdminController notRegistersByKeyword()");
 
-        int sellerId = Integer.parseInt(map.get("sellerId"));
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
+
         String category = map.get("category");
         String keyword = map.get("keyword");
-        //int sellStatus = Integer.parseInt(map.get("sellStatus"));
 
         return adminService.getBooksNotRegisteredByKeyword(sellerId, category, keyword);
-        // return adminService.getRegisteredBookListByKeyword(sellerId, category, keyword, sellStatus);
     }
 
+    @RequestMapping(value = "registerDetail.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Integer> registerDetail(@RequestBody Map<String, String> reqMap, HttpServletRequest req) {
+
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
+
+        int bookId = Integer.parseInt(reqMap.get("bookId"));
+
+        Map<String, Integer> map = new HashMap<>();
+
+        RegisteredBookDto dto = adminService.checkBookRegistered(bookId, sellerId);
+
+        if(dto == null) {
+            map.put("bookId", bookId);
+            return map;
+        }
+
+        int result = adminService.updateRegisteredBook(1, dto.getRegistered_book_id());
+
+        map.put("result", result);
+        System.out.println("update book registered!!!!");
+
+        return map;
+    }
+
+    @RequestMapping(value = "registerBookDetail.do", method = RequestMethod.GET)
+    public String moveToRegisterPage(int bookId, Model model) {
+
+        BookDto book = adminService.getBookDetail(bookId);
+
+        model.addAttribute("book", book);
+
+        return "/admin/bookRegisterDetail";
+    }
+
+
+    @RequestMapping(value = "insertRegisterBook.do", method = RequestMethod.POST)
+    public String insertBook(HttpServletRequest req, String bookId, String bookCount, String discountRate) {
+
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
+
+        int book = Integer.parseInt(bookId);
+        int count = Integer.parseInt(bookCount);
+        int rate = Integer.parseInt(discountRate);
+
+
+        int result = adminService.registerBook(book, sellerId, count, rate);
+
+        if(result == 0) {
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            return "registerBookDetail";
+        }else {
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            return "redirect:/updateBook.do?sellerId=3";
+        }
+
+    }
+
+
     @RequestMapping(value="manageDelivery.do", method = RequestMethod.GET)
-    public String manageDelivery(int seller_id, Model model){
-        List<DeliveryDto> preDeliveryList = adminService.getPreDeliveryBooks(seller_id);
+    public String manageDelivery(HttpServletRequest req, Model model){
+
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
+
+        List<DeliveryDto> preDeliveryList = adminService.getPreDeliveryBooks(sellerId);
 
         model.addAttribute("preDeliveryList", preDeliveryList);
-        model.addAttribute("seller_id", seller_id);
+        model.addAttribute("seller_id", sellerId);
 
         return "/admin/manageDelivery";
     }
 
     @RequestMapping(value="updateDeliveryStatus.do", method = RequestMethod.GET)
-    public String updateDeliveryStatus(int order_id, int seller_id){
+    public String updateDeliveryStatus(int order_id, HttpServletRequest req){
+
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
+
         adminService.updateDeliveryStatus(order_id);
 
-        return "redirect:/manageDelivery.do?seller_id="+seller_id;
+        return "redirect:/manageDelivery.do?seller_id="+sellerId;
     }
 
     @ResponseBody
     @RequestMapping(value="searchDelivery.do", method = RequestMethod.GET)
-    public List<DeliveryDto> searchDelivery(int seller_id, String start_date, String end_date){
+    public List<DeliveryDto> searchDelivery(HttpServletRequest req, String start_date, String end_date){
+
+        SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
+        int sellerId = seller.getSeller_id();
+
         String startDate = start_date;
         String endDate = end_date;
 
@@ -231,7 +316,7 @@ public class AdminController {
         startDate = startDate.substring(0, 10).replace("-", "");
         endDate = endDate.substring(0, 10).replace("-", "");
 
-        List<DeliveryDto> completedDeliveryList = adminService.getCompletedDeliveryBooks(seller_id, startDate, endDate);
+        List<DeliveryDto> completedDeliveryList = adminService.getCompletedDeliveryBooks(sellerId, startDate, endDate);
 
         return completedDeliveryList;
     }
