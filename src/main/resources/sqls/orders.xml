@@ -28,7 +28,7 @@
         select o.order_id, o.member_id, o.registered_book_id, o.cancel_status, o.order_date, o.delivery_status, b.title, b.image_url, m.name, m.address, m.phone
         from orders o, registered_book rb, book b, member m
         where m.member_id=o.member_id and o.registered_book_id=rb.registered_book_id and rb.book_id=b.book_id and rb.seller_id=#{seller_id} and o.cancel_status=false and o.delivery_status=true
-          and o.order_date between #{start_date} and #{end_date}+1
+        and o.order_date between #{start_date} and #{end_date}
         order by o.order_date
     </select>
 
