@@ -76,26 +76,44 @@
   <select id="getBooks" parameterType="bossbabies.com.a.parameterVO.SellerAndCategoryVO" resultType="bossbabies.com.a.dto.BookDto">
     select b.book_id, b.title, b.image_url
     from book b
-    left join (select registered_book_id, book_id, seller_id
+    left join (select registered_book_id, book_id, sell_status
                  from registered_book
-                where sell_status = 0
-                  and seller_id = #{sellerId}) rb
+                where seller_id = #{sellerId}) rb
        on b.book_id = rb.book_id
-    where rb.book_id is null
-      and b.category = #{category}
+    where b.category = #{category}
+      and (rb.book_id is null or rb.sell_status = 0)
   </select>
 
   <select id="getBooksByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="bossbabies.com.a.dto.BookDto">
     select b.book_id, b.title, b.image_url
     from book b
-    left join (select registered_book_id, book_id, seller_id
+    left join (select registered_book_id, book_id, sell_status
                 from registered_book
-                where sell_status = 0
-                  and seller_id = #{sellerId}) rb
+                where seller_id = #{sellerId}) rb
        on b.book_id = rb.book_id
-    where rb.book_id is null
-      and b.category = #{category}
+    where b.category = #{category}
+      and (rb.book_id is null or rb.sell_status = 0)
       and b.title like concat('%', #{keyword}, '%')
+  </select>
+
+  <select id="checkBookRegistered" parameterType="bossbabies.com.a.parameterVO.BookAndSellerVO" resultType="bossbabies.com.a.dto.RegisteredBookDto">
+    select rb.registered_book_id, rb.book_id, rb.seller_id, rb.order_count, rb.book_count, rb.register_date, rb.sell_status, 0,
+           b.image_url, b.title
+      from registered_book rb, book b
+     where rb.book_id = b.book_id
+       and b.book_id = #{bookId}
+       and rb.seller_id = #{sellerId}
+  </select>
+
+  <insert id="registerBook" parameterType="bossbabies.com.a.parameterVO.RegisterBookVO">
+    insert into registered_book(book_id, seller_id, order_count, book_count, register_date, sell_status, discount_rate)
+    values (#{bookId}, #{sellerId}, 0, #{bookCount}, now(), 1, #{discountRate})
+  </insert>
+
+  <select id="getBookDetail" parameterType="Integer" resultType="bossbabies.com.a.dto.BookDto">
+    select book_id, title, image_url
+      from book
+     where book_id = #{book_id}
   </select>
 
 </mapper>
