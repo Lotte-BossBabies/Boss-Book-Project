@@ -29,7 +29,7 @@
 
     <div class="bookWrapper">
         <div class="titleBox">
-            <a href="adminMain.do?sellStatus=1">돌아가기</a>
+            <a href="adminMain.do">돌아가기</a>
         </div>
 
         <span class="title">판매 가능한 책</span><br>

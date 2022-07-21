@@ -23,7 +23,7 @@
 <div>
     <div class="preDeliveryWrapper">
         <div class="titleBox">
-            <a href="adminMain.do?sellStatus=1">돌아가기</a>
+            <a href="adminMain.do?">돌아가기</a>
         </div>
 
         <span class="title">배송 전 상품</span><br>
