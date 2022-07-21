@@ -326,12 +326,8 @@
         }
         dataJson = dataJson.substring(0, dataJson.lastIndexOf(","));
         dataJson += "]"
-        line_chart.series = JSON.parse(dataJson);
-        for (let i = 0; i < category_arr.length; i++) {
-            line_chart.addSeries({
-
-            })
-        }
+        // line_chart.series = JSON.parse(dataJson);
+        $('#container').highcharts().series[0].setData(JSON.parse(dataJson));
 
 
         console.log(JSON.parse(dataJson));
