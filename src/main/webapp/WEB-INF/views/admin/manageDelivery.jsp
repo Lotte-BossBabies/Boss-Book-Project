@@ -11,29 +11,95 @@
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
-        .preDeliveryWrapper{
-            width: 900px;
-            margin: 20px auto;
-        }
+        /* 공통 부분 */
         .title{
             font-size: 24px;
         }
         .lineBox{
             border-bottom: 2px solid black;
+            margin: 20px 0px;
+        }
+        .countBox{
+            margin-left: 80px;
+            font-size: 20px;
+        }
+        .deliveryCount{
+            font-weight: bold;
+            font-size: 22px;
+        }
+        .contentBox{
+            width: 600px;
+            margin: 10px auto;
+            padding-left: 20px;
+        }
+        .orderBox{
+            width: 700px;
+            margin: 10px auto;
+            padding-bottom: 5px;
+            display: grid;
+            grid-template-columns: 110px 490px 100px;
         }
         .imgBox{
-            display: inline-block;
+            grid-column: 1/2;
         }
         .deliveryInfoBox{
-            display: inline-block;
+            grid-column: 2/3;
         }
-        .buttonBox{
-            display: inline-block;
+        .title{
+            font-size: 18px;
+            margin-bottom: 5px;
         }
 
+
+        /* 배송 전 상품 */
+        .preDeliveryWrapper{
+            width: 800px;
+            margin: 50px auto;
+        }
+        .buttonBox{
+            grid-column: 3/4;
+        }
+        #deliveryBtn{
+            width: 70px;
+            height: 30px;
+            margin-top: 50px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        #deliveryBtn:hover{
+            border: 2px solid cornflowerblue;
+            color: cornflowerblue;
+        }
+
+        /* 배송 후 상품 */
         .completedDeliveryWrapper{
-            width: 900px;
-            margin: 20px auto;
+            width: 800px;
+            margin: 40px auto;
+        }
+        .dateBox{
+            width: 450px;
+            margin: 30px auto;
+        }
+        .dateBox > input{
+            width: 160px;
+            height: 30px;
+        }
+        .dateBox > button{
+            width: 70px;
+            height: 30px;
+            margin-left: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .dateBox > button:hover{
+            border: 2px solid cornflowerblue;
+            color: cornflowerblue;
         }
     </style>
 </head>
@@ -43,7 +109,7 @@
     <div class="preDeliveryWrapper">
         <span class="title">배송 전 상품</span><br>
         <div class="lineBox"></div>
-        총 <strong><%=preDeliveryList.size()%></strong>개<br>
+        <div class="countBox">총 <span class="deliveryCount"><%=preDeliveryList.size()%></span>개</div>
 
         <div class="contentBox">
             <%
@@ -55,14 +121,14 @@
                     <img src="<%=curDeliveryDto.getImage_url() %>" alt="책 이미지" width="100px">
                 </div>
                 <div class="deliveryInfoBox">
-                    <%=curDeliveryDto.getTitle()%><br>
+                    <div class="title"><%=curDeliveryDto.getTitle()%></div>
                     주문자 : <%=curDeliveryDto.getName() %><br>
                     주소 : <%=curDeliveryDto.getAddress() %><br>
                     전화번호 : <%=curDeliveryDto.getPhone() %><br>
                     주문일 : <%=curDeliveryDto.getOrder_date() %><br>
                 </div>
                 <div class="buttonBox">
-                    <button type="button" onclick="delivery(<%=curDeliveryDto.getOrder_id()%>)">배송 완료</button>
+                    <button id="deliveryBtn" type="button" onclick="delivery(<%=curDeliveryDto.getOrder_id()%>)">배송 완료</button>
                 </div>
             </div>
             <%
@@ -80,7 +146,7 @@
             <button type="button" onclick="searchOrder()">검색</button>
         </div>
 
-        총 <span id="completedDeliveryCount"></span>개
+        <div class="countBox">총 <span class="deliveryCount" id="completedDeliveryCount"></span>개</div>
 
         <div class="contentBox" id="complete">
         </div>
@@ -145,8 +211,9 @@
 
                     let deliveryInfoBox = document.createElement('div');
                     deliveryInfoBox.setAttribute('class', 'deliveryInfoBox');
-                    let title = document.createElement('span');
-                    title.innerHTML = item['title']+"<br>";
+                    let title = document.createElement('div');
+                    title.innerHTML = item['title'];
+                    title.setAttribute('class', 'title');
                     deliveryInfoBox.append(title);
                     let name = document.createElement('span');
                     name.innerHTML = item['name']+"<br>";
@@ -178,3 +245,5 @@
 </script>
 </body>
 </html>
+
+
