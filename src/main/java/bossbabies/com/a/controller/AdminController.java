@@ -42,7 +42,6 @@ public class AdminController {
     @Autowired
     DetailedBookServiceImpl detailedBookService;
 
-
     Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @RequestMapping(value = "adminMain.do", method = RequestMethod.GET)
@@ -190,6 +189,7 @@ public class AdminController {
         int sellStatus = Integer.parseInt(map.get("sellStatus"));
 
         return adminService.getRegisteredBookListByKeyword(sellerId, category, keyword, sellStatus);
+    }
 
     @RequestMapping(value="manageDelivery.do", method = RequestMethod.GET)
     public String manageDelivery(int seller_id, Model model){
