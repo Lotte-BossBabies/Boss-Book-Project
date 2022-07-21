@@ -53,13 +53,15 @@ public class UserController {
     @RequestMapping(value = "regiMember.do", method = RequestMethod.GET)
     public String regiMember(MemberDto memberDto){
         logger.info("UserController regiMember() " + new Date());
+        int member_id = memberDto.getMember_id();
+        System.out.println(member_id);
         String id = memberDto.getId();
         String password = memberDto.getPassword();
         String name = memberDto.getName();
         String email = memberDto.getEmail();
         String phone = memberDto.getPhone();
         String address = memberDto.getAddress();
-        MemberDto insertDto = new MemberDto(id, password, name, email, address, phone);
+        MemberDto insertDto = new MemberDto(member_id, id, password, name, email, address, phone);
         System.out.println("Dto = " + insertDto);
         int count = memberService.regiMember(insertDto);
         String msg = "NO";
@@ -72,13 +74,14 @@ public class UserController {
     @RequestMapping(value = "regiSeller.do", method = RequestMethod.GET)
     public String regiSeller(SellerDto sellerDto){
         logger.info("UserController regiSeller() " + new Date());
+        int seller_id = sellerDto.getSeller_id();
         String id = sellerDto.getId();
         String password = sellerDto.getPassword();
         String name = sellerDto.getName();
         String email = sellerDto.getEmail();
         String phone = sellerDto.getPhone();
         String store = sellerDto.getStore_name();
-        SellerDto insertDto = new SellerDto(id, password, name, email, phone, store);
+        SellerDto insertDto = new SellerDto(seller_id, id, password, name, email, phone, store);
         System.out.println("Dto = " + insertDto);
         int count = sellerService.regiSeller(insertDto);
         String msg = "NO";
