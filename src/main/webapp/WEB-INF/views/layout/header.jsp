@@ -31,7 +31,7 @@
                     <span class="txt_bar"></span>
                 </li>
                 <%
-                } else{
+                } else {
                 %>
 
                 <li>
@@ -47,7 +47,7 @@
                     <span class="txt_bar"></span>
                 </li>
                 <li>
-                    <a href="join.do">JOIN</a>
+                    <a href="userSelect.do">JOIN</a>
                     <span class="txt_bar"></span>
                 </li>
                 <%

@@ -56,7 +56,7 @@ public class AdminController {
 
         int sellerId = seller.getSeller_id();
 
-        String category = "소설";
+        String category = "전체";
 
         List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
         model.addAttribute("resultList", resultList);

@@ -2,7 +2,7 @@
 .regiBox {
     width: 60%;
     height: 550px;
-    margin: 50px auto 0 auto;
+    margin: 50px auto 50px auto;
     padding-top: 30px;
     border: solid 1px #3CAE76;
     border-radius: 3px;
@@ -56,14 +56,14 @@ div.innerPasswordText{
 .findBox {
     width: 350px;
     min-height: 300px;
-    margin: 50px auto 0px auto;
+    margin: 50px auto 50px auto;
     padding-top: 30px;
     border: solid 1px #3CAE76;
     border-radius: 3px;
 }
 .findBox .titleBox {
     width: 120px;
-    margin: auto;
+    margin: 10px auto 30px auto;
 }
 
 .titleBox h1 {

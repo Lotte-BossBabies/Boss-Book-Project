@@ -5,9 +5,6 @@
 <%
     String cateName = (String) request.getAttribute("cateName");
     List<RegisteredBookInfoDto> byCategoryList = (List<RegisteredBookInfoDto>) request.getAttribute("byCategoryList");
-
-//    System.out.println("byCategoryList.get(0).toString() = " + byCategoryList.get(0).toString());
-
 %>
 <html>
 <head>

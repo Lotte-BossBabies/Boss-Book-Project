@@ -24,83 +24,13 @@
     </script>
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>updateUser</title>
-    <style>
-        .redbox {
-            margin: auto;
-            background-color: #e60012;
-            color: white;
-            width: 70%;
-            height: 30px;
-            padding: 10px;
-            text-align: center;
-        }
+    <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
 
-        .userinfo {
-            width: 35%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 50px;
-        }
-
-        .user {
-            display: flex;
-            justify-items: flex-end;
-            justify-content: flex-end;
-        }
-
-        .blank {
-            width: 100px;
-            height: 40px;
-        }
-
-        .infoinput {
-            width: 300px;
-            height: 40px;
-            margin: 10px;
-        }
-
-        .text {
-            margin-top: 25px;
-            padding: 0;
-        }
-
-        .updateBtn {
-            margin-top: 30px;
-        }
-
-        .cancelBtn {
-            background-color: #595959;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .cancelBtn:hover {
-            background-color: #ffffff;
-            color: #595959;
-            border: 1px solid #595959;
-            border-radius: 5px;
-        }
-
-        .confirmBtn:hover {
-            background-color: #ffffff;
-            color: #e60012;
-            border: 1px solid #e60012;
-            border-radius: 5px;
-        }
-
-        .confirmBtn {
-            background-color: #e60012;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
-
+<%@include file = "../layout/header.jsp" %>
 <div class="container">
     <div class="redbox">회원정보 수정</div>
     <div class="userinfo">
@@ -148,6 +78,7 @@
         </form>
     </div>
 </div>
+<%@include file = "../layout/footer.jsp" %>
 <script>
 
     function checkForm() {
