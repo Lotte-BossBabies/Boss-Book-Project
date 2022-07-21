@@ -1,5 +1,6 @@
 .member_login_wrap {
-    padding: 60px 0;
+    padding: 70px 0;
+    margin-bottom: 0;
 }
 #contents.contents_full .contents_inner {
     width: 980px;
@@ -13,11 +14,9 @@
     -webkit-box-sizing: border-box;
     margin:auto;
 }
-#contents.contents_full .contents_inner {
-    width: 980px;
-    margin: 0 auto;
+div.loginwith{
+    margin-bottom: 100px;
 }
-
 
 .member_login_wrap .login_box .login_area input {
     display: block;
@@ -142,5 +141,5 @@ a:hover { color: #3CAE76; text-decoration: underline;}
 
 .titleBox{
     width: 70px;
-    margin: auto;
+    margin: 20px auto;
 }
