@@ -21,14 +21,14 @@ public class RegisteredBookInfoDto {
 
     private String category;
 
-    private Instant pubdate;
+    private String pubdate;
 
     private String publisher;
 
     public RegisteredBookInfoDto() {
     }
 
-    public RegisteredBookInfoDto(int registered_book_id, int book_id, String isbn, String title, String author, int price, String description, String image_url, String category, Instant pubdate, String publisher) {
+    public RegisteredBookInfoDto(int registered_book_id, int book_id, String isbn, String title, String author, int price, String description, String image_url, String category, String pubdate, String publisher) {
         this.registered_book_id = registered_book_id;
         this.book_id = book_id;
         this.isbn = isbn;
@@ -114,11 +114,11 @@ public class RegisteredBookInfoDto {
         this.category = category;
     }
 
-    public Instant getPubdate() {
+    public String getPubdate() {
         return pubdate;
     }
 
-    public void setPubdate(Instant pubdate) {
+    public void setPubdate(String pubdate) {
         this.pubdate = pubdate;
     }
 

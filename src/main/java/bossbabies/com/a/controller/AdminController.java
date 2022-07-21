@@ -58,7 +58,7 @@ public class AdminController {
         SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
         int sellerId = seller.getSeller_id();
 
-        String category = "소설";
+        String category = "전체";
 
         int sellStatus = 1;
 

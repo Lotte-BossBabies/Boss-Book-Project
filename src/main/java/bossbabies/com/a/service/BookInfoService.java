@@ -15,4 +15,6 @@ public interface BookInfoService {
 
     //카테고리별 상품 리스트
     List<RegisteredBookInfoDto> findByCategoryList(String cateName);
+
+    List<RegisteredBookInfoDto> searchRegisteredBook(String search);
 }

@@ -1,41 +1,69 @@
 /* 회원가입 */
 .regiBox {
-    width: 65%;
+    width: 60%;
     height: 550px;
-    margin: 50px auto 0 auto;
+    margin: 50px auto 50px auto;
     padding-top: 30px;
-    border: solid 1px #E60012;
+    border: solid 1px #3CAE76;
     border-radius: 3px;
 }
 .regiBox .titleBox {
     width: 80%;
     margin: 30px auto;
+    text-align: center;
 }
 .regiBox .outerInputBox{
-    width: 365px;
-    height: 320px;
+    width: 100%;
+    height: 80%;
     margin: 30px auto 0px auto;
 }
 .regiBox .innerInputBox{
-    margin: 10px 0px;
+    display: flex;
+    margin: 10px 0;
+    text-align: left;
+    justify-content: center;
+}
+div.innerInputBoxSpecial{
+    display: flex;
+    height: 45px;
+    text-align: left;
+    justify-content: center;
+}
+div.innerId{
+    width: calc(100%/4);
+    float: left;
+    text-align: right;
+}
+div.innerText {
+    width: calc(100% / 2);
+    float: left;
+}
+div.innerPasswordText{
+    width: calc(100%/2);
+    float: left;
 }
 .regiBox .buttonBox{
     width: 200px;
-    margin: 0px auto 50px auto;
+    margin: 20px auto 50px auto;
 }
-
+.regiBox.titleBox.outerInputBox.myForm{
+    width: 100%;
+}
+#idcheck{
+    width: 40%;
+}
 /* 아이디 & 비밀번호 찾기 */
 .findBox {
     width: 350px;
     min-height: 300px;
-    margin: 50px auto 0px auto;
+    margin: 50px auto 50px auto;
     padding-top: 30px;
-    border: solid 1px #E60012;
+    border: solid 1px #3CAE76;
     border-radius: 3px;
 }
 .findBox .titleBox {
     width: 120px;
-    margin: auto;
+    margin: 10px auto 30px auto;
 }
 
 .titleBox h1 {
@@ -55,6 +83,12 @@
 .findBox .innerInputBox {
     margin-bottom: 10px;
     float: right;
+}
+#confirmPwd.inputs{
+    width: 185px;
+}
+#password.inputs{
+    width: 185px;
 }
 .findBox .inputs {
     height: 30px;
@@ -77,9 +111,10 @@ label {
     font-size: 12px;
 }
 .submitBtn {
-    background-color: #E60012;
+    background-color: #3CAE76;
     border: none;
     color: white;
+    width: 79px;
 }
 .cancelBtn {
     background-color: #595959;
@@ -88,9 +123,9 @@ label {
     float: right;
 }
 .submitBtn:hover {
-    border: solid 1px #E60012;
+    border: solid 1px #3CAE76;
     background-color: white;
-    color: #E60012;
+    color: #3CAE76;
 }
 .cancelBtn:hover {
     border: solid 1px #595959;

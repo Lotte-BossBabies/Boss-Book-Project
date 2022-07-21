@@ -11,28 +11,37 @@
 </head>
 <body>
 <%@include file = "../layout/header.jsp" %>
-<h2>구매 결과</h2>
-<div class="resultBox">
-    <%
-        if(makeOrderResult){
-    %>
-        <div class="resultContent">
-        구매에 성공하였습니다.
-        </div>
-    <%
-    } else {
-    %>
-        <div class="resultContent">
-        구매에 과정에 문제가 있습니다.
-        </div>
-    <%
-        }
-    %>
-</div>
-<div class="aBox">
-    <a href="getDetailedBook.do?registered_book_id=2">쇼핑 더하기</a>
-    <a href="getDetailedBook.do?registered_book_id=2">마이페이지</a>
+<div class="resultWrapper">
+    <div class="resultBox">
+        <%
+            if(makeOrderResult){
+        %>
+            <div class="resultContent">
+            구매에 성공하였습니다.
+            </div>
+        <%
+        } else {
+        %>
+            <div class="resultContent">
+            구매에 과정에 문제가 있습니다.
+            </div>
+        <%
+            }
+        %>
+    </div>
+    <div class="btnBox">
+        <button type="button" onclick="goBook()">구매 계속하기</button>
+        <button type="button" onclick="goMyPage()">마이페이지</button>
+    </div>
 </div>
 <%@include file = "../layout/footer.jsp" %>
+<script>
+    function goBook(){
+        location.href = "bookstore.do?cateName=all";
+    }
+    function goMyPage(){
+        location.href = "mypage.do";
+    }
+</script>
 </body>
 </html>

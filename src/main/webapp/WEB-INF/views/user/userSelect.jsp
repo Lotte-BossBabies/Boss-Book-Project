@@ -15,9 +15,11 @@
 <head>
     <title>Title</title>
     <link href="<c:url value="/resources/css/register.css" />" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
 </head>
 <body>
-
+<%@include file = "../layout/header.jsp" %>
 <div class="registerContainer">
     <div class="registerBox left">
         <span class="tit">일반<br></span>
@@ -30,7 +32,7 @@
         <button class="btn-join btn-white-gray" onclick="clickSeller()">판매자</button>
     </div>
 </div>
-
+<%@include file = "../layout/footer.jsp" %>
 <script>
     function clickCommon() {
         location.href = "memberRegi.do?email=<%=email%>";

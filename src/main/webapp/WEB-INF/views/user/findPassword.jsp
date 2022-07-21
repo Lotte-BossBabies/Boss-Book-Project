@@ -5,17 +5,19 @@
   Time: 4:51 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>비밀번호 찾기</title>
     <meta charset="UTF-8">
-
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/formPage.css">
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
 </head>
 <body>
+<%@include file = "../layout/header.jsp" %>
 <div class="findBox">
     <div class="titleBoxForPw">
         <h2>비밀번호 찾기</h2>
@@ -49,5 +51,6 @@
         location.href = "login.do";
     }
 </script>
+<%@include file = "../layout/footer.jsp" %>
 </body>
 </html>

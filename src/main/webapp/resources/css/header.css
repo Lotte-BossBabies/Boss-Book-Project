@@ -2,12 +2,12 @@ header {
     background-color: #3CAE76;
 }
 
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, textarea, p, blockquote, th, td, input, select, textarea, button {
+#header body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, textarea, p, blockquote, th, td, input, select, textarea, button {
     margin: 0;
     padding: 0;
 }
 
-dl, ul, ol, li {
+#header dl, ul, ol, li {
     list-style: none;
 }
 
@@ -24,11 +24,10 @@ dl, ul, ol, li {
     /*position: fixed;*/
     background: #fff;
     border-bottom: 1px solid #cccccc;
-    z-index: 1000;
+    /*z-index: 1000;*/
     width: 100%;
     clear: both;
-    width: 100%;
-    /*min-width: 1260px;*/
+    min-width: 1260px;
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -39,27 +38,27 @@ dl, ul, ol, li {
     border-bottom: 1px solid #ececec;
 }
 
-.gnb, .header_search_cont, .main_goods_cont, .sub_content, .content_info, .foot_list ul, .foot_cont, .foot_certify {
+#header .gnb, .header_search_cont, .main_goods_cont, .sub_content, .content_info, .foot_list ul, .foot_cont, .foot_certify {
     position: relative;
-    width: 100%;
-    /*width: 1200px;*/
+    /*width: 100%;*/
+    width: 1200px;
     margin: 0 auto;
 }
 
-.header_top_cont{
-    width: 200px;
-    float: right;
+#header .header_top_cont{
+    /*width: 1200px;*/
+    /*float: right;*/
 }
 
-.top_member_box {
+#header .top_member_box {
     float: right;
     position: relative;
     margin: 10px 20px 0 0px;
     line-height: 1;
-    z-index: 150;
+    /*z-index: 150;*/
 }
 
-.top_member_box .txt_bar {
+#header .top_member_box .txt_bar {
     display: inline-block;
     width: 1px;
     height: 10px;
@@ -68,19 +67,19 @@ dl, ul, ol, li {
     vertical-align: -1px;
 }
 
-.top_member_box > li {
+#header .top_member_box > li {
     float: left;
     position: relative;
 }
 
-.top_member_box > li a {
+#header .top_member_box > li a {
     display: inline-block;
     padding: 4px 0 4px 10px;
     color: #888888;
     font-size: 11px;
 }
 
-.top_member_box .txt_bar {
+#header .top_member_box .txt_bar {
     display: inline-block;
     width: 1px;
     height: 10px;
@@ -114,8 +113,8 @@ ul {
     padding: 15px 0 15px 0;
     width: 100%;
     text-align: center;
-    display: inline-block;
-    align-items: center;
+    /*display: inline-block;*/
+    /*align-items: center;*/
 }
 
 /*menu bar*/

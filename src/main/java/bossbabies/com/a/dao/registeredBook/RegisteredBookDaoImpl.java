@@ -35,6 +35,11 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
         return session.selectList(namespace + "regiBookListByCategory", vo);
     }
 
+    @Override
+    public List<RegisteredBookDto> getRegisteredAllBookList(SellerAndCategoryVO vo) {
+        return session.selectList(namespace + "regiBookListByAllCategory", vo);
+    }
+
     /***
      * 카테고리별 상품 책 판매량 순 조회 메소드
      * @param vo
@@ -45,6 +50,10 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
         return session.selectList(namespace + "regiBookListBySellCount", vo);
     }
 
+    public List<RegisteredBookDto> getRegisteredAllBookListBySellCount(SellerAndCategoryVO vo) {
+        return session.selectList(namespace + "regiAllBookListBySellCount", vo);
+    }
+
     /***
      * 카테고리별 상품 책 키워드 조회 메소드
      * @param vo
@@ -53,6 +62,11 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
     @Override
     public List<RegisteredBookDto> getRegisteredBookListByKeyword(CategoryAndKeywordVO vo) {
         return session.selectList(namespace + "regiBookListByKeyword", vo);
+    }
+
+    @Override
+    public List<RegisteredBookDto> getRegisteredAllBookListByKeyword(CategoryAndKeywordVO vo) {
+        return session.selectList(namespace + "regiAllBookListByKeyword", vo);
     }
 
     /***

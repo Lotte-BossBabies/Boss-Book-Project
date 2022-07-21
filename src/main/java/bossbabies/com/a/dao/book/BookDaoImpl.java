@@ -45,4 +45,9 @@ public class BookDaoImpl implements BookDao{
     public List<RegisteredBookInfoDto> findByList() {
         return session.selectList(namespace+"findByList");
     }
+
+    @Override
+    public List<RegisteredBookInfoDto> searchRegisteredBook(String search) {
+        return session.selectList(namespace+"searchRegisteredBook",search);
+    }
 }

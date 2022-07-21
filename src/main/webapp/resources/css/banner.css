@@ -1,15 +1,14 @@
 #container {
-    /*margin-top: 128px;*/
     border-top: 1px solid #cccccc;
     width: 100%;
 
 }
 
-/*#contents {*/
-/*    !*background-color: #1a1a1a;*!*/
-/*    !*min-height: 400px;*!*/
-/*    !*padding: 0 0 120px 0;*!*/
-/*}*/
+/*#contents {
+    background-color: #1a1a1a;
+    min-height: 400px;
+    padding: 0 0 120px 0;
+}*/
 
 #contents .sub_content {
     /*background-color: #FFFFFF;*/
@@ -17,6 +16,8 @@
     min-width: 1000px;
     margin: 0;
     padding: 0;
+    /*margin-top: 227.47px;*/
+
 }
 
 .main_visual {

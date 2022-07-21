@@ -14,11 +14,17 @@ public interface RegisteredBookDao {
 
     List<RegisteredBookDto> getRegisteredBookList(SellerAndCategoryVO vo);
 
-    List<RegisteredBookDto> getRegisteredBookListBySellCount(SellerAndCategoryVO vo);
+    List<RegisteredBookDto> getRegisteredAllBookList(SellerAndCategoryVO vo);
 
-    List<RegisteredBookDto> getRegisteredBookListByKeyword(CategoryAndKeywordVO vo);
+    public List<RegisteredBookDto> getRegisteredBookListBySellCount(SellerAndCategoryVO vo);
 
-    int updateStock(IdAndCountVO vo);
+    List<RegisteredBookDto> getRegisteredAllBookListBySellCount(SellerAndCategoryVO vo);
+
+    public List<RegisteredBookDto> getRegisteredBookListByKeyword(CategoryAndKeywordVO vo);
+
+    List<RegisteredBookDto> getRegisteredAllBookListByKeyword(CategoryAndKeywordVO vo);
+
+    public int updateStock(IdAndCountVO vo);
 
     List<BookDto> getBookListNotRegistered(SellerAndCategoryVO vo);
 
