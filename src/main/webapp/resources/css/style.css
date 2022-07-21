@@ -117,7 +117,7 @@ div {
     margin-right: 10px;
 }
 .member_login_wrap .login_box .login_bot_wrap {
-    margin: 15px 0 40px;
+    margin: 3px 0 40px;
 }
 .member_login_wrap .login_box .login_check {
     float: left;
@@ -129,8 +129,12 @@ div {
     border: 1px solid #000;
     -webkit-appearance: checkbox;
 }
-.login_bot_wrap{
-    margin:auto;
+div.login_bot_wrap{
+    float: left;
+    width: 430px;
+}
+#util{
+    float: right;
 }
 a:link { color: black; text-decoration: none;}
 a:visited { color: black; text-decoration: none;}
