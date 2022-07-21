@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
     <link rel="stylesheet" href="/resources/css/manageDelivery.css">
+    <link rel="stylesheet" href="/resources/css/font.css">
 
 </head>
 <body>

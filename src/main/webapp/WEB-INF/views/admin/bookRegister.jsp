@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
     <link rel="stylesheet" type="text/css" href="resources/css/adminMain.css">
+    <link rel="stylesheet" href="/resources/css/font.css">
 
     <script type="text/javascript" src="resources/js/adminRegister.js"></script>
 </head>

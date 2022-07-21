@@ -63,7 +63,7 @@
                 <a href="main.do">
                     <%--image 넣을 예정--%>
                     <img width="100px" src="resources/images/logo.png" title="로고 이미지">
-                    <div class="logoname">MZ Book</div>
+                    <div class="logoname">MZ BOOK</div>
                 </a>
             </div>
         </div>

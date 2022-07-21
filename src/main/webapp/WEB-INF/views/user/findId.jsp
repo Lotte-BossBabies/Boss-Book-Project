@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/formPage.css">
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>아이디 찾기</title>
+    <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
 </head>

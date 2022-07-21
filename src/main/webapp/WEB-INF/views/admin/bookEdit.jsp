@@ -11,6 +11,7 @@
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>관리자 상품 수정 페이지</title>
 
+    <link rel="stylesheet" href="/resources/css/font.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="resources/js/admin.js"></script>
 </head>
