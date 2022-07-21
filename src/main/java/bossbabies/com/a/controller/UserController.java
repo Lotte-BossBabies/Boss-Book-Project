@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -223,6 +224,31 @@ public class UserController {
         System.out.println(msg + password);
         return "user/findPassword";
 
+    }
+    @RequestMapping(value = "duplicateId.do", method = RequestMethod.GET)
+    @ResponseBody
+    public String duplicateId(@RequestParam Map<String, Object> map){
+        String msg = "";
+        String id = (String)map.get("user_id");
+        String dupId = memberService.memberDuplicateId(id);
+        System.out.println("id = " + id + "dupId = " + dupId);
+        if(id.equals("")){
+            return msg;
+        }
+        if(id.equals(dupId)){
+            msg = "NO";
+            System.out.println(msg);
+            return msg;
+        }
+        dupId = sellerService.sellerDuplicateId(id);
+        if(id.equals(dupId)){
+            msg = "NO";
+            System.out.println(msg);
+            return msg;
+        }
+        msg = "YES";
+        System.out.println(msg);
+        return msg;
     }
 
 
