@@ -1,11 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bossbabies.com.a.dto.avg.CategorySaleRateDto" %>
-<%@ page import="com.mysql.cj.xdevapi.JsonArray" %>
-<%@ page import="bossbabies.com.a.dto.avg.SalesByPeriodDto" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.HashSet" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     List<CategorySaleRateDto> saleRateList = (List<CategorySaleRateDto>) request.getAttribute("saleRateByCategory");
 
@@ -121,12 +117,24 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="<c:url value="/resources/css/header.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/banner.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/footer.css"/>">
 </head>
 <body>
+<%@ include file="layout/header.jsp" %>
+<br><br>
 <div id="pie-chart"></div>
 <br><br>
-<input type="date" id="beforeDate"> ~ <input type="date" id="afterDate">
-<button id="btn">선택</button>
+<hr>
+<br><br>
+<div id="choiceDate" align="center">
+    <input type="date" id="beforeDate"> ~ <input type="date" id="afterDate">
+    <button id="btn">선택</button>
+</div>
+<br><br>
 <div id="line-chart"></div>
 
 <script>
@@ -165,54 +173,53 @@
         }]
     });
 
-    // let line_chart = Highcharts.chart('line-chart', {
-    //
-    //     title: {
-    //         text: '기간 별 매출현황'
-    //     },
-    //
-    //     subtitle: {
-    //         text: '언제 무슨 카테고리가 많이 팔렸는가?'
-    //     },
-    //
-    //     yAxis: {
-    //         title: {
-    //             text: 'Number of books'
-    //         }
-    //     },
-    //
-    //     xAxis: {
-    //         categories: []
-    //     },
-    //
-    //     legend: {
-    //         layout: 'vertical',
-    //         align: 'right',
-    //         verticalAlign: 'middle'
-    //     },
-    //
-    //
-    //     responsive: {
-    //         rules: [{
-    //             condition: {
-    //                 maxWidth: 500
-    //             },
-    //             chartOptions: {
-    //                 legend: {
-    //                     layout: 'horizontal',
-    //                     align: 'center',
-    //                     verticalAlign: 'bottom'
-    //                 }
-    //             }
-    //         }]
-    //     }
-    // });
+    let line_chart = Highcharts.chart('line-chart', {
+
+        title: {
+            text: '기간 별 매출현황'
+        },
+
+        subtitle: {
+            text: '언제 무슨 카테고리가 많이 팔렸는가?'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Number of books'
+            }
+        },
+
+        xAxis: {
+            categories: []
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
 
 
 </script>
 
 <script>
-
 
     $(document).ready(function () {
         $("#btn").click(function () {
@@ -242,7 +249,6 @@
         let end = afterStr * 1;
         let date = [];
         let index = 0;
-        // alert(JSON.stringify(data));
 
         // start - end 까지 년도 저장
         for (let i = start; i <= end; i++) {
@@ -298,7 +304,7 @@
         /************************************************************/
 
 
-        // dateJson
+        // String to Json -> dateJson
         let dateJson = "["
         for (let i = 0; i < date.length; i++) {
             dateJson += date[i] + ", "
@@ -307,7 +313,7 @@
         dateJson += "]";
         console.log(dateJson);
 
-        // dataJson
+        // String to Json -> dataJson
         let dataJson = "[";
         for (let i = 0; i < category_arr.length; i++) {
             dataJson += "{ name:'" + categories[i] + "', data:["
@@ -321,7 +327,7 @@
         dataJson += "]"
         console.log(dataJson);
 
-        let line_chart = new Highcharts.chart('line-chart', {
+        line_chart = new Highcharts.chart('line-chart', {
 
             title: {
                 text: '기간 별 매출현황'
@@ -373,5 +379,8 @@
 
 
 </script>
+<br><br>
+<%@ include file="layout/footer.jsp" %>
+<br><br>
 </body>
 </html>

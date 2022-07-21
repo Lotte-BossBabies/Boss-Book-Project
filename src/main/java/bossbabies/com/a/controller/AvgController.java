@@ -2,6 +2,7 @@ package bossbabies.com.a.controller;
 
 import bossbabies.com.a.dto.avg.CategorySaleRateDto;
 import bossbabies.com.a.dto.avg.SalesByPeriodDto;
+import bossbabies.com.a.dto.user.SellerDto;
 import bossbabies.com.a.service.AvgService;
 import com.google.gson.Gson;
 import org.apache.http.HttpResponse;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,10 @@ public class AvgController {
     AvgService service;
 
     @RequestMapping(value = "chart.do", method = RequestMethod.GET)
-    public String getSaleRateByCategory(Model model, CategorySaleRateDto categorySaleRateDto, SalesByPeriodDto salesByPeriodDto) {
+    public String getSaleRateByCategory(Model model, HttpSession session) {
+        SellerDto seller = (SellerDto) session.getAttribute("login");
+        CategorySaleRateDto categorySaleRateDto = new CategorySaleRateDto();
+        categorySaleRateDto.setSellerId(Integer.parseInt(seller.getId()));
         List<CategorySaleRateDto> list = service.getSaleRateByCategory(categorySaleRateDto);
         model.addAttribute("saleRateByCategory", list);
 
@@ -38,11 +43,11 @@ public class AvgController {
 
     @RequestMapping(value = "line-chart.do", method = RequestMethod.GET)
     @ResponseBody
-    public void getSalesByPeriod(HttpServletResponse response, @RequestParam String beforeStr, @RequestParam String afterStr, Model model) throws IOException {
-        System.out.println("getSalesByPeriod");
-        List<SalesByPeriodDto> list = service.getSalesByPeriod();
-        model.addAttribute("before", beforeStr);
-        model.addAttribute("after", afterStr);
+    public void getSalesByPeriod(HttpSession session, HttpServletResponse response, @RequestParam String beforeStr, @RequestParam String afterStr) throws IOException {
+        SellerDto seller = (SellerDto) session.getAttribute("login");
+        SalesByPeriodDto salesByPeriodDto = new SalesByPeriodDto();
+        salesByPeriodDto.setSellerId(Integer.parseInt(seller.getId()));
+        List<SalesByPeriodDto> list = service.getSalesByPeriod(salesByPeriodDto);
         System.out.println("list: " + list);
         if (beforeStr.equals("") || afterStr.equals("")) {
             // 날짜 선택하지 않았을 경우 예외처리

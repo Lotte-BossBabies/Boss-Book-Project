@@ -20,7 +20,7 @@ public class AvgDao {
         return session.selectList(nameSpace + "getSaleRateByCategory", categorySaleRateDto);
     }
 
-    public List<SalesByPeriodDto> getSalesByPeriod(){
-        return session.selectList(nameSpace + "getSalesByPeriod");
+    public List<SalesByPeriodDto> getSalesByPeriod(SalesByPeriodDto salesByPeriodDto){
+        return session.selectList(nameSpace + "getSalesByPeriod", salesByPeriodDto);
     }
 }
