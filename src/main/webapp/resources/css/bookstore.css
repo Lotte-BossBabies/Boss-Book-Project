@@ -15,7 +15,7 @@
 
 #bookstore .content {
 
-    /*min-height: 500px;*/
+    min-height: 2000px;
     height: auto;
     padding: 0;
     margin: 0;
@@ -23,6 +23,7 @@
 
 #bookstore .bookstore_category_top {
     width: 1200px;
+    margin:auto;
 }
 
 #bookstore .bookstore_category {
@@ -42,9 +43,36 @@
     /*position: relative;*/
 }
 
-.goods_list_cont {
+#bookstore .goods_list_cont {
     /*position: relative;*/
     width: 100%;
+}
+
+#bookstore .search-bookname{
+    text-align: right;
+}
+
+#bookstore .search-bookname input{
+    width: 300px;
+    padding: 3px 5px;
+}
+
+#bookstore .search-bookname input:focus{
+    outline: 3px solid #3CAE76;
+    box-shadow: 2px 2px #00ff2a;
+    border: 0;
+}
+
+#bookstore .search-bookname button{
+    border: 1px solid;
+    padding: 4px 15px;
+    background-color: #ffffff;
+}
+
+#bookstore .search-bookname button:hover{
+    background-color: #3CAE76;
+    border: 1px solid #3CAE76;
+    color: white;
 }
 
 #bookstore .list_item_category {

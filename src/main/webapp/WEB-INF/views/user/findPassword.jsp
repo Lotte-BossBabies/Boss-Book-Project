@@ -10,8 +10,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MZ BOOK: 비밀번호 찾기</title>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
+    <title>MZ BOOK: 비밀번호 찾기</title>
+
+    <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/formPage.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">

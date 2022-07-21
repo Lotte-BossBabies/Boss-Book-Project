@@ -8,10 +8,14 @@
 %>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
+    
     <title>MZ BOOK: 배송 관리</title>
+
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
     <link rel="stylesheet" href="/resources/css/manageDelivery.css">
+    <link rel="stylesheet" href="/resources/css/font.css">
 
 </head>
 <body>

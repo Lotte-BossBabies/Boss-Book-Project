@@ -8,8 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>MZ BOOK: 상품 수정</title>
 
+    <link rel="stylesheet" href="/resources/css/font.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="resources/js/admin.js"></script>
 </head>
@@ -36,7 +38,6 @@
     <button type="button" id="updateBtn" name="updateBtn" value="<%= dto.getRegistered_book_id()%>" onclick="updateButton()">수정</button>
     <button type="button" onclick="cancelButton()">취소</button>
 </div>
-
 
 <div>
     footer

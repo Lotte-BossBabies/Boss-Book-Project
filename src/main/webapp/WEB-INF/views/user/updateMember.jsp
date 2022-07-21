@@ -17,8 +17,12 @@
             document.getElementById("platform").submit();
         }
     </script>
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
+
     <title>MZ BOOK: 회원정보 수정</title>
+
     <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
 </head>

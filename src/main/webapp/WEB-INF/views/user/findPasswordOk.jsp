@@ -10,8 +10,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/resources/css/font.css">
+
     <title>MZ BOOK: 비밀번호 찾기</title>
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/findResultPage.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">

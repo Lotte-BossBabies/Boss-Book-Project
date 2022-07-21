@@ -10,8 +10,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+    <link rel="stylesheet" href="/resources/css/font.css">
     <title>MZ BOOK: 일반 회원가입</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"

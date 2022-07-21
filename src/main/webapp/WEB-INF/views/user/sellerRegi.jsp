@@ -10,6 +10,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <title>MZ BOOK: 판매자 회원가입</title>
@@ -19,6 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/resources/css/font.css">
     <link href="<c:url value="/resources/css/formPage.css" />" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">

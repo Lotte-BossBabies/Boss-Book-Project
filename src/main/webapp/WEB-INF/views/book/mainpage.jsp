@@ -3,18 +3,19 @@
 
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>MZ BOOK: 도서 스토어</title>
     <%--직접추가--%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
+    <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/header.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/banner.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>">
