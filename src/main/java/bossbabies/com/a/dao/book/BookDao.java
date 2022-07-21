@@ -20,4 +20,6 @@ public interface BookDao {
     
     List<RegisteredBookInfoDto> findByList();
 
+    List<RegisteredBookInfoDto> searchRegisteredBook(String search);
+
 }

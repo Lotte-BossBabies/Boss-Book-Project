@@ -1,6 +1,6 @@
 #bookstore {
     height: auto;
-    margin-top: 128px;
+    /*margin-top: 128px;*/
 }
 
 #bookstore a {
@@ -10,8 +10,8 @@
 
 #bookstore .content {
 
-    min-height: 500px;
-    /*height: auto;*/
+    /*min-height: 500px;*/
+    height: auto;
     padding: 0;
     margin: 0;
 }
