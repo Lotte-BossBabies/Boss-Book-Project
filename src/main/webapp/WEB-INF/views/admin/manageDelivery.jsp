@@ -9,7 +9,8 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/footer.css">
     <style>
         /* 공통 부분 */
         .title{
@@ -28,7 +29,7 @@
             font-size: 22px;
         }
         .contentBox{
-            width: 600px;
+            width: 700px;
             margin: 10px auto;
             padding-left: 20px;
         }
@@ -37,13 +38,15 @@
             margin: 10px auto;
             padding-bottom: 5px;
             display: grid;
-            grid-template-columns: 110px 490px 100px;
+            grid-template-columns: 110px 470px 120px;
+            border-bottom: 1px solid #cccccc;
         }
         .imgBox{
             grid-column: 1/2;
         }
         .deliveryInfoBox{
             grid-column: 2/3;
+            padding-top: 5px;
         }
         .title{
             font-size: 18px;
@@ -102,9 +105,11 @@
             color: cornflowerblue;
         }
     </style>
+
+
 </head>
 <body>
-
+<%@include file = "../layout/header.jsp" %>
 <div>
     <div class="preDeliveryWrapper">
         <span class="title">배송 전 상품</span><br>
@@ -152,10 +157,9 @@
         </div>
     </div>
 
-
-
 </div>
-
+<%@include file = "../layout/footer.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function delivery(order_id){
         var newForm = document.createElement('form');
@@ -216,16 +220,16 @@
                     title.setAttribute('class', 'title');
                     deliveryInfoBox.append(title);
                     let name = document.createElement('span');
-                    name.innerHTML = item['name']+"<br>";
+                    name.innerHTML = "주문자들 : "+item['name']+"<br>";
                     deliveryInfoBox.append(name);
                     let address = document.createElement('span');
-                    address.innerHTML = item['address']+"<br>";
+                    address.innerHTML = "주소 : "+item['address']+"<br>";
                     deliveryInfoBox.append(address);
                     let phone = document.createElement('span');
-                    phone.innerHTML = item['phone']+"<br>";
+                    phone.innerHTML = "전화번호 : "+item['phone']+"<br>";
                     deliveryInfoBox.append(phone);
                     let order_date = document.createElement('span');
-                    order_date.innerHTML = item['order_date']+"<br>";
+                    order_date.innerHTML = "주문일 : "+item['order_date']+"<br>";
                     deliveryInfoBox.append(order_date);
 
                     let orderBox = document.createElement('div');

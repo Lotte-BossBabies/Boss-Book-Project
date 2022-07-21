@@ -83,7 +83,7 @@ public class DetailedBookController {
         boolean makeOrderResult = detailedBookService.makeOrder(1, registered_book_id);
         model.addAttribute("makeOrderResult", makeOrderResult);
 
-        return "orderResult";
+        return "book/orderResult";
     }
 
     @ResponseBody
