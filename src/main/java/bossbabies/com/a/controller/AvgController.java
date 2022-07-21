@@ -34,7 +34,7 @@ public class AvgController {
     public String getSaleRateByCategory(Model model, HttpSession session) {
         SellerDto seller = (SellerDto) session.getAttribute("login");
         CategorySaleRateDto categorySaleRateDto = new CategorySaleRateDto();
-        categorySaleRateDto.setSellerId(Integer.parseInt(seller.getId()));
+        categorySaleRateDto.setSellerId(seller.getSeller_id());
         List<CategorySaleRateDto> list = service.getSaleRateByCategory(categorySaleRateDto);
         model.addAttribute("saleRateByCategory", list);
 
@@ -46,7 +46,7 @@ public class AvgController {
     public void getSalesByPeriod(HttpSession session, HttpServletResponse response, @RequestParam String beforeStr, @RequestParam String afterStr) throws IOException {
         SellerDto seller = (SellerDto) session.getAttribute("login");
         SalesByPeriodDto salesByPeriodDto = new SalesByPeriodDto();
-        salesByPeriodDto.setSellerId(Integer.parseInt(seller.getId()));
+        salesByPeriodDto.setSellerId(seller.getSeller_id());
         List<SalesByPeriodDto> list = service.getSalesByPeriod(salesByPeriodDto);
         System.out.println("list: " + list);
         if (beforeStr.equals("") || afterStr.equals("")) {
