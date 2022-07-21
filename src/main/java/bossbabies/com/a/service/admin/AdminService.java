@@ -22,21 +22,27 @@ import java.util.Map;
  */
 public interface AdminService {
 
-    public List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category, int sellStatus);
+    List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category, int sellStatus);
 
-    public List<RegisteredBookDto> getRegisteredBookListBySellCount(int sellerId, String category, int sellStatus);
+    List<RegisteredBookDto> getRegisteredBookListBySellCount(int sellerId, String category, int sellStatus);
 
-    public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword, int sellStatus);
+    List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword, int sellStatus);
 
-    public int updateStock(int registeredBookId, int newCount, int discount);
+    int updateStock(int registeredBookId, int newCount, int discount);
 
-    public List<BookDto> getBooksNotRegistered(int sellerId, String category);
+    List<BookDto> getBooksNotRegistered(int sellerId, String category);
 
-    public List<BookDto> getBooksNotRegisteredByKeyword(int sellerId, String category, String keyword);
+    List<BookDto> getBooksNotRegisteredByKeyword(int sellerId, String category, String keyword);
 
-    public int updateRegisteredBook(int status, int registeredBookId);
+    RegisteredBookDto checkBookRegistered(int bookId, int sellerId);
 
-    public int updateDeliveryCompleted(int status, int registeredBookId);
+    int registerBook(int bookId, int sellerId, int bookCount, int discountRate);
+
+    BookDto getBookDetail(int bookId);
+
+    int updateRegisteredBook(int status, int registeredBookId);
+
+    int updateDeliveryCompleted(int status, int registeredBookId);
 
     List<DeliveryDto> getPreDeliveryBooks(int seller_id);
 

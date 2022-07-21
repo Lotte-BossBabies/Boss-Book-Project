@@ -2,15 +2,17 @@ package bossbabies.com.a.dao.registeredBook;
 
 import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
+import bossbabies.com.a.parameterVO.BookAndSellerVO;
 import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
+import bossbabies.com.a.parameterVO.RegisterBookVO;
 import bossbabies.com.a.parameterVO.SellerAndCategoryVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
 import java.util.List;
 
 public interface RegisteredBookDao {
 
-    public List<RegisteredBookDto> getRegisteredBookList(SellerAndCategoryVO vo);
+    List<RegisteredBookDto> getRegisteredBookList(SellerAndCategoryVO vo);
 
     List<RegisteredBookDto> getRegisteredAllBookList(SellerAndCategoryVO vo);
 
@@ -24,19 +26,22 @@ public interface RegisteredBookDao {
 
     public int updateStock(IdAndCountVO vo);
 
-    public List<BookDto> getBookListNotRegistered(SellerAndCategoryVO vo);
+    List<BookDto> getBookListNotRegistered(SellerAndCategoryVO vo);
 
-    public List<BookDto> getBookListNotRegisteredByKeyword(CategoryAndKeywordVO vo);
+    List<BookDto> getBookListNotRegisteredByKeyword(CategoryAndKeywordVO vo);
 
-    public int updateRegisteredBook(StatusAndRegisteredBookIdVO vo);
+    RegisteredBookDto checkBookRegistered(BookAndSellerVO vo);
 
-    public int updateDeliveryCompleted(StatusAndRegisteredBookIdVO vo);
+    int updateRegisteredBook(StatusAndRegisteredBookIdVO vo);
 
-    // public List<BookDto> getBookList(String name);
+    int updateDeliveryCompleted(StatusAndRegisteredBookIdVO vo);
+
+    int registerBook(RegisterBookVO vo);
+
+    BookDto getBookDetail(int bookId);
 
     RegisteredBookDto getRegisteredBookById(int registered_book_id);
 
     boolean updateOrderCount(int registered_book_id);
-
 
 }
