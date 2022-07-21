@@ -128,7 +128,7 @@ public class UserController {
         }
         req.getSession().setAttribute("userType", userType);
         if (msg.equals("loginSuccess")) {
-            return "/user/temp";
+            return "redirect:/main.do";
         } else {
             return "/user/loginFail";
         }
