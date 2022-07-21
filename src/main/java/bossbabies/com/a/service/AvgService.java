@@ -35,7 +35,7 @@ public class AvgService {
         return result;
     }
 
-    public List<SalesByPeriodDto> getSalesByPeriod() {
-        return dao.getSalesByPeriod();
+    public List<SalesByPeriodDto> getSalesByPeriod(SalesByPeriodDto salesByPeriodDto) {
+        return dao.getSalesByPeriod(salesByPeriodDto);
     }
 }
