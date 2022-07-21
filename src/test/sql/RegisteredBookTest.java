@@ -67,9 +67,9 @@ public class RegisteredBookTest {
     @Test
     public void 수정_재고수() {
 
-        IdAndCountVO vo = new IdAndCountVO(2, 200);
+        IdAndCountVO vo = new IdAndCountVO(2, 200, 10);
 
-        int result = session.update(ns + "updateBookCount", vo);
+        int result = session.update(ns + "updateBookCountAndDiscount", vo);
 
         assertEquals(result, 1);
     }

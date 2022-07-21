@@ -23,7 +23,7 @@ public class RegisteredBookDto {
 
     private int book_count;
 
-    private Instant register_date;
+    private String register_date;
 
     private boolean sell_status;
 
@@ -33,7 +33,7 @@ public class RegisteredBookDto {
 
     private String title;
 
-    public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count, int book_count, Instant register_date, boolean sell_status, Integer discount_rate) {
+    public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count, int book_count, String register_date, boolean sell_status, Integer discount_rate) {
         this.registered_book_id = registered_book_id;
         this.book_id = book_id;
         this.seller_id = seller_id;
@@ -42,6 +42,22 @@ public class RegisteredBookDto {
         this.register_date = register_date;
         this.sell_status = sell_status;
         this.discount_rate = discount_rate;
+    }
+
+    public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count,
+        int book_count, String register_date, boolean sell_status, int discount_rate,
+        String image_url,
+        String title) {
+        this.registered_book_id = registered_book_id;
+        this.book_id = book_id;
+        this.seller_id = seller_id;
+        this.order_count = order_count;
+        this.book_count = book_count;
+        this.register_date = register_date;
+        this.sell_status = sell_status;
+        this.discount_rate = discount_rate;
+        this.image_url = image_url;
+        this.title = title;
     }
 
     public RegisteredBookDto(int registered_book_id, int book_id, int seller_id, int order_count,
@@ -100,11 +116,11 @@ public class RegisteredBookDto {
         this.book_count = book_count;
     }
 
-    public Instant getRegister_date() {
+    public String getRegister_date() {
         return register_date;
     }
 
-    public void setRegister_date(Instant register_date) {
+    public void setRegister_date(String register_date) {
         this.register_date = register_date;
     }
 

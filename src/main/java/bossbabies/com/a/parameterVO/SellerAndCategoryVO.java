@@ -4,10 +4,12 @@ public class SellerAndCategoryVO {
 
     private int sellerId;
     private String category;
+    private int sellStatus;
 
-    public SellerAndCategoryVO(int sellerId, String category) {
+    public SellerAndCategoryVO(int sellerId, String category, int sellStatus) {
         this.sellerId = sellerId;
         this.category = category;
+        this.sellStatus = sellStatus;
     }
 
     public String getCategory() {
@@ -17,4 +19,9 @@ public class SellerAndCategoryVO {
     public int getSellerId() {
         return sellerId;
     }
+
+    public int getSellStatus() {
+        return sellStatus;
+    }
+    
 }
