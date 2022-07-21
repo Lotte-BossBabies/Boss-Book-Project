@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: kjchoi
-  Date: 2022/07/19
-  Time: 4:53 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page import="bossbabies.com.a.dto.user.MemberDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%

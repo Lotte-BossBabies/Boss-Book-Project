@@ -21,41 +21,31 @@
 
 <%
     List<RegisteredBookDto> list = (List<RegisteredBookDto>) request.getAttribute("resultList");
+    SellerDto seller = (SellerDto) request.getAttribute("seller");
 %>
 <body>
 <div class="wrap">
     <%@include file="../layout/header.jsp" %>
 
-    <div id="menu">
-        <ul>
-            <li><a href="/updateBook.do?" onclick="register()">상품등록</a></li>
-            <li><a href="/manageDelivery.do?">배송관리</a></li>
-            <li><a href="/chart.do?">실적통계</a></li>
-        </ul>
-    </div>
+    <div class="bookWrapper">
 
-    <div id="mainContents" align="center">
+        <div class="adminInfoBox">
+            <span><%=seller.getName()%></span>님의 <span><%=seller.getStore_name()%></span><br>
+            <button type="button" onclick="location.href='updateUser.do'">개인정보 수정</button>
+        </div>
 
-        <div id="selectCategory">
-            <select id="categorySelect" onchange="changeBooks()">
-                <option value="소설">소설</option>
-                <option value="시/에세이">시/에세이</option>
-                <option value="예술/대중문화">예술/대중문화</option>
-                <option value="사회과학">사회과학</option>
-                <option value="역사와 문화">역사와 문화</option>
-                <option value="잡지">잡지</option>
-                <option value="만화/라이트노벨">만화/라이트노벨</option>
-                <option value="유아">유아</option>
-                <option value="아동">아동</option>
-                <option value="가정과 생활">가정과 생활</option>
-                <option value="청소년">청소년</option>
-            </select>
+        <div class="aBox">
+            <ul>
+                <li><a href="/updateBook.do" onclick="register()">상품등록</a></li>
+                <li>|</li>
+                <li><a href="/manageDelivery.do">배송관리</a></li>
+                <li>|</li>
+                <li><a href="/chart.do">실적통계</a></li>
+            </ul>
+        </div>
 
-            <input type="text" name="keyword" id="keyword" onchange="inputTextCheck()"
-                   placeholder="키워드를 입력하세요.">
-            <button type="button" id="searchBtn" onclick="searchButton()">search</button>
-
-            <button type="button" onclick="salesButton()">판매량순</button>
+        <span class="title">내가 등록한 책</span><br>
+        <div class="lineBox">
         </div>
 
         <div class="contentBox">
@@ -84,6 +74,14 @@
             </div>
 
             <div class="tableBox">
+                <%
+                if(list.size() == 0){
+                %>
+                    <div class="noBook">등록된 책이 없습니다.</div>
+                <%
+                }
+                else{
+                %>
                 <table id="maintable">
                     <%
                         for (RegisteredBookDto dto : list) {
@@ -109,6 +107,9 @@
                         }
                     %>
                 </table>
+                <%
+                    }
+                %>
             </div>
         </div>
     </div>

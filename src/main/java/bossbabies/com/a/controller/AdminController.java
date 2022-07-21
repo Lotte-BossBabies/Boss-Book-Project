@@ -59,11 +59,11 @@ public class AdminController {
         int sellerId = seller.getSeller_id();
 
         String category = "전체";
-
         int sellStatus = 1;
 
         List<RegisteredBookDto> resultList = adminService.getRegisteredBookList(sellerId, category, sellStatus);
         model.addAttribute("resultList", resultList);
+        model.addAttribute("seller", seller);
 
         return "/admin/books";
     }
