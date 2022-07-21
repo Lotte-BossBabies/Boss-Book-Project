@@ -11,9 +11,8 @@ function getNotRegisteredBooks(doUrl, jsonData) {
       $("#subtable").children().remove();
 
       $.each(resp, function (i) {
-        console.log(resp[i].title);
         str += "<tr>"
-        str += "<td>" + '<img src="' + resp[i].image_url + '">' + "</td>"
+        str += "<td>" + '<img id="bookImg" src="' + resp[i].image_url + '">' + "</td>"
         str += "<td>" + resp[i].title + "</td>"
         str += "<td>" + "<button type='button' name='registerBtn' id='registerBtn' value='" + resp[i].registered_book_id + "' onclick=registerBookButton('" + resp[i].registered_book_id + "')>register</button>" + "</td>"
         str += "</tr>"
@@ -46,7 +45,6 @@ function registerBookButton(id) {
 
     success: function (result) {
       alert("success!");
-      alert(result);
 
       getNotRegisteredBooks("category.do", selectData);
 
@@ -61,8 +59,6 @@ function registerBookButton(id) {
 function subChangeBooks() {
   var sel = document.getElementById("subCategorySelect");
   var val = sel.options[sel.selectedIndex].value;
-
-  console.log(val);
 
   var jsonData = {"sellerId":"1", "category":val, "sellStatus":0};
 
