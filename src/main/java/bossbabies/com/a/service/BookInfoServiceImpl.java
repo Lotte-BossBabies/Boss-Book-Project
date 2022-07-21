@@ -37,4 +37,9 @@ public class BookInfoServiceImpl implements BookInfoService{
 
         return dao.findByCategoryList(cateName);
     }
+
+    @Override
+    public List<RegisteredBookInfoDto> searchRegisteredBook(String search) {
+        return dao.searchRegisteredBook(search);
+    }
 }

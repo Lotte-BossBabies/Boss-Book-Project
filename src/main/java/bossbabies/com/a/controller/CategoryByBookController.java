@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -26,5 +27,14 @@ public class CategoryByBookController {
         model.addAttribute("byCategoryList",byCategoryList);
 
         return "book/bookstore";
+    }
+
+    @RequestMapping("searchRegisteredBook.do")
+    @ResponseBody
+    public List<RegisteredBookInfoDto> searchRegisteredBook(String search){
+
+        List<RegisteredBookInfoDto> bookInfoDtos = service.searchRegisteredBook(search);
+
+        return bookInfoDtos;
     }
 }
