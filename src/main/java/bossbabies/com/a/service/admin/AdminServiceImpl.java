@@ -2,6 +2,7 @@ package bossbabies.com.a.service.admin;
 
 import bossbabies.com.a.dao.orders.OrdersDao;
 import bossbabies.com.a.dao.registeredBook.RegisteredBookDao;
+import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.dto.admin.DeliveryDto;
 import bossbabies.com.a.dto.mypage.OrderDto;
@@ -50,6 +51,7 @@ public class AdminServiceImpl implements AdminService{
         return dao.getRegisteredBookListBySellCount(vo);
     }
 
+
     @Override
     public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword, int sellStatus) {
 
@@ -67,8 +69,21 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public List<RegisteredBookDto> getBooksNotRegistered(int sellerId) {
-        return dao.getBookListNotRegistered(sellerId);
+    public List<BookDto> getBooksNotRegistered(int sellerId, String category) {
+
+        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category, 0);
+
+        return dao.getBookListNotRegistered(vo);
+    }
+
+    @Override
+    public List<BookDto> getBooksNotRegisteredByKeyword(int sellerId, String category,
+        String keyword) {
+
+        CategoryAndKeywordVO vo = new CategoryAndKeywordVO(category, keyword, sellerId, 0);
+
+        return dao.getBookListNotRegisteredByKeyword(vo);
+
     }
 
     @Override

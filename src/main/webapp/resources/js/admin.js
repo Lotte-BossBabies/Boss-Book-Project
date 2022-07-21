@@ -10,17 +10,31 @@ function getBooks(doUrl, jsonData) {
       var str = "";
       $("#maintable").children().remove();
 
-      $.each(resp, function (i) {
-        console.log(resp[i].image_url);
-        str += "<tr>"
-        str += "<td>" + '<img src="' + resp[i].image_url + '">' + "</td>"
-        str += "<td>" + resp[i].title + "</td>"
-        str += "<td>" + "<button type='button' name='editBtn' id='editBtn' value='" + resp[i].registered_book_id + "' onclick=editButton('" + resp[i].registered_book_id + "')>edit</button>" + "</td>"
-        str += "<td>" + "<button type='button' name='cancelBtn' id='cancelBtn' value='" + resp[i].registered_book_id + "' onclick=cancelBookButton('" + resp[i].registered_book_id + "')>cancel</button>" + "</td>"
+      if(doUrl === "sales.do") {
+        $.each(resp, function (i) {
+          console.log(resp[i].image_url);
+          str += "<tr>"
+          str += "<td>" + '<img id="bookImg" src="' + resp[i].image_url + '">' + "</td>"
+          str += "<td>" + resp[i].title + "</td>"
+          str += "<td>" + resp[i].order_count + "</td>"
+          str += "<td>" + "<button type='button' name='editBtn' id='editBtn' value='" + resp[i].registered_book_id + "' onclick=editButton('" + resp[i].registered_book_id + "')>edit</button>" + "</td>"
+          str += "<td>" + "<button type='button' name='cancelBtn' id='cancelBtn' value='" + resp[i].registered_book_id + "' onclick=cancelBookButton('" + resp[i].registered_book_id + "')>cancel</button>" + "</td>"
+
+          str += "</tr>"
+        });
+      }else {
+        $.each(resp, function (i) {
+          console.log(resp[i].image_url);
+          str += "<tr>"
+          str += "<td>" + '<img id="bookImg" src="' + resp[i].image_url + '">' + "</td>"
+          str += "<td>" + resp[i].title + "</td>"
+          str += "<td>" + "<button type='button' name='editBtn' id='editBtn' value='" + resp[i].registered_book_id + "' onclick=editButton('" + resp[i].registered_book_id + "')>edit</button>" + "</td>"
+          str += "<td>" + "<button type='button' name='cancelBtn' id='cancelBtn' value='" + resp[i].registered_book_id + "' onclick=cancelBookButton('" + resp[i].registered_book_id + "')>cancel</button>" + "</td>"
 
 
-        str += "</tr>"
-      });
+          str += "</tr>"
+        });
+      }
 
       $("#maintable").append(str);
 
