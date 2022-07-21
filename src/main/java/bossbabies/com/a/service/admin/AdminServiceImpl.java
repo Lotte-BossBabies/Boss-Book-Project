@@ -102,7 +102,7 @@ public class AdminServiceImpl implements AdminService{
         Map<String, String> deliveryMap = new HashMap<>();
         deliveryMap.put("seller_id", Integer.toString(seller_id));
         deliveryMap.put("start_date", startDate);
-        deliveryMap.put("end_date", endDate);
+        deliveryMap.put("end_date", endDate+"235959");
 
         return ordersDao.getCompletedDeliveryBooksWithPeriod(deliveryMap);
     }
