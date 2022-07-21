@@ -9,7 +9,9 @@
 <html>
 <head>
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
-    <title>Title</title>
+    
+    <title>MZ BOOK: 배송 관리</title>
+
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
     <link rel="stylesheet" href="/resources/css/manageDelivery.css">
@@ -20,6 +22,10 @@
 <%@include file = "../layout/header.jsp" %>
 <div>
     <div class="preDeliveryWrapper">
+        <div class="titleBox">
+            <a href="adminMain.do?sellStatus=1">돌아가기</a>
+        </div>
+
         <span class="title">배송 전 상품</span><br>
         <div class="lineBox"></div>
         <div class="countBox">총 <span class="deliveryCount"><%=preDeliveryList.size()%></span>개</div>

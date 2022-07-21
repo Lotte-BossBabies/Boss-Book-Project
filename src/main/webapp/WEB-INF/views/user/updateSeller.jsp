@@ -23,19 +23,104 @@
         }
     </script>
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
-    <title>updateUser</title>
+    <title>MZ BOOK: 회원정보 수정</title>
+
     <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
+    <style>
+        .updateContainer{
+            margin-bottom: 100px;
+        }
 
+        .titleBox {
+            margin: 50px auto 30px;
+            width: 70%;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .lineBox{
+            width: 60%;
+            margin: auto;
+            border-bottom: 1px solid #bbbbbb;
+        }
+
+        .userinfo {
+            width: 40%;
+            margin: 10px auto;
+        }
+
+        .user {
+            display: flex;
+            justify-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        .blank {
+            width: 100px;
+            height: 40px;
+        }
+
+        .infoinput {
+            width: 320px;
+            height: 40px;
+            margin: 10px;
+        }
+
+        .text {
+            margin-top: 25px;
+            padding: 0;
+            width: 158px;
+        }
+
+        .updateBtn {
+            margin-top: 30px;
+        }
+
+        .cancelBtn {
+            width: 100px;
+            height: 40px;
+            margin: 5px 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .cancelBtn:hover {
+            border: 2px solid #3CAE76;
+            color: #3CAE76;
+        }
+
+        .confirmBtn:hover {
+            border: 2px solid #3CAE76;
+            color: #3CAE76;
+        }
+
+        .confirmBtn {
+            width: 100px;
+            height: 40px;
+            margin-top: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <%@include file = "../layout/header.jsp" %>
-<div class="container">
-    <div class="redbox">회원정보 수정</div>
-    <div class="userinfo">
+<div class="updateContainer">
+    <div class="titleBox">회원정보 수정</div>
 
+    <div class="lineBox"></div>
+
+    <div class="userinfo">
         <form action="updateSeller.do" method="get" id="platform">
             <div class="user">
                 <div class="text">아이디</div>
@@ -73,8 +158,8 @@
                 <span class="blank"></span>
             </div>
             <div class="updateBtn" align="center">
-                <input type="button" class="cancelBtn" value="취소">
-                <input type="submit" class="confirmBtn" value="확인" onclick="formSubmit()">
+                <button type="button" class="cancelBtn" onclick="location.href='adminMain.do?sellStatus=1'">취소하기</button>
+                <button type="submit" class="confirmBtn" onclick="formSubmit()">수정하기</button>
             </div>
         </form>
     </div>

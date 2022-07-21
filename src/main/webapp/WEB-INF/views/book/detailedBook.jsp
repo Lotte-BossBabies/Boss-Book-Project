@@ -22,10 +22,11 @@
 <html>
 <head>
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
-    <title>Title</title>
+    <title>MZ BOOK: 상세보기</title>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="/resources/css/font.css">
+
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
     <link rel="stylesheet" href="/resources/css/detailedBook.css">

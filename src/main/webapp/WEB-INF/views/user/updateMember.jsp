@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: kjchoi
-  Date: 2022/07/19
-  Time: 4:53 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page import="bossbabies.com.a.dto.user.MemberDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
@@ -25,7 +18,9 @@
         }
     </script>
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
-    <title>updateUser</title>
+
+    <title>MZ BOOK: 회원정보 수정</title>
+
     <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="/resources/css/header.css">
@@ -75,7 +70,7 @@
                 <span class="blank"></span>
             </div>
             <div class="updateBtn" align="center">
-                <input type="button" class="cancelBtn" value="취소">
+                <input type="button" class="cancelBtn" value="취소" onclick="location.href='mypage.do'">
                 <input type="submit" class="confirmBtn" value="확인" onclick="formSubmit()">
             </div>
         </form>

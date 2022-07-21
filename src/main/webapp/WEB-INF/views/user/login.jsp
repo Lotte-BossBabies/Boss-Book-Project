@@ -14,8 +14,8 @@
 <head>
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <meta charset="UTF-8">
-    <title>Insert title here</title>
     <link rel="stylesheet" href="/resources/css/font.css">
+    <title>MZ BOOK: 로그인</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript"></script>
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
@@ -39,7 +39,7 @@
         <div class="contents_inner">
             <div class="login_box">
                 <div class="titleBox">
-                    <h1>로그인</h1>
+                    <h2>로그인</h2>
                 </div>
 
                 <form action="loginAf.do" method="get">

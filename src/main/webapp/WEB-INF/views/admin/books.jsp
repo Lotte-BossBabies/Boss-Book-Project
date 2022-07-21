@@ -4,12 +4,12 @@
 <html>
 <head>
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
-    <title>관리자 페이지</title>
+    <title>MZ BOOK: 마이페이지</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="/resources/css/header.css">
@@ -18,25 +18,35 @@
     <link rel="stylesheet" href="/resources/css/font.css">
 
     <script type="text/javascript" src="resources/js/admin.js"></script>
-
 </head>
 
 <%
     List<RegisteredBookDto> list = (List<RegisteredBookDto>) request.getAttribute("resultList");
+    SellerDto seller = (SellerDto) request.getAttribute("seller");
 %>
 <body>
 <div class="wrap">
     <%@include file="../layout/header.jsp" %>
 
     <div class="bookWrapper">
+
+        <div class="adminInfoBox">
+            <span><%=seller.getName()%></span>님의 <span><%=seller.getStore_name()%></span><br>
+            <button type="button" onclick="location.href='updateUser.do'">개인정보 수정</button>
+        </div>
+
         <div class="aBox">
             <ul>
-                <li><a href="/updateBook.do?sellerId=1" onclick="register()">상품등록</a></li>
+                <li><a href="/updateBook.do" onclick="register()">상품등록</a></li>
                 <li>|</li>
-                <li><a href="/manageDelivery.do?seller_id=1">배송관리</a></li>
+                <li><a href="/manageDelivery.do">배송관리</a></li>
                 <li>|</li>
-                <li><a href="/chart.do?seller_id=1">실적통계</a></li>
+                <li><a href="/chart.do">실적통계</a></li>
             </ul>
+        </div>
+
+        <span class="title">내가 등록한 책</span><br>
+        <div class="lineBox">
         </div>
 
         <div class="contentBox">
@@ -65,6 +75,14 @@
             </div>
 
             <div class="tableBox">
+                <%
+                if(list.size() == 0){
+                %>
+                    <div class="noBook">등록된 책이 없습니다.</div>
+                <%
+                }
+                else{
+                %>
                 <table id="maintable">
                     <%
                         for (RegisteredBookDto dto : list) {
@@ -90,6 +108,9 @@
                         }
                     %>
                 </table>
+                <%
+                    }
+                %>
             </div>
         </div>
     </div>
@@ -107,7 +128,7 @@
       var sel = document.getElementById('categorySelect');
       var val = sel.options[sel.selectedIndex].value;
 
-      var jsonData = {"sellerId": "1", "category": val, "sellStatus": 1};
+      var jsonData = {"category": val, "sellStatus": 1};
 
       getBooks("category.do", jsonData);
     }

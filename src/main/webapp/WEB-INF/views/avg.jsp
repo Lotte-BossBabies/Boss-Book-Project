@@ -20,7 +20,9 @@
 <head>
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <link rel="stylesheet" href="/resources/css/font.css">
-    <title>Title</title>
+
+    <title>MZ BOOK: 통계</title>
+
     <style>
         .highcharts-figure,
         .highcharts-data-table table {
@@ -121,8 +123,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="<c:url value="/resources/css/header.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/banner.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/footer.css"/>">
 </head>
 <body>

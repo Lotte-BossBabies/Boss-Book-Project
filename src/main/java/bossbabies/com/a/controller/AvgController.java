@@ -69,4 +69,9 @@ public class AvgController {
         response.getWriter().print(json);
     }
 
+    @RequestMapping(value = "bossbabies.do", method = RequestMethod.GET)
+    public String getBossBabiesMem(){
+        return "bossbabies";
+    }
+
 }

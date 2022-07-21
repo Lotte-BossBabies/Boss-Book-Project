@@ -5,8 +5,9 @@
 <html>
 <head>
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
-    <title>Title</title>
     <link rel="stylesheet" href="/resources/css/font.css">
+    <title>MZ BOOK: 주문</title>
+
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
     <link rel="stylesheet" href="/resources/css/orderResult.css">
