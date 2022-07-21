@@ -59,7 +59,12 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
      */
     @Override
     public int updateStock(IdAndCountVO vo) {
-        return session.update(namespace + "updateBookCount", vo);
+        return session.update(namespace + "updateBookCountAndDiscount", vo);
+    }
+
+    @Override
+    public List<RegisteredBookDto> getBookListNotRegistered(int sellerId) {
+        return session.selectList(namespace + "getBooksNotRegistered", sellerId);
     }
 
     /***

@@ -9,7 +9,6 @@ import bossbabies.com.a.parameterVO.CategoryAndKeywordVO;
 import bossbabies.com.a.parameterVO.IdAndCountVO;
 import bossbabies.com.a.parameterVO.SellerAndCategoryVO;
 import bossbabies.com.a.parameterVO.StatusAndRegisteredBookIdVO;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,40 +31,44 @@ public class AdminServiceImpl implements AdminService{
 
     @Autowired
     RegisteredBookDao dao;
-
+    
     @Autowired
     OrdersDao ordersDao;
 
     @Override
-    public List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category) {
+    public List<RegisteredBookDto> getRegisteredBookList(int sellerId, String category, int sellStatus) {
 
-        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category);
-
+        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category, sellStatus);
         return dao.getRegisteredBookList(vo);
     }
 
     @Override
-    public List<RegisteredBookDto> getRegisteredBookListBySellCount(int sellerId, String category) {
+    public List<RegisteredBookDto> getRegisteredBookListBySellCount(int sellerId, String category, int sellStatus) {
 
-        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category);
+        SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category, sellStatus);
 
         return dao.getRegisteredBookListBySellCount(vo);
     }
 
     @Override
-    public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword) {
+    public List<RegisteredBookDto> getRegisteredBookListByKeyword(int sellerId, String category, String keyword, int sellStatus) {
 
-        CategoryAndKeywordVO vo = new CategoryAndKeywordVO(category, keyword, sellerId);
+        CategoryAndKeywordVO vo = new CategoryAndKeywordVO(category, keyword, sellerId, sellStatus);
 
         return dao.getRegisteredBookListByKeyword(vo);
     }
 
     @Override
-    public int updateStock(int registeredBookId, int newCount) {
+    public int updateStock(int registeredBookId, int newCount, int discount) {
 
-        IdAndCountVO vo = new IdAndCountVO(registeredBookId, newCount);
+        IdAndCountVO vo = new IdAndCountVO(registeredBookId, newCount, discount);
 
         return dao.updateStock(vo);
+    }
+
+    @Override
+    public List<RegisteredBookDto> getBooksNotRegistered(int sellerId) {
+        return dao.getBookListNotRegistered(sellerId);
     }
 
     @Override
@@ -83,7 +86,7 @@ public class AdminServiceImpl implements AdminService{
 
         return dao.updateDeliveryCompleted(vo);
     }
-
+    
     @Override
     public List<DeliveryDto> getPreDeliveryBooks(int seller_id) {
         return ordersDao.getPreDeliveryBooks(seller_id);
@@ -108,4 +111,5 @@ public class AdminServiceImpl implements AdminService{
 //    public List<DeliveryDto> getCompletedDeliveryBooks(int seller_id) {
 //        return ordersDao.getCompletedDeliveryBooks(seller_id);
 //    }
+
 }

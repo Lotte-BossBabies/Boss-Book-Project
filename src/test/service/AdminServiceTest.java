@@ -30,7 +30,7 @@ public class AdminServiceTest {
         int sellerId = 1;
         String category = "소설";
 
-        List<RegisteredBookDto> list = service.getRegisteredBookList(sellerId, category);
+        List<RegisteredBookDto> list = service.getRegisteredBookList(sellerId, category,1);
 
         list.forEach(System.out::println);
 
@@ -43,7 +43,7 @@ public class AdminServiceTest {
         int sellerId = 1;
         String category = "소설";
 
-        List<RegisteredBookDto> list = service.getRegisteredBookListBySellCount(sellerId, category);
+        List<RegisteredBookDto> list = service.getRegisteredBookListBySellCount(sellerId, category,1);
 
         list.forEach(System.out::println);
 
@@ -57,7 +57,7 @@ public class AdminServiceTest {
         String category = "소설";
         String keyword = "꿈";
 
-        List<RegisteredBookDto> list = service.getRegisteredBookListByKeyword(sellerId, category, keyword);
+        List<RegisteredBookDto> list = service.getRegisteredBookListByKeyword(sellerId, category, keyword,1);
 
         list.forEach(System.out::println);
 
