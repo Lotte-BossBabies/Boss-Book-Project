@@ -136,6 +136,16 @@ public class UserController {
 
     @RequestMapping(value = "updateUser.do", method = RequestMethod.GET)
     public String updateUser(HttpServletRequest req, Model model){
+        Object user = req.getSession().getAttribute("login");
+        if(user.getClass().equals(MemberDto.class)){
+            model.addAttribute("member", user);
+            return "/user/updateMember";
+        }
+        else{
+            model.addAttribute("seller", user);
+            return "/user/updateSeller";
+        }
+        /*
         String id = (String)req.getSession().getAttribute("login");
         System.out.println("updateUser = " + id);
         logger.info("UserController updateUser()" + new Date());
@@ -149,6 +159,7 @@ public class UserController {
             model.addAttribute("seller", seller);
             return "/user/updateSeller";
         }
+         */
     }
     @RequestMapping(value = "updateMember.do", method = RequestMethod.GET)
     public String updateMember(HttpServletRequest req){

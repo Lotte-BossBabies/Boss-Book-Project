@@ -67,7 +67,7 @@
         <h4 class="card-title" style="margin: 10px;"><img src="/resources/images/happiness.png" alt="별"
                                                           style="text-align: left; width: 30px;">&nbsp;<%=member.getName()%> 님</h4>
         <p>
-            <button type="button" class="btn btn-outline-secondary" onclick="location.href=''">개인정보 수정</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="location.href='updateUser.do'">개인정보 수정</button>
         </p>
     </div>
 </div>

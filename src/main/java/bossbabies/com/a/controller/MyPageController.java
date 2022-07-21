@@ -70,7 +70,7 @@ public class MyPageController {
     }
 
     @GetMapping("writeReview.do")
-    public String writeReview(int bookId, int memberId, ReviewVO rvo, Model model,
+    public String writeReview(int bookId, ReviewVO rvo, Model model,
                               HttpServletResponse response) throws Exception {
         BookDto book = bookService.getBookByRId(bookId);
         MyPageReviewDto review = myPageService.getReview(rvo);
