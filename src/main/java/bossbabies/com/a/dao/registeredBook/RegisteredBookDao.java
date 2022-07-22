@@ -27,8 +27,11 @@ public interface RegisteredBookDao {
     public int updateStock(IdAndCountVO vo);
 
     List<BookDto> getBookListNotRegistered(SellerAndCategoryVO vo);
+    List<BookDto> getAllBookListNotRegistered(SellerAndCategoryVO vo);
 
     List<BookDto> getBookListNotRegisteredByKeyword(CategoryAndKeywordVO vo);
+
+    List<BookDto> getAllBookListNotRegisteredByKeyword(CategoryAndKeywordVO vo);
 
     RegisteredBookDto checkBookRegistered(BookAndSellerVO vo);
 
