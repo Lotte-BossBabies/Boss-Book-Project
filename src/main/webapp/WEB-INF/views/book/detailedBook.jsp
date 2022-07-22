@@ -87,7 +87,7 @@
         <div class="btnBox">
             <button class="likeBtn" id="like" type="button" onclick="setLike()"><img src="/resources/images/empty_heart.png" width="55px"></button>
             <button class="likeBtn" id="unlike" type="button" onclick="cancelLikes()"><img src="/resources/images/heart.png" width="55px"></button>
-            <button class="orderBtn" type="button" onclick="makeOrder()">구매하기</button>
+            <button class="orderBtn" type="button" onclick="checkOrder()">구매하기</button>
         </div>
 
     </div>
@@ -245,7 +245,7 @@
             }
         });
     }
-    function makeOrder(){
+    function checkOrder(){
         $.ajax ({
             url: "checkLogin.do",
             type: "GET",
@@ -268,7 +268,7 @@
                                             var newForm = document.createElement('form');
 
                                             newForm.method = 'get';
-                                            newForm.action = 'makeOrder.do';
+                                            newForm.action = 'checkOrder.do';
 
                                             var registered_book_id = document.createElement('input');
                                             registered_book_id.setAttribute("type", "hidden");

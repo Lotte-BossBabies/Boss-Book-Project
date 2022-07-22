@@ -20,6 +20,12 @@
         where id=#{id}
     </select>
 
+    <select id="getSellerBySId" parameterType="java.lang.Integer" resultType="bossbabies.com.a.dto.user.SellerDto">
+        select seller_id, id, password, name, email, phone, store_name
+        from seller
+        where seller_id=#{seller_id}
+    </select>
+
     <update id="updateSeller" parameterType="bossbabies.com.a.parameterVO.UpdateSellerVO">
         update seller
         set password=#{password}, store_name=#{store_name}, phone=#{phone}

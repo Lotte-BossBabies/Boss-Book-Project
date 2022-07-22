@@ -4,7 +4,9 @@ import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.RegisteredBookDto;
 import bossbabies.com.a.dto.ReviewDto;
 import bossbabies.com.a.dto.user.MemberDto;
+import bossbabies.com.a.dto.user.SellerDto;
 import bossbabies.com.a.service.DetailedBookService;
+import bossbabies.com.a.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * [프로젝트]롯데e커머스_자바전문가과정
@@ -30,6 +34,9 @@ public class DetailedBookController {
 
     @Autowired
     DetailedBookService detailedBookService;
+
+    @Autowired
+    SellerService sellerService;
 
 
     @RequestMapping(value = "getDetailedBook.do", method = RequestMethod.GET)
@@ -65,7 +72,6 @@ public class DetailedBookController {
     @ResponseBody
     @RequestMapping(value = "addLikes.do", method = RequestMethod.GET)
     public boolean addLikes(int registered_book_id, HttpServletRequest request) {
-
         int member_id = 0;
 
         String userType = (String) request.getSession().getAttribute("userType");
@@ -89,6 +95,37 @@ public class DetailedBookController {
         }
 
         return detailedBookService.cancelLikes(member_id, registered_book_id);
+    }
+
+    @RequestMapping(value="checkOrder.do", method = RequestMethod.GET)
+    public String checkOrder(int registered_book_id, Model model, HttpServletRequest request){
+        int member_id = 0;
+        MemberDto memberDto = null;
+
+        String userType = (String) request.getSession().getAttribute("userType");
+        if(userType.equals("member")){
+            memberDto = (MemberDto) request.getSession().getAttribute("login");
+            member_id = detailedBookService.getLoginMember(memberDto.getId());
+        }
+
+        //사용자 정보
+        Map<String, String> userInfoMap = new HashMap<>();
+        userInfoMap.put("name", memberDto.getName());
+        userInfoMap.put("phone", memberDto.getPhone());
+        userInfoMap.put("address", memberDto.getAddress());
+        model.addAttribute("userInfo", userInfoMap);
+
+        //등록된 책 정보
+        RegisteredBookDto registeredBook =  detailedBookService.getRegisteredBook(registered_book_id);
+        BookDto book = detailedBookService.getBook(registeredBook.getBook_id());
+        model.addAttribute("registeredBook", registeredBook);
+        model.addAttribute("book", book);
+
+        //판매자 정보
+        SellerDto sellerDto = detailedBookService.getSellerBySId(registeredBook.getSeller_id());
+        model.addAttribute("storeName", sellerDto.getStore_name());
+
+        return "book/checkOrder";
     }
 
     @RequestMapping(value = "makeOrder.do", method = RequestMethod.GET)
