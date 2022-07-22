@@ -56,7 +56,7 @@
         /*css 초기화*/
 
         .card {
-            height: 400px;
+            height: 450px;
             width: 350px;
             border-radius: 15px;
             display: inline-block;
@@ -88,7 +88,7 @@
         }
 
         .card-header-is_closed {
-            background-color: #EF5A31;
+            background-color: #3CAE76;
             color: #FFF;
             font-weight: bold;
             text-align: center;
@@ -162,7 +162,7 @@
             width: 100%;
             height: 270px;
             border-radius: 15px 15px 0 0;
-            background-image: url("../resources/images/CY.png");
+            background-image: url("../resources/images/CY.jpeg");
             background-size: 100% 280px;
             background-repeat: no-repeat;
         }
@@ -227,6 +227,11 @@
 </head>
 <body>
 <%@ include file="layout/header.jsp" %>
+<br><br>
+<div align="center">
+    <h1> < 보스베이비 주식회사 경영진 > </h1>
+</div>
+<br><br>
 <div align="center">
     <%-----------------------------------예원-------------------------------------------%>
     <div class="card">
@@ -234,7 +239,7 @@
         <!-- 카드 헤더 -->
         <div class="card-header-1">
             <div class="card-header-is_closed">
-                <div class="card-header-text"> 조장</div>
+                <div class="card-header-text"> 대표</div>
             </div>
         </div>
 
@@ -262,7 +267,7 @@
         <!-- 카드 헤더 -->
         <div class="card-header-2">
             <div class="card-header-is_closed">
-                <%--                <div class="card-header-text"> 조장</div>--%>
+                <div class="card-header-text"> 대표</div>
             </div>
         </div>
 
@@ -290,7 +295,7 @@
         <!-- 카드 헤더 -->
         <div class="card-header-3">
             <div class="card-header-is_closed">
-                <%--                <div class="card-header-text"> 조장</div>--%>
+                <div class="card-header-text"> 인턴</div>
             </div>
         </div>
 
@@ -318,7 +323,7 @@
         <!-- 카드 헤더 -->
         <div class="card-header-4">
             <div class="card-header-is_closed">
-                <%--                <div class="card-header-text"> 조장</div>--%>
+                <div class="card-header-text"> 부장</div>
             </div>
         </div>
 
@@ -328,11 +333,11 @@
             <!-- 카드 바디 헤더 -->
             <div class="card-body-header">
                 <h1>오명주</h1>
-                <p class="card-body-hashtag">#우우 #메리제인 #)(</p>
+                <p class="card-body-hashtag">#우우 #메리제인 #루미큐브고수</p>
             </div>
             <p class="card-body-description">
                 98년생<br>
-                )( !
+                )(
             </p>
             <!-- 카드 바디 본문 -->
             <!-- 카드 바디 푸터 -->
@@ -346,7 +351,7 @@
         <!-- 카드 헤더 -->
         <div class="card-header-5">
             <div class="card-header-is_closed">
-                <%--                <div class="card-header-text"> 조장</div>--%>
+                <div class="card-header-text"> 사원</div>
             </div>
         </div>
 
@@ -356,7 +361,7 @@
             <!-- 카드 바디 헤더 -->
             <div class="card-body-header">
                 <h1>이성은</h1>
-                <p class="card-body-hashtag">#초딩 #개초딩 #잼민이</p>
+                <p class="card-body-hashtag">#초딩 #리액션봇 #잼민이</p>
             </div>
             <p class="card-body-description">
                 99년생<br>
@@ -374,7 +379,7 @@
         <!-- 카드 헤더 -->
         <div class="card-header-6">
             <div class="card-header-is_closed">
-                <%--                <div class="card-header-text"> 조장</div>--%>
+                <div class="card-header-text"> 사원</div>
             </div>
         </div>
 
@@ -397,6 +402,7 @@
         </div>
     </div>
 </div>
+<br><br>
 <%@ include file="layout/footer.jsp" %>
 </body>
 </html>
