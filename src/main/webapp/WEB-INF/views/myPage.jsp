@@ -180,9 +180,10 @@
         <tr>
             <td class="align-middle">
                 <div class="flex-container">
-                    <div style="margin-left: 40px; margin-right: 40px;"><img class="shadow-lg" src="<%=review.getImageUrl()%>" alt="책책책">
+                    <div style="margin-left: 40px; margin-right: 40px;"><img class="shadow-lg"
+                                                                             src="<%=review.getImageUrl()%>" alt="책책책">
                     </div>
-                    <div style="margin-top: 25px; margin-left: 150px;">
+                    <div style="  width: 60%; margin-right: 5%;margin-top: 25px; margin-left: 5%;">
                         <div class="review-content" style="font-weight: bold"><%=review.getTitle()%>
                         </div>
                         <div class="review-content" style="font-size: 15px; color: #555555">
@@ -191,16 +192,18 @@
                         <div class="review-content"><img src="/resources/images/star.png" alt="별"
                                                          style="text-align: left; width: 20px;"> <%=review.getStar()%>
                         </div class="review-content">
-                        <div class="card border-success mb-3" style="width: 700px;">
+                        <div class="card border-success mb-3">
                             <div class="card-body">
-                                <p class="card-text"><%=review.getContent()%></p>
+                                <p class="card-text"><%=review.getContent()%>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div style="margin-left: 100px; margin-top: 100px;">
+                    <div style=" margin-top: 100px;">
                         <button class="btn btn-outline-success"
                                 onclick="deleteBtn(); location.href='deleteReview.do?reviewId=<%=review.getReviewId()%>';">
-                            삭제</button>
+                            삭제
+                        </button>
                     </div>
                 </div>
             </td>

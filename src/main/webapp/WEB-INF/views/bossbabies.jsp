@@ -361,7 +361,7 @@
             <!-- 카드 바디 헤더 -->
             <div class="card-body-header">
                 <h1>이성은</h1>
-                <p class="card-body-hashtag">#초딩 #리액션봇 #잼민이</p>
+                <p class="card-body-hashtag">#가짜막내 #리액션봇 #잼민이</p>
             </div>
             <p class="card-body-description">
                 99년생<br>
