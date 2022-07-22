@@ -11,7 +11,14 @@
     margin: 5px auto;
     border-bottom: 1px solid black;
 }
-
+div.orderBox{
+    display: flex;
+}
+div.orderText{
+    height: 34px;
+    float: right;
+    width: calc(100% / 6);
+}
 /* 도서 정보 */
 .orderedBookInfoBox{
     width: 700px;
@@ -63,9 +70,9 @@
 .inputs{
     margin: 5px 0px;
 }
-.input{
-    width: 170px;
-    height: 32px;
+.input {
+    width: 250px;
+    height: 34px;
 }
 #request{
     width: 250px;
