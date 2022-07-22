@@ -13,6 +13,8 @@ public interface SellerDao {
     SellerDto loginSeller(LoginVO vo);
 
     SellerDto getSeller(String id);
+
+    SellerDto getSellerBySId(int seller_id);
     int updateSeller(UpdateSellerVO vo);
     String findSellerId(FindIdVO vo);
     String findSellerPassword(FindPasswordVO vo);

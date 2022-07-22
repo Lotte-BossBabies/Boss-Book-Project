@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="registeredBook">
 
@@ -10,9 +10,9 @@
            b.image_url, b.title
     from registered_book rb, book b
     where rb.book_id = b.book_id
-    and rb.seller_id = #{sellerId}
-    and b.category = #{category}
-    and rb.sell_status = #{sellStatus}
+      and rb.seller_id = #{sellerId}
+      and b.category = #{category}
+      and rb.sell_status = #{sellStatus}
   </select>
 
   <select id="regiBookListByAllCategory" parameterType="bossbabies.com.a.parameterVO.SellerAndCategoryVO" resultType="bossbabies.com.a.dto.RegisteredBookDto">
@@ -29,9 +29,9 @@
            b.image_url, b.title
     from registered_book rb, book b
     where rb.book_id = b.book_id
-    and rb.seller_id = #{sellerId}
-    and b.category = #{category}
-    and rb.sell_status = #{sellStatus}
+      and rb.seller_id = #{sellerId}
+      and b.category = #{category}
+      and rb.sell_status = #{sellStatus}
     order by order_count desc;
   </select>
 
@@ -93,7 +93,7 @@
            b.image_url, b.title
     from registered_book rb, book b
     where rb.book_id = b.book_id
-    and registered_book_id=#{registered_book_id}
+      and registered_book_id=#{registered_book_id}
   </select>
 
   <update id="updateOrderCount" parameterType="java.lang.Integer">
@@ -105,33 +105,54 @@
   <select id="getBooks" parameterType="bossbabies.com.a.parameterVO.SellerAndCategoryVO" resultType="bossbabies.com.a.dto.BookDto">
     select b.book_id, b.title, b.image_url
     from book b
-    left join (select registered_book_id, book_id, sell_status
-                 from registered_book
-                where seller_id = #{sellerId}) rb
-       on b.book_id = rb.book_id
+           left join (select registered_book_id, book_id, sell_status
+                      from registered_book
+                      where seller_id = #{sellerId}) rb
+                     on b.book_id = rb.book_id
     where b.category = #{category}
       and (rb.book_id is null or rb.sell_status = 0)
+  </select>
+
+  <select id="getAllBooks" parameterType="bossbabies.com.a.parameterVO.SellerAndCategoryVO" resultType="bossbabies.com.a.dto.BookDto">
+    select b.book_id, b.title, b.image_url
+    from book b
+           left join (select registered_book_id, book_id, sell_status
+                      from registered_book
+                      where seller_id = #{sellerId}) rb
+                     on b.book_id = rb.book_id
+      where (rb.book_id is null or rb.sell_status = 0)
   </select>
 
   <select id="getBooksByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="bossbabies.com.a.dto.BookDto">
     select b.book_id, b.title, b.image_url
     from book b
-    left join (select registered_book_id, book_id, sell_status
-                from registered_book
-                where seller_id = #{sellerId}) rb
-       on b.book_id = rb.book_id
+           left join (select registered_book_id, book_id, sell_status
+                      from registered_book
+                      where seller_id = #{sellerId}) rb
+                     on b.book_id = rb.book_id
     where b.category = #{category}
       and (rb.book_id is null or rb.sell_status = 0)
+      and b.title like concat('%', #{keyword}, '%')
+  </select>
+
+  <select id="getAllBooksByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="bossbabies.com.a.dto.BookDto">
+    select b.book_id, b.title, b.image_url
+    from book b
+           left join (select registered_book_id, book_id, sell_status
+                      from registered_book
+                      where seller_id = #{sellerId}) rb
+                     on b.book_id = rb.book_id
+    where (rb.book_id is null or rb.sell_status = 0)
       and b.title like concat('%', #{keyword}, '%')
   </select>
 
   <select id="checkBookRegistered" parameterType="bossbabies.com.a.parameterVO.BookAndSellerVO" resultType="bossbabies.com.a.dto.RegisteredBookDto">
     select rb.registered_book_id, rb.book_id, rb.seller_id, rb.order_count, rb.book_count, rb.register_date, rb.sell_status, 0,
            b.image_url, b.title
-      from registered_book rb, book b
-     where rb.book_id = b.book_id
-       and b.book_id = #{bookId}
-       and rb.seller_id = #{sellerId}
+    from registered_book rb, book b
+    where rb.book_id = b.book_id
+      and b.book_id = #{bookId}
+      and rb.seller_id = #{sellerId}
   </select>
 
   <insert id="registerBook" parameterType="bossbabies.com.a.parameterVO.RegisterBookVO">
@@ -141,10 +162,8 @@
 
   <select id="getBookDetail" parameterType="Integer" resultType="bossbabies.com.a.dto.BookDto">
     select book_id, title, image_url
-      from book
-     where book_id = #{book_id}
+    from book
+    where book_id = #{book_id}
   </select>
 
 </mapper>
-
-

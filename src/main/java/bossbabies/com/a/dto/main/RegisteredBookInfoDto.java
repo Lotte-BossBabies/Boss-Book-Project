@@ -25,10 +25,12 @@ public class RegisteredBookInfoDto {
 
     private String publisher;
 
+    private String store_name;
+
     public RegisteredBookInfoDto() {
     }
 
-    public RegisteredBookInfoDto(int registered_book_id, int book_id, String isbn, String title, String author, int price, String description, String image_url, String category, String pubdate, String publisher) {
+    public RegisteredBookInfoDto(int registered_book_id, int book_id, String isbn, String title, String author, int price, String description, String image_url, String category, String pubdate, String publisher, String store_name) {
         this.registered_book_id = registered_book_id;
         this.book_id = book_id;
         this.isbn = isbn;
@@ -40,6 +42,7 @@ public class RegisteredBookInfoDto {
         this.category = category;
         this.pubdate = pubdate;
         this.publisher = publisher;
+        this.store_name = store_name;
     }
 
     public int getRegistered_book_id() {
@@ -130,6 +133,14 @@ public class RegisteredBookInfoDto {
         this.publisher = publisher;
     }
 
+    public String getStore_name() {
+        return store_name;
+    }
+
+    public void setStore_name(String store_name) {
+        this.store_name = store_name;
+    }
+
     @Override
     public String toString() {
         return "RegisteredBookInfoDto{" +
@@ -142,8 +153,9 @@ public class RegisteredBookInfoDto {
             ", description='" + description + '\'' +
             ", image_url='" + image_url + '\'' +
             ", category='" + category + '\'' +
-            ", pubdate=" + pubdate +
+            ", pubdate='" + pubdate + '\'' +
             ", publisher='" + publisher + '\'' +
+            ", store_name='" + store_name + '\'' +
             '}';
     }
 }

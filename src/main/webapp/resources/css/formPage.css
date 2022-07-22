@@ -62,8 +62,9 @@ div.innerPasswordText{
     border-radius: 3px;
 }
 .findBox .titleBox {
-    width: 120px;
+    width: 100%;
     margin: 10px auto 30px auto;
+    text-align: center;
 }
 
 .titleBox h1 {
@@ -81,11 +82,12 @@ div.innerPasswordText{
 }
 
 .findBox .titleBoxForPw {
-    width: 140px;
-    margin: 30px auto;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
 }
 .findBox .outerInputBox {
-    width: 210px;
+    width: 250px;
     height: 100px;
     margin: auto;
 }

@@ -94,26 +94,26 @@
         %>
         <tr>
             <td><img class="shadow-lg" src="<%=orderBook.getImageUrl()%>" alt="책책책"></td>
-            <td class="align-middle"><a
+            <td class="align-middle" style="width: 35%"><a class="text-success"
                     href="getDetailedBook.do?registered_book_id=<%=orderBook.getBookId()%>"><%=orderBook.getTitle()%>
             </a></td>
-            <td class="align-middle"><%=orderBook.getPrice()%>원
+            <td class="align-middle" style="width: 10%"><%=orderBook.getPrice()%>원
             </td>
-            <td class="align-middle"><%=dateFormat(orderBook.getOrderDate().toString())%>
+            <td class="align-middle" style="width: 20%"><%=dateFormat(orderBook.getOrderDate().toString())%>
             </td>
             <%
                 if (orderBook.isDeliveryStatus()) {
             %>
-            <td class="align-middle">
+            <td class="align-middle" style="width: 15%">
                 <button class="btn btn-outline-success"
                         onclick="location.href='writeReview.do?bookId=<%=orderBook.getBookId()%>&memberId=<%=member.getMemberId()%>'">
-                    <img src="/resources/images/document.png" alt="별"
+                    <img src="/resources/images/document.png" alt="리뷰"
                          style="text-align: left; width: 20px;">
                     리뷰 작성
                 </button>
             </td>
             <%} else {%>
-            <td class="align-middle">
+            <td class="align-middle" style="width: 15%">
                 <button type="button" class="btn btn-outline-success"
                         onclick="cancelBtn(); location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>';">
                     주문 취소
@@ -144,12 +144,12 @@
         %>
         <tr>
             <td><img class="shadow-lg" src="<%=likeBook.getImageUrl()%>" alt="책책책"></td>
-            <td colspan="2" class="align-middle"><a
+            <td colspan="2" class="align-middle" style="width: 45%"><a class="text-success"
                     href="getDetailedBook.do?registered_book_id=<%=likeBook.getBookId()%>"><%=likeBook.getTitle()%>
             </a></td>
-            <td class="align-middle"><%=likeBook.getPrice()%>원
+            <td class="align-middle" style="width: 20%"><%=likeBook.getPrice()%>원
             </td>
-            <td class="align-middle">
+            <td class="align-middle" style="width: 15%">
                 <button class="btn btn-outline-success"
                         onclick="location.href='deleteLike.do?likeId=<%=likeBook.getLikeId()%>'">
                     취소
@@ -180,9 +180,10 @@
         <tr>
             <td class="align-middle">
                 <div class="flex-container">
-                    <div style="margin-left: 40px; margin-right: 40px;"><img class="shadow-lg" src="<%=review.getImageUrl()%>" alt="책책책">
+                    <div style="margin-left: 40px; margin-right: 40px;"><img class="shadow-lg"
+                                                                             src="<%=review.getImageUrl()%>" alt="책책책">
                     </div>
-                    <div style="margin-top: 25px; margin-left: 150px;">
+                    <div style="  width: 60%; margin-right: 5%;margin-top: 25px; margin-left: 5%;">
                         <div class="review-content" style="font-weight: bold"><%=review.getTitle()%>
                         </div>
                         <div class="review-content" style="font-size: 15px; color: #555555">
@@ -191,16 +192,18 @@
                         <div class="review-content"><img src="/resources/images/star.png" alt="별"
                                                          style="text-align: left; width: 20px;"> <%=review.getStar()%>
                         </div class="review-content">
-                        <div class="card border-success mb-3" style="width: 700px;">
+                        <div class="card border-success mb-3">
                             <div class="card-body">
-                                <p class="card-text"><%=review.getContent()%></p>
+                                <p class="card-text"><%=review.getContent()%>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div style="margin-left: 100px; margin-top: 100px;">
+                    <div style=" margin-top: 100px;">
                         <button class="btn btn-outline-success"
                                 onclick="deleteBtn(); location.href='deleteReview.do?reviewId=<%=review.getReviewId()%>';">
-                            삭제</button>
+                            삭제
+                        </button>
                     </div>
                 </div>
             </td>

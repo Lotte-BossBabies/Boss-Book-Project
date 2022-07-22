@@ -40,7 +40,7 @@
                     <label for="id">아이디 : &nbsp;</label>
                 </div>
                 <div class="innerText">
-                    <input type="text" class="inputs" id="id" placeholder="아이디" name="id" required="required">
+                    <input type="text" class="inputs" id="id" placeholder="아이디" name="id" required="required" style="width:200px;">
                     <input type="button" class="btn submitBtn" id="idBtn" value="중복확인">
                     <p id="idcheck" style="font-size: 8px"></p>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="innerText">
                     <input type="password" class="inputs" id="password" placeholder="비밀번호" name="password"
-                           size="15" maxlength="100" onkeyup="return passwordChanged()" required="required">
+                           style="width:200px;" onkeyup="return passwordChanged()" required="required">
                     <span id="strength" style="font-size: 9pt">Type Password</span>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="innerText">
                     <input type="password" class="inputs" id="confirmPwd" placeholder="비밀번호확인" name="confirmPwd"
-                           size="15" maxlength="100" onkeyup="return passwordMatch()" required="required">
+                           style="width:200px;" onkeyup="return passwordMatch()" required="required">
                     <span id="passMatch" style="font-size: 9pt">Type Password</span>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                     <%--@declare id="name"--%><label for="name">이름 : &nbsp;</label>
                 </div>
                 <div class="innerText">
-                    <input id="name" type="text" class="inputs" placeholder="이름" name="name" required="required">
+                    <input id="name" type="text" class="inputs" placeholder="이름" name="name" required="required" style="width:200px;">
                 </div>
             </div>
             <div class="innerInputBox">
@@ -83,7 +83,7 @@
                 </div>
                 <div class="innerText">
                     <input id="email"  type="text" class="inputs" placeholder="이메일주소" name="email" required="required"
-                           value="<%=email%>">
+                           value="<%=email%>" style="width:200px;">
                 </div>
             </div>
             <div class="innerInputBox">
@@ -91,7 +91,7 @@
                     <%--@declare id="phone"--%><label for="phone">휴대폰 : &nbsp;</label>
                 </div>
                 <div class="innerText">
-                    <input id="phone" type="text" class="inputs" name="phone" required="required">
+                    <input id="phone" type="text" class="inputs" name="phone" required="required" placeholder="휴대폰번호" style="width:200px;">
                 </div>
             </div>
             <div class="innerInputBox">
@@ -99,7 +99,7 @@
                     <%--@declare id="address"--%><label for="address">주소 : &nbsp;</label>
                 </div>
                 <div class="innerText">
-                    <input id="address"  type="text" class="inputs" placeholder="주소" name="address" required="required">
+                    <input id="address"  type="text" class="inputs" placeholder="주소" name="address" required="required" style="width:200px;">
                 </div>
             </div>
             <div class="innerInputBox">

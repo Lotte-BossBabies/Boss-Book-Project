@@ -1,8 +1,6 @@
 <%@ page import="org.springframework.beans.factory.annotation.Value" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <spring:eval expression="@apiProperties['client_id']" var="client_id"/>
@@ -69,7 +67,7 @@
         </a>
     </div>
 </div>
-<button onclick="kakaoLogout()">카카오 로그아웃</button>
+<%--<button onclick="kakaoLogout()">카카오 로그아웃</button>--%>
 <%@include file = "../layout/footer.jsp" %>
 </body>
 <script>

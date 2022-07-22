@@ -85,9 +85,6 @@
                     <li>
                         <a href="bookstore.do?cateName=all">서점</a>
                     </li>
-                    <li>
-                        <a href="">작가마켓</a>
-                    </li>
                 </ul>
             </div>
         </div>

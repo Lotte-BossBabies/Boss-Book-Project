@@ -38,6 +38,7 @@
         <div class="contentBox">
             <div class="selectCategory">
                 <select id="subCategorySelect" onchange="subChangeBooks()">
+                    <option value="전체">전체</option>
                     <option value="소설">소설</option>
                     <option value="시/에세이">시/에세이</option>
                     <option value="예술/대중문화">예술/대중문화</option>
@@ -60,7 +61,6 @@
                 <table id="subtable">
                     <%
                         for(BookDto dto : list) {
-                            System.out.println(dto.getBook_id());
                     %>
                     <tr>
                         <td><img id="bookImg" src="<%= dto.getImage_url()%>"></td>

@@ -178,7 +178,7 @@ public class UserController {
             msg = "updateSuccess";
         }
         System.out.println(msg);
-        return "user/login";
+        return "redirect:/mypage.do";
     }
     @RequestMapping(value = "updateSeller.do", method = RequestMethod.POST)
     public String updateSeller(HttpServletRequest req){
@@ -195,7 +195,7 @@ public class UserController {
             msg = "updateSuccess";
         }
         System.out.println(msg);
-        return "user/login";
+        return "redirect:/adminMain.do";
     }
     @RequestMapping(value = "findIdView.do", method = RequestMethod.GET)
     public String findIdView(HttpServletRequest req, Model model){

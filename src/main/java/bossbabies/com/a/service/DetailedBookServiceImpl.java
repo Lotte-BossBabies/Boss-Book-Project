@@ -140,9 +140,8 @@ public class DetailedBookServiceImpl implements DetailedBookService{
     }
 
     @Override
-    public SellerDto getSeller(String id) {
-        SellerDto seller = sellerDao.getSeller(id);
-        return seller;
+    public SellerDto getSellerBySId(int seller_id) {
+        return sellerDao.getSellerBySId(seller_id);
     }
 
 }

@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="bossbabies.com.a.dto.user.SellerDto" %><%--
   Created by IntelliJ IDEA.
@@ -26,11 +27,98 @@
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>MZ BOOK: 회원정보 수정</title>
 
-    <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
+<%--    <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">--%>
     <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
-    <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .updateContainer{
+            margin-bottom: 100px;
+        }
+
+        .titleBox {
+            margin: 50px auto 30px;
+            width: 70%;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .lineBox{
+            width: 60%;
+            margin: auto;
+            border-bottom: 1px solid #bbbbbb;
+        }
+
+        .userinfo {
+            width: 40%;
+            margin: 10px auto;
+        }
+
+        .user {
+            display: flex;
+            justify-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        .blank {
+            width: 100px;
+            height: 40px;
+        }
+
+        .infoinput {
+            width: 320px;
+            height: 40px;
+            margin: 10px;
+        }
+
+        .text {
+            margin-top: 25px;
+            padding: 0;
+            width: 160px;
+        }
+
+        .updateBtn {
+            margin-top: 30px;
+        }
+
+        .cancelBtn {
+            width: 100px;
+            height: 40px;
+            margin: 5px 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .cancelBtn:hover {
+            border: 2px solid #3CAE76;
+            color: #3CAE76;
+        }
+
+        .confirmBtn:hover {
+            border: 2px solid #3CAE76;
+            color: #3CAE76;
+        }
+
+        .confirmBtn {
+            width: 100px;
+            height: 40px;
+            margin-top: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
