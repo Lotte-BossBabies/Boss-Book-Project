@@ -93,9 +93,12 @@
     padding: 0;
 }
 
+#bookstore .cate_btn:hover{
+    color: #3CAE76;
+}
+
 #bookstore .list_item_category li {
     width: auto;
-    font-family: "Noto Sans KR"!important;
 }
 
 #bookstore .list_item_category li {
@@ -168,4 +171,10 @@
 #bookstore .item_info_cont{
     padding-top: 10px;
     font-size: 14px;
+}
+
+
+/*카테고리명 클릭시 색깔 변경*/
+#bookstore li .on{
+    color: #3CAE76;
 }

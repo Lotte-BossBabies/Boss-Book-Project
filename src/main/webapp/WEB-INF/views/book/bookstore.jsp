@@ -3,8 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String cateName = (String) request.getAttribute("cateName");
     List<RegisteredBookInfoDto> byCategoryList = (List<RegisteredBookInfoDto>) request.getAttribute("byCategoryList");
+//    String cateName = request.getParameter("cateName");
 %>
 <html>
 <head>
@@ -26,6 +26,7 @@
 </head>
 <body>
 <%@ include file="../layout/header.jsp" %>
+
 <div id="bookstore">
     <div id="container">
         <div class="content">
@@ -43,25 +44,25 @@
                 </div>
                 <div class="list_item_category">
                     <ul class="children-boldn kdm-goods-list">
-                        <li class="on"><a class="cate_btn" href="?cateName=all"><span class="category_name"
+                        <li><a class="cate_btn" href="?cateName=all"><span class="category_name"
                                                                                       style="font-weight: normal; font-size:14px;">전체</span></a>
                         </li>
-                        <li class="on"><a class="cate_btn" href="?cateName=소설"><span class="category_name"
+                        <li><a class="cate_btn" href="?cateName=문학"><span class="category_name"
                                                                                      style="font-weight: normal; font-size:14px;">문학</span></a>
                         </li>
-                        <li class="on"><a class="cate_btn" href="?cateName=시/에세이"><span class="category_name"
-                                                                                        style="font-weight: normal; font-size:14px;">자서전/회고록</span></a>
+                        <li><a class="cate_btn" href="?cateName=사회과학"><span class="category_name"
+                                                                                        style="font-weight: normal; font-size:14px;">사회과학</span></a>
                         </li>
-                        <li class="on"><a class="cate_btn" href="?cateName=경제경영"><span
-                                style="font-weight: normal; font-size:14px;">경제/경영</span></a></li>
-                        <li class="on"><a class="cate_btn" href="?cateName=인문"><span
+                        <li><a class="cate_btn" href="?cateName=문화"><span
+                                style="font-weight: normal; font-size:14px;">문화</span></a></li>
+                        <li><a class="cate_btn" href="?cateName=인문"><span
                                 style="font-weight: normal; font-size:14px;">인문</span></a>
                         </li>
-                        <li class="on"><a class="cate_btn" href="?cateName=아동"><span
+                        <li><a class="cate_btn" href="?cateName=어린이/청소년"><span
                                 style="font-weight: normal; font-size:14px;">어린이/청소년</span></a></li>
-                        <li class="on"><a class="cate_btn" href="?cateName=자격서/수험서"><span
+                        <li><a class="cate_btn" href="?cateName=전문서적/교재"><span
                                 style="font-weight: normal; font-size:14px;">전문서적/교재</span></a></li>
-                        <li class="on"><a class="cate_btn" href="?cateName=건강/뷰티"><span
+                        <li><a class="cate_btn" href="?cateName=기타"><span
                                 style="font-weight: normal; font-size:14px;">기타</span></a>
                         </li>
                     </ul>
@@ -128,6 +129,7 @@
 <%@ include file="../layout/footer.jsp" %>
 <script>
     $(document).ready(function () {
+
         $('#search-btn').click(function () {
             var search = $('#search-title').val();
             // alert(search);
