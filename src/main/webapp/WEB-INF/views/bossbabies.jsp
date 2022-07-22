@@ -10,7 +10,7 @@
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <link rel="stylesheet" href="<c:url value="/resources/css/header.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/footer.css"/>">
-    <title>Insert title here</title>
+    <title>MZ BOOK: ABOUT</title>
     <style>
         html, body, div, span, applet, object, iframes, h1, h2, h3, h4, h5, h6,
         p, blockquote, pre, a, abbr, acronym, address, big, quotes, code, del,
