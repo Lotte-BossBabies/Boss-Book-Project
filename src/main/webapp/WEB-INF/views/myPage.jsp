@@ -144,12 +144,12 @@
         %>
         <tr>
             <td><img class="shadow-lg" src="<%=likeBook.getImageUrl()%>" alt="책책책"></td>
-            <td colspan="2" class="align-middle"><a
+            <td colspan="2" class="align-middle" style="width: 45%"><a
                     href="getDetailedBook.do?registered_book_id=<%=likeBook.getBookId()%>"><%=likeBook.getTitle()%>
             </a></td>
-            <td class="align-middle"><%=likeBook.getPrice()%>원
+            <td class="align-middle" style="width: 20%"><%=likeBook.getPrice()%>원
             </td>
-            <td class="align-middle">
+            <td class="align-middle" style="width: 15%">
                 <button class="btn btn-outline-success"
                         onclick="location.href='deleteLike.do?likeId=<%=likeBook.getLikeId()%>'">
                     취소

@@ -23,7 +23,7 @@
 <%@include file = "../layout/header.jsp" %>
 <div class="findBox">
     <div class="titleBoxForPw">
-        <h2>비밀번호 찾기</h2>
+        <h3>비밀번호 찾기</h3>
     </div>
     <div class="outerInputBox">
         <form class="was-validated" action="findPassword.do" method="get" id="findForm">
