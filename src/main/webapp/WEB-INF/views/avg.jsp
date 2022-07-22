@@ -194,7 +194,6 @@
         .highcharts-data-table tr:hover {
             background: #f1f7ff;
         }
-<<<<<<< HEAD
 
         #chart-name .header-title-name {
             font-size: 40px;
@@ -212,8 +211,6 @@
             width: 1200px;
             margin: auto;
         }
-=======
->>>>>>> 61e713c043e07be440c4bd8df53e97f27bdc39e6
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
@@ -480,16 +477,10 @@
     }
 
 
-<<<<<<< HEAD
     </script>
     <br><br>
 </div>
 <%@ include file="layout/footer.jsp" %>
-=======
-</script>
-<br><br>
-<%@ include file="layout/footer.jsp" %>
-<br><br>
->>>>>>> 61e713c043e07be440c4bd8df53e97f27bdc39e6
+
 </body>
 </html>
