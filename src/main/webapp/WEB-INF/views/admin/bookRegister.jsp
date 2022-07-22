@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="resources/css/adminMain.css">
     <link rel="stylesheet" href="/resources/css/font.css">
     <script type="text/javascript" src="resources/js/adminRegister.js"></script>
+    <script type="text/javascript" src="resources/js/paging.js"></script>
 </head>
 
 <%
@@ -60,7 +61,7 @@
                 <table id="subtable">
                     <%
                         for(BookDto dto : list) {
-                            System.out.println(dto.getBook_id());
+                            //System.out.println(dto.getBook_id());
                     %>
                     <tr>
                         <td><img id="bookImg" src="<%= dto.getImage_url()%>"></td>
