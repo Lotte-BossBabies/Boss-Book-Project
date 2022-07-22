@@ -93,6 +93,9 @@
                         <td><%= dto.getTitle()%>
                         </td>
                         <td>
+                            <%= dto.getOrder_count()%>/<%= dto.getBook_count()%>
+                        </td>
+                        <td>
                             <button type="button" name="editBtn" id="editBtn"
                                     value="<%= dto.getRegistered_book_id()%>"
                                     onclick="editButton(<%= dto.getRegistered_book_id()%>)">edit
