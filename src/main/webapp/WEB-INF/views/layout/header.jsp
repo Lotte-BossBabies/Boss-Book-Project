@@ -1,6 +1,6 @@
 <%@ page import="bossbabies.com.a.dto.user.MemberDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 //    type = {0 : 로그인X, 1 : 멤버, 2 : 셀러}
     int type = 0;
@@ -11,6 +11,9 @@
     }
 
 %>
+<head>
+    <script src="<c:url value="/resources/js/post.js" />"></script>
+</head>
 
 <div id="header">
     <div class="header_top">
@@ -47,7 +50,7 @@
                     <span class="txt_bar"></span>
                 </li>
                 <li>
-                    <a href="userSelect.do">JOIN</a>
+                    <a onclick="userSelectPost()">JOIN</a>
                     <span class="txt_bar"></span>
                 </li>
                 <%

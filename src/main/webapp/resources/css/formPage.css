@@ -71,6 +71,15 @@ div.innerPasswordText{
     width: 90%;
     text-align: center;
 }
+.findButton{
+
+}
+#findPasswordButton{
+    margin-top: 60px;
+}
+#findPassword{
+    height: 350px;
+}
 
 .findBox .titleBoxForPw {
     width: 100%;
