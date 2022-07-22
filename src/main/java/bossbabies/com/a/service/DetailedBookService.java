@@ -39,5 +39,5 @@ public interface DetailedBookService {
 
     int getLoginMember(String id);
 
-    SellerDto getSeller(String id);
+    SellerDto getSellerBySId(int seller_id);
 }

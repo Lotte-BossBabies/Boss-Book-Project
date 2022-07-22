@@ -32,6 +32,11 @@ public class SellerDaoImpl implements SellerDao{
     }
 
     @Override
+    public SellerDto getSellerBySId(int seller_id) {
+        return session.selectOne(ns + "getSellerBySId", seller_id);
+    }
+
+    @Override
     public int updateSeller(UpdateSellerVO vo) {
         return session.update(ns + "updateSeller", vo);
     }

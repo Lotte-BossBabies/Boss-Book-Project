@@ -135,7 +135,7 @@
       and b.title like concat('%', #{keyword}, '%')
   </select>
 
-  <select id="getALlBooksByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="bossbabies.com.a.dto.BookDto">
+  <select id="getAllBooksByKeyword" parameterType="bossbabies.com.a.parameterVO.CategoryAndKeywordVO" resultType="bossbabies.com.a.dto.BookDto">
     select b.book_id, b.title, b.image_url
     from book b
            left join (select registered_book_id, book_id, sell_status

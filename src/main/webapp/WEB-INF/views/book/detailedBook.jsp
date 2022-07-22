@@ -87,7 +87,7 @@
         <div class="btnBox">
             <button class="likeBtn" id="like" type="button" onclick="setLike()"><img src="/resources/images/empty_heart.png" width="55px"></button>
             <button class="likeBtn" id="unlike" type="button" onclick="cancelLikes()"><img src="/resources/images/heart.png" width="55px"></button>
-            <button class="orderBtn" type="button" onclick="makeOrder()">구매하기</button>
+            <button class="orderBtn" type="button" onclick="checkOrder()">구매하기</button>
         </div>
 
     </div>
@@ -175,26 +175,39 @@
             url: "checkLogin.do",
             type: "GET",
             success: function(loginStatus) {
-                console.log('ajax 성공..');
                 if(loginStatus){
-                    $.ajax({
-                        url: "addLikes.do",
+                    $.ajax ({
+                        url: "checkAdmin.do",
                         type: "GET",
-                        data: {
-                            registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
-                        },
-                        success: function (data) {
-                            if (data == "true") {
-                                console.log(data);
-                                likeStatus = data;
-                                window.location.reload();
-                            } else {
-                                console.log(data);
-                                likeStatus = data;
-                                window.location.reload();
+                        success: function (adminStatus) {
+                            if (!adminStatus) {
+                                $.ajax({
+                                    url: "addLikes.do",
+                                    type: "GET",
+                                    data: {
+                                        registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
+                                    },
+                                    success: function (data) {
+                                        if (data == "true") {
+                                            console.log(data);
+                                            likeStatus = data;
+                                            window.location.reload();
+                                        } else {
+                                            console.log(data);
+                                            likeStatus = data;
+                                            window.location.reload();
+                                        }
+                                    },
+                                    error: function (data) {
+                                        console.log(data);
+                                    }
+                                });
+                            }
+                            else {
+                                alert('판매자 계정은 좋아요를 누를 수 없습니다.');
                             }
                         },
-                        error: function (data) {
+                        error: function(data) {
                             console.log(data);
                         }
                     });
@@ -232,7 +245,7 @@
             }
         });
     }
-    function makeOrder(){
+    function checkOrder(){
         $.ajax ({
             url: "checkLogin.do",
             type: "GET",
@@ -255,7 +268,7 @@
                                             var newForm = document.createElement('form');
 
                                             newForm.method = 'get';
-                                            newForm.action = 'makeOrder.do';
+                                            newForm.action = 'checkOrder.do';
 
                                             var registered_book_id = document.createElement('input');
                                             registered_book_id.setAttribute("type", "hidden");
