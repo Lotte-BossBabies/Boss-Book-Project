@@ -175,26 +175,39 @@
             url: "checkLogin.do",
             type: "GET",
             success: function(loginStatus) {
-                console.log('ajax 성공..');
                 if(loginStatus){
-                    $.ajax({
-                        url: "addLikes.do",
+                    $.ajax ({
+                        url: "checkAdmin.do",
                         type: "GET",
-                        data: {
-                            registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
-                        },
-                        success: function (data) {
-                            if (data == "true") {
-                                console.log(data);
-                                likeStatus = data;
-                                window.location.reload();
-                            } else {
-                                console.log(data);
-                                likeStatus = data;
-                                window.location.reload();
+                        success: function (adminStatus) {
+                            if (!adminStatus) {
+                                $.ajax({
+                                    url: "addLikes.do",
+                                    type: "GET",
+                                    data: {
+                                        registered_book_id: "<%=registeredBook.getRegistered_book_id() %>"
+                                    },
+                                    success: function (data) {
+                                        if (data == "true") {
+                                            console.log(data);
+                                            likeStatus = data;
+                                            window.location.reload();
+                                        } else {
+                                            console.log(data);
+                                            likeStatus = data;
+                                            window.location.reload();
+                                        }
+                                    },
+                                    error: function (data) {
+                                        console.log(data);
+                                    }
+                                });
+                            }
+                            else {
+                                alert('판매자 계정은 좋아요를 누를 수 없습니다.');
                             }
                         },
-                        error: function (data) {
+                        error: function(data) {
                             console.log(data);
                         }
                     });
