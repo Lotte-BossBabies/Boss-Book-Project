@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -25,7 +26,7 @@
         $(document).ready(function () {
             $('.slider').slick({
                 autoplay: true,
-                autoplaySpeed: 3000,
+                autoplaySpeed: 2500,
                 slidesToShow: 5,
                 slidesToScroll: 1,
                 responsive: [
@@ -50,12 +51,12 @@
 
 </head>
 <body>
-    <div class="wrap">
+<%--    <div class="wrap">--%>
         <%@ include file="../layout/header.jsp" %>
         <%@ include file="../layout/banner.jsp" %>
         <%@ include file="../layout/main.jsp" %>
         <br>
         <%@ include file="../layout/footer.jsp" %>
-    </div>
+<%--    </div>--%>
 </body>
 </html>
