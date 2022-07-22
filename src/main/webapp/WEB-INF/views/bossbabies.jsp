@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport"
@@ -10,7 +12,7 @@
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <link rel="stylesheet" href="<c:url value="/resources/css/header.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/footer.css"/>">
-    <title>Insert title here</title>
+    <title>MZ BOOK: ABOUT</title>
     <style>
         html, body, div, span, applet, object, iframes, h1, h2, h3, h4, h5, h6,
         p, blockquote, pre, a, abbr, acronym, address, big, quotes, code, del,
