@@ -1,5 +1,6 @@
 <%@ page import="bossbabies.com.a.dto.RegisteredBookDto" %>
 <%@ page import="java.util.List" %>
+<%@ page import="bossbabies.com.a.dto.user.SellerDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -90,6 +91,9 @@
                     <tr>
                         <td><img id="bookImg" src="<%= dto.getImage_url()%>"></td>
                         <td><%= dto.getTitle()%>
+                        </td>
+                        <td>
+                            <%= dto.getOrder_count()%>/<%= dto.getBook_count()%>
                         </td>
                         <td>
                             <button type="button" name="editBtn" id="editBtn"

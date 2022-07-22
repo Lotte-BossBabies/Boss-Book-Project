@@ -293,7 +293,7 @@ public class AdminController {
 
         adminService.updateDeliveryStatus(order_id);
 
-        return "redirect:/manageDelivery.do?seller_id="+sellerId;
+        return "redirect:/manageDelivery.do";
     }
 
     @ResponseBody
