@@ -83,30 +83,32 @@
                                 %>
                                 <c:forEach var="regiBookInfo" items="${byCategoryList}">
                                     <li style="width: 25%">
-                                        <a href="">
-                                            <div class="item_cont">
-                                                <div class="item_photo_box">
+                                        <div class="item_cont">
+                                            <div class="store-name">
+                                                <img src="/resources/images/signboard.png">
+                                                <span>${regiBookInfo.store_name}</span>
+                                            </div>
+                                            <div class="item_photo_box">
+                                                <a href="getDetailedBook.do?registered_book_id=${regiBookInfo.registered_book_id}">
+                                                    <img width="166"
+                                                         style="border: 2px solid #3CAE76; padding: 5px;"
+                                                         src=${regiBookInfo.image_url}>
+                                                </a>
+                                            </div>
+                                            <div class="item_info_cont">
+                                                <div class="item_tit_box">
                                                     <a href="getDetailedBook.do?registered_book_id=${regiBookInfo.registered_book_id}">
-                                                        <img width="166"
-                                                             style="border: 2px solid #3CAE76; padding: 5px;"
-                                                             src=${regiBookInfo.image_url}>
+                                                        <strong class="item_name">${regiBookInfo.title}</strong>
                                                     </a>
                                                 </div>
-                                                <div class="item_info_cont">
-                                                    <div class="item_tit_box">
-                                                        <a href="getDetailedBook.do?registered_book_id=${regiBookInfo.registered_book_id}">
-                                                            <strong class="item_name">${regiBookInfo.title}</strong>
-                                                        </a>
-                                                    </div>
-                                                    <div class="bp-writer">
-                                                        <span><${regiBookInfo.author}></span>
-                                                    </div>
-                                                    <div class="item_money_box">
-                                                        <strong class="item_price"><span>${regiBookInfo.price}원</span></strong>
-                                                    </div>
+                                                <div class="bp-writer">
+                                                    <span><${regiBookInfo.author}></span>
+                                                </div>
+                                                <div class="item_money_box">
+                                                    <strong class="item_price"><span>${regiBookInfo.price}원</span></strong>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </div>
                                     </li>
                                 </c:forEach>
                                 <%
@@ -145,6 +147,10 @@
                     $.each(data, function (i) {
                         str += '<li style="width: 25%">' +
                             '<div class="item_cont">' +
+                            '<div class="store-name">' +
+                                                '<img src="/resources/images/signboard.png">' +
+                                                '<span>' + data[i].store_name+'</span>' +
+                                            '</div>' +
                             '<div class="item_photo_box">' +
                             '<a href="getDetailedBook.do?registered_book_id=' + data[i].registered_book_id + '">' +
                             '<img width="166"' +
