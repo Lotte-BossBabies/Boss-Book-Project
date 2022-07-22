@@ -49,7 +49,7 @@
         }
         input.setAttribute("type", "hidden");
         input.setAttribute("name", "email");
-        input.setAttribute("value", <%=email%>);
+        input.setAttribute("value", '<%=email%>');
 
         form.appendChild(input);
         document.body.appendChild(form);
