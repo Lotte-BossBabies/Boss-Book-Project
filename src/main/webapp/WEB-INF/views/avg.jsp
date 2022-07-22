@@ -34,6 +34,13 @@
         System.out.println(dto.getCountBook());
     }
 
+    Iterator<String> iter = set.iterator();    // Iterator 사용
+    List<String> categories = new ArrayList<>();
+    while(iter.hasNext()){
+        categories.add(iter.next());
+    }
+
+
     int category_arr[][] = new int[set.size()][date.length];
 
     // 배열 초기화
@@ -42,21 +49,24 @@
             category_arr[i][j] = 0;
         }
     }
-
-    Iterator<String> iter = set.iterator();    // Iterator 사용
     System.out.println("set size : " + set.size());
-    int cnt = 0;
-    while (iter.hasNext()) { // category : 소설, 시/에세이
+    System.out.println("categories"+categories.size());
+
+    for(int i=0;i<categories.size();i++){
         for (int j = 0; j < date.length; j++) {
             for (int k = 0; k < periodList.size(); k++) {
                 int orderDateInt = Integer.parseInt((periodList.get(k).getOrderDate()).split("-")[0].substring(2, 4) + (periodList.get(k).getOrderDate()).split("-")[1] + (periodList.get(k).getOrderDate()).split("-")[2]);
-                if (orderDateInt == date[j] && periodList.get(k).getCategory().equals(iter.next())) {
-                    category_arr[cnt][j] = periodList.get(k).getCountBook();
-                    cnt++;
-
+                if (orderDateInt == date[j] && periodList.get(k).getCategory().equals(categories.get(i))) {
+                    category_arr[i][j] = periodList.get(k).getCountBook();
                 }
             }
         }
+    }
+    for (int i=0;i<category_arr.length;i++){
+        for (int j=0;j<category_arr[i].length;j++){
+            System.out.println(category_arr[i][j] + " ");
+        }
+        System.out.println();
     }
 
     // list(back) -> json(front) (date)
@@ -69,16 +79,13 @@
 
     // list(back) -> json(front) (data)
     String dataJson = "[";
-    iter = set.iterator();    // Iterator 사용
-    cnt = 0;
-    while (iter.hasNext()) {
-        dataJson += "{ name:'" + iter.next() + "', data:[";
-        for (int j = 0; j < category_arr[cnt].length; j++) {
-            dataJson += category_arr[cnt][j] + ", ";
+    for (int i = 0; i < category_arr.length; i++) {
+        dataJson += "{ name:'" + categories.get(i) + "', data:[";
+        for (int j = 0; j < category_arr[i].length; j++) {
+            dataJson += category_arr[i][j] + ", ";
         }
         dataJson = dataJson.substring(0, dataJson.lastIndexOf(","));
         dataJson += "]},";
-        cnt++;
     }
     dataJson = dataJson.substring(0, dataJson.lastIndexOf(","));
     dataJson += "]";
