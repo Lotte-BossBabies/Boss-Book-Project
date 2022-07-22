@@ -1,10 +1,9 @@
 package bossbabies.com.a.controller;
 
-import bossbabies.com.a.dto.BookDto;
 import bossbabies.com.a.dto.main.PopularBookInfoDto;
 import bossbabies.com.a.dto.main.RegisteredBookInfoDto;
-import bossbabies.com.a.service.BookApiServiceImpl;
-import bossbabies.com.a.service.BookInfoServiceImpl;
+import bossbabies.com.a.service.BookApiService;
+import bossbabies.com.a.service.BookInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +31,10 @@ import java.util.List;
 @Controller
 public class MainController {
     @Autowired
-    BookApiServiceImpl service;
+    BookApiService service;
 
     @Autowired
-    BookInfoServiceImpl infoService;
+    BookInfoService infoService;
     Logger logger = LoggerFactory.getLogger(MainController.class);
 
     @RequestMapping("/main.do")

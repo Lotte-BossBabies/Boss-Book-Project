@@ -50,12 +50,10 @@
 
 </head>
 <body>
-    <div class="wrap">
-        <%@ include file="../layout/header.jsp" %>
-        <%@ include file="../layout/banner.jsp" %>
-        <%@ include file="../layout/main.jsp" %>
-        <br>
-        <%@ include file="../layout/footer.jsp" %>
-    </div>
+<%@ include file="../layout/header.jsp" %>
+<%@ include file="../layout/banner.jsp" %>
+<%@ include file="../layout/main.jsp" %>
+<br>
+<%@ include file="../layout/footer.jsp" %>
 </body>
 </html>
