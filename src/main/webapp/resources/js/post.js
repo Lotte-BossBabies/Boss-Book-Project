@@ -49,3 +49,11 @@ function idFind(id){
     document.body.appendChild(form);
     form.submit();
 }
+
+function myPagePost(){
+    let form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "updateUser.do");
+    document.body.appendChild(form);
+    form.submit();
+}
