@@ -85,8 +85,17 @@ public class RegisteredBookDaoImpl implements RegisteredBookDao{
     }
 
     @Override
+    public List<BookDto> getAllBookListNotRegistered(SellerAndCategoryVO vo) {
+        return session.selectList(namespace + "getAllBooks", vo);
+    }
+
+    @Override
     public List<BookDto> getBookListNotRegisteredByKeyword(CategoryAndKeywordVO vo) {
         return session.selectList(namespace + "getBooksByKeyword", vo);
+    }
+
+    public List<BookDto> getAllBookListNotRegisteredByKeyword(CategoryAndKeywordVO vo) {
+        return session.selectList(namespace + "getAllBooksByKeyword", vo);
     }
 
     @Override
