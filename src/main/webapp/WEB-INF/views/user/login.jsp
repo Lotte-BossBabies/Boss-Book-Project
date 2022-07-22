@@ -74,7 +74,7 @@
         </a>
     </div>
 </div>
-<button onclick="kakaoLogout()">카카오 로그아웃</button>
+<%--<button onclick="kakaoLogout()">카카오 로그아웃</button>--%>
 <%@include file = "../layout/footer.jsp" %>
 </body>
 <script>
