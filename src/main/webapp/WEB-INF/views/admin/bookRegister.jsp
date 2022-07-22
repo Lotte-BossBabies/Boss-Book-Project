@@ -61,7 +61,6 @@
                 <table id="subtable">
                     <%
                         for(BookDto dto : list) {
-                            System.out.println(dto.getBook_id());
                     %>
                     <tr>
                         <td><img id="bookImg" src="<%= dto.getImage_url()%>"></td>
