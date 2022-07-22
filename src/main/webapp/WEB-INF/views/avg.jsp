@@ -195,7 +195,12 @@
             margin-bottom: 30px;
         }
 
-        .chart{
+        #chart-name .header-title {
+            width: 1200px;
+            margin: auto;
+        }
+
+        .chart {
             width: 1200px;
             margin: auto;
         }
@@ -220,6 +225,8 @@
 <br><br>
 <div id="chart-name">
     <div class="header-title">
+        <a href="adminMain.do"><img src="/resources/images/previous.png" style="height: auto;
+    width: 35px;"></a>
         <div class="header-title-name">실적 현황</div>
     </div>
 </div>
@@ -468,6 +475,6 @@
     </script>
     <br><br>
 </div>
-    <%@ include file="layout/footer.jsp" %>
+<%@ include file="layout/footer.jsp" %>
 </body>
 </html>
