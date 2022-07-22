@@ -328,6 +328,7 @@
                 });
             });
 
+<<<<<<< HEAD
             function resultPeriodList(data) {
                 let beforeDate = document.getElementById("beforeDate").value;
                 let beforeStr = beforeDate.split('-')[0].substring(2, 4) + beforeDate.split('-')[1] + beforeDate.split('-')[2];
@@ -437,6 +438,7 @@
         </script>
         <br><br>
     </div>
+    <br><br>
 </div>
 <%@ include file="layout/footer.jsp" %>
 
