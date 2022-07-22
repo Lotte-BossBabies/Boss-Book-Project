@@ -3,6 +3,7 @@
 <%@ page import="bossbabies.com.a.dto.mypage.OrderedBookDto" %>
 <%@ page import="bossbabies.com.a.dto.mypage.LikedBookDto" %>
 <%@ page import="bossbabies.com.a.dto.mypage.MyPageReviewDto" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: BTC-N01
@@ -32,6 +33,7 @@
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>MZ BOOK: 마이페이지</title>
 
+    <script src="<c:url value="/resources/js/post.js" />"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/font.css">
@@ -71,7 +73,7 @@
         <h4 class="card-title" style="margin: 10px;"><img src="/resources/images/happiness.png" alt="별"
                                                           style="text-align: left; width: 30px;">&nbsp;<%=member.getName()%> 님</h4>
         <p>
-            <button type="button" class="btn btn-outline-secondary" onclick="location.href='updateUser.do'">개인정보 수정</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="myPagePost()">개인정보 수정</button>
         </p>
     </div>
 </div>
