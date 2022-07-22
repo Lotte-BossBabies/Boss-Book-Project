@@ -1,8 +1,6 @@
 <%@ page import="org.springframework.beans.factory.annotation.Value" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <spring:eval expression="@apiProperties['client_id']" var="client_id"/>
@@ -18,8 +16,8 @@
     <title>MZ BOOK: 로그인</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript"></script>
-    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-    <script src="<c:url value="/resources/js/login.js" />"></script>
+    <link href="/resources/css/style.css" rel="stylesheet">
+    <script src="/resources/js/login.js"></script>
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
 

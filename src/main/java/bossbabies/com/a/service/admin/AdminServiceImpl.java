@@ -86,6 +86,10 @@ public class AdminServiceImpl implements AdminService{
 
         SellerAndCategoryVO vo = new SellerAndCategoryVO(sellerId, category, 0);
 
+        if(category.equals("전체")){
+            return dao.getAllBookListNotRegistered(vo);
+        }
+
         return dao.getBookListNotRegistered(vo);
     }
 
@@ -94,6 +98,10 @@ public class AdminServiceImpl implements AdminService{
         String keyword) {
 
         CategoryAndKeywordVO vo = new CategoryAndKeywordVO(category, keyword, sellerId, 0);
+
+        if(category.equals("전체")){
+            return dao.getAllBookListNotRegisteredByKeyword(vo);
+        }
 
         return dao.getBookListNotRegisteredByKeyword(vo);
 

@@ -103,26 +103,26 @@
 .menu {
     list-style-type: none;
 }
-.menu > li {
+.menu > .tabLink {
     display: inline-block;
-    width: 100px;
-    height: 30px;
+    width: 130px;
+    height: 60px;
     padding: 20px 20px 10px 20px;
     font-size: 20px;
     cursor: pointer;
 }
-.menu > li a{
+.menu > .tabLink a{
     display: block;
     text-decoration: none;
     text-align: center;
     color: black;
 }
-.menu > li a:hover{
+.menu > .tabLink a:hover{
     text-decoration: underline;
     font-weight: 700;
     color: #3CAE76;
 }
-.menu li.current {
+.menu .tabLink.current {
     border-bottom: 3px solid #3CAE76;
 }
 .tabContent{
@@ -162,7 +162,7 @@
 }
 .reviews{
     background-color: #e0eeee;
-    border-radius: 5px;
+    border-radius: 3px;
     margin: 5px;
     padding: 15px 20px;
 }
