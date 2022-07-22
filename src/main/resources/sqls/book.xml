@@ -28,14 +28,15 @@
     </select>
 
     <select id="findByCategoryList" parameterType="String" resultType="bossbabies.com.a.dto.main.RegisteredBookInfoDto">
-        select registered_book_id, b.book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher from book b, registered_book r where b.book_id=r.book_id and b.category=#{cateName} order by order_count desc;
+        select registered_book_id, b.book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher, store_name
+        from book b, registered_book r, seller s where (b.book_id=r.book_id) and (r.seller_id = s.seller_id) and b.category= #{cateName} order by order_count desc;
     </select>
 
     <select id="findByList" resultType="bossbabies.com.a.dto.main.RegisteredBookInfoDto">
-        select registered_book_id, b.book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher from book b, registered_book r where b.book_id=r.book_id order by order_count desc;
+        select registered_book_id, b.book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher, store_name from book b, registered_book r, seller s where (b.book_id=r.book_id) and (r.seller_id = s.seller_id) order by order_count desc;
     </select>
 
     <select id="searchRegisteredBook" parameterType="String" resultType="bossbabies.com.a.dto.main.RegisteredBookInfoDto">
-        select registered_book_id, b.book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher from book b, registered_book r where b.book_id = r.book_id and title like concat('%',#{search},'%');
+        select registered_book_id, b.book_id, isbn, title, author, price, description, image_url, category, pubdate, publisher, store_name from book b, registered_book r, seller s where (b.book_id = r.book_id ) and (r.seller_id = s.seller_id) and title like concat('%',#{search},'%');
     </select>
 </mapper>
