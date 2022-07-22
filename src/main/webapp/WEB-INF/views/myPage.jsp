@@ -94,7 +94,7 @@
         %>
         <tr>
             <td><img class="shadow-lg" src="<%=orderBook.getImageUrl()%>" alt="책책책"></td>
-            <td class="align-middle"><a
+            <td class="align-middle"><a class="text-success"
                     href="getDetailedBook.do?registered_book_id=<%=orderBook.getBookId()%>"><%=orderBook.getTitle()%>
             </a></td>
             <td class="align-middle"><%=orderBook.getPrice()%>원
@@ -144,7 +144,7 @@
         %>
         <tr>
             <td><img class="shadow-lg" src="<%=likeBook.getImageUrl()%>" alt="책책책"></td>
-            <td colspan="2" class="align-middle" style="width: 45%"><a
+            <td colspan="2" class="align-middle" style="width: 45%"><a class="text-success"
                     href="getDetailedBook.do?registered_book_id=<%=likeBook.getBookId()%>"><%=likeBook.getTitle()%>
             </a></td>
             <td class="align-middle" style="width: 20%"><%=likeBook.getPrice()%>원
