@@ -28,7 +28,8 @@
 <div>
     <div class="preDeliveryWrapper">
         <div class="titleBox">
-            <a href="adminMain.do?">돌아가기</a>
+            <a href="adminMain.do?"><img src="/resources/images/previous.png" style="height: auto;
+    width: 35px;"></a>
         </div>
 
         <span class="title">배송 전 상품</span><br>

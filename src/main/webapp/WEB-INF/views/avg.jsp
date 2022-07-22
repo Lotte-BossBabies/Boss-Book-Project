@@ -194,6 +194,26 @@
         .highcharts-data-table tr:hover {
             background: #f1f7ff;
         }
+<<<<<<< HEAD
+
+        #chart-name .header-title-name {
+            font-size: 40px;
+            text-align: center;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        #chart-name .header-title {
+            width: 1200px;
+            margin: auto;
+        }
+
+        .chart {
+            width: 1200px;
+            margin: auto;
+        }
+=======
+>>>>>>> 61e713c043e07be440c4bd8df53e97f27bdc39e6
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
@@ -213,6 +233,12 @@
 <body>
 <%@ include file="layout/header.jsp" %>
 <br><br>
+<div id="chart-name">
+    <div class="header-title">
+        <a href="adminMain.do"><img src="/resources/images/previous.png" style="height: auto;
+    width: 35px;"></a>
+        <div class="header-title-name">실적 현황</div>
+    </div>
 <div id="pie-chart"></div>
 <br><br>
 <hr>
@@ -454,9 +480,16 @@
     }
 
 
+<<<<<<< HEAD
+    </script>
+    <br><br>
+</div>
+<%@ include file="layout/footer.jsp" %>
+=======
 </script>
 <br><br>
 <%@ include file="layout/footer.jsp" %>
 <br><br>
+>>>>>>> 61e713c043e07be440c4bd8df53e97f27bdc39e6
 </body>
 </html>
