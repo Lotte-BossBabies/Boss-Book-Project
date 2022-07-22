@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="bossbabies.com.a.dto.user.SellerDto" %><%--
   Created by IntelliJ IDEA.
   User: kjchoi
@@ -18,7 +19,7 @@
 <head>
     <script type="text/javascript">
         function updateUser() {
-            alert("sdf");
+            alert("회원정보 수정이 완료되었습니다.");
             document.getElementById("platform").submit();
         }
     </script>
@@ -29,88 +30,7 @@
     <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
-    <style>
-        .updateContainer{
-            margin-bottom: 100px;
-        }
-
-        .titleBox {
-            margin: 50px auto 30px;
-            width: 70%;
-            height: 50px;
-            text-align: center;
-            font-size: 24px;
-        }
-
-        .lineBox{
-            width: 60%;
-            margin: auto;
-            border-bottom: 1px solid #bbbbbb;
-        }
-
-        .userinfo {
-            width: 40%;
-            margin: 10px auto;
-        }
-
-        .user {
-            display: flex;
-            justify-items: flex-end;
-            justify-content: flex-end;
-        }
-
-        .blank {
-            width: 100px;
-            height: 40px;
-        }
-
-        .infoinput {
-            width: 320px;
-            height: 40px;
-            margin: 10px;
-        }
-
-        .text {
-            margin-top: 25px;
-            padding: 0;
-            width: 158px;
-        }
-
-        .updateBtn {
-            margin-top: 30px;
-        }
-
-        .cancelBtn {
-            width: 100px;
-            height: 40px;
-            margin: 5px 20px;
-            border: 1px solid black;
-            border-radius: 5px;
-            background-color: white;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .cancelBtn:hover {
-            border: 2px solid #3CAE76;
-            color: #3CAE76;
-        }
-
-        .confirmBtn:hover {
-            border: 2px solid #3CAE76;
-            color: #3CAE76;
-        }
-
-        .confirmBtn {
-            width: 100px;
-            height: 40px;
-            margin-top: 5px;
-            border: 1px solid black;
-            border-radius: 5px;
-            background-color: white;
-            font-size: 20px;
-            cursor: pointer;
-        }
+    <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
     </style>
 </head>
 <body>
@@ -121,7 +41,7 @@
     <div class="lineBox"></div>
 
     <div class="userinfo">
-        <form action="updateSeller.do" method="get" id="platform">
+        <form action="updateSeller.do" method="post" id="platform">
             <div class="user">
                 <div class="text">아이디</div>
                 <input name="id" type="text" class="infoinput" id="id" value="<%= id%>" readonly>
@@ -168,7 +88,7 @@
 <script>
 
     function checkForm() {
-        if(document.getElementById("pwd").value !== document.getElementById("confirmPwd").value) {
+        if(document.getElementById("password").value !== document.getElementById("confirmPwd").value) {
             alert("패스워드가 일치하지 않습니다!");
             return false;
         }
@@ -201,7 +121,7 @@
     function passwordMatch() {
         var match = document.getElementById('passMatch');
         var pswd = document.getElementById("pwdCheck");
-        var pwd = document.getElementById("pwd");
+        var pwd = document.getElementById("password");
         if(pswd.value.length === 0) { //')' token error duplicate, syntax error 발생지점
             match.innerHTML = 'Type Password';
         } else if (pwd.value ===  pswd.value) {
@@ -215,7 +135,7 @@
         var strongRegex = new RegExp("^(?=.{8,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*\\W).*$", "g");
         var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[a-zA-Z])(?=.*[0-9]))|((?=.*[a-zA-Z])(?=.*[0-9]))).*$", "g");
         var enoughRegex = new RegExp("(?=.{6,}).*", "g");
-        var pwd = document.getElementById("pwd");
+        var pwd = document.getElementById("password");
         if (pwd.value.length === 0) {
             strength.innerHTML = 'Type Password';
         } else if (false === enoughRegex.test(pwd.value)) {

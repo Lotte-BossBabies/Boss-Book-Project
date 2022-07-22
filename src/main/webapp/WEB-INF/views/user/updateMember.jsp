@@ -32,7 +32,7 @@
     <div class="redbox">회원정보 수정</div>
     <div class="userinfo">
 
-        <form action="updateMember.do" method="get" id="platform">
+        <form action="updateMember.do" method="post" id="platform">
             <input type="hidden" id="flag" value="updateUser" name="param">
             <div class="user">
                 <div class="text">아이디</div>
@@ -80,7 +80,7 @@
 <script>
 
     function checkForm() {
-        if(document.getElementById("pwd").value !== document.getElementById("confirmPwd").value) {
+        if(document.getElementById("password").value !== document.getElementById("confirmPwd").value) {
             alert("패스워드가 일치하지 않습니다!");
             return false;
         }
@@ -113,7 +113,7 @@
     function passwordMatch() {
         var match = document.getElementById('passMatch');
         var pswd = document.getElementById("pwdCheck");
-        var pwd = document.getElementById("pwd");
+        var pwd = document.getElementById("password");
         if(pswd.value.length === 0) { //')' token error duplicate, syntax error 발생지점
             match.innerHTML = 'Type Password';
         } else if (pwd.value ===  pswd.value) {
@@ -127,7 +127,7 @@
         var strongRegex = new RegExp("^(?=.{8,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*\\W).*$", "g");
         var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[a-zA-Z])(?=.*[0-9]))|((?=.*[a-zA-Z])(?=.*[0-9]))).*$", "g");
         var enoughRegex = new RegExp("(?=.{6,}).*", "g");
-        var pwd = document.getElementById("pwd");
+        var pwd = document.getElementById("password");
         if (pwd.value.length === 0) {
             strength.innerHTML = 'Type Password';
         } else if (false === enoughRegex.test(pwd.value)) {

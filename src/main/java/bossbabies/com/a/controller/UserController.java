@@ -32,19 +32,19 @@ public class UserController {
     SellerService sellerService;
 
 
-    @RequestMapping(value = "userSelect.do", method = RequestMethod.GET)
+    @RequestMapping(value = "userSelect.do", method = RequestMethod.POST)
     public String userSelect() {
         logger.info("UserController userSelect() " + new Date());
 
         return "/user/userSelect";
     }
-    @RequestMapping(value = "memberRegi.do", method = RequestMethod.GET)
+    @RequestMapping(value = "memberRegi.do", method = RequestMethod.POST)
     public String commonRegi(String email, Model model) {
         logger.info("UserController memberRegi() " + new Date());
         model.addAttribute("email", email);
         return "/user/memberRegi";
     }
-    @RequestMapping(value = "sellerRegi.do", method = RequestMethod.GET)
+    @RequestMapping(value = "sellerRegi.do", method = RequestMethod.POST)
     public String sellerRegi(String email, Model model) {
         logger.info("UserController sellerRegi() " + new Date());
         model.addAttribute("email", email);
@@ -52,7 +52,7 @@ public class UserController {
         return "/user/sellerRegi";
     }
 
-    @RequestMapping(value = "regiMember.do", method = RequestMethod.GET)
+    @RequestMapping(value = "regiMember.do", method = RequestMethod.POST)
     public String regiMember(MemberDto memberDto){
         logger.info("UserController regiMember() " + new Date());
         int member_id = memberDto.getMember_id();
@@ -73,7 +73,7 @@ public class UserController {
         System.out.println("msg = " + msg);
         return "/user/login";
     }
-    @RequestMapping(value = "regiSeller.do", method = RequestMethod.GET)
+    @RequestMapping(value = "regiSeller.do", method = RequestMethod.POST)
     public String regiSeller(SellerDto sellerDto){
         logger.info("UserController regiSeller() " + new Date());
         int seller_id = sellerDto.getSeller_id();
@@ -93,7 +93,7 @@ public class UserController {
         System.out.println("msg = " + msg);
         return "/user/login";
     }
-    @RequestMapping(value = "loginAf.do", method = RequestMethod.GET)
+    @RequestMapping(value = "loginAf.do", method = RequestMethod.POST)
     public String loginAf(HttpServletRequest req) throws IOException {
         logger.info("UserController loginAf()" + new Date());
         String msg = "loginFail";
@@ -136,7 +136,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "updateUser.do", method = RequestMethod.GET)
+    @RequestMapping(value = "updateUser.do", method = RequestMethod.POST)
     public String updateUser(HttpServletRequest req, Model model){
         Object user = req.getSession().getAttribute("login");
         if(user.getClass().equals(MemberDto.class)){
@@ -163,7 +163,7 @@ public class UserController {
         }
          */
     }
-    @RequestMapping(value = "updateMember.do", method = RequestMethod.GET)
+    @RequestMapping(value = "updateMember.do", method = RequestMethod.POST)
     public String updateMember(HttpServletRequest req){
         String password = req.getParameter("password");
         String phone = req.getParameter("phone");
@@ -180,7 +180,7 @@ public class UserController {
         System.out.println(msg);
         return "user/login";
     }
-    @RequestMapping(value = "updateSeller.do", method = RequestMethod.GET)
+    @RequestMapping(value = "updateSeller.do", method = RequestMethod.POST)
     public String updateSeller(HttpServletRequest req){
         String password = req.getParameter("password");
         String phone = req.getParameter("phone");
@@ -197,63 +197,94 @@ public class UserController {
         System.out.println(msg);
         return "user/login";
     }
+    @RequestMapping(value = "findIdView.do", method = RequestMethod.GET)
+    public String findIdView(HttpServletRequest req, Model model){
+        logger.info("UserController findIdView() " + new Date());
 
-    @RequestMapping(value = "findId.do", method = RequestMethod.GET)
-    public String findId(HttpServletRequest req, Model model){
-        String name = req.getParameter("name");
-        String email = req.getParameter("email");
+        return "/user/findId";
+
+    }
+    @RequestMapping(value = "findIdOk.do", method = RequestMethod.POST)
+    public String findIdOk(String id, Model model){
+        logger.info("UserController findIdOk() " + new Date());
+        //String password = req.getParameter("password");
+        System.out.println(id);
+        model.addAttribute("id", id);
+        return "/user/findIdOk";
+
+    }
+    @RequestMapping(value = "findId.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String findId(@RequestBody Map<String, String> map, HttpServletRequest req, Model model){
+        String name = map.get("name");
+        String email = map.get("email");
         FindIdVO find = new FindIdVO(name, email);
         System.out.println(find);
         String msg = "findIdFail";
 
-        String id = memberService.findMemberId(find);
-        if(id != null){
-            model.addAttribute("id", id);
+        String my_id = memberService.findMemberId(find);
+        if(my_id != null){
             msg = "findIdSuccess";
-            System.out.println(msg + id);
-            return "user/findIdOk";
+            System.out.println(msg + my_id);
+            return my_id;
         }
-        id = sellerService.findSellerId(find);
-        if(id != null){
-            model.addAttribute("id", id);
+        my_id = sellerService.findSellerId(find);
+        if(my_id != null){
             msg = "findIdSuccess";
-            System.out.println(msg + id);
-            return "user/findIdOk";
+            System.out.println(msg + my_id);
+            return my_id;
         }
+        System.out.println(msg);
 
-        System.out.println(msg + id);
-        return "user/findId";
+        return "nothing";
 
     }
-    @RequestMapping(value = "findPassword.do", method = RequestMethod.GET)
-    public String findPassword(HttpServletRequest req, Model model){
-        String id = req.getParameter("id");
-        String name = req.getParameter("name");
-        String email = req.getParameter("email");
+    @RequestMapping(value = "findPasswordView.do", method = RequestMethod.GET)
+    public String findPasswordView(HttpServletRequest req, Model model){
+        logger.info("UserController userSelect() " + new Date());
+
+        return "/user/findPassword";
+
+    }
+    @RequestMapping(value = "findPasswordOk.do", method = RequestMethod.POST)
+    public String findPasswordOk(String password, Model model){
+        logger.info("UserController findPasswordOk() " + new Date());
+        //String password = req.getParameter("password");
+        System.out.println(password);
+        model.addAttribute("password", password);
+        return "/user/findPasswordOk";
+
+    }
+    @RequestMapping(value = "findPassword.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String findPassword(@RequestBody Map<String, String> map, HttpServletRequest req, Model model){
+        String id = map.get("id");
+        String name = map.get("name");
+        String email = map.get("email");
         FindPasswordVO find = new FindPasswordVO(id, name, email);
         System.out.println(find);
-        String msg = "findIdFail";
+        String msg = "findPasswordFail";
 
         String password = memberService.findMemberPassword(find);
         if(password != null){
             model.addAttribute("password", password);
-            msg = "findIdSuccess";
+            msg = "findPasswordSuccess";
             System.out.println(msg + password);
-            return "user/findPasswordOk";
+            return password;
         }
         password = sellerService.findSellerPassword(find);
         if(password != null){
             model.addAttribute("password", password);
-            msg = "findIdSuccess";
+            msg = "findPasswordSuccess";
             System.out.println(msg + password);
-            return "user/findPasswordOk";
+            return password;
         }
+        System.out.println(msg);
 
-        System.out.println(msg + password);
-        return "user/findPassword";
+        return "nothing";
 
     }
-    @RequestMapping(value = "duplicateId.do", method = RequestMethod.GET)
+    @RequestMapping(value = "duplicateId.do", method = RequestMethod.POST)
     @ResponseBody
     public String duplicateId(@RequestParam Map<String, Object> map){
         String msg = "";
