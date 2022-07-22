@@ -149,4 +149,19 @@
     }
 </script>
 </body>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    window.onload = function(){
+        document.getElementById("address").addEventListener("click", function(){
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    document.getElementById("address").value = "";
+                    document.getElementById("address").value = data.address;
+                }
+            }).open();
+
+        });
+    }
+</script>
 </html>
