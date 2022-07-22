@@ -32,11 +32,21 @@ public class AvgController {
 
     @RequestMapping(value = "chart.do", method = RequestMethod.GET)
     public String getSaleRateByCategory(Model model, HttpSession session) {
+        // session 에서 id 값 가져오기
         SellerDto seller = (SellerDto) session.getAttribute("login");
+
         CategorySaleRateDto categorySaleRateDto = new CategorySaleRateDto();
         categorySaleRateDto.setSellerId(seller.getSeller_id());
+
         List<CategorySaleRateDto> list = service.getSaleRateByCategory(categorySaleRateDto);
         model.addAttribute("saleRateByCategory", list);
+
+        SalesByPeriodDto salesByPeriodDto = new SalesByPeriodDto();
+        salesByPeriodDto.setSellerId(seller.getSeller_id());
+
+        List<SalesByPeriodDto> periodDtoList = service.getSalesByPeriod(salesByPeriodDto);
+        model.addAttribute("allPeriodList", periodDtoList);
+
 
         return "avg";
     }
@@ -44,6 +54,7 @@ public class AvgController {
     @RequestMapping(value = "line-chart.do", method = RequestMethod.GET)
     @ResponseBody
     public void getSalesByPeriod(HttpSession session, HttpServletResponse response, @RequestParam String beforeStr, @RequestParam String afterStr) throws IOException {
+        // session 에서 id 값 가져오기
         SellerDto seller = (SellerDto) session.getAttribute("login");
         SalesByPeriodDto salesByPeriodDto = new SalesByPeriodDto();
         salesByPeriodDto.setSellerId(seller.getSeller_id());

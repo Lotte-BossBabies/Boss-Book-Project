@@ -1,9 +1,11 @@
-<%@ page import="java.util.List" %>
 <%@ page import="bossbabies.com.a.dto.avg.CategorySaleRateDto" %>
+<%@ page import="bossbabies.com.a.dto.avg.SalesByPeriodDto" %>
+<%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     List<CategorySaleRateDto> saleRateList = (List<CategorySaleRateDto>) request.getAttribute("saleRateByCategory");
+    List<SalesByPeriodDto> periodList = (List<SalesByPeriodDto>) request.getAttribute("allPeriodList");
 
     // list(back) -> json(front)
     String jsonData = "[";
@@ -13,6 +15,77 @@
     jsonData = jsonData.substring(0, jsonData.lastIndexOf(","));
     jsonData += "]";
     request.setAttribute("jsonData", jsonData);
+
+    /* ******************************초기 차트 생성 (전체 기간)******************************** */
+    String startStr = periodList.get(0).getOrderDate().split("-")[0].substring(2, 4) + periodList.get(0).getOrderDate().split("-")[1] + periodList.get(0).getOrderDate().split("-")[2];
+    String endStr = periodList.get(periodList.size() - 1).getOrderDate().split("-")[0].substring(2, 4) + periodList.get(periodList.size() - 1).getOrderDate().split("-")[1] + periodList.get(periodList.size() - 1).getOrderDate().split("-")[2];
+    int start = Integer.parseInt(startStr);
+    int end = Integer.parseInt(endStr);
+    int date[] = new int[end - start + 1];
+
+    for (int i = 0; i < date.length; i++) {
+        date[i] = start;
+        start++;
+    }
+    Set<String> set = new HashSet<String>();
+    for (int i = 0; i < periodList.size(); i++) {
+        SalesByPeriodDto dto = periodList.get(i);
+        set.add(dto.getCategory());
+        System.out.println(dto.getCountBook());
+    }
+
+    int category_arr[][] = new int[set.size()][date.length];
+
+    // 배열 초기화
+    for (int i = 0; i < category_arr.length; i++) {
+        for (int j = 0; j < category_arr[i].length; j++) {
+            category_arr[i][j] = 0;
+        }
+    }
+
+    Iterator<String> iter = set.iterator();    // Iterator 사용
+    System.out.println("set size : " + set.size());
+    int cnt = 0;
+    while (iter.hasNext()) { // category : 소설, 시/에세이
+        for (int j = 0; j < date.length; j++) {
+            for (int k = 0; k < periodList.size(); k++) {
+                int orderDateInt = Integer.parseInt((periodList.get(k).getOrderDate()).split("-")[0].substring(2, 4) + (periodList.get(k).getOrderDate()).split("-")[1] + (periodList.get(k).getOrderDate()).split("-")[2]);
+                if (orderDateInt == date[j] && periodList.get(k).getCategory().equals(iter.next())) {
+                    category_arr[cnt][j] = periodList.get(k).getCountBook();
+                    cnt++;
+
+                }
+            }
+        }
+    }
+
+    // list(back) -> json(front) (date)
+    String dateJson = "[";
+    for (int i = 0; i < date.length; i++) {
+        dateJson += date[i] + ", ";
+    }
+    dateJson = dateJson.substring(0, dateJson.lastIndexOf(","));
+    dateJson += "]";
+
+    // list(back) -> json(front) (data)
+    String dataJson = "[";
+    iter = set.iterator();    // Iterator 사용
+    cnt = 0;
+    while (iter.hasNext()) {
+        dataJson += "{ name:'" + iter.next() + "', data:[";
+        for (int j = 0; j < category_arr[cnt].length; j++) {
+            dataJson += category_arr[cnt][j] + ", ";
+        }
+        dataJson = dataJson.substring(0, dataJson.lastIndexOf(","));
+        dataJson += "]},";
+        cnt++;
+    }
+    dataJson = dataJson.substring(0, dataJson.lastIndexOf(","));
+    dataJson += "]";
+
+    System.out.println(dataJson);
+    System.out.println(dateJson);
+
 
 %>
 
@@ -115,6 +188,11 @@
             background: #f1f7ff;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -134,7 +212,7 @@
 <br><br>
 <div id="choiceDate" align="center">
     <input type="date" id="beforeDate"> ~ <input type="date" id="afterDate">
-    <button id="btn">선택</button>
+    <button id="btn" class="btn btn-outline-success">선택</button>
 </div>
 <br><br>
 <div id="line-chart"></div>
@@ -192,8 +270,10 @@
         },
 
         xAxis: {
-            categories: []
+            categories: <%=dateJson%>
         },
+
+        series: <%=dataJson%>,
 
         legend: {
             layout: 'vertical',
@@ -280,12 +360,6 @@
             }
         }
 
-        // map에 저장
-        let hashMap = new Map();
-        for (let i = 0; i < categories.length; i++) {
-            hashMap.set(categories[i], []);
-        }
-
         for (let i = 0; i < categories.length; i++) {
             for (let j = 0; j < date.length; j++) {
                 for (let k = 0; k < data.length; k++) {
@@ -297,14 +371,7 @@
             }
         }
 
-        for (let i = 0; i < category_arr.length; i++) {
-            for (let j = 0; j < category_arr[i].length; j++) {
-                console.log(category_arr[i][j] + " ");
-            }
-        }
-
         /************************************************************/
-
 
         // String to Json -> dateJson
         let dateJson = "["
@@ -326,7 +393,7 @@
             dataJson += "]},";
         }
         dataJson = dataJson.substring(0, dataJson.lastIndexOf(","));
-        dataJson += "]"
+        dataJson += "]";
         console.log(dataJson);
 
         line_chart = new Highcharts.chart('line-chart', {
