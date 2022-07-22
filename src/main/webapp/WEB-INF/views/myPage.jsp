@@ -94,26 +94,26 @@
         %>
         <tr>
             <td><img class="shadow-lg" src="<%=orderBook.getImageUrl()%>" alt="책책책"></td>
-            <td class="align-middle"><a
+            <td class="align-middle" style="width: 35%"><a class="text-success"
                     href="getDetailedBook.do?registered_book_id=<%=orderBook.getBookId()%>"><%=orderBook.getTitle()%>
             </a></td>
-            <td class="align-middle"><%=orderBook.getPrice()%>원
+            <td class="align-middle" style="width: 10%"><%=orderBook.getPrice()%>원
             </td>
-            <td class="align-middle"><%=dateFormat(orderBook.getOrderDate().toString())%>
+            <td class="align-middle" style="width: 20%"><%=dateFormat(orderBook.getOrderDate().toString())%>
             </td>
             <%
                 if (orderBook.isDeliveryStatus()) {
             %>
-            <td class="align-middle">
+            <td class="align-middle" style="width: 15%">
                 <button class="btn btn-outline-success"
                         onclick="location.href='writeReview.do?bookId=<%=orderBook.getBookId()%>&memberId=<%=member.getMemberId()%>'">
-                    <img src="/resources/images/document.png" alt="별"
+                    <img src="/resources/images/document.png" alt="리뷰"
                          style="text-align: left; width: 20px;">
                     리뷰 작성
                 </button>
             </td>
             <%} else {%>
-            <td class="align-middle">
+            <td class="align-middle" style="width: 15%">
                 <button type="button" class="btn btn-outline-success"
                         onclick="cancelBtn(); location.href='cancelOrder.do?orderId=<%=orderBook.getOrderId()%>';">
                     주문 취소
@@ -144,7 +144,7 @@
         %>
         <tr>
             <td><img class="shadow-lg" src="<%=likeBook.getImageUrl()%>" alt="책책책"></td>
-            <td colspan="2" class="align-middle" style="width: 45%"><a
+            <td colspan="2" class="align-middle" style="width: 45%"><a class="text-success"
                     href="getDetailedBook.do?registered_book_id=<%=likeBook.getBookId()%>"><%=likeBook.getTitle()%>
             </a></td>
             <td class="align-middle" style="width: 20%"><%=likeBook.getPrice()%>원

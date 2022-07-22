@@ -21,17 +21,25 @@
 
     <title>MZ BOOK: 회원정보 수정</title>
 
-    <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
+<%--    <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">--%>
     <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
+    <link rel="stylesheet" href="/resources/css/userupdate.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <%@include file = "../layout/header.jsp" %>
-<div class="container">
-    <div class="redbox">회원정보 수정</div>
-    <div class="userinfo">
+<div class="updateContainer">
+    <div class="titleBox">회원정보 수정</div>
 
+    <div class="lineBox"></div>
+
+    <div class="userinfo">
         <form action="updateMember.do" method="get" id="platform">
             <input type="hidden" id="flag" value="updateUser" name="param">
             <div class="user">
@@ -70,8 +78,8 @@
                 <span class="blank"></span>
             </div>
             <div class="updateBtn" align="center">
-                <input type="button" class="cancelBtn" value="취소" onclick="location.href='mypage.do'">
-                <input type="submit" class="confirmBtn" value="확인" onclick="formSubmit()">
+                <button type="button" class="cancelBtn" onclick="location.href='mypage.do'">취소하기</button>
+                <button type="submit" class="confirmBtn" onclick="formSubmit()">확인하기</button>
             </div>
         </form>
     </div>

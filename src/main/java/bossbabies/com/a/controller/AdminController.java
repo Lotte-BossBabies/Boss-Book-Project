@@ -170,7 +170,7 @@ public class AdminController {
 
         logger.info(new Date() + " AdminController updateBook()");
 
-        String category = "소설";
+        String category = "전체";
 
         SellerDto seller = (SellerDto) req.getSession().getAttribute("login");
         int sellerId = seller.getSeller_id();
