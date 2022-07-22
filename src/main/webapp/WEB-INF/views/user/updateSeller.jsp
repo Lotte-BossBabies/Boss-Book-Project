@@ -1,10 +1,4 @@
-<%@ page import="bossbabies.com.a.dto.user.SellerDto" %><%--
-  Created by IntelliJ IDEA.
-  User: kjchoi
-  Date: 2022/07/19
-  Time: 4:53 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bossbabies.com.a.dto.user.SellerDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     SellerDto seller = (SellerDto) request.getAttribute("seller");
@@ -25,10 +19,16 @@
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>MZ BOOK: 회원정보 수정</title>
 
-    <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">
+<%--    <link href="<c:url value="/resources/css/userupdate.css" />" rel="stylesheet">--%>
     <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="/resources/css/header.css">
     <link rel="stylesheet" href="/resources/css/footer.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
         .updateContainer{
             margin-bottom: 100px;
@@ -73,7 +73,7 @@
         .text {
             margin-top: 25px;
             padding: 0;
-            width: 158px;
+            width: 160px;
         }
 
         .updateBtn {
