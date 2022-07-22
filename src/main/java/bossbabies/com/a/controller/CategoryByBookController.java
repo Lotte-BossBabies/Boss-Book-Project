@@ -1,7 +1,7 @@
 package bossbabies.com.a.controller;
 
 import bossbabies.com.a.dto.main.RegisteredBookInfoDto;
-import bossbabies.com.a.service.BookInfoService;
+import bossbabies.com.a.service.BookInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import java.util.List;
 public class CategoryByBookController {
 
     @Autowired
-    BookInfoService service;
+    BookInfoServiceImpl service;
 
     //서점
     @RequestMapping(value = "bookstore.do", method = RequestMethod.GET)

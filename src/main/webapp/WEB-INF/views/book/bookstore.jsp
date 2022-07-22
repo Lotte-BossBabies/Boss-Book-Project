@@ -25,109 +25,108 @@
 
 </head>
 <body>
-<div class="wrap">
-    <%@ include file="../layout/header.jsp" %>
-    <div id="bookstore">
-        <div id="container">
-            <div class="content">
-                <div class="bookstore_category_top">
-                    <div class="bookstore_category">
-                        <div class="bookstore_category_title">일반 도서</div>
-                    </div>
+<%@ include file="../layout/header.jsp" %>
+
+<div id="bookstore">
+    <div id="container">
+        <div class="content">
+            <div class="bookstore_category_top">
+                <div class="bookstore_category">
+                    <div class="bookstore_category_title">일반 도서</div>
+                </div>
+            </div>
+
+            <div class="goods_list_item">
+                <div class="search-bookname">
+                    <input type="text" name="keyword" id="search-title"
+                           placeholder="책 제목을 검색하세요.">
+                    <button id="search-btn" type="button">검색</button>
+                </div>
+                <div class="list_item_category">
+                    <ul class="children-boldn kdm-goods-list">
+                        <li><a class="cate_btn" href="?cateName=all"><span class="category_name"
+                                                                                      style="font-weight: normal; font-size:14px;">전체</span></a>
+                        </li>
+                        <li><a class="cate_btn" href="?cateName=문학"><span class="category_name"
+                                                                                     style="font-weight: normal; font-size:14px;">문학</span></a>
+                        </li>
+                        <li><a class="cate_btn" href="?cateName=사회과학"><span class="category_name"
+                                                                                        style="font-weight: normal; font-size:14px;">사회과학</span></a>
+                        </li>
+                        <li><a class="cate_btn" href="?cateName=문화"><span
+                                style="font-weight: normal; font-size:14px;">문화</span></a></li>
+                        <li><a class="cate_btn" href="?cateName=인문"><span
+                                style="font-weight: normal; font-size:14px;">인문</span></a>
+                        </li>
+                        <li><a class="cate_btn" href="?cateName=어린이/청소년"><span
+                                style="font-weight: normal; font-size:14px;">어린이/청소년</span></a></li>
+                        <li><a class="cate_btn" href="?cateName=전문서적/교재"><span
+                                style="font-weight: normal; font-size:14px;">전문서적/교재</span></a></li>
+                        <li><a class="cate_btn" href="?cateName=기타"><span
+                                style="font-weight: normal; font-size:14px;">기타</span></a>
+                        </li>
+                    </ul>
+                    <%--chd category 추가--%>
                 </div>
 
-                <div class="goods_list_item">
-                    <div class="search-bookname">
-                        <input type="text" name="keyword" id="search-title"
-                               placeholder="책 제목을 검색하세요.">
-                        <button id="search-btn" type="button">검색</button>
-                    </div>
-                    <div class="list_item_category">
-                        <ul class="children-boldn kdm-goods-list">
-                            <li><a class="cate_btn" href="?cateName=all"><span class="category_name"
-                                                                               style="font-weight: normal; font-size:14px;">전체</span></a>
-                            </li>
-                            <li><a class="cate_btn" href="?cateName=문학"><span class="category_name"
-                                                                              style="font-weight: normal; font-size:14px;">문학</span></a>
-                            </li>
-                            <li><a class="cate_btn" href="?cateName=사회과학"><span class="category_name"
-                                                                                style="font-weight: normal; font-size:14px;">사회과학</span></a>
-                            </li>
-                            <li><a class="cate_btn" href="?cateName=문화"><span
-                                    style="font-weight: normal; font-size:14px;">문화</span></a></li>
-                            <li><a class="cate_btn" href="?cateName=인문"><span
-                                    style="font-weight: normal; font-size:14px;">인문</span></a>
-                            </li>
-                            <li><a class="cate_btn" href="?cateName=어린이/청소년"><span
-                                    style="font-weight: normal; font-size:14px;">어린이/청소년</span></a></li>
-                            <li><a class="cate_btn" href="?cateName=전문서적/교재"><span
-                                    style="font-weight: normal; font-size:14px;">전문서적/교재</span></a></li>
-                            <li><a class="cate_btn" href="?cateName=기타"><span
-                                    style="font-weight: normal; font-size:14px;">기타</span></a>
-                            </li>
-                        </ul>
-                        <%--chd category 추가--%>
-                    </div>
-
-                    <div class="goods_list">
-                        <%
-                            if (byCategoryList.size() == 0) {
-                        %>
-                        <div align="center" style="font-size: 15pt;margin-top: 70px;">등록된 책이 없습니다.</div>
-                        <%
-                            }%>
-                        <div class="goods_list_cont">
-                            <div class="item_gallery_type">
-                                <ul class="search-ul">
-                                    <%
-                                        if (byCategoryList.size() != 0) {
-                                    %>
-                                    <c:forEach var="regiBookInfo" items="${byCategoryList}">
-                                        <li style="width: 25%">
-                                            <div class="item_cont">
-                                                <div class="store-name">
-                                                    <img src="/resources/images/signboard.png">
-                                                    <span>${regiBookInfo.store_name}</span>
-                                                </div>
-                                                <div class="item_photo_box">
+                <div class="goods_list">
+                    <%
+                        if (byCategoryList.size() == 0) {
+                    %>
+                    <div align="center" style="font-size: 15pt;margin-top: 70px;">등록된 책이 없습니다.</div>
+                    <%
+                        }%>
+                    <div class="goods_list_cont">
+                        <div class="item_gallery_type">
+                            <ul class="search-ul">
+                                <%
+                                    if (byCategoryList.size() != 0) {
+                                %>
+                                <c:forEach var="regiBookInfo" items="${byCategoryList}">
+                                    <li style="width: 25%">
+                                        <div class="item_cont">
+                                            <div class="store-name">
+                                                <img src="/resources/images/signboard.png">
+                                                <span>${regiBookInfo.store_name}</span>
+                                            </div>
+                                            <div class="item_photo_box">
+                                                <a href="getDetailedBook.do?registered_book_id=${regiBookInfo.registered_book_id}">
+                                                    <img width="166"
+                                                         style="border: 2px solid #3CAE76; padding: 5px;"
+                                                         src=${regiBookInfo.image_url}>
+                                                </a>
+                                            </div>
+                                            <div class="item_info_cont">
+                                                <div class="item_tit_box">
                                                     <a href="getDetailedBook.do?registered_book_id=${regiBookInfo.registered_book_id}">
-                                                        <img width="166"
-                                                             style="border: 2px solid #3CAE76; padding: 5px;"
-                                                             src=${regiBookInfo.image_url}>
+                                                        <strong class="item_name">${regiBookInfo.title}</strong>
                                                     </a>
                                                 </div>
-                                                <div class="item_info_cont">
-                                                    <div class="item_tit_box">
-                                                        <a href="getDetailedBook.do?registered_book_id=${regiBookInfo.registered_book_id}">
-                                                            <strong class="item_name">${regiBookInfo.title}</strong>
-                                                        </a>
-                                                    </div>
-                                                    <div class="bp-writer">
-                                                        <span><${regiBookInfo.author}></span>
-                                                    </div>
-                                                    <div class="item_money_box">
-                                                        <strong class="item_price"><span>${regiBookInfo.price}원</span></strong>
-                                                    </div>
+                                                <div class="bp-writer">
+                                                    <span><${regiBookInfo.author}></span>
+                                                </div>
+                                                <div class="item_money_box">
+                                                    <strong class="item_price"><span>${regiBookInfo.price}원</span></strong>
                                                 </div>
                                             </div>
-                                        </li>
-                                    </c:forEach>
-                                    <%
-                                        }
-                                    %>
+                                        </div>
+                                    </li>
+                                </c:forEach>
+                                <%
+                                    }
+                                %>
 
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <br>
-    <%@ include file="../layout/footer.jsp" %>
 </div>
+
+<br>
+<%@ include file="../layout/footer.jsp" %>
 <script>
     $(document).ready(function () {
 
@@ -151,9 +150,9 @@
                         str += '<li style="width: 25%">' +
                             '<div class="item_cont">' +
                             '<div class="store-name">' +
-                            '<img src="/resources/images/signboard.png">' +
-                            '<span>' + data[i].store_name + '</span>' +
-                            '</div>' +
+                                                '<img src="/resources/images/signboard.png">' +
+                                                '<span>' + data[i].store_name+'</span>' +
+                                            '</div>' +
                             '<div class="item_photo_box">' +
                             '<a href="getDetailedBook.do?registered_book_id=' + data[i].registered_book_id + '">' +
                             '<img width="166"' +
