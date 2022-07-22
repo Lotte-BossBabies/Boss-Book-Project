@@ -2,11 +2,13 @@
 <%@ page import="java.util.List" %>
 <%@ page import="bossbabies.com.a.dto.user.SellerDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <link rel="icon" type="image/x-icon" href="/resources/images/logo.png">
     <title>MZ BOOK: 마이페이지</title>
 
+    <script src="<c:url value="/resources/js/post.js" />"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -33,7 +35,7 @@
 
         <div class="adminInfoBox">
             <span><%=seller.getName()%></span>님의 <span><%=seller.getStore_name()%></span><br>
-            <button type="button" onclick="location.href='updateUser.do'">개인정보 수정</button>
+            <button type="button" onclick= "myPagePost()">개인정보 수정</button>
         </div>
 
         <div class="aBox">

@@ -26,21 +26,34 @@
     <div class="registerBox left">
         <span class="tit">일반<br></span>
         <span class="tit-desc">만 14세 이상</span>
-        <button class="btn-join btn-white-gray" onclick="clickCommon()">일반 14세 이상</button>
+        <button class="btn-join btn-white-gray" onclick="regiEvent('member')">일반 14세 이상</button>
     </div>
     <div class="registerBox right">
         <span class="tit">판매자<br></span>
         <span class="tit-desc">만 14세 이상</span>
-        <button class="btn-join btn-white-gray" onclick="clickSeller()">판매자</button>
+        <button class="btn-join btn-white-gray" onclick="regiEvent('seller')">판매자</button>
     </div>
 </div>
 <%@include file = "../layout/footer.jsp" %>
 <script>
-    function clickCommon() {
-        location.href = "memberRegi.do?email=<%=email%>";
-    }
-    function clickSeller() {
-        location.href = "sellerRegi.do?email=<%=email%>";
+    function regiEvent( userType ) {
+        let form = document.createElement("form");
+        let input = document.createElement("input");
+
+        form.setAttribute("method", "post");
+        if(userType == "member") {
+            form.setAttribute("action", "memberRegi.do");
+        }
+        else if(userType == "seller"){
+            form.setAttribute("action", "sellerRegi.do");
+        }
+        input.setAttribute("type", "hidden");
+        input.setAttribute("name", "email");
+        input.setAttribute("value", <%=email%>);
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
     }
 
 </script>

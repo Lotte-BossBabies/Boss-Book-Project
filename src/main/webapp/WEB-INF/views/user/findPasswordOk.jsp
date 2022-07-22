@@ -28,7 +28,9 @@
         <div class="textBox">
             <p> 회원님의 비밀번호 &nbsp;<strong><%=password %></strong> 입니다.</p>
         </div>
-        <a class="btn cancelBtn" href="login.do">돌아가기</a>
+        <div class="findButton">
+            <a class="btn cancelBtn" href="login.do">돌아가기</a>
+        </div>
     </div>
 </div>
 <%@include file = "../layout/footer.jsp" %>

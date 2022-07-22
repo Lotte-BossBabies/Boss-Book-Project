@@ -34,7 +34,7 @@
     </div>
     <div class="outerInputBox">
         <!-- onsubmit="return checkForm()" 삭제 -->
-        <form action="regiMember.do" method="get" id="form">
+        <form action="regiMember.do" method="post" id="form">
             <div class="innerInputBoxSpecial">
                 <div class="innerId">
                     <label for="id">아이디 : &nbsp;</label>
@@ -120,7 +120,7 @@
     $(function () {
         $("#idBtn").click(function () {
             $.ajax({
-                type: "get",
+                type: "post",
                 url: "duplicateId.do",
                 data: {user_id: $("#id").val()},
                 success: function (data) {

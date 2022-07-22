@@ -29,8 +29,10 @@
         <div class="textBox">
             <p> 회원님의 아이디는 <strong><%=id %></strong> 입니다.</p>
         </div>
-        <a class="btn moveBtn" href="findPassword.do">비밀번호찾기</a>
-        <a class="btn cancelBtn" href="login.do">돌아가기</a>
+        <div class="findButton">
+            <a class="btn moveBtn" onclick="findPasswordPost()">비밀번호찾기</a>
+            <a class="btn cancelBtn" href="login.do">돌아가기</a>
+        </div>
     </div>
 </div>
 <%@include file = "../layout/footer.jsp" %>

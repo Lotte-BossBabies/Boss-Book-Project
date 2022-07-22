@@ -1,6 +1,6 @@
 package bossbabies.com.a.service;
 
-import bossbabies.com.a.dao.book.BookApiDao;
+import bossbabies.com.a.dao.book.BookApiDaoImpl;
 
 import bossbabies.com.a.dto.BookDto;
 import org.json.JSONArray;
@@ -38,7 +38,7 @@ import java.util.List;
 public class BookApiServiceImpl implements BookApiService{
 
     @Autowired
-    BookApiDao dao;
+    BookApiDaoImpl dao;
 
     @Value("${api.interpark_api_key}")
     String apikey;

@@ -1,6 +1,6 @@
 package bossbabies.com.a.service;
 
-import bossbabies.com.a.dao.book.BookDao;
+import bossbabies.com.a.dao.book.BookDaoImpl;
 import bossbabies.com.a.dto.main.PopularBookInfoDto;
 import bossbabies.com.a.dto.main.RegisteredBookInfoDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 public class BookInfoServiceImpl implements BookInfoService{
 
     @Autowired
-    BookDao dao;
+    BookDaoImpl dao;
 
 
     @Override
@@ -64,13 +64,13 @@ public class BookInfoServiceImpl implements BookInfoService{
             cateBookList.addAll(dao.findByCategoryList("자격서/수험서"));
             cateBookList.addAll(dao.findByCategoryList("전공도서/대학교재"));
         }else{
-            cateBookList.addAll(dao.findByCategoryList("잡지"));
-            cateBookList.addAll(dao.findByCategoryList("만화/라이트노밸"));
-            cateBookList.addAll(dao.findByCategoryList("가정과 생활"));
-            cateBookList.addAll(dao.findByCategoryList("취미/레저"));
-            cateBookList.addAll(dao.findByCategoryList("건강/뷰티"));
-            cateBookList.addAll(dao.findByCategoryList("여행"));
-            cateBookList.addAll(dao.findByCategoryList("가정과 생활"));
+            cateBookList.addAll(dao.searchRegisteredBook("잡지"));
+            cateBookList.addAll(dao.searchRegisteredBook("만화/라이트노밸"));
+            cateBookList.addAll(dao.searchRegisteredBook("가정과 생활"));
+            cateBookList.addAll(dao.searchRegisteredBook("취미/레저"));
+            cateBookList.addAll(dao.searchRegisteredBook("건강/뷰티"));
+            cateBookList.addAll(dao.searchRegisteredBook("여행"));
+            cateBookList.addAll(dao.searchRegisteredBook("가정과 생활"));
         }
 
         return cateBookList;
