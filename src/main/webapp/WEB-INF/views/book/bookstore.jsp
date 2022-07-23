@@ -53,8 +53,8 @@
                         <li><a class="cate_btn" href="?cateName=사회과학"><span class="category_name"
                                                                                         style="font-weight: normal; font-size:14px;">사회과학</span></a>
                         </li>
-                        <li><a class="cate_btn" href="?cateName=문화"><span
-                                style="font-weight: normal; font-size:14px;">문화</span></a></li>
+                        <li><a class="cate_btn" href="?cateName=경제경영"><span
+                                style="font-weight: normal; font-size:14px;">경제경영</span></a></li>
                         <li><a class="cate_btn" href="?cateName=인문"><span
                                 style="font-weight: normal; font-size:14px;">인문</span></a>
                         </li>
@@ -73,7 +73,7 @@
                     <%
                         if (byCategoryList.size() == 0) {
                     %>
-                    <div align="center" style="font-size: 15pt;margin-top: 70px;">등록된 책이 없습니다.</div>
+                    <div class="book-empty" align="center" style="font-size: 15pt;margin-top: 70px;">등록된 책이 없습니다.</div>
                     <%
                         }%>
                     <div class="goods_list_cont">
@@ -143,6 +143,7 @@
                 success: function (data) {
                     var str = "";
                     $(".search-ul").remove();
+                    $(".book-empty").remove();
 
                     str += '<ul class="search-ul">'
 
