@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class AvgController {
     AvgService service;
 
     @RequestMapping(value = "chart.do", method = RequestMethod.GET)
-    public String getSaleRateByCategory(Model model, HttpSession session) {
+    public String getSaleRateByCategory(Model model, HttpSession session, HttpServletResponse response) throws Exception {
         // session 에서 id 값 가져오기
         SellerDto seller = (SellerDto) session.getAttribute("login");
 
@@ -46,6 +47,17 @@ public class AvgController {
 
         List<SalesByPeriodDto> periodDtoList = service.getSalesByPeriod(salesByPeriodDto);
         model.addAttribute("allPeriodList", periodDtoList);
+
+        if (list.size() == 0 || periodDtoList.size() == 0) {
+            response.setContentType("text/html;charset=UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('판매한 책이 없습니다!');" +
+                    "location.href='adminMain.do';" +
+                    "</script>");
+            out.flush();
+            return "";
+        }
 
 
         return "avg";
@@ -81,7 +93,7 @@ public class AvgController {
     }
 
     @RequestMapping(value = "bossbabies.do", method = RequestMethod.GET)
-    public String getBossBabiesMem(){
+    public String getBossBabiesMem() {
         return "bossbabies";
     }
 
